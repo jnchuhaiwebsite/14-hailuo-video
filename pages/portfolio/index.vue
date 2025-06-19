@@ -287,8 +287,11 @@ useSeo({
   defineExpose({ videoLoading });
   </script>
   
-  <style scoped>
+  <style>
   .break-inside-avoid {
     break-inside: avoid;
+  }
+  body{
+    background-color: rgb(25 23 28 / var(--tw-bg-opacity, 1));
   }
   </style> 
