@@ -60,7 +60,7 @@ const blogPostsData: BlogPost[] = [
       <p>The release of Hailuo 02 marks an important milestone in AI video generation technology, achieving breakthrough progress not only in performance but also setting new industry standards in cost-effectiveness. Both professional creators and enterprise users can benefit from this innovative technology.</p>
     `,
     description: 'Hailuo 02 is MiniMax\'s latest AI video generation model, ranking second in image-to-video and text-to-video leaderboards, featuring excellent cost-effectiveness and complex scene generation capabilities',
-    date: 'June 14, 2025',
+    date: 'June 19, 2025',
     category: 'Platform',
     skip: false,
     cta: "Learn More",
@@ -160,7 +160,7 @@ const blogPostsData: BlogPost[] = [
       <p>Creating videos from your images has never been easier. With Hailuo 02, you can transform your photos into engaging videos in minutes. Follow these steps and start creating amazing content today!</p>
     `,
     description: 'A comprehensive guide to generating videos from images using Hailuo 02 with specific format and quality requirements',
-    date: 'June 14, 2025',
+    date: 'June 19, 2025',
     category: 'Tutorials',
     skip: false,
     cta: "Learn More",
@@ -260,7 +260,7 @@ const blogPostsData: BlogPost[] = [
       <p>Ready to bring your ideas to life? With Hailuo 02's text-to-video generation, you can create amazing videos just by describing what you want. Follow these tips and start creating stunning content today!</p>
     `,
     description: 'A comprehensive guide to creating videos from text descriptions using Hailuo 02 with specific duration and quality options',
-    date: 'June 14, 2025',
+    date: 'June 19, 2025',
     category: 'Tutorials',
     skip: false,
     cta: "Try Now",
