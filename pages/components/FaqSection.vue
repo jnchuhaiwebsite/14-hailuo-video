@@ -40,14 +40,7 @@
       </div>
       
       <!-- CTA Buttons -->
-      <div class="text-center mt-12 space-x-4">
-        <button
-          @click="scrollToTop"
-          class="bg-[#7C3AED] hover:bg-[#7C3AED]/90 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
-        >
-          Start Creating
-        </button>
-        
+      <div class="text-center mt-12 space-x-4"> 
         <!-- 在这里添加显示更多/更少按钮 -->
         <button
           v-if="hasMoreItems && faqs.length > initialVisibleCount"
@@ -62,13 +55,6 @@
           class="bg-[#7C3AED]/80 hover:bg-[#7C3AED] text-white font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
         >
           Show Less
-        </button>
-        
-        <button
-          @click="scrollToContact"
-          class="bg-[#7C3AED] hover:bg-[#7C3AED]/90 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
-        >
-          Contact Support
         </button>
       </div>
     </div>
