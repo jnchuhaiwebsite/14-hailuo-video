@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-900">
+  <div class="min-h-screen bg-blue-pale">
     <div class="max-w-4xl mx-auto px-4 py-12">
       <div class="mb-6">
         <NuxtLink to="/" class="flex items-center text-gray-400 hover:text-gray-200">
@@ -122,7 +122,7 @@ useSeo({
 
 <style>
 body {
-  background-color: #111827; /* bg-gray-900 */
+  background-color: #111827; /* bg-blue-pale */
   color: #F3F4F6; /* text-gray-100 */
 }
 </style> 

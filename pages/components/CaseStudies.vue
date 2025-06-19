@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 bg-gray-900">
+  <section class="py-20 bg-blue-pale">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
@@ -18,7 +18,7 @@
         >
           <div class="relative flex items-center justify-center bg-black">
             <div v-if="loadingIndex === idx" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-              <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#04dcb7] border-t-transparent"></div>
+              <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
             </div>
             <video
               :src="item.video"
@@ -58,7 +58,7 @@
           <div class="px-4 pb-4 flex justify-end">
             <button
               @click="copyDesc(idx)"
-              class="bg-[#04dcb7] hover:bg-[#03c0a3] text-black text-sm px-3 py-1 rounded transition-colors focus:outline-none"
+              class="bg-[#7C3AED] hover:bg-[#8B5CF6] text-white text-sm px-3 py-1 rounded transition-colors focus:outline-none"
             >
             Copy prompt
             </button>
@@ -72,7 +72,7 @@
       </h3>
       <button
         @click="scrollToTop"
-        class="bg-[#04dcb7] hover:bg-[#03c0a3] text-black font-semibold px-8 py-4 rounded-lg transition-colors focus:outline-none text-xl"
+        class="bg-[#7C3AED] hover:bg-[#8B5CF6] text-white font-semibold px-8 py-4 rounded-lg transition-colors focus:outline-none text-xl"
       >
         Start Creating Your Masterpiece
       </button>

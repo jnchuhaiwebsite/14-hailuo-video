@@ -1,5 +1,5 @@
 <template>
-    <section class="py-20 bg-gray-900">
+    <section class="py-20 bg-blue-pale">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
@@ -9,8 +9,8 @@
             From cinematic sci-fi flights to fantasy warrior animations, these videos are created entirely by Hailuo02 Video users using only text or image prompts. Explore their imagination, get inspired, and start crafting your own AI-powered stories.
           </p>
         </div>
-        <div v-if="isLoading" class="mt-16 flex justify-center items-center">
-          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#04dcb7]"></div>
+        <div v-if="pending" class="flex justify-center items-center py-20">
+          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#7C3AED]"></div>
         </div>
         <div v-else class="mt-16 columns-1 sm:columns-2 md:columns-3 gap-6">
           <div
@@ -64,7 +64,7 @@
             <div class="px-4 pb-4 flex justify-end items-center gap-2">
               <button
                 @click="goToCreate(idx)"
-                class="bg-[#04dcb7] hover:bg-[#03c0a3] text-black text-sm px-3 py-1 mt-3 rounded transition-colors focus:outline-none"
+                class="bg-[#7C3AED] hover:bg-[#8B5CF6] text-white text-sm px-3 py-1 mt-3 rounded transition-colors focus:outline-none"
               >
                 Create Similar
               </button>
@@ -80,7 +80,7 @@
       </div>
     </section>
     <div v-if="detailDialog.show" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
-      <div class="bg-gray-900 rounded-lg shadow-xl max-w-lg w-full p-6 relative">
+      <div class="bg-blue-pale rounded-lg shadow-xl max-w-lg w-full p-6 relative">
         <button @click="closeDetail" class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl">&times;</button>
         <div v-if="detailDialog.item">
           <div class="mb-4 flex justify-center">
@@ -120,7 +120,7 @@ useSeo({
   
   const router = useRouter();
   
-  const { data: portfolioItems, pending: isLoading, error } = await useAsyncData(
+  const { data: portfolioItems, pending } = await useAsyncData(
     'portfolioItems',
     async () => {
       const res = await getUserOpus();

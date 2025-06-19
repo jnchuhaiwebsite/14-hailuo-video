@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mx-auto bg-gray-900">
+  <div class="w-full mx-auto bg-blue-pale">
     <main class="max-w-24xl mx-auto min-h-screen">
       <!-- 首屏区块 -->
       <section
@@ -12,7 +12,7 @@
       </section>
 
       <!-- 视频展示 -->
-      <section id="video-showcase">
+      <section id="cases">
         <keep-alive>
           <VideoShowcase />
         </keep-alive>
@@ -26,14 +26,14 @@
       </section>
 
       <!-- 特性展示 -->
-      <section id="features-showcase">
+      <!-- <section id="features-showcase">
         <keep-alive>
           <FeatureShowcase />
         </keep-alive>
-      </section>
+      </section> -->
 
       <!-- 用户评论 -->
-      <section id="Reviews">
+      <section id="reviews">
         <keep-alive>
           <Reviews />
         </keep-alive>
@@ -64,6 +64,7 @@ const PricingPlans = defineAsyncComponent(() => import('~/components/PricingPlan
 const HomeHero = defineAsyncComponent(() => import('~/pages/components/HomeHero.vue'));
 const FaqSection = defineAsyncComponent(() => import('~/pages/components/FaqSection.vue'));
 const VideoShowcase = defineAsyncComponent(() => import('~/pages/components/VideoShowcase.vue'));
+const CaseStudies = defineAsyncComponent(() => import('~/pages/components/CaseStudies.vue'));
 const HowItWorks = defineAsyncComponent(() => import('~/pages/components/HowItWorks.vue'));
 const FeatureShowcase = defineAsyncComponent(() => import('~/pages/components/FeatureShowcase.vue'));
 const Reviews = defineAsyncComponent(() => import('~/pages/components/Reviews.vue'));

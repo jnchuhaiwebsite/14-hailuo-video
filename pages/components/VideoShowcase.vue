@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 bg-gray-900">
+  <section class="py-20 bg-blue-pale">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
@@ -11,11 +11,11 @@
       </div>
       
       <div class="mt-16 max-w-4xl mx-auto">
-        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl">
+        <div class="bg-blue-pale/80 rounded-lg overflow-hidden shadow-xl">
           <div class="relative flex items-center justify-center bg-black">
             <!-- Loading state -->
-            <div v-if="isLoading" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-              <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#04dcb7] border-t-transparent"></div>
+            <div v-if="isLoading" class="flex justify-center items-center py-20">
+              <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
             </div>
             
             <!-- Video element -->

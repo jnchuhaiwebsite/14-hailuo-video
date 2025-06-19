@@ -22,17 +22,17 @@ onMounted(() => {
 <style>
 /* 主题色 */
 :root {
-  /* 主题色 - 青色 */
-  --theme-primary: #00ffd1;
-  --theme-primary-hover: #00e6bc;
+  /* 主题色 - 紫色 */
+  --theme-primary: #7C3AED;
+  --theme-primary-hover: #8B5CF6;
   
   /* 文字颜色 */
-  --text-primary: #ffffff;
-  --text-secondary: #a0aec0;
+  --text-primary: #7C3AED;
+  --text-secondary: #A78BFA;
   
   /* 背景和边框 */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
+  --bg-primary: #19171C;
+  --bg-secondary: #2D1B69;
 }
 
 /* 主题色相关的通用类 */

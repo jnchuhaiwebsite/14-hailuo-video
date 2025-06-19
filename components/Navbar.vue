@@ -2,7 +2,7 @@
   <header>
     <nav
       class="fixed top-0 left-0 w-full z-50 backdrop-blur-md shadow-md"
-      style="background: rgba(17, 24, 39, 0.8)"
+      style="background: rgba(25, 23, 28, 0.8)"
     >
       <div class="max-w-7xl mx-auto px-4">
         <div class="flex items-center justify-between h-16">
@@ -19,15 +19,14 @@
               <NuxtLink
                 v-if="section.href"
                 :to="section.href"
-                class="text-gray-300 hover:text-[#00ffd1] transition-colors"
-                @click.prevent="handleSkipClick()"
+                class="text-gray-300 hover:text-[#7C3AED] transition-colors"
               >
                 {{ section.name }}
               </NuxtLink>
               <div
                 v-else-if="section.id"
                 @click="handleNavClick(section.id)"
-                class="text-gray-300 hover:text-[#00ffd1] transition-colors cursor-pointer"
+                class="text-gray-300 hover:text-[#7C3AED] transition-colors cursor-pointer"
               >
                 {{ section.name }}
               </div>
@@ -40,7 +39,7 @@
           <!-- 移动端菜单按钮 -->
           <button
             @click="isOpen = !isOpen"
-            class="lg:hidden text-[#00ffd1] p-2 rounded-md hover:bg-[#00ffd1]/20 transition-colors"
+            class="lg:hidden text-[#7C3AED] p-2 rounded-md hover:bg-[#7C3AED]/20 transition-colors"
           >
             <svg
               v-if="!isOpen"
@@ -78,12 +77,12 @@
       <Transition name="slide-fade">
         <div
           v-if="isOpen"
-          class="lg:hidden fixed top-0 left-0 w-full h-screen overflow-y-auto bg-gray-900/95 backdrop-blur-sm z-[100]"
+          class="lg:hidden fixed top-0 left-0 w-full h-screen overflow-y-auto bg-blue-pale/95 backdrop-blur-sm z-[100]"
         >
           <!-- 关闭按钮 -->
           <button
             @click="isOpen = false"
-            class="fixed top-4 right-4 text-[#00ffd1] p-2 rounded-full hover:bg-[#00ffd1]/20 transition-colors z-[101]"
+            class="fixed top-4 right-4 text-[#7C3AED] p-2 rounded-full hover:bg-[#7C3AED]/20 transition-colors z-[101]"
           >
             <svg
               class="w-6 h-6"
@@ -108,15 +107,15 @@
                 <NuxtLink
                   v-if="section.href"
                   :to="section.href"
-                  class="block text-gray-300 hover:text-[#00ffd1] text-base py-2 transition-colors"
-                  @click.prevent="handleSkipClick()"
+                  class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
+                  @click="() => { isOpen = false; }"
                 >
                   {{ section.name }}
                 </NuxtLink>
                 <div
                   v-else-if="section.id"
                   @click="() => { handleNavClick(section.id); isOpen = false; }"
-                  class="block text-gray-300 hover:text-[#00ffd1] text-base py-2 transition-colors"
+                  class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
                 >
                   {{ section.name }}
                 </div>
@@ -124,8 +123,8 @@
               <NuxtLink
                 v-if="isSignedIn"
                 to="/profile"
-                class="block text-gray-300 hover:text-[#00ffd1] text-base py-2 transition-colors"
-                @click.prevent="handleSkipClick()"
+                class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
+                @click="() => { isOpen = false; }"
               >
                 Personal Center
               </NuxtLink>
@@ -144,38 +143,39 @@
 import { ref, watch, onUnmounted, onMounted } from "vue";
 import { useNavigation } from "~/utils/navigation";
 import { useClerkAuth } from '~/utils/auth';
+import { useRouter, useRoute } from 'vue-router';
 
 // 状态管理
 const isOpen = ref(false);
 const { isSignedIn } = useClerkAuth();
+const router = useRouter();
+const route = useRoute();
 
 // 使用导航工具
 const { activeSection, sections, handleNavClick, handleScroll, executeScroll } =
   useNavigation();
 
-// 处理点击跳转
-const handleSkipClick = () => {
-  isOpen.value = false;
-};
-
 onMounted(() => {
   // 只重置overflow，不改变滚动位置
   document.body.style.overflow = "";
 
+  // 添加滚动事件监听
+  window.addEventListener("scroll", handleScroll);
+
   // 初始检查 sessionStorage 中是否有目标锚点
   const targetSection = sessionStorage.getItem("targetSection");
-  if (targetSection) {
+  if (targetSection && route.path === '/') {
     // 清除目标锚点
     sessionStorage.removeItem("targetSection");
     // 延迟执行滚动操作，确保DOM已加载完成
     setTimeout(() => {
       executeScroll(targetSection);
-    }, 100);
+    }, 300);
   }
 });
 
 // 监听菜单打开状态，控制body滚动
-watch(isOpen, (newValue: any) => {
+watch(isOpen, (newValue) => {
   if (newValue) {
     document.body.style.overflow = "hidden";
   } else {
@@ -183,9 +183,10 @@ watch(isOpen, (newValue: any) => {
   }
 });
 
-// 组件卸载时恢复body滚动
+// 组件卸载时恢复body滚动并移除事件监听
 onUnmounted(() => {
   document.body.style.overflow = "";
+  window.removeEventListener("scroll", handleScroll);
 });
 </script>
 

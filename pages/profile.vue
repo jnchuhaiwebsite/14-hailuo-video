@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-900 pt-[80px]">
+  <div class="min-h-screen bg-blue-pale pt-[80px]">
     <!-- 用户信息卡片 -->
     <div class="max-w-7xl mx-auto bg-gray-800 p-6 rounded-lg shadow-sm mb-6">
       <!-- 基本信息 -->
@@ -172,7 +172,7 @@
                   class="w-8 h-8 rounded-lg text-sm transition-colors"
                   :class="[
                     page === creditPage 
-                      ? 'bg-blue-500 text-white' 
+                      ? 'bg-[#7C3AED] text-white' 
                       : 'bg-gray-700 text-gray-200 hover:bg-gray-600'
                   ]"
                 >
