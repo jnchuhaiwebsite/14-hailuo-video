@@ -958,6 +958,7 @@ watch(
 
 // 检查使用限制
 const checkUsageLimit = () => {
+
   // 检查是否有可用次数
   if (remainingTimes.value <= 0) {
     $toast.warning('Usage limit reached. Please upgrade to premium for more credits')
@@ -967,9 +968,9 @@ const checkUsageLimit = () => {
     }
     return false
   }
-  
+
   // 检查用户积分是否足够
-  const userCredits = userInfo.value?.score || 0
+  const userCredits = userInfo.value || 0
   if (userCredits < needCredits.value) {
     $toast.error(`Insufficient credits. The current operation requires ${needCredits.value} credits, and your account only has ${userCredits} credits`)
     const pricingSection = document.getElementById('pricing')

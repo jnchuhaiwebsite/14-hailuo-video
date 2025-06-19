@@ -143,43 +143,39 @@
 import { ref, watch, onUnmounted, onMounted } from "vue";
 import { useNavigation } from "~/utils/navigation";
 import { useClerkAuth } from '~/utils/auth';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 
 // 状态管理
 const isOpen = ref(false);
 const { isSignedIn } = useClerkAuth();
 const router = useRouter();
+const route = useRoute();
 
 // 使用导航工具
 const { activeSection, sections, handleNavClick, handleScroll, executeScroll } =
   useNavigation();
 
-// 处理点击跳转
-const handleSkipClick = () => {
-  // 关闭移动端菜单
-  isOpen.value = false;
-  // 使用路由导航
-  router.push(router.currentRoute.value.fullPath);
-};
-
 onMounted(() => {
   // 只重置overflow，不改变滚动位置
   document.body.style.overflow = "";
 
+  // 添加滚动事件监听
+  window.addEventListener("scroll", handleScroll);
+
   // 初始检查 sessionStorage 中是否有目标锚点
   const targetSection = sessionStorage.getItem("targetSection");
-  if (targetSection) {
+  if (targetSection && route.path === '/') {
     // 清除目标锚点
     sessionStorage.removeItem("targetSection");
     // 延迟执行滚动操作，确保DOM已加载完成
     setTimeout(() => {
       executeScroll(targetSection);
-    }, 100);
+    }, 300);
   }
 });
 
 // 监听菜单打开状态，控制body滚动
-watch(isOpen, (newValue: any) => {
+watch(isOpen, (newValue) => {
   if (newValue) {
     document.body.style.overflow = "hidden";
   } else {
@@ -187,9 +183,10 @@ watch(isOpen, (newValue: any) => {
   }
 });
 
-// 组件卸载时恢复body滚动
+// 组件卸载时恢复body滚动并移除事件监听
 onUnmounted(() => {
   document.body.style.overflow = "";
+  window.removeEventListener("scroll", handleScroll);
 });
 </script>
 

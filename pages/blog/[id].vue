@@ -4,7 +4,6 @@
       <NuxtLink
         to="/blog"
         class="inline-flex items-center text-gray-300 hover:text-[#7C3AED] transition-colors mb-8 group font-medium"
-        @click.prevent="handleBackToList"
       >
         <div class="w-3 h-3 border-l-2 border-b-2 border-gray-300 group-hover:border-[#7C3AED] transform rotate-45 mr-2 transition-colors"></div>
         Back to Blog
@@ -82,16 +81,10 @@ import { useSeo } from '~/composables/useSeo';
 
 const route = useRoute();
 const router = useRouter();
-const isFromList = ref(false);
-
-// 在组件挂载时检查来源
-onMounted(() => {
-  // 检查是否从列表页面进入
-  isFromList.value = document.referrer.includes('/blog');
-});
+const pending = ref(false);
 
 //获取文章数据
-const { getPostById, allPosts } = useBlogPosts();
+const { getPostById, allPosts, getCategoryLabel } = useBlogPosts();
 
 //获取文章内容
 const post = computed(() => {
@@ -136,6 +129,11 @@ const title = computed(() => {
     : post.value.title;
 });
 
+// 格式化日期函数
+const formatDate = (post: any) => {
+  return post.date;
+};
+
 //设置页面元数据
 useSeo({
   title: `${title.value} - Hailuo02 Video Blog`,
@@ -153,13 +151,4 @@ useSeo({
     { property: 'article:publisher', content: 'Hailuo02 Video' }
   ]
 });
-
-//返回列表
-const handleBackToList = () => {
-  if (window.history.length > 2) {
-    router.back();
-  } else {
-    router.push('/blog');
-  }
-};
 </script>

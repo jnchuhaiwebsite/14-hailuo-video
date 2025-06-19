@@ -32,11 +32,11 @@
       <!-- Blog list on the right -->
       <div class="flex-1">
         <div class="space-y-4 md:space-y-6">
-          <NuxtLink 
+          <div 
             v-for="post in filteredPosts" 
             :key="post.id"
-            :to="`/blog/${post.id}`"
-            class="block bg-gray-800 rounded-xl p-4 md:p-6 shadow-sm hover:shadow-md transition-all border border-gray-700 hover:border-[#7C3AED] hover:translate-y-[-2px]"
+            class="block bg-gray-800 rounded-xl p-4 md:p-6 shadow-sm hover:shadow-md transition-all border border-gray-700 hover:border-[#7C3AED] hover:translate-y-[-2px] cursor-pointer"
+            @click="navigateToBlog(post.id)"
           >
             <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 md:gap-4 mb-3 md:mb-4">
               <div class="flex-1 min-w-0">
@@ -50,7 +50,7 @@
             <div class="text-gray-500 text-xs md:text-sm">
               {{ post.date }}
             </div>
-          </NuxtLink>
+          </div>
         </div>
       </div>
     </div>
@@ -59,8 +59,11 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useBlogPosts } from '~/composables/useBlogPosts'
 import { useSeo } from '~/composables/useSeo'
+
+const router = useRouter()
 
 useSeo({
   title: "Hailuo02 Video Blog - AI Video Generation Tips",
@@ -78,6 +81,11 @@ const {
   getCategoryLabel,
   allCategories
 } = useBlogPosts()
+
+// 导航到博客详情页
+const navigateToBlog = (id) => {
+  router.push(`/blog/${id}`)
+}
 
 // Set canonical URL when mounted
 onMounted(() => {

@@ -57,7 +57,7 @@ export const useNavigation = () => {
         // 添加重试机制
         let retryCount = 0;
         const maxRetries = 8;
-        const retryInterval = 150; // 200ms
+        const retryInterval = 150; // 150ms
 
         const tryScroll = () => {
           const element = document.getElementById(sectionId);
@@ -81,6 +81,7 @@ export const useNavigation = () => {
   // 处理导航点击
   const handleNavClick = (sectionId?: string) => {
     if (!sectionId) return
+    
     // 如果当前不在首页，先跳转到首页
     if (window.location.pathname !== '/') {
       handlePageNavigation(sectionId)
@@ -95,6 +96,9 @@ export const useNavigation = () => {
 
   // 处理滚动监听
   const handleScroll = () => {
+    // 只在首页执行滚动监听
+    if (window.location.pathname !== '/') return
+    
     for (const section of sections) {
       if (!section.id) continue
       const element = document.getElementById(section.id)
