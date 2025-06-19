@@ -10,19 +10,19 @@
         </NuxtLink>
       </div>
       
-      <h1 class="text-3xl font-bold mb-8 text-white">SeedancePro Privacy Policy</h1>
-      <p class="text-gray-400 mb-8">Last updated: June 13, 2025</p>
+      <h1 class="text-3xl font-bold mb-8 text-white">Hailuo 02 Privacy Policy</h1>
+      <p class="text-gray-400 mb-8">Last updated: June 14, 2025</p>
       
       <div class="space-y-6">
         <section>
-          <p class="text-gray-300">SeedancePro ("we", "our", or "us") values your privacy. This Privacy Policy outlines how we collect, use, and protect your personal information when you use our website (https://www.seedancepro.net) and related services.</p>
+          <p class="text-gray-300">Hailuo 02 ("we", "our", or "us") values your privacy. This Privacy Policy outlines how we collect, use, and protect your personal information when you use our AI video generation platform and related services.</p>
         </section>
 
         <section>
           <h2 class="text-2xl font-semibold mb-4 text-white">1. Information We Collect</h2>
           <ul class="list-disc pl-6 mt-4 space-y-2 text-gray-300">
             <li><strong>Personal Data</strong>: Includes name, email, billing information, and usage preferences. Collected when you register, purchase credits, or interact with our services.</li>
-            <li><strong>User-Generated Content</strong>: Prompts, uploaded images, and generated videos may be stored to improve service quality.</li>
+            <li><strong>User-Generated Content</strong>: Text prompts, uploaded images (JPG/JPEG/PNG format), and generated videos may be stored to improve service quality and model performance.</li>
             <li><strong>Technical Data</strong>: We automatically collect IP address, device type, browser type, OS version, and time of access.</li>
           </ul>
         </section>
@@ -30,10 +30,10 @@
         <section>
           <h2 class="text-2xl font-semibold mb-4 text-white">2. How We Use Your Information</h2>
           <ul class="list-disc pl-6 mt-4 space-y-2 text-gray-300">
-            <li>To enable video generation and manage your user account.</li>
+            <li>To enable AI video generation (image-to-video and text-to-video) and manage your user account.</li>
             <li>To process transactions and communicate confirmations or billing updates.</li>
             <li>To deliver personalized content, suggestions, and UI preferences.</li>
-            <li>To improve the model's performance, identify bugs, and enhance user experience.</li>
+            <li>To improve the Hailuo 02 model's performance, identify bugs, and enhance user experience.</li>
             <li>To detect misuse and enforce platform policies.</li>
           </ul>
         </section>
@@ -51,7 +51,7 @@
             <li>Payment processors (e.g., Stripe)</li>
             <li>Hosting/cloud providers (e.g., Vercel, Cloudflare)</li>
             <li>Analytics tools (e.g., Google Analytics)</li>
-            <li>AI inference engines (e.g., third-party video model APIs)</li>
+            <li>AI inference engines and video processing services</li>
           </ul>
         </section>
 
@@ -59,6 +59,7 @@
           <h2 class="text-2xl font-semibold mb-4 text-white">5. Data Retention</h2>
           <ul class="list-disc pl-6 mt-4 space-y-2 text-gray-300">
             <li>We retain your personal data as long as your account is active or as needed to fulfill legal obligations.</li>
+            <li>Generated videos and uploaded images may be stored for service improvement purposes.</li>
             <li>You may request deletion of your data at any time.</li>
           </ul>
         </section>
@@ -97,7 +98,7 @@
 
         <section>
           <h2 class="text-2xl font-semibold mb-4 text-white">Contact</h2>
-          <p class="text-gray-300">Email: support@seedancepro.net</p>
+          <p class="text-gray-300">Email: support@hailuo02.com</p>
         </section>
       </div>
     </div>
@@ -114,7 +115,7 @@ definePageMeta({
 })
 
 useSeo({
-  title: 'Seedance Pro | Privacy Policy',
+  title: 'Hailuo 02 | Privacy Policy',
   description: 'Learn how we protect your data while using our AI-powered video generation service.'
 })
 </script>

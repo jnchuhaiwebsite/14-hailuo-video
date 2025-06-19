@@ -616,18 +616,18 @@ const inspirationPrompts = [
 // 预览视频列表
 const previewVideos = [
   {
-    url: 'https://resource.seedancepro.net/seedance/video/seeddancepro-Inspiration-underwater-canyon.mp4',
+    url: 'https://resource.hailuo2.com/seedance/video/seeddancepro-Inspiration-underwater-canyon.mp4',
     poster: '/img/1.webp',
     loading: true
   },
   {
-    url: 'https://resource.seedancepro.net/seedance/video/misty-forest-dawn-new-sprout-breaking-cocoon.mp4',
-    poster: 'https://resource.seedancepro.net/seedance/image/misty-forest-dawn-new-sprout-breaking-cocoon.webp',
+    url: 'https://resource.hailuo2.com/seedance/video/misty-forest-dawn-new-sprout-breaking-cocoon.mp4',
+    poster: 'https://resource.hailuo2.com/seedance/image/misty-forest-dawn-new-sprout-breaking-cocoon.webp',
     loading: true
   },
   {
-    url: 'https://resource.seedancepro.net/seedance/video/silicon-valley-laboratory-code-waterfall.mp4',
-    poster: 'https://resource.seedancepro.net/seedance/image/silicon-valley-laboratory-code-waterfall.webp',
+    url: 'https://resource.hailuo2.com/seedance/video/silicon-valley-laboratory-code-waterfall.mp4',
+    poster: 'https://resource.hailuo2.com/seedance/image/silicon-valley-laboratory-code-waterfall.webp',
     loading: true
   }
 ]

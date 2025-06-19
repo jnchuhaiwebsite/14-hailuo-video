@@ -87,38 +87,38 @@ const { $toast } = useNuxtApp() as any
 
 const cases = [
   {
-    video: "https://resource.seedancepro.net/seedance/video/seeddancepro-Inspiration-a-paper-folding-dragon.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/8.webp",
+    video: "https://resource.hailuo2.com/seedance/video/seeddancepro-Inspiration-a-paper-folding-dragon.mp4",
+    poster: "https://resource.hailuo2.com/seedance/image/8.webp",
     desc: "A paper dragon unfolds from a sheet of paper and soars over folded mountain ranges. The camera pans through floating paper scraps, with each wing beat and fold revealing sharp geometric lines."
   },
   {
-    video: "https://resource.seedancepro.net/seedance/video/Seedance-A-cathedral-carved-from-cold-ice.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/6.webp",
+    video: "https://resource.hailuo2.com/seedance/video/Seedance-A-cathedral-carved-from-cold-ice.mp4",
+    poster: "https://resource.hailuo2.com/seedance/image/6.webp",
     desc: "A cathedral carved from cold ice, emanating a soft glow from within. The camera gradually moves from a wide-angle view to the entrance, revealing the intricate internal structure of the ice architecture."
   },
   {
-    video: "https://resource.seedancepro.net/seedance/video/seeddancepro-Inspiration-A-bright-orange-sports-car-is-speeding-on-the-damp-track.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/7.webp",
+    video: "https://resource.hailuo2.com/seedance/video/seeddancepro-Inspiration-A-bright-orange-sports-car-is-speeding-on-the-damp-track.mp4",
+    poster: "https://resource.hailuo2.com/seedance/image/7.webp",
     desc: "A bright orange sports car speeds along a wet track. Low-angle shots capture lightning flashing through dark storm clouds. The camera gradually rises to reveal the complete racing scene under the lights in the rain."
   },
   {
-    video: "https://resource.seedancepro.net/seedance/video/seeddancepro-Inspiration-girl-looking-at-the-camera.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/5.webp",
+    video: "https://resource.hailuo2.com/seedance/video/seeddancepro-Inspiration-girl-looking-at-the-camera.mp4",
+    poster: "https://resource.hailuo2.com/seedance/image/5.webp",
     desc: "A girl looks at the camera, her earrings gently swaying as she turns, while the camera rotates in a dreamy sunlight."
   },
   {
-    video: "https://resource.seedancepro.net/seedance/video/seeddancepro-Inspiration-wide-angle-lens-grassland-white-horse-girl.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/4.webp",
+    video: "https://resource.hailuo2.com/seedance/video/seeddancepro-Inspiration-wide-angle-lens-grassland-white-horse-girl.mp4",
+    poster: "https://resource.hailuo2.com/seedance/image/4.webp",
     desc: "Wide-angle lens captures golden grassland swaying in the wind, with a white horse standing still. In the mid-ground, a girl slowly approaches, her dress billowing in the breeze. She reaches out to touch the horse's nose, bathed in soft backlight."
   },
   {
-    video: "https://resource.seedancepro.net/seedance/video/seeddancepro-Inspiration-track-the-bicycle-tires-on-the-ground-and-drive-through-chenlu-street.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/1.webp",
+    video: "https://resource.hailuo2.com/seedance/video/seeddancepro-Inspiration-track-the-bicycle-tires-on-the-ground-and-drive-through-chenlu-street.mp4",
+    poster: "https://resource.hailuo2.com/seedance/image/1.webp",
     desc: "The sun slowly rises between tall buildings. Ground-level tracking shot follows bicycle tires rolling through morning dew-covered streets. The rider passes under bridges with dappled light, as the entire city gradually awakens."
   },
   {
-    video: "https://resource.seedancepro.net/seedance/video/seeddancepro-Inspiration-a-movie-level-aerial-shot-of-a-dense-forest-at-sunrise.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/9.webp",
+    video: "https://resource.hailuo2.com/seedance/video/seeddancepro-Inspiration-a-movie-level-aerial-shot-of-a-dense-forest-at-sunrise.mp4",
+    poster: "https://resource.hailuo2.com/seedance/image/9.webp",
     desc: "A cinematic aerial shot of a dense forest at sunrise, with golden light streaming through layers of morning mist. The camera slowly advances above the treetops, gradually revealing a waterfall in the distance."
   }
 ];

@@ -87,7 +87,7 @@ onMounted(() => {
     "@type": "Blog",
     name: "SeedancePro Blog",
     description: "Expert tutorials and insights on multi-camera video generation and AI-powered storytelling",
-    url: "https://www.seedancepro.net/blog",
+    url: "https://www.hailuo2.com/blog",
     publisher: {
       "@type": "Organization",
       name: "SeedancePro",

@@ -3,10 +3,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00ffd1] to-[#00ffd1]/50 sm:text-5xl animate-fade-in">
-          How Seedance Pro AI Video Generator Works
+          How Hailuo 02 AI Video Generator Works
         </h2>
         <p class="mt-4 text-xl text-gray-300 max-w-3xl mx-auto">
-          Experience the power of AI-driven multi-shot video generation with our advanced model
+          Experience the power of AI-driven video generation with our revolutionary model featuring 2.5x efficiency improvements
         </p>
       </div>
 
@@ -47,28 +47,28 @@ import {
 
 const steps = [
   {
-    title: "Select Input Method",
-    description: "Choose between text prompts or image upload to start your video generation journey",
+    title: "Upload Image or Text",
+    description: "Choose between uploading an image (JPG/JPEG/PNG) or entering text prompts to start your video generation",
     icon: CommandLineIcon,
-    specs: "Text-to-video or Image-to-video"
+    specs: "Image: JPG/JPEG/PNG, max 5MB, aspect ratio 2:5-5:2"
   },
   {
-    title: "Configure Settings",
-    description: "Customize your video parameters including resolution, aspect ratio, and duration",
+    title: "Fill in Prompt",
+    description: "Describe desired motion, effects, style, and atmosphere for your video generation",
     icon: AdjustmentsHorizontalIcon,
-    specs: "480p/1080p, Multiple ratios, 5s/10s"
+    specs: "Clear, specific descriptions for best results"
   },
   {
-    title: "AI Processing",
-    description: "Our advanced AI model generates multi-shot narrative videos with fluid motion",
+    title: "Set Parameters",
+    description: "Choose video duration (6 or 10 seconds) and quality (768P or 1080P) based on your needs",
     icon: ArrowPathIcon,
-    specs: "Multi-shot narrative, Fluid motion"
+    specs: "6s: 768P/1080P, 10s: 768P only"
   },
   {
-    title: "Download & Share",
-    description: "Get your high-quality video output ready for sharing or further editing",
+    title: "Generate & Download",
+    description: "Our AI processes your request in 1-2 minutes and delivers high-quality video output",
     icon: ArrowDownTrayIcon,
-    specs: "1080P HD quality"
+    specs: "1-2 minutes processing, 85% instruction response rate"
   }
 ];
 </script>

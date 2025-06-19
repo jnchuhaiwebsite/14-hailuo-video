@@ -5,9 +5,9 @@ import { useRuntimeConfig } from 'nuxt/app'
 
 // const baseUrl = process.env.NODE_ENV === 'development'
 //   ? '/nuxtRequest'
-//   : 'https://art.seedancepro.net';
+//   : 'https://art.hailuo2.com';
 
-const baseUrl = 'https://art.seedancepro.net';
+const baseUrl = 'https://art.hailuo2.com';
 
 // console.log('当前baseUrl:', baseUrl);
 // API接口URL列表
