@@ -1,40 +1,26 @@
 <template>
   <div class="relative min-h-screen w-full flex flex-col items-center justify-start overflow-x-hidden">
-    <!-- 动态背景 -->
-    <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-[#00ffd1]/20 to-gray-900 animate-gradient-flow"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,255,209,0.1),transparent_50%)] animate-pulse"></div>
-    <!-- 背景动画效果 -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute -inset-[10px] opacity-50">
-        <div class="absolute top-0 -left-4 w-72 h-72 bg-[#00ffd1] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div class="absolute top-0 -right-4 w-72 h-72 bg-[#00ffd1] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-[#00ffd1] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
-    </div>
+
     <!-- 顶部新版本提示 -->
     <!-- <div class="absolute top-8 left-1/2 -translate-x-1/2 z-10">
       <span class="px-6 py-2 rounded-full bg-[#00ffd1]/10 text-[#00ffd1] text-sm font-semibold shadow-md backdrop-blur-sm">New Hailuo02 Video Released</span>
     </div> -->
     <!-- 标题区 -->
+    <!-- 标题区 -->
     <div class="mt-[80px] mb-14 flex flex-col items-center relative z-10">
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center bg-gradient-to-r from-[#00ffd1] via-[#00ffd1]/80 via-[#00b8ff] to-[#00ffd1] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
         Hailuo2: Turn Creativity into Blockbusters
       </h1>
       <!-- 注册送积分提示 -->
-      <div class="mt-3 sm:mt-4 px-3 xs:px-4 sm:px-6 py-1 xs:py-1.5 sm:py-2 bg-gradient-to-r from-[#00ffd1]/20 to-[#00b8ff]/20 rounded-full border border-[#00ffd1]/30 backdrop-blur-sm inline-flex items-center">
-        <span class="text-[#00ffd1] font-semibold flex items-center gap-1 xs:gap-1.5 text-xs xs:text-sm sm:text-base">
+      <!-- <div class="mt-3 sm:mt-4 px-3 xs:px-4 sm:px-6 py-1 xs:py-1.5 sm:py-2 bg-gradient-to-r from-[#7C3AED]/20 to-[#8B5CF6]/20 rounded-full border border-[#7C3AED]/30 backdrop-blur-sm inline-flex items-center">
+        <span class="text-[#7C3AED] font-semibold flex items-center gap-1 xs:gap-1.5 text-xs xs:text-sm sm:text-base">
           <FireIcon class="h-3.5 w-3.5 xs:h-4 xs:w-4 sm:h-5 sm:w-5 text-orange-500" />
           Limited-time offer: New users get 10 Credits upon registration.
         </span>
-      </div>
+      </div> -->
       <p class="mt-6 text-1xl text-gray-200 text-center max-w-3xl font-medium">
         Create stunning AI videos in minutes using text or images with Hailuo02 Video. No editing needed. Perfect for creators, brands, and educators. Generate smooth, cinematic videos in 1080P quality—perfect for storytelling, marketing, and creative expression.
       </p>
-      <div class="flex flex-wrap gap-2 xs:gap-3 sm:gap-4 md:gap-6 justify-center mt-4 sm:mt-6 md:mt-8 cursor-default">
-        <h2 class="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg text-xs xs:text-sm sm:text-base md:text-md transition">MiniMax-Hailuo-02</h2>
-        <h2 class="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold shadow-lg text-xs xs:text-sm sm:text-base md:text-md transition">MiniMax</h2>
-        <h2 class="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-lg text-xs xs:text-sm sm:text-base md:text-md transition">AI Technology</h2>
-      </div>
     </div>
     <!-- 主体区 -->
     <div class="w-full max-w-[1700px] flex flex-col lg:flex-row gap-4 lg:gap-6 justify-center items-stretch px-3 sm:px-4 lg:px-6 pb-16 lg:pb-24">
@@ -46,7 +32,7 @@
             <button 
               @click="handleAction('switchTab', 'text')"
               class="tab-button flex-1 flex items-center justify-center gap-1.5 px-0 py-0 h-10 sm:h-12 rounded-xl transition-all duration-300 font-bold text-sm lg:text-base shadow group"
-              :class="activeTab === 'text' ? 'active bg-gradient-to-r from-[#00ffd1] to-[#00ffd1]/80 text-gray-900 shadow-lg ring-2 ring-[#00ffd1]' : 'text-gray-300 hover:bg-[#00ffd1]/20 hover:text-[#00ffd1]'"
+              :class="activeTab === 'text' ? 'active bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 text-white shadow-lg ring-2 ring-[#7C3AED]' : 'text-gray-300 hover:bg-[#7C3AED]/20 hover:text-[#7C3AED]'"
             >
               <span class="whitespace-nowrap">Text to Video</span>
               <PlusIcon class="h-4 w-4 lg:h-5 lg:w-5" :class="activeTab === 'text' ? 'text-gray-900' : 'text-gray-300 group-hover:text-gray-900'" />
@@ -54,7 +40,7 @@
             <button 
               @click="handleAction('switchTab', 'image')"
               class="tab-button flex-1 flex items-center justify-center gap-1.5 px-0 py-0 h-10 sm:h-12 rounded-xl transition-all duration-300 font-bold text-sm lg:text-base shadow group"
-              :class="activeTab === 'image' ? 'active bg-gradient-to-r from-[#00ffd1] to-[#00ffd1]/80 text-gray-900 shadow-lg ring-2 ring-[#00ffd1]' : 'text-gray-300 hover:bg-[#00ffd1]/20 hover:text-[#00ffd1]'"
+              :class="activeTab === 'image' ? 'active bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 text-white shadow-lg ring-2 ring-[#7C3AED]' : 'text-gray-300 hover:bg-[#7C3AED]/20 hover:text-[#7C3AED]'"
             >
               <span class="whitespace-nowrap">Image to Video</span>
               <PhotoIcon class="h-4 w-4 lg:h-5 lg:w-5" :class="activeTab === 'image' ? 'text-gray-900' : 'text-gray-300 group-hover:text-gray-900'" />
@@ -66,7 +52,7 @@
           enter-active-class="animate-smooth-in"
           leave-active-class="animate-smooth-out"
         >
-          <div v-if="activeTab === 'image'" class="w-full border-2 border-dashed border-gray-700 rounded-xl p-4 hover:border-[#00ffd1] transition-colors cursor-pointer mb-4 relative bg-gray-800">
+          <div v-if="activeTab === 'image'" class="w-full border-2 border-dashed border-gray-700 rounded-xl p-4 hover:border-[#7C3AED] transition-colors cursor-pointer mb-4 relative bg-gray-800">
             <input 
               type="file" 
               accept="image/jpeg,image/png" 
@@ -107,7 +93,7 @@
           </label>
           <textarea 
             v-model="prompt"
-            class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-3 py-2 focus:ring-2 focus:ring-[#00ffd1] focus:border-transparent transition placeholder-gray-500 text-sm lg:text-base h-20 sm:h-24 resize-none" 
+            class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] focus:border-transparent transition placeholder-gray-500 text-sm lg:text-base h-20 sm:h-24 resize-none" 
             :placeholder="activeTab === 'text' ? 'Describe the video you want to create...' : 'Describe how to transform your image into video...'"
             @click="handleAction('prompt')"
           ></textarea>
@@ -119,7 +105,7 @@
             <button 
               v-for="item in inspirationPrompts" 
               :key="item.label"
-              class="px-2 py-1 rounded-lg bg-gray-700 text-gray-100 hover:bg-[#00ffd1] hover:text-gray-900 transition text-xs font-medium shadow whitespace-nowrap" 
+              class="px-2 py-1 rounded-lg bg-gray-700 text-gray-100 hover:bg-[#7C3AED] hover:text-white transition text-xs font-medium shadow whitespace-nowrap" 
               @click="handleAction('inspiration', item.prompt)"
             >
               {{ item.label }}
@@ -135,7 +121,7 @@
             <div class="relative">
               <select 
                 v-model="aspectRatio"
-                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#00ffd1] text-xs lg:text-sm appearance-none"
+                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] text-xs lg:text-sm appearance-none"
                 @click="handleAction('selectOption')"
               >
                 <option 
@@ -156,7 +142,7 @@
             <div class="relative">
               <select 
                 v-model="resolution"
-                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#00ffd1] text-xs lg:text-sm appearance-none"
+                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] text-xs lg:text-sm appearance-none"
                 @click="handleAction('selectOption')"
               >
                 <option 
@@ -177,7 +163,7 @@
             <div class="relative">
               <select 
                 v-model="duration"
-                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#00ffd1] text-xs lg:text-sm appearance-none"
+                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] text-xs lg:text-sm appearance-none"
                 @click="handleAction('selectOption')"
               >
                 <option 
@@ -200,7 +186,7 @@
               type="checkbox" 
               id="showInGallery" 
               v-model="isShow"
-              class="w-4 h-4 rounded border-gray-600 bg-gray-700 text-[#00ffd1] focus:ring-[#00ffd1] focus:ring-offset-gray-800"
+              class="w-4 h-4 rounded border-gray-600 bg-gray-700 text-[#7C3AED] focus:ring-[#7C3AED] focus:ring-offset-gray-800"
             />
             <label for="showInGallery" class="text-sm text-gray-300">Share to Gallery</label>
           </div>
@@ -213,7 +199,7 @@
         </div>
         <!-- 生成按钮 -->
         <button 
-          class="w-full flex items-center justify-center gap-2 px-4 mt-4 lg:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#00ffd1] to-[#00ffd1]/80 hover:from-[#00ffd1]/90 hover:to-[#00ffd1]/70 text-gray-900 rounded-xl font-extrabold text-base sm:text-lg lg:text-xl shadow-xl transition relative" 
+          class="w-full flex items-center justify-center gap-2 px-4 mt-4 lg:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 hover:from-[#7C3AED]/90 hover:to-[#7C3AED]/70 text-white rounded-xl font-extrabold text-base sm:text-lg lg:text-xl shadow-xl transition relative" 
           @click="handleAction('generate')"
           :disabled="isGenerating"
         >
@@ -240,7 +226,7 @@
                     cy="50"
                   />
                   <circle
-                    class="text-[#00ffd1]"
+                    class="text-[#7C3AED]"
                     stroke-width="8"
                     stroke-dasharray="251.2"
                     stroke-dashoffset="251.2"
@@ -255,13 +241,13 @@
                     }"
                   />
                 </svg>
-                <div class="absolute inset-0 flex items-center justify-center text-[#00ffd1] font-bold text-xl">
+                <div class="absolute inset-0 flex items-center justify-center text-[#7C3AED] font-bold text-xl">
                   {{ progress.toFixed(0) }}%
                 </div>
               </div>
               <div v-else class="flex flex-col items-center justify-center">
-                <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#00ffd1] border-t-transparent"></div>
-                <p class="text-[#00ffd1] text-sm mt-3">Processing...</p>
+                <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
+                <p class="text-[#7C3AED] text-sm mt-3">Processing...</p>
               </div>
             </div>
             <!-- 预览视频 -->
@@ -303,7 +289,7 @@
                       v-if="previewVideoLoading[video.url]" 
                       class="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl"
                     >
-                      <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#00ffd1] border-t-transparent"></div>
+                      <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -329,7 +315,7 @@
               ></video>
               <button 
                 @click="handleDownload"
-                class="absolute top-0 right-0 bg-black/60 text-[#00ffd1] px-4 py-2 rounded-xl text-sm font-medium shadow-lg flex items-center gap-2 transition-all duration-300 hover:bg-black/70 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-sm hover:shadow-[#00ffd1]"
+                class="absolute top-0 right-0 bg-black/60 text-[#7C3AED] px-4 py-2 rounded-xl text-sm font-medium shadow-lg flex items-center gap-2 transition-all duration-300 hover:bg-black/70 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-sm hover:shadow-[#7C3AED]"
                 :disabled="isDownloading"
               >
                 <ArrowDownTrayIcon v-if="!isDownloading" class="w-5 h-5" />
@@ -339,7 +325,7 @@
               <!-- 添加提示文本 -->
               <div class="absolute top-0 left-0 bg-black/60 text-white/90 px-4 py-2 rounded-xl text-sm font-medium shadow-lg flex items-center justify-center gap-2 whitespace-nowrap">
                 <span>Video has been generated, visit</span>
-                <NuxtLink to="/profile" class="text-[#00ffd1] hover:text-[#00ffd1]/80 transition-colors">
+                <NuxtLink to="/profile" class="text-[#7C3AED] hover:text-[#7C3AED]/80 transition-colors">
                   profile-My Works
                 </NuxtLink>
                 <span>to view</span>
@@ -347,7 +333,7 @@
             </div>
             <!-- 视频加载中 -->
             <div v-else class="absolute inset-0 flex items-center justify-center">
-              <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#00ffd1] border-t-transparent"></div>
+              <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
             </div>
           </div>
         </div>
@@ -1050,30 +1036,25 @@ const restoreFormData = () => {
 <style scoped>
 @keyframes gradient-flow {
   0% {
-    background-position: 0% 0%;
-  }
-  25% {
-    background-position: 100% 0%;
+    background: linear-gradient(to right, #0a0a0a, #0a0a0a/80);
   }
   50% {
-    background-position: 100% 100%;
-  }
-  75% {
-    background-position: 0% 100%;
+    background: linear-gradient(to right, #1a1a1a, #0a0a0a/80);
   }
   100% {
-    background-position: 0% 0%;
+    background: linear-gradient(to right, #0a0a0a, #0a0a0a/80);
   }
 }
 
 @keyframes gradient-x {
-  0%, 100% {
-    background-size: 200% 200%;
-    background-position: left center;
+  0% {
+    background-position: 0% 50%;
   }
   50% {
-    background-size: 200% 200%;
-    background-position: right center;
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -1093,32 +1074,11 @@ const restoreFormData = () => {
 }
 
 .animate-gradient-flow {
-  animation: gradient-flow 20s linear infinite;
-  background-size: 200% 200%;
-  background-image: linear-gradient(
-    45deg,
-    #1a1a1a 0%,
-    #1a1a1a 20%,
-    rgba(0, 255, 209, 0.2) 40%,
-    rgba(0, 255, 209, 0.3) 50%,
-    rgba(0, 255, 209, 0.2) 60%,
-    #1a1a1a 80%,
-    #1a1a1a 100%
-  );
+  animation: gradient-flow 4s ease-in-out infinite;
 }
 
 .animate-gradient-x {
-  animation: gradient-x 15s ease infinite;
-  background-size: 200% 200%;
-  background-image: linear-gradient(
-    90deg,
-    #00ffd1 0%,
-    #00ffd1 20%,
-    #00b8ff 40%,
-    #00ffd1 60%,
-    #00ffd1 80%,
-    #00ffd1 100%
-  );
+  animation: gradient-x 3s ease infinite;
 }
 
 .animate-blob {

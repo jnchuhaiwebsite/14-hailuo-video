@@ -13,13 +13,13 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			theme: '#00ffd1',
+  			theme: '#7C3AED',
   			blue: {
-  				dark: '#00e6bc',
-  				medium: '#00ffd1',
-  				light: '#33ffd9',
-  				pale: '#1a1a1a',
-  				accent: '#00ffd1'
+  				dark: '#7C3AED',
+  				medium: '#7C3AED',
+  				light: '#8B5CF6',
+  				pale: '#19171C',
+  				accent: '#7C3AED'
   			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

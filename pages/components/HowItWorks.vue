@@ -1,34 +1,36 @@
 <template>
-  <section class="py-20 bg-gradient-to-b from-gray-900 to-gray-800">
+  <section class="py-20 bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00ffd1] to-[#00ffd1]/50 sm:text-5xl animate-fade-in">
-          How Hailuo 02 AI Video Generator Works
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/50 sm:text-5xl animate-fade-in">
+          How Hailuo 02 Works
         </h2>
-        <p class="mt-4 text-xl text-gray-300 max-w-3xl mx-auto">
-          Experience the power of AI-driven video generation with our revolutionary model featuring 2.5x efficiency improvements
+        <p class="mt-4 text-xl text-gray-300 animate-slide-up">
+          Simple 3-step process to create stunning AI videos
         </p>
       </div>
 
-      <div class="mt-16">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          <div v-for="(step, index) in steps" :key="index" 
-               class="relative bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 sm:p-8 shadow-xl border border-gray-700/50 hover:border-[#00ffd1]/50 transition-all duration-300 hover:transform hover:scale-105 group">
-            <div class="absolute -top-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-[#00ffd1] to-[#00ffd1]/50 rounded-full flex items-center justify-center text-gray-900 text-lg sm:text-xl font-bold shadow-lg group-hover:shadow-[#00ffd1]/25 transition-all duration-300">
-              {{ index + 1 }}
-            </div>
-            <div class="mt-4">
-              <div class="flex items-center space-x-2 sm:space-x-3">
-                <component :is="step.icon" class="w-5 h-5 sm:w-6 sm:h-6 text-[#00ffd1]" />
-                <h3 class="text-lg sm:text-xl font-semibold text-white">{{ step.title }}</h3>
-              </div>
-              <p class="mt-2 text-gray-400 text-sm sm:text-base">{{ step.description }}</p>
-              <div v-if="step.specs" class="mt-4 pt-4 border-t border-gray-700/50">
-                <p class="text-xs sm:text-sm text-[#00ffd1]">{{ step.specs }}</p>
-              </div>
-            </div>
-            <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#00ffd1] to-[#00ffd1]/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div 
+          v-for="(step, index) in steps" 
+          :key="index"
+          class="relative bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 sm:p-8 shadow-xl border border-gray-700/50 hover:border-[#7C3AED]/50 transition-all duration-300 hover:transform hover:scale-105 group">
+          <div class="absolute -top-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/50 rounded-full flex items-center justify-center text-white text-lg sm:text-xl font-bold shadow-lg group-hover:shadow-[#7C3AED]/25 transition-all duration-300">
+            {{ index + 1 }}
           </div>
+          
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gray-700/50 rounded-full mb-6 group-hover:bg-gray-700/70 transition-colors duration-300">
+              <component :is="step.icon" class="w-5 h-5 sm:w-6 sm:h-6 text-[#7C3AED]" />
+            </div>
+            
+            <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">{{ step.title }}</h3>
+            <p class="text-gray-300 mb-4">{{ step.description }}</p>
+            <p class="text-xs sm:text-sm text-[#7C3AED]">{{ step.specs }}</p>
+          </div>
+          
+          <!-- Animated underline -->
+          <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
         </div>
       </div>
     </div>

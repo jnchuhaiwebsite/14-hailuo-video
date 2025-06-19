@@ -110,7 +110,7 @@
       <SignInButton mode="modal">
         <button id="bindLogin"
           :disabled="isAuthLoading"
-          class="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-medium to-blue-dark text-black hover:opacity-90 transition-all text-sm font-medium disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-md hover:shadow-lg"
+          class="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-medium to-blue-dark text-white hover:opacity-90 transition-all text-sm font-medium disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-md hover:shadow-lg"
         >
           {{ isAuthLoading ? 'Loading...' : 'Log in / Sign up' }}
         </button>
@@ -197,7 +197,7 @@
     <SignInButton v-else mode="modal">
       <button id="bindLogin"
         :disabled="isAuthLoading"
-        class="mt-4 w-full py-3 rounded-lg bg-gradient-to-r from-blue-medium to-blue-dark text-black hover:opacity-90 transition-all text-base font-medium disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-md hover:shadow-lg"
+        class="mt-4 w-full py-3 rounded-lg bg-gradient-to-r from-blue-medium to-blue-dark text-white hover:opacity-90 transition-all text-base font-medium disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-md hover:shadow-lg"
       >
         {{ isAuthLoading ? 'Loading...' : 'Log in / Sign up' }}
       </button>

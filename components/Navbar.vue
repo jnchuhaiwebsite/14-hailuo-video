@@ -19,15 +19,14 @@
               <NuxtLink
                 v-if="section.href"
                 :to="section.href"
-                class="text-gray-300 hover:text-[#00ffd1] transition-colors"
-                @click.prevent="handleSkipClick()"
+                class="text-gray-300 hover:text-[#7C3AED] transition-colors"
               >
                 {{ section.name }}
               </NuxtLink>
               <div
                 v-else-if="section.id"
                 @click="handleNavClick(section.id)"
-                class="text-gray-300 hover:text-[#00ffd1] transition-colors cursor-pointer"
+                class="text-gray-300 hover:text-[#7C3AED] transition-colors cursor-pointer"
               >
                 {{ section.name }}
               </div>
@@ -40,7 +39,7 @@
           <!-- 移动端菜单按钮 -->
           <button
             @click="isOpen = !isOpen"
-            class="lg:hidden text-[#00ffd1] p-2 rounded-md hover:bg-[#00ffd1]/20 transition-colors"
+            class="lg:hidden text-[#7C3AED] p-2 rounded-md hover:bg-[#7C3AED]/20 transition-colors"
           >
             <svg
               v-if="!isOpen"
@@ -83,7 +82,7 @@
           <!-- 关闭按钮 -->
           <button
             @click="isOpen = false"
-            class="fixed top-4 right-4 text-[#00ffd1] p-2 rounded-full hover:bg-[#00ffd1]/20 transition-colors z-[101]"
+            class="fixed top-4 right-4 text-[#7C3AED] p-2 rounded-full hover:bg-[#7C3AED]/20 transition-colors z-[101]"
           >
             <svg
               class="w-6 h-6"
@@ -108,15 +107,15 @@
                 <NuxtLink
                   v-if="section.href"
                   :to="section.href"
-                  class="block text-gray-300 hover:text-[#00ffd1] text-base py-2 transition-colors"
-                  @click.prevent="handleSkipClick()"
+                  class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
+                  @click="() => { isOpen = false; }"
                 >
                   {{ section.name }}
                 </NuxtLink>
                 <div
                   v-else-if="section.id"
                   @click="() => { handleNavClick(section.id); isOpen = false; }"
-                  class="block text-gray-300 hover:text-[#00ffd1] text-base py-2 transition-colors"
+                  class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
                 >
                   {{ section.name }}
                 </div>
@@ -124,8 +123,8 @@
               <NuxtLink
                 v-if="isSignedIn"
                 to="/profile"
-                class="block text-gray-300 hover:text-[#00ffd1] text-base py-2 transition-colors"
-                @click.prevent="handleSkipClick()"
+                class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
+                @click="() => { isOpen = false; }"
               >
                 Personal Center
               </NuxtLink>
@@ -144,10 +143,12 @@
 import { ref, watch, onUnmounted, onMounted } from "vue";
 import { useNavigation } from "~/utils/navigation";
 import { useClerkAuth } from '~/utils/auth';
+import { useRouter } from 'vue-router';
 
 // 状态管理
 const isOpen = ref(false);
 const { isSignedIn } = useClerkAuth();
+const router = useRouter();
 
 // 使用导航工具
 const { activeSection, sections, handleNavClick, handleScroll, executeScroll } =
@@ -155,7 +156,10 @@ const { activeSection, sections, handleNavClick, handleScroll, executeScroll } =
 
 // 处理点击跳转
 const handleSkipClick = () => {
+  // 关闭移动端菜单
   isOpen.value = false;
+  // 使用路由导航
+  router.push(router.currentRoute.value.fullPath);
 };
 
 onMounted(() => {

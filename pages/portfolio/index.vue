@@ -9,8 +9,8 @@
             From cinematic sci-fi flights to fantasy warrior animations, these videos are created entirely by Hailuo02 Video users using only text or image prompts. Explore their imagination, get inspired, and start crafting your own AI-powered stories.
           </p>
         </div>
-        <div v-if="isLoading" class="mt-16 flex justify-center items-center">
-          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#04dcb7]"></div>
+        <div v-if="pending" class="flex justify-center items-center py-20">
+          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#7C3AED]"></div>
         </div>
         <div v-else class="mt-16 columns-1 sm:columns-2 md:columns-3 gap-6">
           <div
@@ -64,7 +64,7 @@
             <div class="px-4 pb-4 flex justify-end items-center gap-2">
               <button
                 @click="goToCreate(idx)"
-                class="bg-[#04dcb7] hover:bg-[#03c0a3] text-black text-sm px-3 py-1 mt-3 rounded transition-colors focus:outline-none"
+                class="bg-[#7C3AED] hover:bg-[#8B5CF6] text-white text-sm px-3 py-1 mt-3 rounded transition-colors focus:outline-none"
               >
                 Create Similar
               </button>
@@ -120,7 +120,7 @@ useSeo({
   
   const router = useRouter();
   
-  const { data: portfolioItems, pending: isLoading, error } = await useAsyncData(
+  const { data: portfolioItems, pending } = await useAsyncData(
     'portfolioItems',
     async () => {
       const res = await getUserOpus();

@@ -12,11 +12,18 @@
       </section>
 
       <!-- 视频展示 -->
-      <section id="video-showcase">
+      <section id="cases">
         <keep-alive>
           <VideoShowcase />
         </keep-alive>
       </section>
+      
+      <!-- 案例展示 -->
+      <!-- <section id="cases">
+        <keep-alive>
+          <CaseStudies />
+        </keep-alive>
+      </section> -->
       
       <!-- 操作步骤 -->
       <section id="how-it-works">
@@ -33,7 +40,7 @@
       </section>
 
       <!-- 用户评论 -->
-      <section id="Reviews">
+      <section id="reviews">
         <keep-alive>
           <Reviews />
         </keep-alive>
@@ -64,6 +71,7 @@ const PricingPlans = defineAsyncComponent(() => import('~/components/PricingPlan
 const HomeHero = defineAsyncComponent(() => import('~/pages/components/HomeHero.vue'));
 const FaqSection = defineAsyncComponent(() => import('~/pages/components/FaqSection.vue'));
 const VideoShowcase = defineAsyncComponent(() => import('~/pages/components/VideoShowcase.vue'));
+const CaseStudies = defineAsyncComponent(() => import('~/pages/components/CaseStudies.vue'));
 const HowItWorks = defineAsyncComponent(() => import('~/pages/components/HowItWorks.vue'));
 const FeatureShowcase = defineAsyncComponent(() => import('~/pages/components/FeatureShowcase.vue'));
 const Reviews = defineAsyncComponent(() => import('~/pages/components/Reviews.vue'));

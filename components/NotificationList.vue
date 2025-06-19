@@ -41,6 +41,14 @@
                 />
               </div>
             </div>
+            <div class="flex items-center gap-2">
+              <span 
+                class="px-3 py-1.5 text-sm bg-[#7C3AED]/10 text-[#7C3AED] rounded-lg hover:bg-[#7C3AED]/20 transition-colors"
+              >
+                {{ notification.type }}
+              </span>
+              <span class="text-xs text-gray-400">{{ formatTime(notification.timestamp) }}</span>
+            </div>
           </div>
           
           <!-- 关闭按钮 -->

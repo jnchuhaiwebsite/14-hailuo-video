@@ -172,7 +172,7 @@
                   class="w-8 h-8 rounded-lg text-sm transition-colors"
                   :class="[
                     page === creditPage 
-                      ? 'bg-blue-500 text-white' 
+                      ? 'bg-[#7C3AED] text-white' 
                       : 'bg-gray-700 text-gray-200 hover:bg-gray-600'
                   ]"
                 >

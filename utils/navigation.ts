@@ -16,7 +16,7 @@ export const mainRoutes: RouteItem[] = [
   { id: "how-it-works", name: "How It Works", icon: "steps" },
   { id: "features-showcase", name: "Features", icon: "star" },
   // 评价
-  { id: "Reviews", name: "Reviews", icon: "star" },
+  { id: "reviews", name: "Reviews", icon: "star" },
   { id: "pricing", name: "Pricing", icon: "tag" },
   { id: "portfolio", name: "Explore Inspiration", href: "/portfolio", icon: "image" },
   { id: "faq", name: "FAQ", icon: "help" },

@@ -5,45 +5,52 @@
       <!-- 主要内容区域 -->
       <div class="flex flex-col md:flex-row gap-8 md:gap-12 mb-8 md:mb-12">
         <!-- 友情链接区域 -->
-        <div class="md:w-1/3">
-          <h3 class="text-[#00ffd1] font-medium mb-4 text-left text-sm md:text-lg">Partner Sites</h3>
-          <div class="flex flex-wrap gap-3">
-            <a v-for="(item,index) in partnerSites" :key="index" 
-               :href="item.url" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="text-gray-400 hover:text-[#00ffd1] transition-colors text-sm">
-              {{ item.name }}
+        <div class="space-y-4">
+          <h3 class="text-[#7C3AED] font-medium mb-4 text-left text-sm md:text-lg">Partner Sites</h3>
+          <div class="space-y-2">
+            <a 
+              href="https://hailuo2.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="text-gray-400 hover:text-[#7C3AED] transition-colors text-sm">
+              Hailuo2.com
+            </a>
+            <a 
+              href="https://hailuo.ai" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="text-gray-400 hover:text-[#7C3AED] transition-colors text-sm">
+              Hailuo.ai
             </a>
           </div>
         </div>
 
         <!-- 导航链接和法律条款 -->
-        <div class="md:w-2/3 grid grid-cols-2 sm:grid-cols-2 gap-6 md:gap-8">
-          <!-- 导航链接 -->
-          <div>
-            <h3 class="text-[#00ffd1] font-medium mb-4 text-sm md:text-lg">Navigation</h3>
-            <div class="flex flex-col gap-2">
-              <template v-for="(section, index) in sections" :key="index">
-                <NuxtLink v-if="section.href" :to="section.href" 
-                  class="text-gray-400 hover:text-[#00ffd1] transition-colors">
-                  {{ section.name }}
-                </NuxtLink>
-                <div v-else @click.prevent="handleNavClick(section.id)" 
-                  class="text-gray-400 hover:text-[#00ffd1] transition-colors cursor-pointer">
-                  {{ section.name }}
-                </div>
-              </template>
+        <div class="space-y-4">
+          <h3 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Navigation</h3>
+          <div class="space-y-2">
+            <NuxtLink to="/" class="text-gray-400 hover:text-[#7C3AED] transition-colors">
+              Home
+            </NuxtLink>
+            <div 
+              @click="scrollToSection('features')"
+              class="text-gray-400 hover:text-[#7C3AED] transition-colors cursor-pointer">
+              Features
             </div>
+            <NuxtLink to="/portfolio" class="text-gray-400 hover:text-[#7C3AED] transition-colors">
+              Portfolio
+            </NuxtLink>
+            <NuxtLink to="/blog" class="text-gray-400 hover:text-[#7C3AED] transition-colors">
+              Blog
+            </NuxtLink>
           </div>
+        </div>
 
-          <!-- 法律条款 -->
-          <div>
-            <h3 class="text-[#00ffd1] font-medium mb-4 text-sm md:text-lg">Legal</h3>
-            <div class="flex flex-col gap-2">
-              <NuxtLink to="/subsidiary/privacy-policy" class="text-gray-400 hover:text-[#00ffd1] transition-colors">Privacy Policy</NuxtLink>
-              <NuxtLink to="/subsidiary/terms-of-service" class="text-gray-400 hover:text-[#00ffd1] transition-colors">Terms of Service</NuxtLink>
-            </div>
+        <div class="space-y-4">
+          <h3 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Legal</h3>
+          <div class="space-y-2">
+            <NuxtLink to="/subsidiary/privacy-policy" class="text-gray-400 hover:text-[#7C3AED] transition-colors">Privacy Policy</NuxtLink>
+            <NuxtLink to="/subsidiary/terms-of-service" class="text-gray-400 hover:text-[#7C3AED] transition-colors">Terms of Service</NuxtLink>
           </div>
         </div>
       </div>
@@ -57,9 +64,11 @@
           </p>
           <div class="flex flex-col items-center gap-2 text-sm text-gray-500">
             <p>© 2025 Hailuo02 Video. All rights reserved.</p>
-            <div class="flex items-center gap-2">
-              <span>Contact:</span>
-              <a href="mailto:support@hailuo2.com" class="text-[#00ffd1] transition-colors">support@hailuo2.com</a>
+            <div class="text-center">
+              <p class="text-gray-400 text-sm">
+                Need help? Contact us at 
+                <a href="mailto:support@hailuo2.com" class="text-[#7C3AED] transition-colors">support@hailuo2.com</a>
+              </p>
             </div>
           </div>
         </div>

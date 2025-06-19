@@ -57,11 +57,13 @@
       <!-- 添加开始创建按钮 -->
       <div class="text-center mt-16">
         <button
-          @click="scrollToHero"
-          class="inline-flex items-center px-8 py-4 bg-[#00ffd1] hover:bg-[#00e6bc] text-black rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-200"
+          @click="scrollToTop"
+          class="inline-flex items-center px-8 py-4 bg-[#7C3AED] hover:bg-[#8B5CF6] text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-200"
         >
-          <span class="mr-2">🎬</span>
-          Try Hailuo 02 Now
+          Start Creating Now
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
         </button>
       </div>
     </div>

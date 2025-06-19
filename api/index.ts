@@ -3,19 +3,19 @@ import { useRuntimeConfig } from 'nuxt/app'
 // API基础URL
 // console.log('当前环境:', process.env.NODE_ENV);
 
-// const baseUrl = process.env.NODE_ENV === 'development'
-//   ? '/nuxtRequest'
-//   : 'https://art.hailuo2.com';
+const baseUrl = process.env.NODE_ENV === 'development'
+  ? 'http://192.168.0.205:8686'
+  : 'https://art.hailuo2.com';
 
-const baseUrl = 'https://art.hailuo2.com';
+// const baseUrl = 'https://art.hailuo2.com';
 
 // console.log('当前baseUrl:', baseUrl);
 // API接口URL列表
 export const urlList = {
   setUserInfo: baseUrl + '/api/user/auth',        // 设置用户信息
   getCurrentUser: baseUrl + '/api/user/info',   // 获取当前用户信息
-  createTasksImgVideo: baseUrl + '/api/task/volcengine/img2video',     // 创建任务-图生视频
-  createTasksTextVideo: baseUrl + '/api/task/volcengine/text2video',     // 创建任务-文生视频
+  createTasksImgVideo: baseUrl + '/api/task/hl/img2video',     // 创建任务-图生视频
+  createTasksTextVideo: baseUrl + '/api/task/hl/text2video',     // 创建任务-文生视频
   getSubPlans: baseUrl + '/api/website/priceList',     // 获取套餐信息
   payOrder: baseUrl + '/api/pay/stripe',  // 支付
   opusList: baseUrl + '/api/user/opus_list', // 获取用户作品列表

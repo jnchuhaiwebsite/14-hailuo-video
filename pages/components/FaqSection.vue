@@ -1,72 +1,61 @@
 <template>
-  <div id="faq" class="relative w-full py-16 bg-gradient-to-b from-gray-900 to-gray-800" aria-labelledby="faq-heading">
-    <!-- 标题 -->
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 id="faq-heading" class="text-3xl font-bold text-center mb-12 text-[#00ffd1]">Frequently Asked Questions</h2>
+  <section id="faq" class="py-20 bg-gray-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 id="faq-heading" class="text-3xl font-bold text-center mb-12 text-[#7C3AED]">Frequently Asked Questions</h2>
       
-      <!-- 问题列表 -->
-      <div class="max-w-4xl mx-auto">
+      <div class="space-y-4">
         <div 
-          v-for="(item, index) in faqItems" 
+          v-for="(faq, index) in faqs" 
           :key="index"
-          class="border-b border-[#00ffd1]/20 py-6 hover:bg-[#00ffd1]/5 transition-colors duration-200 rounded-lg px-4"
+          class="border-b border-[#7C3AED]/20 py-6 hover:bg-[#7C3AED]/5 transition-colors duration-200 rounded-lg px-4"
         >
-          <!-- 问题标题（可点击切换展开/折叠） -->
-          <div 
-            class="w-full text-left flex justify-between items-center cursor-pointer" 
-            @click="toggleItem(index)"
-            :aria-expanded="openItems[index]"
-            :aria-controls="`faq-answer-${index}`"
+          <button
+            @click="toggleFaq(index)"
+            class="flex justify-between items-center w-full text-left focus:outline-none"
           >
-            <h3 class="text-lg text-white font-medium flex items-center">
-              <svg class="w-5 h-5 mr-2 text-[#00ffd1]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2 text-[#7C3AED]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
               </svg>
-              {{ item.question }}
-            </h3>
-            <!-- 箭头图标（根据展开状态旋转） -->
+              <h3 class="text-lg font-semibold text-white">{{ faq.question }}</h3>
+            </div>
             <svg 
-              class="w-5 h-5 text-[#00ffd1] transform transition-transform duration-200" 
-              :class="{'rotate-180': openItems[index]}"
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 20 20" 
-              fill="currentColor"
-              aria-hidden="true"
+              :class="[
+                'w-5 h-5 text-[#7C3AED] transform transition-transform duration-200',
+                openFaqs[index] ? 'rotate-180' : ''
+              ]"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
             >
               <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
-          </div>
+          </button>
           
-          <!-- 问题答案（展开时显示） -->
           <div 
-            v-show="openItems[index]"
-            class="mt-3 text-gray-300 overflow-hidden transition-all duration-300"
-            :id="`faq-answer-${index}`"
+            v-show="openFaqs[index]"
+            class="mt-4 text-gray-300 leading-relaxed"
           >
-            <p class="leading-relaxed">{{ item.answer }}</p>
+            {{ faq.answer }}
           </div>
         </div>
       </div>
       
-      <!-- 查看更多按钮 -->
-      <div class="text-center mt-10">
-        <div 
-          @click="showMore"
-          v-if="hasMoreItems"
-          class="bg-[#00ffd1] hover:bg-[#00ffd1]/90 text-gray-900 font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
+      <!-- CTA Buttons -->
+      <div class="text-center mt-12 space-x-4">
+        <button
+          @click="scrollToTop"
+          class="bg-[#7C3AED] hover:bg-[#7C3AED]/90 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
         >
-          Show More
-        </div>
-        <div 
-          @click="showLess"
-          v-else-if="visibleCount > initialVisibleCount"
-          class="bg-[#00ffd1] hover:bg-[#00ffd1]/90 text-gray-900 font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
+          Start Creating
+        </button>
+        <button
+          @click="scrollToContact"
+          class="bg-[#7C3AED] hover:bg-[#7C3AED]/90 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
         >
-          Show Less
-        </div>
+          Contact Support
+        </button>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -129,7 +118,7 @@ const initialVisibleCount = 4;
 const visibleCount = ref(initialVisibleCount);
 
 // 跟踪每个FAQ项的展开状态
-const openItems = ref(Array(faqs.length).fill(false));
+const openFaqs = ref(Array(faqs.length).fill(false));
 
 // 当前显示的FAQ项目
 const faqItems = computed(() => {
@@ -142,8 +131,8 @@ const hasMoreItems = computed(() => {
 });
 
 // 切换FAQ项的展开/折叠状态
-const toggleItem = (index: number) => {
-  openItems.value[index] = !openItems.value[index];
+const toggleFaq = (index: number) => {
+  openFaqs.value[index] = !openFaqs.value[index];
 };
 
 // 显示更多FAQ
@@ -159,6 +148,16 @@ const showLess = () => {
   if (faqSection) {
     faqSection.scrollIntoView();
   }
+};
+
+// 滚动到顶部
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// 滚动到底部
+const scrollToContact = () => {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 };
 </script>
 
