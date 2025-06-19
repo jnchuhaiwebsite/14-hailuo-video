@@ -3,10 +3,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-extrabold text-[#00ffd1] sm:text-5xl">
-          Seedance 1.0 Pro Core Features
+          Hailuo 02 Core Features
         </h2>
         <p class="mt-4 text-xl text-gray-300">
-          Advanced Video Generation Capabilities
+          Revolutionary AI Video Generation Capabilities
         </p>
       </div>
 
@@ -112,89 +112,76 @@ import {
   FilmIcon,
   CommandLineIcon,
   ArrowsPointingOutIcon,
-  ViewfinderCircleIcon,
-  ClockIcon
+  ClockIcon,
+  BoltIcon
 } from '@heroicons/vue/24/outline'
 
 defineOptions({
   name: 'FeatureShowcase'
 })
 
-// Main feature data with video demonstrations
+// Main feature data with video demonstrations - keeping only 3 features
 const mainFeatures = [
   {
-    title: "Smooth and Stable Motion Performance",
-    description: "Seedance 1.0 excels in dynamic range, capable of generating fluid large-scale movements. From subtle expressions to dynamic scenes, it maintains high-level stability and physical realism.",
-    icon: ArrowPathIcon,
-    video: "https://resource.seedancepro.net/seedance/video/seedancepro-smooth-and-stable-athletic-performance.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/seedancepro-smooth-and-stable-athletic-performance.jpg",
+    title: "Revolutionary Architecture Performance",
+    description: "Hailuo 02 features a complete reconstruction of the underlying architecture, achieving 2.5x improvements in both training and inference efficiency. This breakthrough technology enables faster processing and higher quality video generation.",
+    icon: BoltIcon,
+    video: "https://resource.hailuo2.com/seedance/video/seedancepro-smooth-and-stable-athletic-performance.mp4",
+    poster: "https://resource.hailuo2.com/seedance/image/seedancepro-smooth-and-stable-athletic-performance.jpg",
     points: [
-      "Excellent dynamic range",
-      "High-level motion stability",
-      "Physical realism",
-      "Fluid large-scale movements"
+      "2.5x efficiency improvement",
+      "Complete architecture reconstruction",
+      "Faster processing speed",
+      "Enhanced model performance"
     ]
   },
   {
-    title: "Native Multi-Camera Narrative Capability",
-    description: "Seedance 1.0 natively supports generating narrative videos with multiple coherent shots. It ensures high consistency in core subjects, visual style, and overall atmosphere during shot transitions and spatiotemporal changes.",
-    icon: FilmIcon,
-    video: "https://resource.seedancepro.net/seedance/video/seedancepro-multi-camera-narrative-ability.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/seedancepro-multi-camera-narrative-ability.jpg",
-    points: [
-      "Multiple coherent shots",
-      "Consistent visual style",
-      "Seamless transitions",
-      "Atmospheric continuity"
-    ]
-  },
-  {
-    title: "Diverse Stylized Expression",
-    description: "Whether it's realistic photography, cyberpunk, hand-drawn illustrations, or felt effects, Seedance 1.0 accurately responds to various style instructions to meet diverse creative scenarios.",
-    icon: SparklesIcon,
-    video: "https://resource.seedancepro.net/seedance/video/seedancepro-diverse-stylized-expression.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/seedancepro-diverse-stylized-expression.jpg",
-    points: [
-      "Multiple style support",
-      "Creative flexibility",
-      "Accurate style rendering",
-      "Diverse artistic expressions"
-    ]
-  },
-  {
-    title: "Precise Semantic Understanding and Instruction Adherence",
-    description: "Seedance 1.0 can precisely parse complex natural language instructions, stably control multi-subject interactions, multiple action combinations, and support rich camera movement choices to accurately transform text concepts into video scenes.",
+    title: "Complex Instruction Response",
+    description: "Hailuo 02 achieves an 85% complex instruction response rate, significantly outperforming competitors. The model can handle extreme physical scenarios and generate videos with complex multi-subject interactions and detailed motion sequences.",
     icon: CommandLineIcon,
-    video: "https://resource.seedancepro.net/seedance/video/seedancepro-accurate-semantic-understanding-and-instruction-adherence.mp4",
-    poster: "https://resource.seedancepro.net/seedance/image/seedancepro-accurate-semantic-understanding-and-instruction-adherence.jpg",
+    video: "https://resource.hailuo2.com/seedance/video/seedancepro-accurate-semantic-understanding-and-instruction-adherence.mp4",
+    poster: "https://resource.hailuo2.com/seedance/image/seedancepro-accurate-semantic-understanding-and-instruction-adherence.jpg",
     points: [
-      "Complex instruction parsing",
-      "Multi-subject interaction",
-      "Rich camera movements",
-      "Accurate text-to-video conversion"
+      "85% instruction response rate",
+      "Extreme physical scenarios",
+      "Complex multi-subject interactions",
+      "Detailed motion sequences"
+    ]
+  },
+  {
+    title: "Exceptional Cost Efficiency",
+    description: "Hailuo 02 offers the lowest price among first-tier models while maintaining exceptional quality. With support for 6-second and 10-second videos at 768P and 1080P resolutions, it provides unmatched value for professional video creation.",
+    icon: SparklesIcon,
+    video: "https://resource.hailuo2.com/seedance/video/seedancepro-diverse-stylized-expression.mp4",
+    poster: "https://resource.hailuo2.com/seedance/image/seedancepro-diverse-stylized-expression.jpg",
+    points: [
+      "Lowest price in first-tier",
+      "768P and 1080P quality",
+      "6s and 10s duration options",
+      "Professional-grade output"
     ]
   }
 ];
 
-// Technical features grid
+// Technical features grid - removed aspect ratio feature
 const techFeatures = [
   {
     title: "High Resolution Output",
-    description: "Generate stunning 1080P HD videos with cinematic quality and rich details",
+    description: "Generate stunning 768P and 1080P videos with cinematic quality and rich details",
     icon: ArrowsPointingOutIcon,
-    specs: "480p, 1080p resolution"
-  },
-  {
-    title: "Flexible Video Formats",
-    description: "Support for multiple aspect ratios to meet various content creation needs",
-    icon: ViewfinderCircleIcon,
-    specs: "1:1, 16:9, 4:3, 21:9, 9:16, 3:4"
+    specs: "768P, 1080P resolution"
   },
   {
     title: "Dual Generation Modes",
     description: "Create videos from text prompts or transform images into dynamic video content",
     icon: ClockIcon,
     specs: "Text-to-video & Image-to-video"
+  },
+  {
+    title: "Fast Processing",
+    description: "Advanced AI processing with 1-2 minute generation time and 85% instruction response rate",
+    icon: ArrowPathIcon,
+    specs: "1-2 minutes processing time"
   }
 ];
 

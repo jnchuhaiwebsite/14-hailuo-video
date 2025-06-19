@@ -59,7 +59,7 @@
             <p>© 2025 SeedancePro. All rights reserved.</p>
             <div class="flex items-center gap-2">
               <span>Contact:</span>
-              <a href="mailto:support@seedancepro.net" class="text-[#00ffd1] transition-colors">support@seedancepro.net</a>
+              <a href="mailto:support@hailuo2.com" class="text-[#00ffd1] transition-colors">support@hailuo2.com</a>
             </div>
           </div>
         </div>

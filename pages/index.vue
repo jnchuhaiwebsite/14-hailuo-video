@@ -11,10 +11,10 @@
         </keep-alive>
       </section>
 
-      <!-- 案例展示 -->
-      <section id="cases">
+      <!-- 视频展示 -->
+      <section id="video-showcase">
         <keep-alive>
-          <CaseStudies />
+          <VideoShowcase />
         </keep-alive>
       </section>
       
@@ -63,7 +63,7 @@ import { useSeo } from '~/composables/useSeo';
 const PricingPlans = defineAsyncComponent(() => import('~/components/PricingPlans.vue'));
 const HomeHero = defineAsyncComponent(() => import('~/pages/components/HomeHero.vue'));
 const FaqSection = defineAsyncComponent(() => import('~/pages/components/FaqSection.vue'));
-const CaseStudies = defineAsyncComponent(() => import('~/pages/components/CaseStudies.vue'));
+const VideoShowcase = defineAsyncComponent(() => import('~/pages/components/VideoShowcase.vue'));
 const HowItWorks = defineAsyncComponent(() => import('~/pages/components/HowItWorks.vue'));
 const FeatureShowcase = defineAsyncComponent(() => import('~/pages/components/FeatureShowcase.vue'));
 const Reviews = defineAsyncComponent(() => import('~/pages/components/Reviews.vue'));

@@ -15,7 +15,7 @@ Disallow: /search?
 Disallow: /_nuxt/
 
 # 声明网站地图
-Sitemap: https://www.seedancepro.net/sitemap.xml
+Sitemap: https://www.hailuo2.com/sitemap.xml
 
 
 

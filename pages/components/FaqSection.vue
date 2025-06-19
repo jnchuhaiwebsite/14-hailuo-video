@@ -79,32 +79,32 @@ defineOptions({
 // FAQ数据
 const faqs = [
   {
-    question: 'What is Seedance 1.0 Pro?',
-    answer: 'Seedance 1.0 Pro is a video generation foundation model that excels in multi-shot narrative capabilities. It achieves breakthroughs in semantic understanding and instruction following, capable of generating smooth, detailed, and stylistically diverse 1080P HD videos with cinematic quality.'
+    question: 'What is Hailuo 02?',
+    answer: 'Hailuo 02 is MiniMax\'s latest AI video generation model, representing a significant upgrade from Hailuo 01. It currently ranks second in both image-to-video and text-to-video leaderboards, featuring breakthrough technological innovations and exceptional cost-effectiveness.'
   },
   {
-    question: 'What are the key advantages of Seedance 1.0 Pro?',
-    answer: '1. Unique Multi-shot Narrative Capability: Generates coherent narrative videos with consistent subjects and styles across scene transitions.\n2. Smooth and Stable Motion Performance: Enhanced motion vividness, stability, and realism.\n3. Precise Instruction Following: Accurately responds to detailed instructions, capable of generating complex videos with multiple subjects, actions, and camera movements.'
+    question: 'What are the key advantages of Hailuo 02?',
+    answer: '1. Revolutionary Architecture: Complete reconstruction of the underlying architecture, improving training and inference efficiency by 2.5x.\n2. Complex Instruction Response: Achieves 85% complex instruction response rate, significantly higher than competitors.\n3. Extreme Scene Processing: Can generate videos with extremely complex physical scenarios, such as acrobatics and other high-difficulty content.\n4. Cost Efficiency: Offers the lowest price among first-tier models with exceptional value for money.'
   },
   {
     question: 'What video generation methods are supported?',
-    answer: 'We support two main video generation methods:\n1. Text-to-Video: Generate videos from text descriptions\n2. Image-to-Video: Generate videos based on input images'
+    answer: 'We support two main video generation methods:\n1. Text-to-Video: Generate videos from text descriptions\n2. Image-to-Video: Generate videos based on input images with specific format requirements'
   },
   {
-    question: 'What video resolutions and aspect ratios are supported?',
-    answer: 'We support the following parameters:\n- Resolutions: 480p, 1080p\n- Aspect Ratios: 1:1, 16:9, 4:3, 21:9, 9:16, 3:4\n- Video Duration: 5 seconds, 10 seconds'
+    question: 'What video resolutions and durations are supported?',
+    answer: 'We support the following parameters:\n- 6-second videos: 768P or 1080P resolution\n- 10-second videos: 768P resolution\n- Image upload requirements: JPG/JPEG/PNG format, aspect ratio between 2:5 and 5:2, shortest side minimum 300px, file size maximum 5MB'
   },
   {
     question: 'How is video quality ensured?',
-    answer: 'Our model is rigorously trained and optimized to generate videos with cinematic quality. The system automatically optimizes video smoothness, detail representation, and style consistency to ensure professional-level output for each generated video.'
+    answer: 'Hailuo 02 is rigorously trained and optimized to generate videos with cinematic quality. The model features top-tier instruction-following capabilities and can handle extreme physical scenarios, ensuring professional-level output for each generated video.'
   },
   {
     question: 'What types of video content can be generated?',
-    answer: 'Our system can generate various types of video content, including but not limited to: character actions, scene transitions, multi-subject interactions, and more. The system accurately understands and executes complex video generation instructions to create narrative-rich multi-shot videos.'
+    answer: 'Our system can generate various types of video content, including but not limited to: character actions, scene transitions, multi-subject interactions, extreme physical scenarios like acrobatics, and complex narrative sequences. The system accurately understands and executes complex video generation instructions.'
   },
   {
     question: 'How to achieve the best video generation results?',
-    answer: 'For optimal results, we recommend:\n1. Provide clear and specific text descriptions\n2. Choose appropriate video aspect ratio and resolution\n3. Ensure uploaded images are of high quality\n4. Select suitable video duration based on your needs'
+    answer: 'For optimal results, we recommend:\n1. Provide clear and specific text descriptions\n2. Ensure uploaded images meet format requirements (JPG/JPEG/PNG, proper aspect ratio, size limits)\n3. Choose appropriate video duration (6 or 10 seconds) and quality (768P or 1080P)\n4. Start with 6-second videos for higher quality options'
   },
   {
     question: 'What are the system requirements?',
@@ -112,11 +112,11 @@ const faqs = [
   },
   {
     question: 'Can I customize the video style?',
-    answer: 'Yes, you can customize various aspects of the generated video including:\n- Visual style and aesthetics\n- Camera movements and angles\n- Scene transitions\n- Color grading and effects'
+    answer: 'Yes, you can customize various aspects of the generated video including:\n- Visual style and aesthetics\n- Motion details and effects\n- Scene complexity and physical scenarios\n- Color grading and atmosphere'
   },
   {
     question: 'What file formats are supported for input and output?',
-    answer: 'Input formats:\n- Images: JPG, PNG, WEBP (max 5MB)\n- Text: Plain text or structured prompts\nOutput format:\n- Video: MP4 (H.264 codec)'
+    answer: 'Input formats:\n- Images: JPG, JPEG, PNG (max 5MB, aspect ratio 2:5 to 5:2, shortest side ≥300px)\n- Text: Plain text or structured prompts\nOutput format:\n- Video: MP4 (H.264 codec)'
   },
   {
     question: 'Is there a limit to the number of videos I can generate?',

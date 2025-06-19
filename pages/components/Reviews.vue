@@ -6,7 +6,7 @@
           User Reviews
         </h2>
         <p class="mt-4 text-lg text-gray-300">
-          Discover how Seedance 1.0 Pro is revolutionizing video creation with professional-grade AI technology
+          Discover how Hailuo 02 is revolutionizing video creation with breakthrough AI technology and exceptional cost-effectiveness
         </p>
       </div>
 
@@ -21,7 +21,7 @@
             </div>
           </div>
           <p class="text-gray-300">
-            "The multi-shot narrative capability of Seedance is truly impressive! With just simple text prompts, it generates coherent multi-shot videos. The 1080P HD quality and smooth motion performance perfectly meet professional production needs."
+            "Hailuo 02's complex instruction response capability is truly impressive! With 85% response rate, it generates exactly what I need. The 768P and 1080P quality options with 6-10 second durations perfectly meet my production needs."
           </p>
         </div>
 
@@ -35,7 +35,7 @@
             </div>
           </div>
           <p class="text-gray-300">
-            "As a short-form video creator, I'm amazed by Seedance's instruction-following capabilities. Whether it's multi-subject scenes or complex camera movements, it delivers exactly what I need. The support for various aspect ratios makes creation much more flexible."
+            "As a content creator, I'm amazed by Hailuo 02's ability to handle extreme physical scenarios like acrobatics. The image-to-video feature with specific format requirements ensures consistent quality. The cost-effectiveness is unbeatable!"
           </p>
         </div>
 
@@ -49,7 +49,7 @@
             </div>
           </div>
           <p class="text-gray-300">
-            "The image-to-video feature is incredibly useful, generating videos with natural motion and rich details. The 5-second and 10-second duration options are perfect for short-form content. My only suggestion would be to support longer video generation."
+            "The revolutionary architecture improvements are noticeable - processing is 2.5x faster! The 6-second and 10-second duration options with 768P/1080P quality are perfect for short-form content. My only suggestion would be to support longer video generation."
           </p>
         </div>
       </div>
@@ -61,7 +61,7 @@
           class="inline-flex items-center px-8 py-4 bg-[#00ffd1] hover:bg-[#00e6bc] text-black rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-200"
         >
           <span class="mr-2">🎬</span>
-          Try Seedance Pro Now
+          Try Hailuo 02 Now
         </button>
       </div>
     </div>
