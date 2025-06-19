@@ -54,7 +54,6 @@ const steps = [
     icon: CommandLineIcon,
     specs: "Image: JPG/JPEG/PNG, max 5MB, aspect ratio 2:5-5:2"
   },
-
   {
     title: "Set Parameters",
     description: "Choose video duration (6 or 10 seconds) and quality (768P or 1080P) based on your needs",

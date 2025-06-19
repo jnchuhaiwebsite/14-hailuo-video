@@ -607,7 +607,7 @@ const inspirationPrompts = [
 ]
 
 // 预览视频URL
-const previewVideoUrl = 'https://resource.hailuo2.com/seedance/video/seeddancepro-Inspiration-underwater-canyon.mp4'
+const previewVideoUrl = 'https://resource.hailuo2.com/hailuo/video/hailuo2-demo.mp4'
 const previewVideoPoster = '/img/1.webp'
 
 // 处理视频加载事件
