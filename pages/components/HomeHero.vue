@@ -115,48 +115,6 @@
         <!-- 各个下拉选项 -->
         <div class="flex gap-2 lg:gap-3 w-full mt-1">
 
-          <!-- 宽高比 -->
-          <div v-if="activeTab === 'text'" class="flex-1 min-w-0">
-            <label class="block text-xs text-gray-400 mb-1">Aspect Ratio</label>
-            <div class="relative">
-              <select 
-                v-model="aspectRatio"
-                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] text-xs lg:text-sm appearance-none"
-                @click="handleAction('selectOption')"
-              >
-                <option 
-                  v-for="opt in aspectRatioOptions" 
-                  :key="opt.value" 
-                  :value="opt.value"
-                >
-                  {{ opt.label }}
-                </option>
-              </select>
-              <ChevronDownIcon class="absolute right-2 lg:right-3 top-1/2 -translate-y-1/2 h-3 w-3 lg:h-4 lg:w-4 text-gray-400 pointer-events-none" />
-            </div>
-          </div>
-
-          <!-- 分辨率 -->
-          <div class="flex-1 min-w-0">
-            <label class="block text-xs text-gray-400 mb-1">Resolution</label>
-            <div class="relative">
-              <select 
-                v-model="resolution"
-                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] text-xs lg:text-sm appearance-none"
-                @click="handleAction('selectOption')"
-              >
-                <option 
-                  v-for="opt in resolutionOptions" 
-                  :key="opt.value" 
-                  :value="opt.value"
-                >
-                  {{ opt.label }}
-                </option>
-              </select>
-              <ChevronDownIcon class="absolute right-2 lg:right-3 top-1/2 -translate-y-1/2 h-3 w-3 lg:h-4 lg:w-4 text-gray-400 pointer-events-none" />
-            </div>
-          </div>
-
           <!-- 时长 -->
           <div class="flex-1 min-w-0">
             <label class="block text-xs text-gray-400 mb-1">Video Duration</label>
@@ -177,6 +135,27 @@
               <ChevronDownIcon class="absolute right-2 lg:right-3 top-1/2 -translate-y-1/2 h-3 w-3 lg:h-4 lg:w-4 text-gray-400 pointer-events-none" />
             </div>
           </div>
+          <!-- 分辨率 -->
+          <div class="flex-1 min-w-0">
+            <label class="block text-xs text-gray-400 mb-1">Resolution</label>
+            <div class="relative">
+              <select 
+                v-model="resolution"
+                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] text-xs lg:text-sm appearance-none"
+                @click="handleAction('selectOption')"
+              >
+                <option 
+                  v-for="opt in availableResolutions" 
+                  :key="opt.value" 
+                  :value="opt.value"
+                >
+                  {{ opt.label }}
+                </option>
+              </select>
+              <ChevronDownIcon class="absolute right-2 lg:right-3 top-1/2 -translate-y-1/2 h-3 w-3 lg:h-4 lg:w-4 text-gray-400 pointer-events-none" />
+            </div>
+          </div>
+
 
         </div>
         <!-- 分享到作品展示选项 -->
@@ -381,29 +360,36 @@ const previewVideoLoading = ref<{ [key: string]: boolean }>({}) // 预览视频�
 let progressInterval: number | null = null // 进度条定时器
 let checkTaskInterval: NodeJS.Timeout | null = null // 检查任务状态定时器
 
-// 宽高比选项
-const aspectRatio = ref('16:9')
-const aspectRatioOptions = [
-  { value: '16:9', label: '16:9' },
-  { value: '9:16', label: '9:16' },
-  { value: '1:1', label: '1:1' },
-  { value: '4:3', label: '4:3' },
-  { value: '21:9', label: '21:9' },
-  { value: '9:21', label: '9:21' },
-]
-
-interface Option {
-  value: string
-  label: string
-}
-
 // 分辨率选项
-const resolution = ref('480p')
-const resolutionOptions = ref<Option[]>([])
+const resolution = ref('768p')
 
 // 时长选项
-const duration = ref('5')
-const durationOptions = ref<Option[]>([])
+const duration = ref('6')
+const durationOptions = [
+  { value: '6', label: '6s' },
+  { value: '10', label: '10s' }
+]
+
+// 根据选择的时长计算可用的分辨率选项
+const availableResolutions = computed(() => {
+  if (duration.value === '6') {
+    return [
+      { value: '768p', label: '768p' },
+      { value: '1080p', label: '1080p' }
+    ]
+  } else {
+    return [
+      { value: '768p', label: '768p' }
+    ]
+  }
+})
+
+// 监听时长变化，自动调整分辨率
+watch(duration, (newDuration) => {
+  if (newDuration === '10' && resolution.value === '1080p') {
+    resolution.value = '768p'
+  }
+})
 
 // 积分配置
 interface ScoreItem {
@@ -421,26 +407,6 @@ const getScoreConfig = async () => {
     const response = await getScore() as any
     if (response.code === 200) {
       scoreConfig.value = response.data
-      // 更新选项
-      const resolutions = [...new Set(response.data.map((item: any) => item.resolution))]
-      const durations = [...new Set(response.data.map((item: any) => item.duration))]
-      
-      // 更新分辨率选项
-      resolutionOptions.value = resolutions.map((res: any) => ({
-        value: res,
-        label: res
-      }))
-      // 设置默认分辨率
-      resolution.value = resolutionOptions.value[0].value
-      
-      // 更新时长选项
-      durationOptions.value = durations.map((dur: any) => ({
-        value: dur.toString(),
-        label: `${dur}s`
-      }))
-      // 设置默认时长
-      duration.value = durationOptions.value[0].value
-      
       // 更新积分显示
       needCredits.value = calculateCredits()
     }
@@ -476,9 +442,8 @@ const formState = ref({
   prompt: '',
   imagePreview: '',
   selectedImage: null as File | string | null,
-  aspectRatio: '16:9',
-  resolution: '480p',
-  duration: '5',
+  resolution: '768p',
+  duration: '6',
   isShow: false
 })
 
@@ -489,7 +454,6 @@ const saveFormState = () => {
     prompt: prompt.value,
     imagePreview: imagePreview.value,
     selectedImage: selectedImage.value,
-    aspectRatio: aspectRatio.value,
     resolution: resolution.value,
     duration: duration.value,
     isShow: isShow.value
@@ -506,7 +470,6 @@ const restoreFormState = () => {
     prompt.value = state.prompt
     imagePreview.value = state.imagePreview
     selectedImage.value = state.selectedImage
-    aspectRatio.value = state.aspectRatio
     duration.value = state.duration
     isShow.value = state.isShow
     resolution.value = state.resolution
@@ -838,7 +801,6 @@ const handleVideoRequest = async () => {
       requestData = {
         prompt: prompt.value,
         resolution: resolution.value,
-        ratio: aspectRatio.value,
         duration: duration.value,
         is_show: isShow.value
       }
@@ -1007,7 +969,6 @@ const cacheFormData = () => {
     prompt: prompt.value,
     imagePreview: imagePreview.value,
     selectedImage: selectedImage.value,
-    aspectRatio: aspectRatio.value,
     resolution: resolution.value,
     duration: duration.value,
     isShow: isShow.value
@@ -1023,10 +984,9 @@ const restoreFormData = () => {
     prompt.value = data.prompt
     imagePreview.value = data.imagePreview
     selectedImage.value = data.selectedImage
-    aspectRatio.value = data.aspectRatio
-    resolution.value = data.resolution
     duration.value = data.duration
     isShow.value = data.isShow
+    resolution.value = data.resolution
     // 清除缓存
     localStorage.removeItem('seedanceFormCache')
   }
