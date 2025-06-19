@@ -212,7 +212,7 @@
               </div>
               <div v-else class="flex flex-col items-center justify-center">
                 <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#7C3AED] border-t-transparent"></div>
-                <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-[#7C3AED] text-base font-medium">Generating your video<span class="loading-dots">...</span></span>
+                <span class="mt-3 text-[#7C3AED] text-base font-medium whitespace-nowrap">Generating your video<span class="loading-dots">...</span></span>
               </div>
             </div>
             <!-- 预览视频 -->
