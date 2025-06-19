@@ -73,7 +73,7 @@ const { $toast } = useNuxtApp() as any
 
 useSeo({
   title: "Hailuo02 Video | Free online AI video generator",
-  description: "Create stunning AI videos in 7-10 minutes using text or images with Hailuo02. No editing needed. Perfect for creators, brands, and educators. Try it free today!"
+  description: "Create stunning AI videos in seconds using text or images with Hailuo02. No editing needed. Perfect for creators, brands, and educators. Try it free today!"
 });
 
 // 处理支付回调
@@ -118,7 +118,7 @@ onMounted(() => {
       "1080P HD video output",
       "Multiple aspect ratios",
       "Flexible video duration",
-      "Fast generation in 7-10 minutes"
+      "Fast generation"
     ],
     screenshot: "/logo.png",
     applicationSubCategory: "AI Video Generation",
