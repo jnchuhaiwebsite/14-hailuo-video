@@ -1,0 +1,29 @@
+/* 为了更好的滚动体验，添加滚动内边距，防止内容被导航栏遮挡 */
+section {
+  scroll-margin-top: 80px;
+}
+
+* {
+  scroll-margin-top: 80px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
