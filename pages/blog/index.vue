@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-900 pb-10">
+  <div class="min-h-screen bg-blue-pale pb-10">
     <!-- Page title -->
     <div class="pt-32 pb-12 text-center">
       <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[#7C3AED]">Hailuo02 Video Blog</h1>

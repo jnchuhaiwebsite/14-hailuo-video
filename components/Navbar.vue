@@ -2,7 +2,7 @@
   <header>
     <nav
       class="fixed top-0 left-0 w-full z-50 backdrop-blur-md shadow-md"
-      style="background: rgba(17, 24, 39, 0.8)"
+      style="background: rgba(25, 23, 28, 0.8)"
     >
       <div class="max-w-7xl mx-auto px-4">
         <div class="flex items-center justify-between h-16">
@@ -77,7 +77,7 @@
       <Transition name="slide-fade">
         <div
           v-if="isOpen"
-          class="lg:hidden fixed top-0 left-0 w-full h-screen overflow-y-auto bg-gray-900/95 backdrop-blur-sm z-[100]"
+          class="lg:hidden fixed top-0 left-0 w-full h-screen overflow-y-auto bg-blue-pale/95 backdrop-blur-sm z-[100]"
         >
           <!-- 关闭按钮 -->
           <button

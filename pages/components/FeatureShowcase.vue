@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 bg-gray-900">
+  <section class="py-20 bg-blue-pale">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-extrabold text-[#7C3AED] sm:text-5xl">
@@ -33,8 +33,8 @@
 
           <!-- Video showcase -->
           <div class="w-full md:w-1/2">
-            <div class="relative bg-gray-800 shadow-xl w-full max-w-md mx-auto rounded-xl overflow-hidden aspect-video">
-              <div v-if="!showVideo[index]" class="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900" :style="`background-image: url('${feature.poster}'); background-size: cover; background-position: center;`">
+            <div class="relative bg-blue-pale/80 shadow-xl w-full max-w-md mx-auto rounded-xl overflow-hidden aspect-video">
+              <div v-if="!showVideo[index]" class="absolute inset-0 w-full h-full flex items-center justify-center bg-blue-pale" :style="`background-image: url('${feature.poster}'); background-size: cover; background-position: center;`">
                 <button 
                   class="w-16 h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors focus:outline-none"
                   @click="playVideo(index)"
@@ -83,7 +83,7 @@
         <h3 class="text-3xl font-bold text-[#7C3AED] text-center mb-12">Technical Specifications</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
           <div v-for="feature in techFeatures" :key="feature.title" 
-               class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 hover:border-[#7C3AED] w-full max-w-sm">
+               class="bg-blue-pale/80 backdrop-blur-sm rounded-lg p-6 border border-gray-700 hover:border-[#7C3AED] w-full max-w-sm">
             <div class="w-12 h-12 bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/50 rounded-lg flex items-center justify-center">
               <component :is="feature.icon" class="w-6 h-6 text-white" />
             </div>

@@ -2,7 +2,7 @@
   <div class="relative w-full flex flex-col items-center justify-start overflow-x-hidden">
     <!-- 标题区 -->
     <div class="mt-[80px] mb-14 flex flex-col items-center relative z-10">
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
         With Hailuo2 Video AI, creative moments instantly turn into blockbusters.
       </h1>
       <p class="mt-6 text-1xl text-gray-200 text-center max-w-3xl font-medium">
@@ -13,7 +13,7 @@
     <div class="w-full max-w-[1700px] flex flex-col lg:flex-row gap-4 lg:gap-6 justify-center items-stretch px-3 sm:px-4 lg:px-6 pb-16 lg:pb-24">
       <!-- 左侧表单 -->
       <div :class="[
-        'w-full mx-auto lg:mx-0 lg:w-[35%] xl:w-[40%] 2xl:w-[42%] lg:min-w-[380px] xl:min-w-[420px] max-w-[720px] lg:max-w-none bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-700/50 p-8 xl:p-10 flex flex-col gap-3 sm:gap-4 lg:gap-5',
+        'w-full mx-auto lg:mx-0 lg:w-[35%] xl:w-[40%] 2xl:w-[42%] lg:min-w-[380px] xl:min-w-[420px] max-w-[720px] lg:max-w-none bg-blue-pale/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-700/50 p-8 xl:p-10 flex flex-col gap-3 sm:gap-4 lg:gap-5',
         containerHeight.base,
         containerHeight.sm,
         containerHeight.lg
@@ -44,7 +44,7 @@
           enter-active-class="animate-smooth-in"
           leave-active-class="animate-smooth-out"
         >
-          <div v-if="activeTab === 'image'" class="w-full border-2 border-dashed border-gray-700 rounded-xl p-4 hover:border-[#7C3AED] transition-colors cursor-pointer mb-4 relative bg-gray-800">
+          <div v-if="activeTab === 'image'" class="w-full border-2 border-dashed border-gray-700 rounded-xl p-4 hover:border-[#7C3AED] transition-colors cursor-pointer mb-4 relative bg-blue-pale">
             <input 
               type="file" 
               accept="image/jpeg,image/png" 
@@ -85,7 +85,7 @@
           </label>
           <textarea 
             v-model="prompt"
-            class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] focus:border-transparent transition placeholder-gray-500 text-sm lg:text-base h-20 sm:h-24 resize-none" 
+            class="w-full rounded-xl bg-blue-pale border border-gray-700 text-gray-200 px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] focus:border-transparent transition placeholder-gray-500 text-sm lg:text-base h-20 sm:h-24 resize-none" 
             :placeholder="activeTab === 'text' ? 'Describe the video you want to create...' : 'Describe how to transform your image into video...'"
             @click="handleAction('prompt')"
           ></textarea>
@@ -151,7 +151,7 @@
           </div>
           <div class="group relative">
             <InformationCircleIcon class="h-5 w-5 text-gray-400 cursor-help" />
-            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-gray-200 text-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap z-10">
+            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-blue-pale text-gray-200 text-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap z-10">
               Your work will be displayed in the gallery when checked
             </div>
           </div>
@@ -169,12 +169,12 @@
       </div>
       <!-- 右侧视频预览 -->
       <div :class="[
-        'w-full mx-auto lg:mx-0 lg:w-[65%] xl:w-[60%] 2xl:w-[58%] max-w-[720px] lg:max-w-none flex flex-col items-center p-3 sm:p-4 lg:p-6 xl:p-8 bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-700/50',
+        'w-full mx-auto lg:mx-0 lg:w-[65%] xl:w-[60%] 2xl:w-[58%] max-w-[720px] lg:max-w-none flex flex-col items-center p-3 sm:p-4 lg:p-6 xl:p-8 bg-blue-pale/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-700/50',
         containerHeight.base.replace('min-', ''),
         containerHeight.sm.replace('sm:min-', 'sm:'),
         containerHeight.lg.replace('lg:min-', 'lg:')
       ]">
-        <div class="flex flex-col justify-center items-center w-full h-full bg-gradient-to-br from-gray-900/50 via-gray-800/50 to-gray-900/50 rounded-[20px]">
+        <div class="flex flex-col justify-center items-center w-full h-full bg-gradient-to-br from-blue-pale/50 via-blue-pale/50 to-blue-pale/50 rounded-[20px]">
           <div class="relative w-full aspect-[4/3] flex items-center justify-center h-full">
             <!-- 进度条 -->
             <div v-if="isGenerating" class="absolute inset-0 flex items-center justify-center">
@@ -969,8 +969,9 @@ const checkUsageLimit = () => {
     return false
   }
 
+
   // 检查用户积分是否足够
-  const userCredits = userInfo.value || 0
+  const userCredits = userInfo.value?.free_limit || 0
   if (userCredits < needCredits.value) {
     $toast.error(`Insufficient credits. The current operation requires ${needCredits.value} credits, and your account only has ${userCredits} credits`)
     const pricingSection = document.getElementById('pricing')

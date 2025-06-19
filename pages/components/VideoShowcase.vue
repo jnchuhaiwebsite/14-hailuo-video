@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 bg-gray-900">
+  <section class="py-20 bg-blue-pale">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
@@ -11,7 +11,7 @@
       </div>
       
       <div class="mt-16 max-w-4xl mx-auto">
-        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl">
+        <div class="bg-blue-pale/80 rounded-lg overflow-hidden shadow-xl">
           <div class="relative flex items-center justify-center bg-black">
             <!-- Loading state -->
             <div v-if="isLoading" class="flex justify-center items-center py-20">

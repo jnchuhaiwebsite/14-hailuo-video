@@ -1,5 +1,5 @@
 <template>
-  <section id="faq" class="py-20 bg-gray-900">
+  <section id="faq" class="py-20 bg-blue-pale">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 id="faq-heading" class="text-3xl font-bold text-center mb-12 text-[#7C3AED]">Frequently Asked Questions</h2>
       

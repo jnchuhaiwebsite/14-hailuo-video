@@ -1,5 +1,5 @@
 <template>
-  <footer class="relative bg-gray-900 text-gray-300 py-8 md:py-12">
+  <footer class="relative bg-blue-pale text-gray-300 py-8 md:py-12">
     <div class="max-w-7xl mx-auto px-4">
       
       <!-- 主要内容区域 -->
@@ -56,7 +56,7 @@
       </div>
       
       <!-- Logo 和描述 -->
-      <div class="py-6 border-t border-gray-800">
+      <div class="py-6 border-t border-gray-700">
         <div class="flex flex-col items-center text-center">
           <img src="/logo.png" alt="Hailuo02 Video - AI Video from Text or Image in Minutes" loading="lazy" class="h-16 md:h-24 mb-4">
           <p class="text-sm text-gray-400 max-w-xl mb-4">

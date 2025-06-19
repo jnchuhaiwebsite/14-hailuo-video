@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mx-auto bg-gray-900">
+  <div class="w-full mx-auto bg-blue-pale">
     <main class="max-w-24xl mx-auto min-h-screen">
       <!-- 首屏区块 -->
       <section
@@ -26,11 +26,11 @@
       </section>
 
       <!-- 特性展示 -->
-      <section id="features-showcase">
+      <!-- <section id="features-showcase">
         <keep-alive>
           <FeatureShowcase />
         </keep-alive>
-      </section>
+      </section> -->
 
       <!-- 用户评论 -->
       <section id="reviews">

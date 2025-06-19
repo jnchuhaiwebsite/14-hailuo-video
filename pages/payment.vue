@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-900 flex items-center justify-center px-4 pt-12 pb-4">
+  <div class="min-h-screen bg-blue-pale flex items-center justify-center px-4 pt-12 pb-4">
     <!-- Loading Dots -->
     <div v-if="isLoading" class="flex space-x-3">
       <div class="w-3 h-3 bg-theme rounded-full animate-bounce-1 opacity-75"></div>
