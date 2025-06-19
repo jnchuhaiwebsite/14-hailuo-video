@@ -34,7 +34,7 @@ const blogPostsData: BlogPost[] = [
       <p>On Artificial Analysis's latest image-to-video leaderboard, Hailuo 02 ranks second.</p>
       
       <div class="my-6">
-        <img src="/img/Artificial Analysis.webp" alt="Artificial Analysis Rankings" class="w-full max-w-2xl mx-auto mb-2" loading="lazy" />
+        <img src="/img/Artificial-Analysis.webp" alt="Artificial Analysis Rankings" class="w-full max-w-2xl mx-auto mb-2" loading="lazy" />
         <p class="text-sm text-gray-300 text-center">Artificial Analysis Image-to-Video Leaderboard</p>
       </div>
       
