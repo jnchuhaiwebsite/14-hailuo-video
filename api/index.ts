@@ -19,11 +19,11 @@ export const urlList = {
   getSubPlans: baseUrl + '/api/website/priceList',     // 获取套餐信息
   payOrder: baseUrl + '/api/pay/stripe',  // 支付
   opusList: baseUrl + '/api/user/opus_list', // 获取用户作品列表
-  checkTask: baseUrl + '/api/task/volcengine/check_task_status', // 检查任务
+  checkTask: baseUrl + '/api/task/hl/check_task_status', // 检查任务
   friendLinkList: baseUrl + '/api/cms/friendLinkList', // 获取友情链接列表
-  getScore: baseUrl + '/api/volcengine/score', // 获取积分
-  getUserOpus: baseUrl + '/api/volcengine/show', // 查询用户作品展示列表
-  getShareInfo: baseUrl + '/api/volcengine/get_share_info', // 获取用户作品展示详情
+  getScore: baseUrl + '/api/hailuo/score', // 获取积分
+  getUserOpus: baseUrl + '/api/hailuo/show', // 查询用户作品展示列表
+  getShareInfo: baseUrl + '/api/hailuo/get_share_info', // 获取用户作品展示详情
   upload: baseUrl + '/api/common/upload', // 上传图片获取url
   getTimesLog: baseUrl + '/api/user/times_log', // 获取使用次数日志、消费记录
 }

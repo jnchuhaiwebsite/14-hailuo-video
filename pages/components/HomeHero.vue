@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-screen w-full flex flex-col items-center justify-start overflow-x-hidden">
+  <div class="relative w-full flex flex-col items-center justify-start overflow-x-hidden">
 
     <!-- 顶部新版本提示 -->
     <!-- <div class="absolute top-8 left-1/2 -translate-x-1/2 z-10">

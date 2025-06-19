@@ -18,13 +18,6 @@
         </keep-alive>
       </section>
       
-      <!-- 案例展示 -->
-      <!-- <section id="cases">
-        <keep-alive>
-          <CaseStudies />
-        </keep-alive>
-      </section> -->
-      
       <!-- 操作步骤 -->
       <section id="how-it-works">
         <keep-alive>
