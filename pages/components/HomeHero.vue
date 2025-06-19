@@ -772,6 +772,10 @@ const handleVideoRequest = async () => {
     $toast.warning('Please enter a prompt')
     return
   }
+  
+  // 添加生成时间提示
+  $toast.info('Video generation takes 3-5 minutes. You can check your video in "Personal Center" when it\'s ready')
+
   // 清理旧的视频URL
   if (generatedVideoUrl.value) {
     URL.revokeObjectURL(generatedVideoUrl.value)

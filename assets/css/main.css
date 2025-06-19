@@ -17,8 +17,8 @@ a {
 
 body {
   line-height: 1.6;
-  color: var(--text-primary);
-  background: var(--bg-primary);
+  color: #ffffff;
+  background-color: rgb(25 23 28 / var(--tw-bg-opacity, 1));
   min-height: 100vh;
 }
 
