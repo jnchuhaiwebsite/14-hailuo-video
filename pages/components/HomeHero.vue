@@ -1,23 +1,10 @@
 <template>
   <div class="relative w-full flex flex-col items-center justify-start overflow-x-hidden">
-
-    <!-- 顶部新版本提示 -->
-    <!-- <div class="absolute top-8 left-1/2 -translate-x-1/2 z-10">
-      <span class="px-6 py-2 rounded-full bg-[#00ffd1]/10 text-[#00ffd1] text-sm font-semibold shadow-md backdrop-blur-sm">New Hailuo02 Video Released</span>
-    </div> -->
-    <!-- 标题区 -->
     <!-- 标题区 -->
     <div class="mt-[80px] mb-14 flex flex-col items-center relative z-10">
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
-        Hailuo2: Turn Creativity into Blockbusters
+        With Hailuo2 Video AI, creative moments instantly turn into blockbusters.
       </h1>
-      <!-- 注册送积分提示 -->
-      <!-- <div class="mt-3 sm:mt-4 px-3 xs:px-4 sm:px-6 py-1 xs:py-1.5 sm:py-2 bg-gradient-to-r from-[#7C3AED]/20 to-[#8B5CF6]/20 rounded-full border border-[#7C3AED]/30 backdrop-blur-sm inline-flex items-center">
-        <span class="text-[#7C3AED] font-semibold flex items-center gap-1 xs:gap-1.5 text-xs xs:text-sm sm:text-base">
-          <FireIcon class="h-3.5 w-3.5 xs:h-4 xs:w-4 sm:h-5 sm:w-5 text-orange-500" />
-          Limited-time offer: New users get 10 Credits upon registration.
-        </span>
-      </div> -->
       <p class="mt-6 text-1xl text-gray-200 text-center max-w-3xl font-medium">
         Create stunning AI videos in minutes using text or images with Hailuo02 Video. No editing needed. Perfect for creators, brands, and educators. Generate smooth, cinematic videos in 1080P quality—perfect for storytelling, marketing, and creative expression.
       </p>
@@ -25,7 +12,12 @@
     <!-- 主体区 -->
     <div class="w-full max-w-[1700px] flex flex-col lg:flex-row gap-4 lg:gap-6 justify-center items-stretch px-3 sm:px-4 lg:px-6 pb-16 lg:pb-24">
       <!-- 左侧表单 -->
-      <div class="w-full mx-auto lg:mx-0 lg:w-[35%] xl:w-[40%] 2xl:w-[42%] lg:min-w-[380px] xl:min-w-[420px] max-w-[720px] lg:max-w-none bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-700/50 p-8 xl:p-10 flex flex-col gap-3 sm:gap-4 lg:gap-5 min-h-[500px] sm:min-h-[550px] lg:min-h-[600px]">
+      <div :class="[
+        'w-full mx-auto lg:mx-0 lg:w-[35%] xl:w-[40%] 2xl:w-[42%] lg:min-w-[380px] xl:min-w-[420px] max-w-[720px] lg:max-w-none bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-700/50 p-8 xl:p-10 flex flex-col gap-3 sm:gap-4 lg:gap-5',
+        containerHeight.base,
+        containerHeight.sm,
+        containerHeight.lg
+      ]">
         <!-- 切换tab -->
         <div class="flex gap-2 mb-1 sm:mb-2">
           <div class="flex w-full bg-gray-700/50 p-1 rounded-2xl">
@@ -113,50 +105,38 @@
           </div>
         </div>
         <!-- 各个下拉选项 -->
-        <div class="flex gap-2 lg:gap-3 w-full mt-1">
-
-          <!-- 时长 -->
-          <div class="flex-1 min-w-0">
-            <label class="block text-xs text-gray-400 mb-1">Video Duration</label>
-            <div class="relative">
-              <select 
-                v-model="duration"
-                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] text-xs lg:text-sm appearance-none"
-                @click="handleAction('selectOption')"
-              >
-                <option 
+        <div class="mt-4">
+          <!-- 时长和分辨率选择 -->
+          <div class="flex items-center gap-6">
+            <div class="flex items-center">
+              <label class="text-xs text-gray-400 mr-3">Video Duration:</label>
+              <div class="flex gap-2">
+                <button 
                   v-for="opt in durationOptions" 
-                  :key="opt.value" 
-                  :value="opt.value"
+                  :key="opt.value"
+                  @click="handleAction('selectDuration', opt.value)"
+                  class="px-3 py-1.5 rounded-lg border border-dashed transition-all text-sm"
+                  :class="duration === opt.value ? 'border-[#7C3AED] text-[#7C3AED] bg-[#7C3AED]/10' : 'border-gray-600 text-gray-400 hover:border-gray-400 hover:text-gray-300'"
                 >
                   {{ opt.label }}
-                </option>
-              </select>
-              <ChevronDownIcon class="absolute right-2 lg:right-3 top-1/2 -translate-y-1/2 h-3 w-3 lg:h-4 lg:w-4 text-gray-400 pointer-events-none" />
+                </button>
+              </div>
             </div>
-          </div>
-          <!-- 分辨率 -->
-          <div class="flex-1 min-w-0">
-            <label class="block text-xs text-gray-400 mb-1">Resolution</label>
-            <div class="relative">
-              <select 
-                v-model="resolution"
-                class="w-full rounded-xl bg-gray-900 border border-gray-700 text-gray-200 px-2 lg:px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] text-xs lg:text-sm appearance-none"
-                @click="handleAction('selectOption')"
-              >
-                <option 
+            <div class="flex items-center">
+              <label class="text-xs text-gray-400 mr-3">Resolution:</label>
+              <div class="flex gap-2">
+                <button 
                   v-for="opt in availableResolutions" 
-                  :key="opt.value" 
-                  :value="opt.value"
+                  :key="opt.value"
+                  @click="handleAction('selectResolution', opt.value)"
+                  class="px-3 py-1.5 rounded-lg border border-dashed transition-all text-sm"
+                  :class="resolution === opt.value ? 'border-[#7C3AED] text-[#7C3AED] bg-[#7C3AED]/10' : 'border-gray-600 text-gray-400 hover:border-gray-400 hover:text-gray-300'"
                 >
                   {{ opt.label }}
-                </option>
-              </select>
-              <ChevronDownIcon class="absolute right-2 lg:right-3 top-1/2 -translate-y-1/2 h-3 w-3 lg:h-4 lg:w-4 text-gray-400 pointer-events-none" />
+                </button>
+              </div>
             </div>
           </div>
-
-
         </div>
         <!-- 分享到作品展示选项 -->
         <div class="flex items-center gap-2 mt-4">
@@ -188,7 +168,12 @@
         </button>
       </div>
       <!-- 右侧视频预览 -->
-      <div class="w-full mx-auto lg:mx-0 lg:w-[65%] xl:w-[60%] 2xl:w-[58%] max-w-[720px] lg:max-w-none flex flex-col items-center h-[500px] sm:h-[550px] lg:h-[600px] p-3 sm:p-4 lg:p-6 xl:p-8 bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-700/50">
+      <div :class="[
+        'w-full mx-auto lg:mx-0 lg:w-[65%] xl:w-[60%] 2xl:w-[58%] max-w-[720px] lg:max-w-none flex flex-col items-center p-3 sm:p-4 lg:p-6 xl:p-8 bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-700/50',
+        containerHeight.base.replace('min-', ''),
+        containerHeight.sm.replace('sm:min-', 'sm:'),
+        containerHeight.lg.replace('lg:min-', 'lg:')
+      ]">
         <div class="flex flex-col justify-center items-center w-full h-full bg-gradient-to-br from-gray-900/50 via-gray-800/50 to-gray-900/50 rounded-[20px]">
           <div class="relative w-full aspect-[4/3] flex items-center justify-center h-full">
             <!-- 进度条 -->
@@ -231,51 +216,27 @@
             </div>
             <!-- 预览视频 -->
             <div v-else-if="!generatedVideoUrl" class="w-full h-full relative">
-              <Swiper
-                :modules="[Autoplay, EffectFade, Navigation]"
-                :effect="'fade'"
-                :fade-effect="{ crossFade: true }"
-                :autoplay="{
-                  delay: 6000,
-                  disableOnInteraction: false
-                }"
-                :loop="true"
-                :speed="1000"
-                :navigation="{
-                  nextEl: '.swiper-button-next',
-                  prevEl: '.swiper-button-prev',
-                }"
-                class="w-full h-full relative z-0"
-                @swiper="onSwiper"
-                @slideChange="onSlideChange"
-              >
-                <SwiperSlide v-for="video in previewVideos" :key="video.url" class="w-full h-full">
-                  <div class="w-full h-full flex items-center justify-center relative">
-                    <video 
-                      :src="video.url" 
-                      :poster="video.poster"
-                      class="w-full h-full object-cover rounded-2xl" 
-                      autoplay 
-                      loop 
-                      muted
-                      preload="none"
-                      playsinline
-                      @loadstart="handleVideoLoadStart($event.target as HTMLVideoElement)"
-                      @canplay="handleVideoCanPlay($event.target as HTMLVideoElement)"
-                    ></video>
-                    <!-- 视频加载状态 -->
-                    <div 
-                      v-if="previewVideoLoading[video.url]" 
-                      class="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl"
-                    >
-                      <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <!-- 导航按钮 -->
-                <div class="swiper-button-prev !w-10 !h-10 !bg-black/30 hover:!bg-black/50 !rounded-full !text-white after:!text-xl"></div>
-                <div class="swiper-button-next !w-10 !h-10 !bg-black/30 hover:!bg-black/50 !rounded-full !text-white after:!text-xl"></div>
-              </Swiper>
+              <div class="w-full h-full flex items-center justify-center relative">
+                <video 
+                  :src="previewVideoUrl" 
+                  :poster="previewVideoPoster"
+                  class="w-full h-full object-cover rounded-2xl" 
+                  autoplay 
+                  loop 
+                  muted
+                  preload="none"
+                  playsinline
+                  @loadstart="handleVideoLoadStart($event.target as HTMLVideoElement)"
+                  @canplay="handleVideoCanPlay($event.target as HTMLVideoElement)"
+                ></video>
+                <!-- 视频加载状态 -->
+                <div 
+                  v-if="previewVideoLoading[previewVideoUrl]" 
+                  class="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl"
+                >
+                  <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
+                </div>
+              </div>
               <div class="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 bg-black/60 text-white/90 px-4 sm:px-5 py-1.5 sm:py-2 rounded-xl text-base sm:text-lg font-semibold shadow-lg pointer-events-none select-none whitespace-nowrap z-10">
                 AI Video Generation Demo
               </div>
@@ -327,11 +288,6 @@ import { FireIcon } from '@heroicons/vue/24/solid'
 import { ref, computed, watch, onUnmounted, onMounted } from 'vue'
 import { useUserStore } from '~/stores/user'
 import { useRoute } from 'vue-router'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay, EffectFade, Navigation } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/effect-fade'
-import 'swiper/css/navigation'
 import { useNuxtApp } from 'nuxt/app'
 import { useVideoTaskStore } from '~/stores/videoTask'
 import { useNotificationStore } from '~/stores/notification'
@@ -391,6 +347,12 @@ watch(duration, (newDuration) => {
   }
 })
 
+// 监听标签页变化，确保容器高度更新
+watch(activeTab, () => {
+  // 容器高度会通过计算属性自动更新
+  // 这里可以添加其他需要在标签切换时执行的逻辑
+})
+
 // 积分配置
 interface ScoreItem {
   id: number
@@ -404,24 +366,103 @@ const scoreConfig = ref<ScoreItem[]>([])
 // 获取积分配置
 const getScoreConfig = async () => {
   try {
+    console.log('正在获取积分配置...')
     const response = await getScore() as any
     if (response.code === 200) {
+      console.log('积分配置获取成功:', response.data)
       scoreConfig.value = response.data
-      // 更新积分显示
-      needCredits.value = calculateCredits()
+      // 立即更新积分显示
+      const credits = calculateCredits()
+      console.log('计算得到的积分:', credits, '当前分辨率:', resolution.value, '当前时长:', duration.value)
+      needCredits.value = credits
+    } else {
+      console.error('获取积分配置失败:', response)
     }
   } catch (error) {
-    console.error('获取积分配置失败：', error)
+    console.error('获取积分配置失败:', error)
   }
 }
 
 // 计算所需积分
 const calculateCredits = () => {
-  const config = scoreConfig.value.find((item: any) => 
+  if (!scoreConfig.value || scoreConfig.value.length === 0) {
+    console.warn('积分配置为空，无法计算积分')
+    return 0
+  }
+  
+  const durationInt = parseInt(duration.value)
+  console.log('查找积分配置:', '分辨率=', resolution.value, '时长=', durationInt, '原始时长值=', duration.value, '类型=', typeof duration.value)
+  
+  // 详细打印每个积分配置项
+  console.log('所有可用配置:')
+  scoreConfig.value.forEach((item, index) => {
+    console.log(`配置项 ${index}:`, {
+      resolution: item.resolution,
+      duration: item.duration,
+      score: item.score,
+      resolutionMatch: item.resolution === resolution.value,
+      durationMatch: item.duration === durationInt,
+      durationTypeCheck: typeof item.duration
+    })
+  })
+  
+  // 尝试直接匹配
+  let config = scoreConfig.value.find((item: any) => 
     item.resolution === resolution.value && 
-    item.duration === parseInt(duration.value)
+    item.duration === durationInt
   )
-  return config ? config.score : 0
+  
+  // 如果没有找到匹配，尝试字符串比较
+  if (!config) {
+    console.log('尝试使用字符串比较查找匹配')
+    config = scoreConfig.value.find((item: any) => 
+      item.resolution === resolution.value && 
+      String(item.duration) === duration.value
+    )
+  }
+  
+  if (config) {
+    console.log('找到匹配的积分配置:', config)
+    return config.score
+  } else {
+    console.warn('未找到匹配的积分配置，尝试查找相似配置')
+    
+    // 尝试只匹配分辨率
+    const resolutionMatch = scoreConfig.value.find(item => item.resolution === resolution.value)
+    if (resolutionMatch) {
+      console.log('找到分辨率匹配的配置:', resolutionMatch)
+      return resolutionMatch.score
+    }
+    
+    // 尝试只匹配时长
+    const durationMatch = scoreConfig.value.find(item => item.duration === durationInt)
+    if (durationMatch) {
+      console.log('找到时长匹配的配置:', durationMatch)
+      return durationMatch.score
+    }
+    
+    // 如果还是没找到，使用第一个配置项
+    console.warn('没有找到任何匹配，使用默认配置')
+    return scoreConfig.value[0]?.score || 0
+  }
+}
+
+// 强制刷新积分配置和计算
+const refreshCredits = async () => {
+  console.log('强制刷新积分配置')
+  try {
+    // 先尝试重新获取积分配置
+    await getScoreConfig()
+    
+    // 然后重新计算积分
+    const credits = calculateCredits()
+    console.log('刷新后的积分:', credits)
+    needCredits.value = credits
+    return credits
+  } catch (error) {
+    console.error('刷新积分失败:', error)
+    return needCredits.value
+  }
 }
 
 // 需要消耗的积分数量
@@ -429,8 +470,11 @@ const needCredits = ref(0)
 
 // 监听分辨率和时长变化
 watch([resolution, duration], () => {
-  needCredits.value = calculateCredits()
-})
+  console.log('分辨率或时长变化:', '分辨率=', resolution.value, '时长=', duration.value)
+  const credits = calculateCredits()
+  console.log('重新计算的积分:', credits)
+  needCredits.value = credits
+}, { immediate: true })
 
 // 在 setup 中添加
 const videoTaskStore = useVideoTaskStore()
@@ -477,9 +521,10 @@ const restoreFormState = () => {
 }
 
 // 修改 onMounted
-onMounted(() => {
-  // 获取积分配置
-  getScoreConfig()
+onMounted(async () => {
+  // 获取积分配置并等待完成
+  await getScoreConfig()
+  console.log('组件挂载完成，当前积分值:', needCredits.value)
 
   // 检查是否有未完成的任务
   const storedTask = videoTaskStore.getStoredTask()
@@ -535,9 +580,9 @@ onUnmounted(() => {
     URL.revokeObjectURL(generatedVideoUrl.value)
   }
   // 清理预览视频资源
-  previewVideos.forEach(video => {
-    URL.revokeObjectURL(video.url)
-  })
+  if (previewVideoUrl) {
+    URL.revokeObjectURL(previewVideoUrl)
+  }
   // 暂停所有视频
   const videos = document.querySelectorAll('video')
   videos.forEach(video => {
@@ -561,52 +606,9 @@ const inspirationPrompts = [
   }
 ]
 
-// 预览视频列表
-const previewVideos = [
-  {
-    url: 'https://resource.hailuo2.com/seedance/video/seeddancepro-Inspiration-underwater-canyon.mp4',
-    poster: '/img/1.webp',
-    loading: true
-  },
-  {
-    url: 'https://resource.hailuo2.com/seedance/video/misty-forest-dawn-new-sprout-breaking-cocoon.mp4',
-    poster: 'https://resource.hailuo2.com/seedance/image/misty-forest-dawn-new-sprout-breaking-cocoon.webp',
-    loading: true
-  },
-  {
-    url: 'https://resource.hailuo2.com/seedance/video/silicon-valley-laboratory-code-waterfall.mp4',
-    poster: 'https://resource.hailuo2.com/seedance/image/silicon-valley-laboratory-code-waterfall.webp',
-    loading: true
-  }
-]
-
-// 添加 Swiper 实例引用
-const swiperInstance = ref<any>(null)
-
-// 处理 Swiper 初始化
-const onSwiper = (swiper: any) => {
-  swiperInstance.value = swiper
-}
-
-// 处理 Swiper 切换事件
-const onSlideChange = (swiper: any) => {
-  // 暂停所有视频
-  const videos = document.querySelectorAll('video')
-  videos.forEach(video => {
-    video.pause()
-  })
-  
-  // 只播放当前视频
-  const currentVideo = swiper.slides[swiper.activeIndex].querySelector('video')
-  if (currentVideo) {
-    previewVideoLoading.value[currentVideo.src] = true
-    currentVideo.play().then(() => {
-      previewVideoLoading.value[currentVideo.src] = false
-    }).catch(() => {
-      previewVideoLoading.value[currentVideo.src] = false
-    })
-  }
-}
+// 预览视频URL
+const previewVideoUrl = 'https://resource.hailuo2.com/seedance/video/seeddancepro-Inspiration-underwater-canyon.mp4'
+const previewVideoPoster = '/img/1.webp'
 
 // 处理视频加载事件
 const handleVideoLoadStart = (video: HTMLVideoElement) => {
@@ -868,9 +870,9 @@ const handleAction = (action: string, ...args: any[]) => {
       break
     case 'generate':
       withLoginCheck(async () => {
-        //检查是否有次数
+        // 检查是否有足够的次数和积分
         if (!checkUsageLimit()) return
-        //检查是否正在生成
+        // 检查是否正在生成
         if (isGenerating.value) return
         
         handleVideoRequest()
@@ -879,6 +881,43 @@ const handleAction = (action: string, ...args: any[]) => {
     case 'inspiration':
       withLoginCheck(() => {
         prompt.value = args[0] || ''
+      })
+      break
+    case 'selectDuration':
+      withLoginCheck(async () => {
+        console.log('选择时长:', args[0], '类型:', typeof args[0])
+        // 先更新时长
+        duration.value = args[0]
+        
+        // 确保分辨率合法（10s时只能选768p）
+        if (args[0] === '10' && resolution.value === '1080p') {
+          console.log('10s视频只能选择768p分辨率，自动调整分辨率')
+          resolution.value = '768p'
+        }
+        
+        // 强制刷新积分配置并更新积分值
+        const credits = await refreshCredits()
+        console.log('时长变化后重新计算的积分:', credits)
+        
+        // 确保UI更新
+        setTimeout(() => {
+          needCredits.value = credits
+        }, 0)
+      })
+      break
+    case 'selectResolution':
+      withLoginCheck(async () => {
+        console.log('选择分辨率:', args[0])
+        resolution.value = args[0]
+        
+        // 强制刷新积分配置并更新积分值
+        const credits = await refreshCredits()
+        console.log('分辨率变化后重新计算的积分:', credits)
+        
+        // 确保UI更新
+        setTimeout(() => {
+          needCredits.value = credits
+        }, 0)
       })
       break
     case 'selectOption':
@@ -919,6 +958,7 @@ watch(
 
 // 检查使用限制
 const checkUsageLimit = () => {
+  // 检查是否有可用次数
   if (remainingTimes.value <= 0) {
     $toast.warning('Usage limit reached. Please upgrade to premium for more credits')
     const pricingSection = document.getElementById('pricing')
@@ -927,6 +967,18 @@ const checkUsageLimit = () => {
     }
     return false
   }
+  
+  // 检查用户积分是否足够
+  const userCredits = userInfo.value?.score || 0
+  if (userCredits < needCredits.value) {
+    $toast.error(`Insufficient credits. The current operation requires ${needCredits.value} credits, and your account only has ${userCredits} credits`)
+    const pricingSection = document.getElementById('pricing')
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' })
+    }
+    return false
+  }
+  
   return true
 }
 
@@ -991,6 +1043,20 @@ const restoreFormData = () => {
     localStorage.removeItem('seedanceFormCache')
   }
 }
+
+// 动态计算容器高度
+const containerHeight = computed(() => {
+  // 图片模式时增加高度
+  return activeTab.value === 'image' ? {
+    base: 'min-h-[650px]',
+    sm: 'sm:min-h-[700px]',
+    lg: 'lg:min-h-[750px]'
+  } : {
+    base: 'min-h-[500px]',
+    sm: 'sm:min-h-[550px]',
+    lg: 'lg:min-h-[600px]'
+  }
+})
 </script>
 
 <style scoped>

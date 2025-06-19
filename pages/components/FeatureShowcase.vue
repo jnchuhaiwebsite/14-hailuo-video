@@ -79,15 +79,15 @@
       </div>
 
       <!-- Technical specifications -->
-      <div v-else class="mt-16">
+      <div class="mt-16">
         <h3 class="text-3xl font-bold text-[#7C3AED] text-center mb-12">Technical Specifications</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div v-for="feature in techFeatures" :key="feature.name" 
-               class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 hover:border-[#7C3AED]">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+          <div v-for="feature in techFeatures" :key="feature.title" 
+               class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 hover:border-[#7C3AED] w-full max-w-sm">
             <div class="w-12 h-12 bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/50 rounded-lg flex items-center justify-center">
               <component :is="feature.icon" class="w-6 h-6 text-white" />
             </div>
-            <h4 class="text-lg font-semibold text-white mt-4 mb-2">{{ feature.name }}</h4>
+            <h4 class="text-lg font-semibold text-white mt-4 mb-2">{{ feature.title }}</h4>
             <p class="text-gray-300 text-sm mb-2">{{ feature.description }}</p>
             <p class="text-sm text-[#7C3AED]">{{ feature.specs }}</p>
           </div>
@@ -97,7 +97,7 @@
       <!-- CTA Section -->
       <div class="text-center mt-16">
         <button
-          @click="scrollToTop"
+          @click="scrollToHero"
           class="inline-flex items-center px-8 py-4 bg-[#7C3AED] hover:bg-[#8B5CF6] text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-200"
         >
           Start Creating Now
@@ -189,7 +189,7 @@ const techFeatures = [
     title: "Fast Processing",
     description: "Advanced AI processing with 1-2 minute generation time and 85% instruction response rate",
     icon: ArrowPathIcon,
-    specs: "1-2 minutes processing time"
+    specs: "7-10 minutes processing time"
   }
 ];
 

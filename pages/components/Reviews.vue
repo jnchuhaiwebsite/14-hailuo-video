@@ -57,7 +57,7 @@
       <!-- 添加开始创建按钮 -->
       <div class="text-center mt-16">
         <button
-          @click="scrollToTop"
+          @click="scrollToHero"
           class="inline-flex items-center px-8 py-4 bg-[#7C3AED] hover:bg-[#8B5CF6] text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-200"
         >
           Start Creating Now

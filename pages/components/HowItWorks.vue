@@ -6,15 +6,15 @@
           How Hailuo 02 Works
         </h2>
         <p class="mt-4 text-xl text-gray-300 animate-slide-up">
-          Simple 3-step process to create stunning AI videos
+          Simple 4-step process to create stunning AI videos
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="flex flex-row flex-wrap justify-center gap-4">
         <div 
           v-for="(step, index) in steps" 
           :key="index"
-          class="relative bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 sm:p-8 shadow-xl border border-gray-700/50 hover:border-[#7C3AED]/50 transition-all duration-300 hover:transform hover:scale-105 group">
+          class="relative bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 sm:p-8 shadow-xl border border-gray-700/50 hover:border-[#7C3AED]/50 transition-all duration-300 hover:transform hover:scale-105 group flex-1 min-w-[250px] max-w-[300px]">
           <div class="absolute -top-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/50 rounded-full flex items-center justify-center text-white text-lg sm:text-xl font-bold shadow-lg group-hover:shadow-[#7C3AED]/25 transition-all duration-300">
             {{ index + 1 }}
           </div>

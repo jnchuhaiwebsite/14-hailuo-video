@@ -5,7 +5,7 @@
       
       <div class="space-y-4">
         <div 
-          v-for="(faq, index) in faqs" 
+          v-for="(faq, index) in faqItems" 
           :key="index"
           class="border-b border-[#7C3AED]/20 py-6 hover:bg-[#7C3AED]/5 transition-colors duration-200 rounded-lg px-4"
         >
@@ -47,6 +47,23 @@
         >
           Start Creating
         </button>
+        
+        <!-- 在这里添加显示更多/更少按钮 -->
+        <button
+          v-if="hasMoreItems && faqs.length > initialVisibleCount"
+          @click="showMore"
+          class="bg-[#7C3AED]/80 hover:bg-[#7C3AED] text-white font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
+        >
+          Show More
+        </button>
+        <button
+          v-if="!hasMoreItems && faqs.length > initialVisibleCount"
+          @click="showLess"
+          class="bg-[#7C3AED]/80 hover:bg-[#7C3AED] text-white font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
+        >
+          Show Less
+        </button>
+        
         <button
           @click="scrollToContact"
           class="bg-[#7C3AED] hover:bg-[#7C3AED]/90 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
@@ -114,7 +131,7 @@ const faqs = [
 ];
 
 // 初始显示的FAQ数量
-const initialVisibleCount = 4;
+const initialVisibleCount = 5;
 const visibleCount = ref(initialVisibleCount);
 
 // 跟踪每个FAQ项的展开状态
