@@ -175,7 +175,7 @@
         containerHeight.lg.replace('lg:min-', 'lg:')
       ]">
         <div class="flex flex-col justify-center items-center w-full h-full bg-gradient-to-br from-blue-pale/50 via-blue-pale/50 to-blue-pale/50 rounded-[16px]">
-          <div class="relative w-full aspect-[4/3] flex items-center justify-center h-full">
+          <div class="relative w-full h-[480px] flex items-center justify-center">
             <!-- 进度条 -->
             <div v-if="isGenerating" class="absolute inset-0 flex items-center justify-center">
               <div v-if="progress > 0" class="relative w-24 h-24">
@@ -221,7 +221,7 @@
                 <video 
                   :src="previewVideoUrl" 
                   :poster="previewVideoPoster"
-                  class="w-full h-full object-cover rounded-xl" 
+                  class="w-full h-full object-contain rounded-xl" 
                   autoplay 
                   loop 
                   muted
@@ -609,6 +609,7 @@ const inspirationPrompts = [
 
 // 预览视频URL
 const previewVideoUrl = 'https://resource.hailuo2.com/hailuo/video/hailuo2-demo.mp4'
+// const previewVideoUrl = '/img/1750358424507.mp4'
 const previewVideoPoster = '/img/1.webp'
 
 // 处理视频加载事件
@@ -839,7 +840,7 @@ const handleVideoRequest = async () => {
         // 开始循环检查任务状态
         checkTaskInterval = setInterval(() => {
           checkTaskStatus(response.data.task_id)
-        }, 2000) // 每2秒检查一次
+        }, 10000) // 每2秒检查一次
       }
     } else {
       isGenerating.value = false
