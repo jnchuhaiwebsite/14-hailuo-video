@@ -971,7 +971,7 @@ const checkUsageLimit = () => {
 
 
   // 检查用户积分是否足够
-  const userCredits = userInfo.value?.free_limit || 0
+  const userCredits = userInfo.value?.free_limit || userInfo.value?.remaining_limit || 0
   if (userCredits < needCredits.value) {
     $toast.error(`Insufficient credits. The current operation requires ${needCredits.value} credits, and your account only has ${userCredits} credits`)
     const pricingSection = document.getElementById('pricing')
