@@ -208,10 +208,11 @@
                 <div class="absolute inset-0 flex items-center justify-center text-[#7C3AED] font-bold text-lg">
                   {{ progress.toFixed(0) }}%
                 </div>
+                <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-[#7C3AED] text-base font-medium">Generating your video<span class="loading-dots">...</span></span>
               </div>
               <div v-else class="flex flex-col items-center justify-center">
                 <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#7C3AED] border-t-transparent"></div>
-                <p class="text-[#7C3AED] text-xs mt-2">Processing...</p>
+                <span class="mt-3 text-[#7C3AED] text-base font-medium whitespace-nowrap">Generating your video<span class="loading-dots">...</span></span>
               </div>
             </div>
             <!-- 预览视频 -->
@@ -527,24 +528,24 @@ onMounted(async () => {
   console.log('组件挂载完成，当前积分值:', needCredits.value)
 
   // 检查是否有未完成的任务
-  const storedTask = videoTaskStore.getStoredTask()
-  if (storedTask && storedTask.isGenerating) {
-    isGenerating.value = true
-    prompt.value = storedTask.prompt
-    activeTab.value = storedTask.type
+  // const storedTask = videoTaskStore.getStoredTask()
+  // if (storedTask && storedTask.isGenerating) {
+  //   isGenerating.value = true
+  //   prompt.value = storedTask.prompt
+  //   activeTab.value = storedTask.type
     
-    // 重新开始检查任务状态
-    checkTaskInterval = setInterval(() => {
-      checkTaskStatus(storedTask.taskId)
-    }, 2000)
-    // 恢复表单状态（页面切换时）
-    restoreFormState()
-  } else {
-    // 如果没有未完成的任务，清空表单缓存
-    localStorage.removeItem('seedanceFormCache')
-    // 清空表单状态
-    localStorage.removeItem('seedanceFormState')
-  }
+  //   // 重新开始检查任务状态
+  //   checkTaskInterval = setInterval(() => {
+  //     checkTaskStatus(storedTask.taskId)
+  //   }, 2000)
+  //   // 恢复表单状态（页面切换时）
+  //   restoreFormState()
+  // } else {
+  //   // 如果没有未完成的任务，清空表单缓存
+  //   localStorage.removeItem('seedanceFormCache')
+  //   // 清空表单状态
+  //   localStorage.removeItem('seedanceFormState')
+  // }
   
   // 处理URL参数
   const { mode, prompt: urlPrompt, origin: urlOrigin } = route.query
@@ -593,16 +594,16 @@ onUnmounted(() => {
 // 灵感提示词
 const inspirationPrompts = [
   {
-    label: 'Superhero',
-    prompt: 'Spider-Man hangs clothes with web in laundromat, logo stained with detergent foam'
+    label: 'Dream',
+    prompt: "The camera rapidly advances along the city's central road, revealing the details of the streets on both sides of the city and the passers-by. The atmosphere of the scene is full of childlike fun and fantasy."
   },
   {
-    label: 'Interstellar',
-    prompt: 'Modified pickup truck tows UFO trailer on Route 66, alien on roof takes burger selfie'
+    label: 'Spaceship',
+    prompt: 'A spaceship slowly flew over, and the small spaceship below was also moving forward'
   },
   {
-    label: 'Dinosaur',
-    prompt: 'T-Rex in delivery helmet sends packages, clutching Amazon box with claws through dinosaur skeleton tunnel'
+    label: 'Neon light',
+    prompt: "Neon lights flicker in the future city, high-saturation purple and cyan contrast, the wet ground after the rain reflects the city lights, holographic advertisements float in the air, and flying cars travel among the dense high-rise buildings"
   }
 ]
 
@@ -1210,4 +1211,10 @@ const containerHeight = computed(() => {
 .tab-content {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.loading-dots {
+  display: inline-block;
+  animation: loadingDots 1.5s infinite;
+}
+
 </style> 
