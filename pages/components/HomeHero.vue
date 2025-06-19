@@ -528,24 +528,24 @@ onMounted(async () => {
   console.log('组件挂载完成，当前积分值:', needCredits.value)
 
   // 检查是否有未完成的任务
-  const storedTask = videoTaskStore.getStoredTask()
-  if (storedTask && storedTask.isGenerating) {
-    isGenerating.value = true
-    prompt.value = storedTask.prompt
-    activeTab.value = storedTask.type
+  // const storedTask = videoTaskStore.getStoredTask()
+  // if (storedTask && storedTask.isGenerating) {
+  //   isGenerating.value = true
+  //   prompt.value = storedTask.prompt
+  //   activeTab.value = storedTask.type
     
-    // 重新开始检查任务状态
-    checkTaskInterval = setInterval(() => {
-      checkTaskStatus(storedTask.taskId)
-    }, 2000)
-    // 恢复表单状态（页面切换时）
-    restoreFormState()
-  } else {
-    // 如果没有未完成的任务，清空表单缓存
-    localStorage.removeItem('seedanceFormCache')
-    // 清空表单状态
-    localStorage.removeItem('seedanceFormState')
-  }
+  //   // 重新开始检查任务状态
+  //   checkTaskInterval = setInterval(() => {
+  //     checkTaskStatus(storedTask.taskId)
+  //   }, 2000)
+  //   // 恢复表单状态（页面切换时）
+  //   restoreFormState()
+  // } else {
+  //   // 如果没有未完成的任务，清空表单缓存
+  //   localStorage.removeItem('seedanceFormCache')
+  //   // 清空表单状态
+  //   localStorage.removeItem('seedanceFormState')
+  // }
   
   // 处理URL参数
   const { mode, prompt: urlPrompt, origin: urlOrigin } = route.query
@@ -794,10 +794,8 @@ const handleVideoRequest = async () => {
       return
     }
   }
-  // // 测试模式：直接开始进度条动画并保持loading状态
-  // startProgressAnimation()
-  // return
   //开始进度条动画
+  startProgressAnimation()
   try {
     let requestData = {} as any;
     let request = null;
@@ -858,8 +856,6 @@ const handleVideoRequest = async () => {
     // 清除请求缓存
     localStorage.removeItem('seedanceFormCache')
   }
-
-  return // 阻止后续的实际视频生成请求
 }
 
 // 统一的事件处理方法
@@ -1216,15 +1212,9 @@ const containerHeight = computed(() => {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 添加加载点动画 */
 .loading-dots {
   display: inline-block;
   animation: loadingDots 1.5s infinite;
 }
 
-@keyframes loadingDots {
-  0% { opacity: .2; }
-  20% { opacity: 1; }
-  100% { opacity: .2; }
-}
 </style> 
