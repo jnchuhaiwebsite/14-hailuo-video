@@ -49,8 +49,12 @@
         <div class="space-y-4">
           <h3 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Legal</h3>
           <div class="space-y-2">
-            <NuxtLink to="/subsidiary/privacy-policy" class="text-gray-400 hover:text-[#7C3AED] transition-colors">Privacy Policy</NuxtLink>
-            <NuxtLink to="/subsidiary/terms-of-service" class="text-gray-400 hover:text-[#7C3AED] transition-colors">Terms of Service</NuxtLink>
+            <div>
+              <NuxtLink to="/subsidiary/privacy-policy" class="text-gray-400 hover:text-[#7C3AED] transition-colors">Privacy Policy</NuxtLink>
+            </div>
+            <div>
+              <NuxtLink to="/subsidiary/terms-of-service" class="text-gray-400 hover:text-[#7C3AED] transition-colors">Terms of Service</NuxtLink>
+            </div>
           </div>
         </div>
       </div>
@@ -60,14 +64,14 @@
         <div class="flex flex-col items-center text-center">
           <img src="/logo.png" alt="Hailuo02 Video - AI Video from Text or Image in Minutes" loading="lazy" class="h-16 md:h-24 mb-4">
           <p class="text-sm text-gray-400 max-w-xl mb-4">
-            Create stunning AI videos in 7-10 minutes using text or images with Hailuo02 Video. No editing needed. Perfect for creators, brands, and educators.
+            Create stunning AI videos in 3-5minutes using text or images with Hailuo02 Video. No editing needed. Perfect for creators, brands, and educators.
           </p>
           <div class="flex flex-col items-center gap-2 text-sm text-gray-500">
             <p>© 2025 Hailuo02 Video. All rights reserved.</p>
             <div class="text-center">
               <p class="text-gray-400 text-sm">
                 Need help? Contact us at 
-                <a href="mailto:support@hailuo2.com" class="text-[#7C3AED] transition-colors">support@hailuo2.com</a>
+                <a href="mailto:support@hailuo2.com" class=" transition-colors">support@hailuo2.com</a>
               </p>
             </div>
           </div>
