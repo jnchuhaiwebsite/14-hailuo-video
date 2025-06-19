@@ -69,15 +69,14 @@ export default defineNuxtConfig({
     prerender: {
       // 预渲染路由
       routes: [
-        '/', 
+    
         '/blog',
-        '/blog/black-cross-background-removal', 
         '/blog/feature-update', 
         '/blog/background-removal-tutorial', 
         '/subsidiary/privacy-policy',
         '/subsidiary/terms-of-service'
       ], // 手动指定所有文章路径
-      crawlLinks: true, // 保持链接爬取
+      crawlLinks: false, // 保持链接爬取
       autoSubfolderIndex: false,
       failOnError: false, // 预渲染失败时不中断构建
       ignore: [
