@@ -14,7 +14,7 @@
         <div class="bg-blue-pale/80 rounded-lg overflow-hidden shadow-xl">
           <div class="relative flex items-center justify-center bg-black">
             <!-- Loading state -->
-            <div v-if="isLoading" class="flex justify-center items-center py-20">
+            <div v-if="isLoading" class="absolute inset-0 flex justify-center items-center bg-black/50 z-10">
               <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
             </div>
             
