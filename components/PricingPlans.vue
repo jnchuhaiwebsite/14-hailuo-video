@@ -123,14 +123,14 @@ const getPlanFeatures = (plan: any): string[] => {
   return Array.isArray(plan.features) ? plan.features : [];
 };
 
-// 获取按钮样式
+  // 获取按钮样式
 const getButtonClass = (plan: any): string => {
   if (plan.price === 0) {
-    return "bg-gray-100 text-gray-800 hover:bg-gray-200";
+    return "bg-gray-100 text-white hover:bg-gray-200";
   } else if (plan.is_popular) {
-    return "bg-theme text-black hover:bg-theme-hover";
+    return "bg-theme text-white hover:bg-theme-hover";
   } else {
-    return "bg-theme text-black hover:bg-theme-hover";
+    return "bg-theme text-white hover:bg-theme-hover";
   }
 };
 

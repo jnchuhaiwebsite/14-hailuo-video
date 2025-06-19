@@ -189,7 +189,7 @@ const techFeatures = [
     title: "Fast Processing",
     description: "Advanced AI processing with 1-2 minute generation time and 85% instruction response rate",
     icon: ArrowPathIcon,
-    specs: "7-10 minutes processing time"
+    specs: "3-5minutes processing time"
   }
 ];
 

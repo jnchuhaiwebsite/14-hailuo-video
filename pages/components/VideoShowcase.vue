@@ -10,7 +10,7 @@
         </p>
       </div>
       
-      <div class="mt-16 max-w-4xl mx-auto">
+      <div class="mt-16 max-w-10xl mx-auto">
         <div class="bg-blue-pale/80 rounded-lg overflow-hidden shadow-xl">
           <div class="relative flex items-center justify-center bg-black">
             <!-- Loading state -->

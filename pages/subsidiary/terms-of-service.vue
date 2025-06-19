@@ -55,7 +55,7 @@
           <h2 class="text-2xl font-semibold mb-4 text-white">6. Service Availability and Support</h2>
           <ul class="list-disc pl-6 mt-4 space-y-2 text-gray-300">
             <li>We aim to maintain 99.9% uptime but cannot guarantee uninterrupted access to our AI video generation services.</li>
-            <li>Video generation typically takes 7-10 minutes, but processing times may vary based on server load.</li>
+            <li>Video generation typically takes 3-5minutes, but processing times may vary based on server load.</li>
             <li>We provide email support but do not offer 24/7 availability.</li>
           </ul>
         </section>

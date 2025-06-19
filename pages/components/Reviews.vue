@@ -49,7 +49,7 @@
             </div>
           </div>
           <p class="text-gray-300">
-            "The revolutionary architecture improvements are noticeable - the 7-10 minute processing time is reasonable for high-quality output! The 6-second and 10-second duration options with 768P/1080P quality are perfect for short-form content. My only suggestion would be to support longer video generation."
+            "The revolutionary architecture improvements are noticeable - the 3-5minute processing time is reasonable for high-quality output! The 6-second and 10-second duration options with 768P/1080P quality are perfect for short-form content. My only suggestion would be to support longer video generation."
           </p>
         </div>
       </div>

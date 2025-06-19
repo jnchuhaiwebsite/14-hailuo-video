@@ -1,41 +1,41 @@
 <template>
   <div class="relative w-full flex flex-col items-center justify-start overflow-x-hidden">
     <!-- 标题区 -->
-    <div class="mt-[80px] mb-14 flex flex-col items-center relative z-10">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
+    <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
         With Hailuo2 Video AI, creative moments instantly turn into blockbusters.
       </h1>
-      <p class="mt-6 text-1xl text-gray-200 text-center max-w-3xl font-medium">
+      <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
         Create stunning AI videos in minutes using text or images with Hailuo02 Video. No editing needed. Perfect for creators, brands, and educators. Generate smooth, cinematic videos in 1080P quality—perfect for storytelling, marketing, and creative expression.
       </p>
     </div>
     <!-- 主体区 -->
-    <div class="w-full max-w-[1700px] flex flex-col lg:flex-row gap-4 lg:gap-6 justify-center items-stretch px-3 sm:px-4 lg:px-6 pb-16 lg:pb-24">
+    <div class="w-full max-w-[1360px] flex flex-col lg:flex-row gap-3 lg:gap-4 justify-center items-stretch px-2 sm:px-3 lg:px-4 pb-12 lg:pb-20">
       <!-- 左侧表单 -->
       <div :class="[
-        'w-full mx-auto lg:mx-0 lg:w-[35%] xl:w-[40%] 2xl:w-[42%] lg:min-w-[380px] xl:min-w-[420px] max-w-[720px] lg:max-w-none bg-blue-pale/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-700/50 p-8 xl:p-10 flex flex-col gap-3 sm:gap-4 lg:gap-5',
+        'w-full mx-auto lg:mx-0 lg:w-[35%] xl:w-[40%] 2xl:w-[42%] lg:min-w-[304px] xl:min-w-[336px] max-w-[576px] lg:max-w-none bg-blue-pale/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/50 p-6 xl:p-8 flex flex-col gap-2 sm:gap-3 lg:gap-4',
         containerHeight.base,
         containerHeight.sm,
         containerHeight.lg
       ]">
         <!-- 切换tab -->
-        <div class="flex gap-2 mb-1 sm:mb-2">
-          <div class="flex w-full bg-gray-700/50 p-1 rounded-2xl">
+        <div class="flex gap-2 mb-1">
+          <div class="flex w-full bg-gray-700/50 p-1 rounded-xl">
             <button 
               @click="handleAction('switchTab', 'text')"
-              class="tab-button flex-1 flex items-center justify-center gap-1.5 px-0 py-0 h-10 sm:h-12 rounded-xl transition-all duration-300 font-bold text-sm lg:text-base shadow group"
+              class="tab-button flex-1 flex items-center justify-center gap-1 px-0 py-0 h-8 sm:h-10 rounded-lg transition-all duration-300 font-bold text-sm lg:text-base shadow group"
               :class="activeTab === 'text' ? 'active bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 text-white shadow-lg ring-2 ring-[#7C3AED]' : 'text-gray-300 hover:bg-[#7C3AED]/20 hover:text-[#7C3AED]'"
             >
               <span class="whitespace-nowrap">Text to Video</span>
-              <PlusIcon class="h-4 w-4 lg:h-5 lg:w-5" :class="activeTab === 'text' ? 'text-gray-900' : 'text-gray-300 group-hover:text-gray-900'" />
+              <PlusIcon class="h-3 w-3 lg:h-4 lg:w-4" :class="activeTab === 'text' ? 'text-gray-900' : 'text-gray-300 group-hover:text-gray-900'" />
             </button>
             <button 
               @click="handleAction('switchTab', 'image')"
-              class="tab-button flex-1 flex items-center justify-center gap-1.5 px-0 py-0 h-10 sm:h-12 rounded-xl transition-all duration-300 font-bold text-sm lg:text-base shadow group"
+              class="tab-button flex-1 flex items-center justify-center gap-1 px-0 py-0 h-8 sm:h-10 rounded-lg transition-all duration-300 font-bold text-sm lg:text-base shadow group"
               :class="activeTab === 'image' ? 'active bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 text-white shadow-lg ring-2 ring-[#7C3AED]' : 'text-gray-300 hover:bg-[#7C3AED]/20 hover:text-[#7C3AED]'"
             >
               <span class="whitespace-nowrap">Image to Video</span>
-              <PhotoIcon class="h-4 w-4 lg:h-5 lg:w-5" :class="activeTab === 'image' ? 'text-gray-900' : 'text-gray-300 group-hover:text-gray-900'" />
+              <PhotoIcon class="h-3 w-3 lg:h-4 lg:w-4" :class="activeTab === 'image' ? 'text-gray-900' : 'text-gray-300 group-hover:text-gray-900'" />
             </button>
           </div>
         </div>
@@ -44,7 +44,7 @@
           enter-active-class="animate-smooth-in"
           leave-active-class="animate-smooth-out"
         >
-          <div v-if="activeTab === 'image'" class="w-full border-2 border-dashed border-gray-700 rounded-xl p-4 hover:border-[#7C3AED] transition-colors cursor-pointer mb-4 relative bg-blue-pale">
+          <div v-if="activeTab === 'image'" class="w-full border-2 border-dashed border-gray-700 rounded-lg p-3 hover:border-[#7C3AED] transition-colors cursor-pointer mb-3 relative bg-blue-pale">
             <input 
               type="file" 
               accept="image/jpeg,image/png" 
@@ -54,16 +54,16 @@
             />
             <div 
               v-if="!imagePreview" 
-              class="flex flex-col items-center justify-center gap-2"
+              class="flex flex-col items-center justify-center gap-1.5"
               @click="handleImageUploadClick"
             >
-              <ArrowUpOnSquareIcon class="h-8 w-8 text-gray-400" />
+              <ArrowUpOnSquareIcon class="h-6 w-6 text-gray-400" />
               <div class="text-center">
                 <p class="text-sm text-gray-300">Click or drag image here</p>
-                <p class="text-xs text-gray-500 mt-1">Supports JPG, PNG format, up to 5MB</p>
+                <p class="text-xs text-gray-500 mt-0.5">Supports JPG, PNG format, up to 5MB</p>
               </div>
             </div>
-            <div v-else class="relative w-full h-[200px]">
+            <div v-else class="relative w-full h-[160px]">
               <img 
                 :src="imagePreview" 
                 class="w-full h-full object-contain rounded-lg"
@@ -71,33 +71,33 @@
               />
               <button 
                 @click="removeSelectedImage"
-                class="absolute -top-2 -right-2 p-1 bg-red-600 rounded-full hover:bg-red-700 transition-colors"
+                class="absolute -top-1.5 -right-1.5 p-0.5 bg-red-600 rounded-full hover:bg-red-700 transition-colors"
               >
-                <XMarkIcon class="h-6 w-6text-white" />
+                <XMarkIcon class="h-5 w-5 text-white" />
               </button>
             </div>
           </div>
         </Transition>
         <!-- 提示词 -->
-        <div :class="{'space-y-3': activeTab === 'text'}">
-          <label class="block text-sm lg:text-base font-semibold text-gray-300" :class="{'mb-2': activeTab === 'text', 'mb-1': activeTab === 'image'}">
+        <div :class="{'space-y-2': activeTab === 'text'}">
+          <label class="block text-sm lg:text-base font-semibold text-gray-300" :class="{'mb-1.5': activeTab === 'text', 'mb-1': activeTab === 'image'}">
             Prompt
           </label>
           <textarea 
             v-model="prompt"
-            class="w-full rounded-xl bg-blue-pale border border-gray-700 text-gray-200 px-3 py-2 focus:ring-2 focus:ring-[#7C3AED] focus:border-transparent transition placeholder-gray-500 text-sm lg:text-base h-20 sm:h-24 resize-none" 
+            class="w-full rounded-lg bg-blue-pale border border-gray-700 text-gray-200 px-2 py-1.5 focus:ring-2 focus:ring-[#7C3AED] focus:border-transparent transition placeholder-gray-500 text-sm lg:text-base h-16 sm:h-20 resize-none" 
             :placeholder="activeTab === 'text' ? 'Describe the video you want to create...' : 'Describe how to transform your image into video...'"
             @click="handleAction('prompt')"
           ></textarea>
         </div>
         <!-- 灵感 -->
-        <div v-if="activeTab === 'text'" class="flex items-center flex-wrap gap-2 mt-2 mb-2">
-          <span class="text-gray-400 text-xs lg:text-sm flex items-center gap-1 whitespace-nowrap"><SparklesIcon class="h-3 w-3 lg:h-4 lg:w-4 text-yellow-300" />Inspiration:</span>
-          <div class="flex gap-1.5 pb-1 flex-wrap">
+        <div v-if="activeTab === 'text'" class="flex items-center flex-wrap gap-1.5 mt-1.5 mb-1.5">
+          <span class="text-gray-400 text-xs lg:text-sm flex items-center gap-1 whitespace-nowrap"><SparklesIcon class="h-2.5 w-2.5 lg:h-3 lg:w-3 text-yellow-300" />Inspiration:</span>
+          <div class="flex gap-1 pb-1 flex-wrap">
             <button 
               v-for="item in inspirationPrompts" 
               :key="item.label"
-              class="px-2 py-1 rounded-lg bg-gray-700 text-gray-100 hover:bg-[#7C3AED] hover:text-white transition text-xs font-medium shadow whitespace-nowrap" 
+              class="px-1.5 py-0.5 rounded-lg bg-gray-700 text-gray-100 hover:bg-[#7C3AED] hover:text-white transition text-xs font-medium shadow whitespace-nowrap" 
               @click="handleAction('inspiration', item.prompt)"
             >
               {{ item.label }}
@@ -105,17 +105,17 @@
           </div>
         </div>
         <!-- 各个下拉选项 -->
-        <div class="mt-4">
+        <div class="mt-3">
           <!-- 时长和分辨率选择 -->
-          <div class="flex items-center gap-6">
+          <div class="flex items-center gap-4">
             <div class="flex items-center">
-              <label class="text-xs text-gray-400 mr-3">Video Duration:</label>
-              <div class="flex gap-2">
+              <label class="text-xs text-gray-400 mr-2">Video Duration:</label>
+              <div class="flex gap-1.5">
                 <button 
                   v-for="opt in durationOptions" 
                   :key="opt.value"
                   @click="handleAction('selectDuration', opt.value)"
-                  class="px-3 py-1.5 rounded-lg border border-dashed transition-all text-sm"
+                  class="px-2 py-1 rounded-lg border border-dashed transition-all text-sm"
                   :class="duration === opt.value ? 'border-[#7C3AED] text-[#7C3AED] bg-[#7C3AED]/10' : 'border-gray-600 text-gray-400 hover:border-gray-400 hover:text-gray-300'"
                 >
                   {{ opt.label }}
@@ -123,13 +123,13 @@
               </div>
             </div>
             <div class="flex items-center">
-              <label class="text-xs text-gray-400 mr-3">Resolution:</label>
-              <div class="flex gap-2">
+              <label class="text-xs text-gray-400 mr-2">Resolution:</label>
+              <div class="flex gap-1.5">
                 <button 
                   v-for="opt in availableResolutions" 
                   :key="opt.value"
                   @click="handleAction('selectResolution', opt.value)"
-                  class="px-3 py-1.5 rounded-lg border border-dashed transition-all text-sm"
+                  class="px-2 py-1 rounded-lg border border-dashed transition-all text-sm"
                   :class="resolution === opt.value ? 'border-[#7C3AED] text-[#7C3AED] bg-[#7C3AED]/10' : 'border-gray-600 text-gray-400 hover:border-gray-400 hover:text-gray-300'"
                 >
                   {{ opt.label }}
@@ -139,46 +139,46 @@
           </div>
         </div>
         <!-- 分享到作品展示选项 -->
-        <div class="flex items-center gap-2 mt-4">
-          <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1.5 mt-3">
+          <div class="flex items-center gap-1.5">
             <input 
               type="checkbox" 
               id="showInGallery" 
               v-model="isShow"
-              class="w-4 h-4 rounded border-gray-600 bg-gray-700 text-[#7C3AED] focus:ring-[#7C3AED] focus:ring-offset-gray-800"
+              class="w-3 h-3 rounded border-gray-600 bg-gray-700 text-[#7C3AED] focus:ring-[#7C3AED] focus:ring-offset-gray-800"
             />
             <label for="showInGallery" class="text-sm text-gray-300">Share to Gallery</label>
           </div>
           <div class="group relative">
-            <InformationCircleIcon class="h-5 w-5 text-gray-400 cursor-help" />
-            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-blue-pale text-gray-200 text-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap z-10">
+            <InformationCircleIcon class="h-4 w-4 text-gray-400 cursor-help" />
+            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2 py-1.5 bg-blue-pale text-gray-200 text-xs rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap z-10">
               Your work will be displayed in the gallery when checked
             </div>
           </div>
         </div>
         <!-- 生成按钮 -->
         <button 
-          class="w-full flex items-center justify-center gap-2 px-4 mt-4 lg:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 hover:from-[#7C3AED]/90 hover:to-[#7C3AED]/70 text-white rounded-xl font-extrabold text-base sm:text-lg lg:text-xl shadow-xl transition relative" 
+          class="w-full flex items-center justify-center gap-1.5 px-3 mt-3 lg:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 hover:from-[#7C3AED]/90 hover:to-[#7C3AED]/70 text-white rounded-lg font-extrabold text-base sm:text-lg lg:text-xl shadow-xl transition relative" 
           @click="handleAction('generate')"
           :disabled="isGenerating"
         >
-          <ArrowUpTrayIcon class="h-5 w-5 lg:h-6 lg:w-6" />
+          <ArrowUpTrayIcon class="h-4 w-4 lg:h-5 lg:w-5" />
           <span class="whitespace-nowrap">{{ isGenerating ? 'Generating...' : 'Generate Video' }}</span>
-          <span class="absolute -top-2 -right-2 bg-[#00b8ff] text-white text-sm font-bold px-2 py-1 rounded-full shadow border-2 border-white/50 shadow-[0_0_15px_rgba(0,184,255,0.3)]">{{ needCredits }} credits</span>
+          <span class="absolute -top-1.5 -right-1.5 bg-[#00b8ff] text-white text-xs font-bold px-1.5 py-0.5 rounded-full shadow border-2 border-white/50 shadow-[0_0_15px_rgba(0,184,255,0.3)]">{{ needCredits }} credits</span>
         </button>
       </div>
       <!-- 右侧视频预览 -->
       <div :class="[
-        'w-full mx-auto lg:mx-0 lg:w-[65%] xl:w-[60%] 2xl:w-[58%] max-w-[720px] lg:max-w-none flex flex-col items-center p-3 sm:p-4 lg:p-6 xl:p-8 bg-blue-pale/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-700/50',
+        'w-full mx-auto lg:mx-0 lg:w-[65%] xl:w-[60%] 2xl:w-[58%] max-w-[576px] lg:max-w-none flex flex-col items-center p-2 sm:p-3 lg:p-4 xl:p-6 bg-blue-pale/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/50',
         containerHeight.base.replace('min-', ''),
         containerHeight.sm.replace('sm:min-', 'sm:'),
         containerHeight.lg.replace('lg:min-', 'lg:')
       ]">
-        <div class="flex flex-col justify-center items-center w-full h-full bg-gradient-to-br from-blue-pale/50 via-blue-pale/50 to-blue-pale/50 rounded-[20px]">
+        <div class="flex flex-col justify-center items-center w-full h-full bg-gradient-to-br from-blue-pale/50 via-blue-pale/50 to-blue-pale/50 rounded-[16px]">
           <div class="relative w-full aspect-[4/3] flex items-center justify-center h-full">
             <!-- 进度条 -->
             <div v-if="isGenerating" class="absolute inset-0 flex items-center justify-center">
-              <div v-if="progress > 0" class="relative w-32 h-32">
+              <div v-if="progress > 0" class="relative w-24 h-24">
                 <svg class="w-full h-full" viewBox="0 0 100 100">
                   <circle
                     class="text-gray-700"
@@ -205,13 +205,13 @@
                     }"
                   />
                 </svg>
-                <div class="absolute inset-0 flex items-center justify-center text-[#7C3AED] font-bold text-xl">
+                <div class="absolute inset-0 flex items-center justify-center text-[#7C3AED] font-bold text-lg">
                   {{ progress.toFixed(0) }}%
                 </div>
               </div>
               <div v-else class="flex flex-col items-center justify-center">
-                <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
-                <p class="text-[#7C3AED] text-sm mt-3">Processing...</p>
+                <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#7C3AED] border-t-transparent"></div>
+                <p class="text-[#7C3AED] text-xs mt-2">Processing...</p>
               </div>
             </div>
             <!-- 预览视频 -->
@@ -220,7 +220,7 @@
                 <video 
                   :src="previewVideoUrl" 
                   :poster="previewVideoPoster"
-                  class="w-full h-full object-cover rounded-2xl" 
+                  class="w-full h-full object-cover rounded-xl" 
                   autoplay 
                   loop 
                   muted
@@ -232,12 +232,12 @@
                 <!-- 视频加载状态 -->
                 <div 
                   v-if="previewVideoLoading[previewVideoUrl]" 
-                  class="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl"
+                  class="absolute inset-0 flex items-center justify-center bg-black/50 rounded-xl"
                 >
-                  <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
+                  <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#7C3AED] border-t-transparent"></div>
                 </div>
               </div>
-              <div class="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 bg-black/60 text-white/90 px-4 sm:px-5 py-1.5 sm:py-2 rounded-xl text-base sm:text-lg font-semibold shadow-lg pointer-events-none select-none whitespace-nowrap z-10">
+              <div class="absolute bottom-3 sm:bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white/90 px-3 sm:px-4 py-1 sm:py-1.5 rounded-lg text-sm sm:text-base font-semibold shadow-lg pointer-events-none select-none whitespace-nowrap z-10">
                 AI Video Generation Demo
               </div>
             </div>
@@ -245,7 +245,7 @@
             <div v-else-if="generatedVideoUrl" class="w-full h-full relative">
               <video 
                 :src="generatedVideoUrl" 
-                class="w-full h-full object-contain rounded-2xl" 
+                class="w-full h-full object-contain rounded-xl" 
                 autoplay 
                 loop 
                 muted
@@ -255,15 +255,15 @@
               ></video>
               <button 
                 @click="handleDownload"
-                class="absolute top-0 right-0 bg-black/60 text-[#7C3AED] px-4 py-2 rounded-xl text-sm font-medium shadow-lg flex items-center gap-2 transition-all duration-300 hover:bg-black/70 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-sm hover:shadow-[#7C3AED]"
+                class="absolute top-0 right-0 bg-black/60 text-[#7C3AED] px-3 py-1.5 rounded-lg text-xs font-medium shadow-lg flex items-center gap-1.5 transition-all duration-300 hover:bg-black/70 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-sm hover:shadow-[#7C3AED]"
                 :disabled="isDownloading"
               >
-                <ArrowDownTrayIcon v-if="!isDownloading" class="w-5 h-5" />
-                <ArrowPathIcon v-else class="w-5 h-5 animate-spin" />
+                <ArrowDownTrayIcon v-if="!isDownloading" class="w-4 h-4" />
+                <ArrowPathIcon v-else class="w-4 h-4 animate-spin" />
                 {{ isDownloading ? 'Downloading...' : 'Download' }}
               </button>
               <!-- 添加提示文本 -->
-              <div class="absolute top-0 left-0 bg-black/60 text-white/90 px-4 py-2 rounded-xl text-sm font-medium shadow-lg flex items-center justify-center gap-2 whitespace-nowrap">
+              <div class="absolute top-0 left-0 bg-black/60 text-white/90 px-3 py-1.5 rounded-lg text-xs font-medium shadow-lg flex items-center justify-center gap-1.5 whitespace-nowrap">
                 <span>Video has been generated, visit</span>
                 <NuxtLink to="/profile" class="text-[#7C3AED] hover:text-[#7C3AED]/80 transition-colors">
                   profile-My Works
@@ -273,7 +273,7 @@
             </div>
             <!-- 视频加载中 -->
             <div v-else class="absolute inset-0 flex items-center justify-center">
-              <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
+              <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#7C3AED] border-t-transparent"></div>
             </div>
           </div>
         </div>
@@ -1050,13 +1050,13 @@ const restoreFormData = () => {
 const containerHeight = computed(() => {
   // 图片模式时增加高度
   return activeTab.value === 'image' ? {
-    base: 'min-h-[650px]',
-    sm: 'sm:min-h-[700px]',
-    lg: 'lg:min-h-[750px]'
-  } : {
-    base: 'min-h-[500px]',
-    sm: 'sm:min-h-[550px]',
+    base: 'min-h-[520px]',
+    sm: 'sm:min-h-[560px]',
     lg: 'lg:min-h-[600px]'
+  } : {
+    base: 'min-h-[400px]',
+    sm: 'sm:min-h-[440px]',
+    lg: 'lg:min-h-[480px]'
   }
 })
 </script>

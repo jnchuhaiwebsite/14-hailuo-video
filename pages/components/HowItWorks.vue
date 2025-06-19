@@ -26,7 +26,7 @@
             
             <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">{{ step.title }}</h3>
             <p class="text-gray-300 mb-4">{{ step.description }}</p>
-            <p class="text-xs sm:text-sm text-[#7C3AED]">{{ step.specs }}</p>
+            <p class="text-xs sm:text-sm text-gray-300 ">{{ step.specs }}</p>
           </div>
           
           <!-- Animated underline -->
@@ -68,9 +68,9 @@ const steps = [
   },
   {
     title: "Generate & Download",
-    description: "Our AI processes your request in 7-10 minutes and delivers high-quality video output",
+    description: "Our AI processes your request in 3-5minutes and delivers high-quality video output",
     icon: ArrowDownTrayIcon,
-    specs: "7-10 minutes processing, 85% instruction response rate"
+    specs: "3-5minutes processing, 85% instruction response rate"
   }
 ];
 </script>

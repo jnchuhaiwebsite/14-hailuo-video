@@ -101,7 +101,7 @@ onMounted(() => {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: "Hailuo02 Video",
-    description: "Create stunning AI videos in 7-10 minutes using text or images with Hailuo02. No editing needed. Perfect for creators, brands, and educators.",
+    description: "Create stunning AI videos in 3-5minutes using text or images with Hailuo02. No editing needed. Perfect for creators, brands, and educators.",
     applicationCategory: "VideoGenerationApplication",
     operatingSystem: "All",
     offers: {
