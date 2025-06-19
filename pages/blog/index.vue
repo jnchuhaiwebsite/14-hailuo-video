@@ -2,8 +2,8 @@
   <div class="min-h-screen bg-gray-900 pb-10">
     <!-- Page title -->
     <div class="pt-32 pb-12 text-center">
-      <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[#00ffd1]">SeedancePro Blog</h1>
-      <p class="text-gray-400">Tips, tutorials, and inspiration for creating professional-quality videos with multi-camera storytelling</p>
+      <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[#00ffd1]">Hailuo02 Video Blog</h1>
+      <p class="text-gray-400">Tips, tutorials, and inspiration for creating professional-quality videos with AI video generation</p>
     </div>
     
     <div class="flex flex-col md:flex-row gap-4 md:gap-8 mb-16 mx-auto w-11/12 max-w-7xl">
@@ -63,12 +63,12 @@ import { useBlogPosts } from '~/composables/useBlogPosts'
 import { useSeo } from '~/composables/useSeo'
 
 useSeo({
-  title: "Seedance Pro Blog - Advanced Video Generation Tips",
-  description: "Expert guides on creating professional-quality videos with Seedance Pro. Learn tips and tricks for multi-camera storytelling and video generation.",
-  ogTitle: "Seedance Pro Blog - Advanced Video Generation Tips",
-  ogDescription: "Expert guides on creating professional-quality videos with Seedance Pro. Learn tips and tricks for multi-camera storytelling and video generation.",
-  twitterTitle: "Seedance Pro Blog - Advanced Video Generation Tips",
-  twitterDescription: "Expert guides on creating professional-quality videos with Seedance Pro. Learn tips and tricks for multi-camera storytelling and video generation."
+  title: "Hailuo02 Video Blog - AI Video Generation Tips",
+  description: "Expert guides on creating professional-quality videos with Hailuo02 Video. Learn tips and tricks for AI video generation from text or images.",
+  ogTitle: "Hailuo02 Video Blog - AI Video Generation Tips",
+  ogDescription: "Expert guides on creating professional-quality videos with Hailuo02 Video. Learn tips and tricks for AI video generation from text or images.",
+  twitterTitle: "Hailuo02 Video Blog - AI Video Generation Tips",
+  twitterDescription: "Expert guides on creating professional-quality videos with Hailuo02 Video. Learn tips and tricks for AI video generation from text or images."
 });
 
 // Use blog posts data
@@ -85,12 +85,12 @@ onMounted(() => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "SeedancePro Blog",
-    description: "Expert tutorials and insights on multi-camera video generation and AI-powered storytelling",
+    name: "Hailuo02 Video Blog",
+    description: "Expert tutorials and insights on AI video generation from text or images",
     url: "https://www.hailuo2.com/blog",
     publisher: {
       "@type": "Organization",
-      name: "SeedancePro",
+      name: "Hailuo02 Video",
       logo: {
         "@type": "ImageObject",
         url: "/logo.png"
@@ -103,7 +103,7 @@ onMounted(() => {
       datePublished: post.date,
       author: {
         "@type": "Organization",
-        name: "SeedancePro Team"
+        name: "Hailuo02 Video Team"
       }
     }))
   };

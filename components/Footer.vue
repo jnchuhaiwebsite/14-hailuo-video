@@ -51,12 +51,12 @@
       <!-- Logo 和描述 -->
       <div class="py-6 border-t border-gray-800">
         <div class="flex flex-col items-center text-center">
-          <img src="/logo.png" alt="SeedancePro - Advanced Multi-Camera Video Generation Model" loading="lazy" class="h-16 md:h-24 mb-4">
+          <img src="/logo.png" alt="Hailuo02 Video - AI Video from Text or Image in Minutes" loading="lazy" class="h-16 md:h-24 mb-4">
           <p class="text-sm text-gray-400 max-w-xl mb-4">
-            Create stunning 1080P HD videos with SeedancePro's advanced multi-camera storytelling capabilities. Generate professional-quality videos with smooth motion and cinematic aesthetics.
+            Create stunning AI videos in 7-10 minutes using text or images with Hailuo02 Video. No editing needed. Perfect for creators, brands, and educators.
           </p>
           <div class="flex flex-col items-center gap-2 text-sm text-gray-500">
-            <p>© 2025 SeedancePro. All rights reserved.</p>
+            <p>© 2025 Hailuo02 Video. All rights reserved.</p>
             <div class="flex items-center gap-2">
               <span>Contact:</span>
               <a href="mailto:support@hailuo2.com" class="text-[#00ffd1] transition-colors">support@hailuo2.com</a>

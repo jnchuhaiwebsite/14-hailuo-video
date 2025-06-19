@@ -72,8 +72,8 @@ import { useNuxtApp } from 'nuxt/app'
 const { $toast } = useNuxtApp() as any
 
 useSeo({
-  title: "Seedance Pro – Fastest Text & Images Video Generator | Free",
-  description: "Create cinematic 1080P videos from text or images with Seedance Pro. Experience multi-shot narratives, smooth camera motions, and precise prompt control."
+  title: "Hailuo02 Video | Free online AI video generator",
+  description: "Create stunning AI videos in 7-10 minutes using text or images with Hailuo02. No editing needed. Perfect for creators, brands, and educators. Try it free today!"
 });
 
 // 处理支付回调
@@ -99,8 +99,8 @@ onMounted(() => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "SeedancePro",
-    description: "Advanced multi-camera video generation model that excels in storytelling. Create stunning 1080P HD videos with smooth motion and cinematic aesthetics.",
+    name: "Hailuo02 Video",
+    description: "Create stunning AI videos in 7-10 minutes using text or images with Hailuo02. No editing needed. Perfect for creators, brands, and educators.",
     applicationCategory: "VideoGenerationApplication",
     operatingSystem: "All",
     offers: {
@@ -109,14 +109,16 @@ onMounted(() => {
       priceCurrency: "USD",
     },
     featureList: [
-      "Multi-camera storytelling",
-      "Smooth motion generation",
-      "Precise instruction following",
+      "AI video generation from text",
+      "AI video generation from images",
+      "No editing required",
+      "Perfect for creators",
+      "Perfect for brands",
+      "Perfect for educators",
       "1080P HD video output",
       "Multiple aspect ratios",
       "Flexible video duration",
-      "Text-to-video generation",
-      "Image-to-video generation"
+      "Fast generation in 7-10 minutes"
     ],
     screenshot: "/logo.png",
     applicationSubCategory: "AI Video Generation",

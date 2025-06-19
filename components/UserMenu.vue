@@ -9,7 +9,7 @@
         >
           <img
             :src="userDisplay?.imageUrl || '/default-avatar.png'"
-            :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - SeedancePro` : 'Default User Avatar - SeedancePro'"
+            :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Hailuo02 Video` : 'Default User Avatar - Hailuo02 Video'"
             loading="lazy"
             class="w-10 h-10 rounded-full object-cover hover:opacity-80 transition-opacity"
           />
@@ -24,7 +24,7 @@
             <div class="flex items-center gap-3 mb-2">
               <img
                 :src="userDisplay?.imageUrl || '/default-avatar.png'"
-                :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - SeedancePro` : 'Default User Avatar - SeedancePro'"
+                :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Hailuo02 Video` : 'Default User Avatar - Hailuo02 Video'"
                 loading="lazy"
                 class="w-10 h-10 rounded-full object-cover ring-2 ring-baby-pink/20"
               />
@@ -125,7 +125,7 @@
         <div class="flex items-center gap-3">
           <img
             :src="userDisplay?.imageUrl || '/default-avatar.png'"
-            :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - SeedancePro` : 'Default User Avatar - SeedancePro'"
+            :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Hailuo02 Video` : 'Default User Avatar - Hailuo02 Video'"
             loading="lazy"
             class="w-10 h-10 rounded-full object-cover ring-2 ring-baby-pink/20"
           />

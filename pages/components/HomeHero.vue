@@ -13,12 +13,12 @@
     </div>
     <!-- 顶部新版本提示 -->
     <!-- <div class="absolute top-8 left-1/2 -translate-x-1/2 z-10">
-      <span class="px-6 py-2 rounded-full bg-[#00ffd1]/10 text-[#00ffd1] text-sm font-semibold shadow-md backdrop-blur-sm">New Seedance Pro Released</span>
+      <span class="px-6 py-2 rounded-full bg-[#00ffd1]/10 text-[#00ffd1] text-sm font-semibold shadow-md backdrop-blur-sm">New Hailuo02 Video Released</span>
     </div> -->
     <!-- 标题区 -->
     <div class="mt-[80px] mb-14 flex flex-col items-center relative z-10">
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center bg-gradient-to-r from-[#00ffd1] via-[#00ffd1]/80 via-[#00b8ff] to-[#00ffd1] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
-        Create Cinematic AI Videos with Seedance Pro
+        Hailuo2: Turn Creativity into Blockbusters
       </h1>
       <!-- 注册送积分提示 -->
       <div class="mt-3 sm:mt-4 px-3 xs:px-4 sm:px-6 py-1 xs:py-1.5 sm:py-2 bg-gradient-to-r from-[#00ffd1]/20 to-[#00b8ff]/20 rounded-full border border-[#00ffd1]/30 backdrop-blur-sm inline-flex items-center">
@@ -28,12 +28,11 @@
         </span>
       </div>
       <p class="mt-6 text-1xl text-gray-200 text-center max-w-3xl font-medium">
-        Seedance Pro empowers creators with next-generation AI video technology. Generate smooth, multi-shot, cinematic videos from text or image prompts in 1080P quality—perfect for storytelling, marketing, and creative expression.
+        Create stunning AI videos in minutes using text or images with Hailuo02 Video. No editing needed. Perfect for creators, brands, and educators. Generate smooth, cinematic videos in 1080P quality—perfect for storytelling, marketing, and creative expression.
       </p>
       <div class="flex flex-wrap gap-2 xs:gap-3 sm:gap-4 md:gap-6 justify-center mt-4 sm:mt-6 md:mt-8 cursor-default">
-        <h2 class="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg text-xs xs:text-sm sm:text-base md:text-md transition">Seedance 1.0 Pro</h2>
-        <h2 class="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-full bg-green-500 hover:bg-green-600 text-white font-bold shadow-lg text-xs xs:text-sm sm:text-base md:text-md transition">DouBao Large Model 1.6</h2>
-        <h2 class="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold shadow-lg text-xs xs:text-sm sm:text-base md:text-md transition">Volcano Engine</h2>
+        <h2 class="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg text-xs xs:text-sm sm:text-base md:text-md transition">MiniMax-Hailuo-02</h2>
+        <h2 class="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold shadow-lg text-xs xs:text-sm sm:text-base md:text-md transition">MiniMax</h2>
         <h2 class="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-lg text-xs xs:text-sm sm:text-base md:text-md transition">AI Technology</h2>
       </div>
     </div>
@@ -714,7 +713,7 @@ const withLoginCheck = async (callback: () => void | Promise<void>) => {
 // 修改 startProgressAnimation 函数
 const startProgressAnimation = (startFromProgress = 0) => {
   progress.value = startFromProgress
-  const totalDuration = 38000 //总秒数
+  const totalDuration = 510000 // 8.5分钟，约7-10分钟的平均值
   const totalSteps = 99 // 总共99步
   const stepDuration = totalDuration / totalSteps
   const remainingSteps = totalSteps - startFromProgress
