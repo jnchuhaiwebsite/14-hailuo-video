@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@/assets/css/main.css', // 主样式文件
   ],
   plugins: [
-    '~/plugins/google-analytics.client.ts', // Google Analytics 插件（仅客户端）
+    // '~/plugins/google-analytics.client.ts', // Google Analytics 插件（仅客户端）
   ],
   runtimeConfig: {
     public: {
