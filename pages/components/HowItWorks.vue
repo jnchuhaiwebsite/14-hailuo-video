@@ -66,9 +66,9 @@ const steps = [
   },
   {
     title: "Generate & Download",
-    description: "Our AI processes your request in 1-2 minutes and delivers high-quality video output",
+    description: "Our AI processes your request in 7-10 minutes and delivers high-quality video output",
     icon: ArrowDownTrayIcon,
-    specs: "1-2 minutes processing, 85% instruction response rate"
+    specs: "7-10 minutes processing, 85% instruction response rate"
   }
 ];
 </script>

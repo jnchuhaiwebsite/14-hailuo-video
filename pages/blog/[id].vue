@@ -121,19 +121,19 @@ const title = computed(() => {
 
 //设置页面元数据
 useSeo({
-  title: `${title.value} - Seedance Pro Blog`,
+  title: `${title.value} - Hailuo02 Video Blog`,
   description: metaDescription.value,
   ogType: 'article',
-  ogTitle: `${title.value} - Seedance Pro Blog`,
+  ogTitle: `${title.value} - Hailuo02 Video Blog`,
   ogDescription: metaDescription.value,
-  twitterTitle: `${title.value} - Seedance Pro Blog`,
+  twitterTitle: `${title.value} - Hailuo02 Video Blog`,
   twitterDescription: metaDescription.value,
   other: [
     { property: 'article:published_time', content: post.value?.date || '' },
     { property: 'article:section', content: post.value?.category || '' },
-    { property: 'article:tag', content: 'video generation, multi-camera storytelling, AI video creation' },
-    { property: 'article:author', content: 'SeedancePro Team' },
-    { property: 'article:publisher', content: 'SeedancePro' }
+    { property: 'article:tag', content: 'AI video generation, text to video, image to video, video creation' },
+    { property: 'article:author', content: 'Hailuo02 Video Team' },
+    { property: 'article:publisher', content: 'Hailuo02 Video' }
   ]
 });
 

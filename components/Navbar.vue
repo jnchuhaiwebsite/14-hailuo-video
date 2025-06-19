@@ -9,7 +9,7 @@
           <!-- Logo -->
           <div class="flex items-center gap-2">
             <NuxtLink to="/">
-              <img src="/logo.png" alt="SeedancePro - Advanced Multi-Camera Video Generation Model" class="h-12 lg:h-16" loading="lazy" />
+              <img src="/logo.png" alt="Hailuo02 Video - AI Video from Text or Image in Minutes" class="h-12 lg:h-16" loading="lazy" />
             </NuxtLink>
           </div>
 

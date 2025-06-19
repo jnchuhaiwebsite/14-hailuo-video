@@ -3,10 +3,10 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-            Discover Creative Works from the SeedancePro Community
+            Discover Creative Works from the Hailuo02 Video Community
           </h2>
           <p class="mt-4 text-xl text-gray-300">
-            From cinematic sci-fi flights to fantasy warrior animations, these videos are created entirely by SeedancePro users using only text or image prompts. Explore their imagination, get inspired, and start crafting your own AI-powered stories.
+            From cinematic sci-fi flights to fantasy warrior animations, these videos are created entirely by Hailuo02 Video users using only text or image prompts. Explore their imagination, get inspired, and start crafting your own AI-powered stories.
           </p>
         </div>
         <div v-if="isLoading" class="mt-16 flex justify-center items-center">
@@ -104,8 +104,8 @@
 
 
 useSeo({
-  title: "Explore AI Video Inspiration – | Created with Seedance Pro",
-  description: "Discover cinematic AI videos made by Seedance Pro users. Get inspired and create your own from text or images—fast, creative, and free to try."
+  title: "Explore AI Video Inspiration – Created with Hailuo02 Video",
+  description: "Discover cinematic AI videos made by Hailuo02 Video users. Get inspired and create your own from text or images—fast, creative, and free to try."
 });
 
 
