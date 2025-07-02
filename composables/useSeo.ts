@@ -50,7 +50,7 @@ export function useSeo(options: SeoOptions) {
       { property: 'og:type', content: options.ogType || 'website' },
       { property: 'og:url', content: fullUrlWithoutSlash },
       { property: 'og:image', content: options.ogImage || `${baseUrl}/logo.png` },
-      { property: 'og:site_name', content: 'SeedancePro' },
+      { property: 'og:site_name', content: 'hailuo2' },
       ...(options.other || []),
 
       // Twitter Card

@@ -1,6 +1,6 @@
-# SeedancePro - Advanced Multi-Camera Video Generation Model
+# hailuo2 - Advanced Multi-Camera Video Generation Model
 
-SeedancePro is a cutting-edge video generation model that excels in multi-camera storytelling. It creates stunning 1080P HD videos with smooth motion, rich details, and cinematic aesthetics.
+hailuo2 is a cutting-edge video generation model that excels in multi-camera storytelling. It creates stunning 1080P HD videos with smooth motion, rich details, and cinematic aesthetics.
 
 ## Key Features
 
@@ -58,4 +58,4 @@ yarn preview
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-© 2023-2024 SeedancePro - All rights reserved
+© 2023-2024 hailuo2 - All rights reserved

@@ -33,19 +33,19 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {  
           name: 'description', 
-          content: 'SeedancePro is a cutting-edge video generation model that excels in multi-camera storytelling. Create stunning 1080P HD videos with smooth motion, rich details, and cinematic aesthetics.' 
+          content: 'hailuo2 is a cutting-edge video generation model that excels in multi-camera storytelling. Create stunning 1080P HD videos with smooth motion, rich details, and cinematic aesthetics.' 
         },
-        { property: 'og:title', content: 'SeedancePro - Advanced Multi-Camera Video Generation' },
-        { property: 'og:description', content: 'Create professional-quality videos with SeedancePro. Our AI model supports multi-camera storytelling, smooth motion, and cinematic aesthetics.' },
+        { property: 'og:title', content: 'hailuo2 - Advanced Multi-Camera Video Generation' },
+        { property: 'og:description', content: 'Create professional-quality videos with hailuo2. Our AI model supports multi-camera storytelling, smooth motion, and cinematic aesthetics.' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: 'SeedancePro' },
+        { property: 'og:site_name', content: 'hailuo2' },
         { property: 'og:image', content: '/og-image.jpg' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'SeedancePro - Advanced Multi-Camera Video Generation' },
-        { name: 'twitter:description', content: 'Create professional-quality videos with SeedancePro. Our AI model supports multi-camera storytelling, smooth motion, and cinematic aesthetics.' },
+        { name: 'twitter:title', content: 'hailuo2 - Advanced Multi-Camera Video Generation' },
+        { name: 'twitter:description', content: 'Create professional-quality videos with hailuo2. Our AI model supports multi-camera storytelling, smooth motion, and cinematic aesthetics.' },
         { name: 'twitter:image', content: '/og-image.jpg' },
-        { name: 'author', content: 'SeedancePro Team' },
-        { name: 'application-name', content: 'SeedancePro' },
+        { name: 'author', content: 'hailuo2 Team' },
+        { name: 'application-name', content: 'hailuo2' },
       ],
       script: [
         { src: '/js/c6h.js', async: true } 
