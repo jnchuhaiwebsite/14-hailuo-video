@@ -1,12 +1,13 @@
 <template>
   <div class="relative w-full flex flex-col items-center justify-start overflow-x-hidden">
     <!-- 标题区 -->
-    <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10">
+    <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
       <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
-        With Hailuo2 Video AI, creative moments instantly turn into blockbusters.
+        Hailuo 02 Video Generator 
+        <!-- - Transform Your Creative Moments into Blockbuster Videos Instantly. -->
       </h1>
       <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
-        Create stunning AI videos in minutes using text or images with Hailuo02 Video. No editing needed. Perfect for creators, brands, and educators. Generate smooth, cinematic videos in 1080P quality—perfect for storytelling, marketing, and creative expression.
+        Create high‑quality 1080p AI videos in minutes from text or images—no editing needed. Perfect for creators, brands & educatorsing, marketing, and creative expression.
       </p>
     </div>
     <!-- 主体区 -->
