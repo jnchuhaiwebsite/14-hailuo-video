@@ -79,6 +79,18 @@
             Personal Center
           </NuxtLink>
 
+          <!-- 分享链接 -->
+          <button
+            v-if="hasPromotionPermission && promotionLink"
+            @click="copyPromotionLink"
+            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center transition-all duration-200 hover:text-baby-coral"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+            </svg>
+            copy promotion link
+          </button>
+
           <!-- 退出按钮 -->
           <SignOutButton>
             <button
@@ -169,6 +181,18 @@
         </div>
       </div>
 
+      <!-- 分享链接按钮 -->
+      <button
+        v-if="hasPromotionPermission && promotionLink"
+        @click="copyPromotionLink"
+        class="mt-4 w-full py-2 px-4 flex items-center justify-center gap-2 rounded-lg bg-baby-pink/10 hover:bg-baby-pink/20 transition-all duration-200 hover:scale-[1.02] text-sm font-medium text-baby-coral"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+        </svg>
+        copy promotion link
+      </button>
+
       <!-- 退出按钮 -->
       <SignOutButton>
         <button
@@ -209,7 +233,9 @@
 import { ref, computed, onMounted } from "vue";
 import { useClerkAuth } from '~/utils/auth'
 import { useUserStore } from '~/stores/user';
-import { setUserInfo } from '~/api/index'
+import { setUserInfo, getPromotionLink } from '~/api/index'
+import { useNuxtApp } from 'nuxt/app'
+import { useRuntimeConfig } from '#app'
 
 const props = defineProps({
   isMobile: {
@@ -217,7 +243,7 @@ const props = defineProps({
     default: false
   }
 });
-
+const { $toast } = useNuxtApp() as any
 // 用户存储
 const userStore = useUserStore();
 
@@ -227,6 +253,9 @@ const vipLastTime = ref("");
 const showUserMenu = ref(false);
 const isAuthLoading = ref(true);
 const isCreditsLoading = ref(false);
+const promotionLink = ref('')
+const isLoadingLink = ref(false)
+const hasPromotionPermission = ref(false)  // 添加权限状态
 
 // 引入auth认证
 const { 
@@ -245,11 +274,39 @@ const getUserInfo = async () => {
       // 更新用户信息
       limit.value = userData.free_limit+userData.remaining_limit|| 0;
       vipLastTime.value = userData.vipLastTime || "";
+      
+      // 获取分享链接
+      await fetchPromotionLink();
     }
   } catch (error) {
     console.error("获取用户信息失败:", error);
   } finally {
     isCreditsLoading.value = false;
+  }
+}
+
+// 获取分享链接
+const fetchPromotionLink = async () => {
+  if (isLoadingLink.value) return
+  
+  isLoadingLink.value = true
+  try {
+    const response = await getPromotionLink() as any
+    if (response.code === 500 && response.msg === 'this website  no permission') {
+      hasPromotionPermission.value = false
+      promotionLink.value = ''
+      return
+    }
+    hasPromotionPermission.value = true
+    const baseUrl = useRuntimeConfig().public.baseUrl
+    console.log('useRuntimeConfig().public', useRuntimeConfig().public)
+    promotionLink.value = `${baseUrl}?ivcode=${response.data.ivcode}`
+  } catch (error) {
+    console.error('Failed to fetch promotion link:', error)
+    hasPromotionPermission.value = false
+    promotionLink.value = ''
+  } finally {
+    isLoadingLink.value = false
   }
 }
 
@@ -286,6 +343,20 @@ const toggleUserMenu = async () => {
   } else {
     // 关闭菜单 
     showUserMenu.value = false;
+  }
+};
+
+// 复制分享链接
+const copyPromotionLink = () => {
+  if (promotionLink.value) {
+    navigator.clipboard.writeText(promotionLink.value)
+      .then(() => {
+        // 这里可以添加成功提示，如果你有toast组件的话
+        $toast.success("Promotion link copied to clipboard");
+      })
+      .catch(err => {
+        console.error("Copy promotion link failed:", err);
+      });
   }
 };
 
@@ -326,13 +397,26 @@ onMounted(async () => {
       const nickname = user.username || 
         (user.externalAccounts && user.externalAccounts[0]?.username || '') || 
         user.fullName || '';
-      setUserInfo({
+
+      // 获取URL中的ivcode参数
+      const urlParams = new URLSearchParams(window.location.search);
+      const ivcode = urlParams.get('ivcode');
+
+      // 构建setUserInfo的参数对象
+      const userInfoParams = {
         uuid: user.id,
         email,
         from_login,
         avatar,
         nickname
-      }).then(() => {
+      };
+
+      // 如果存在ivcode，添加到参数中
+      if (ivcode) {
+        userInfoParams.ivcode = ivcode;
+      }
+
+      setUserInfo(userInfoParams).then(() => {
         getUserInfo();
       }).catch(() => {
         isAuthLoading.value = false;
