@@ -29,6 +29,7 @@ export const urlList = {
   getTimesLog: baseUrl + '/api/user/times_log', // 获取使用次数日志、消费记录
   getPromotionLink: baseUrl + '/api/user/promotion_link', // 获取视频展示
   getPromotionUsers: baseUrl + '/api/user/promotion_users', // 获取推广用户列表
+  getPromotionScoreLog: baseUrl + '/api/user/promotion_score_log', // 获取积分记录
 }
 
 /**
@@ -94,6 +95,16 @@ export const getPromotionLink = async () => {
 export const getPromotionUsers = async (data:any) => {
   return apiRequest(urlList.getPromotionUsers+'?page='+data.page+'&page_size='+data.page_size, 'GET', undefined, true);
 }
+
+/**
+ * 获取积分记录
+ * @param data 数据
+ * @returns 积分记录
+ */
+export const getPromotionScoreLog = async (data:any) => {
+  return apiRequest(urlList.getPromotionScoreLog+'?page='+data.page+'&page_size='+data.page_size+'&from_uid='+data.from_uid+'&status='+data.status, 'GET', undefined, true);
+}
+
 /**
  * 获取当前用户信息
  * @returns 用户信息

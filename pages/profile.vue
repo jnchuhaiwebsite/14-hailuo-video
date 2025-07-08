@@ -230,6 +230,132 @@
       </div>
     </div>
 
+    <!-- 添加积分记录弹框 -->
+    <div v-if="showScoreRecords" 
+      class="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      @click="closeScoreRecords"
+    >
+      <div class="relative w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-3xl bg-gray-800/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden" 
+        @click.stop
+      >
+        <!-- 弹框头部 -->
+        <div class="flex items-center justify-between p-6 border-b border-gray-700/50">
+          <h3 class="text-xl font-bold text-white">Score Records</h3>
+          <button 
+            @click="closeScoreRecords"
+            class="text-gray-400 hover:text-white transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- 弹框内容 -->
+        <div class="p-6 overflow-y-auto max-h-[70vh] custom-scrollbar">
+          <!-- 积分记录列表 -->
+          <div class="space-y-4">
+            <div v-for="record in scoreRecords" :key="record.id" 
+              class="flex items-center justify-between p-4 bg-gray-700/50 backdrop-blur-sm rounded-xl hover:bg-gray-700 transition-all duration-300">
+              <div class="flex items-center space-x-4">
+                <!-- 用户头像 -->
+                <img :src="record.from_user_avatar || '/img/default-avatar.png'" alt="avatar" class="w-10 h-10 rounded-full">
+                <div>
+                  <p class="text-white font-medium">{{ record.from_user_nickname }}</p>
+                  <p class="text-gray-400 text-sm">{{ formatDate(record.updated_at) }}</p>
+                </div>
+              </div>
+              <!-- 积分信息 -->
+              <div class="text-right">
+                <p class="text-lg font-semibold text-green-400">
+                  +{{ record.score }}
+                </p>
+                <p class="text-sm text-gray-400">{{ record.status_text }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 加载状态 -->
+          <div v-if="scoreLoading" class="text-center py-8">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-700 border-t-blue-500"></div>
+          </div>
+
+          <!-- 空状态 -->
+          <div v-if="!scoreLoading && scoreRecords.length === 0" class="text-center py-12">
+            <div class="inline-block p-4 rounded-full bg-gray-700/50 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+              </svg>
+            </div>
+            <p class="text-gray-400">No score records yet</p>
+          </div>
+
+          <!-- 分页控件 -->
+          <div v-if="!scoreLoading && scoreRecords.length > 0" class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <!-- 每页显示数量选择器 -->
+            <div class="flex items-center gap-2">
+              <span class="text-gray-400 text-sm">Show</span>
+              <select 
+                v-model="scorePageSize"
+                @change="handleScorePageSizeChange"
+                class="bg-gray-700 text-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+              </select>
+              <span class="text-gray-400 text-sm">entries</span>
+            </div>
+
+            <!-- 分页按钮 -->
+            <div class="flex items-center gap-2">
+              <button 
+                @click="handleScorePageChange(scorePage - 1)"
+                :disabled="scorePage === 1"
+                class="px-3 py-1.5 rounded-lg text-sm transition-colors"
+                :class="[
+                  scorePage === 1 
+                    ? 'bg-gray-700 text-gray-500 cursor-not-allowed' 
+                    : 'bg-gray-700 text-gray-200 hover:bg-gray-600'
+                ]"
+              >
+                Previous
+              </button>
+              
+              <div class="flex items-center gap-1">
+                <button 
+                  v-for="page in totalScorePages" 
+                  :key="page"
+                  @click="handleScorePageChange(page)"
+                  class="w-8 h-8 rounded-lg text-sm transition-colors"
+                  :class="[
+                    page === scorePage 
+                      ? 'bg-blue-500 text-white' 
+                      : 'bg-gray-700 text-gray-200 hover:bg-gray-600'
+                  ]"
+                >
+                  {{ page }}
+                </button>
+              </div>
+
+              <button 
+                @click="handleScorePageChange(scorePage + 1)"
+                :disabled="scorePage === totalScorePages"
+                class="px-3 py-1.5 rounded-lg text-sm transition-colors"
+                :class="[
+                  scorePage === totalScorePages 
+                    ? 'bg-gray-700 text-gray-500 cursor-not-allowed' 
+                    : 'bg-gray-700 text-gray-200 hover:bg-gray-600'
+                ]"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- 作品列表 -->
     <div id="works-section" class="max-w-7xl mx-auto px-4 py-8">
       <div class="flex justify-between items-center mb-6">
@@ -471,6 +597,24 @@
                   <p class="text-gray-400 text-sm">Joined: {{ formatDate(user.user_created_time) }}</p>
                 </div>
               </div>
+              <!-- 添加总积分显示 -->
+              <div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <span class="text-yellow-500 font-medium">{{ user.score_total || 0 }}</span>
+                <button 
+                  @click="openScoreRecords(user.user_id)"
+                  class="ml-2 px-2 py-1 bg-gray-700 hover:bg-gray-600 rounded text-sm text-gray-200 transition-colors flex items-center gap-1"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                  </svg>
+                  Details
+                </button>
+              </div>
+              
             </div>
           </div>
 
@@ -589,7 +733,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, defineAsyncComponent, watch } from 'vue'
 import { useUserStore } from '~/stores/user'
-import { getOpusList, checkTask, getTimesLog, getPromotionLink, getPromotionUsers } from '~/api'
+import { getOpusList, checkTask, getTimesLog, getPromotionLink, getPromotionUsers, getPromotionScoreLog } from '~/api'
 import { SparklesIcon } from '@heroicons/vue/24/outline'
 import { useRuntimeConfig } from '#app'
 
@@ -692,6 +836,29 @@ const creditPage = ref(1)
 const creditPageSize = ref(10)
 const totalPages = ref(1)
 
+// 添加积分记录接口
+interface ScoreRecord {
+  id: number
+  amount: number
+  user_id: number
+  from_user_id: number
+  score: number
+  status: number
+  status_msg: string
+  created_at: number
+  updated_at: number
+  status_text: string
+  from_user_email: string
+  from_user_nickname: string
+  from_user_avatar: string
+}
+
+interface ScoreRecordResponse {
+  count: number
+  list: ScoreRecord[]
+  total_page: number
+}
+
 // 添加分享用户列表相关状态
 interface SharedUser {
   promotion_time: number
@@ -702,6 +869,7 @@ interface SharedUser {
   user_level: number
   user_created_time: number
   user_last_login_time: number
+  score_total: number // 添加总积分字段
 }
 
 const sharedUsers = ref<SharedUser[]>([])
@@ -1060,6 +1228,81 @@ const handleSharedUsersPageSizeChange = (size: number) => {
   sharedUsersPageSize.value = size
   sharedUsersPage.value = 1
   fetchSharedUsers()
+}
+
+// 添加记录详情相关状态和方法
+const currentRecord = ref<ScoreRecord | null>(null)
+const showRecordDetails = (record: ScoreRecord) => {
+  currentRecord.value = record
+  // 这里可以添加显示详情的逻辑，比如打开一个新的弹框
+  $toast.info(`User ${record.from_user_nickname} received ${record.score} points on ${formatDate(record.updated_at)}`)
+}
+
+// 添加积分记录相关状态和方法
+const currentUserId = ref<number | null>(null)
+const scoreRecords = ref<ScoreRecord[]>([])
+const scoreLoading = ref(false)
+const scorePage = ref(1)
+const scorePageSize = ref(10)
+const totalScorePages = ref(1)
+const showScoreRecords = ref(false)
+
+// 获取积分记录
+const fetchScoreRecords = async () => {
+  console.log(currentUserId.value)
+  if (scoreLoading.value || !currentUserId.value) return
+  
+  scoreLoading.value = true
+  try {
+    const response = await getPromotionScoreLog({
+      page: scorePage.value,
+      page_size: scorePageSize.value,
+      from_uid: currentUserId.value,
+      status: 1
+    }) as any
+    
+    const data = response.data
+    totalScorePages.value = data.total_page
+    scoreRecords.value = data.list
+  } catch (error) {
+    console.error('Failed to fetch score records:', error)
+    $toast.error('Failed to load score records')
+  } finally {
+    scoreLoading.value = false
+  }
+}
+
+// 打开积分记录弹框
+const openScoreRecords = (userId: number) => {
+  currentUserId.value = userId
+  showScoreRecords.value = true
+  // 禁止背景滚动
+  document.body.style.overflow = 'hidden'
+  // 重置积分记录数据
+  scoreRecords.value = []
+  scorePage.value = 1
+  fetchScoreRecords()
+}
+
+// 关闭积分记录弹框
+const closeScoreRecords = () => {
+  showScoreRecords.value = false
+  // 恢复背景滚动
+  document.body.style.overflow = ''
+}
+
+// 切换积分记录页码
+const handleScorePageChange = (page: number) => {
+  if (page < 1 || page > totalScorePages.value) return
+  scorePage.value = page
+  fetchScoreRecords()
+}
+
+// 切换积分记录每页显示数量
+const handleScorePageSizeChange = (size: number) => {
+  scorePageSize.value = Number(size)
+  scorePage.value = 1
+  fetchScoreRecords()
 }
 
 onMounted(() => {
