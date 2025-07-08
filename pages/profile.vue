@@ -570,7 +570,7 @@
     <!-- 分享用户列表 -->
     <div v-if="hasPromotionPermission" class="max-w-7xl mx-auto px-4 py-8">
       <div class="flex justify-between items-center mb-6">
-        <h3 class="text-xl font-bold text-white">My Share Link</h3>
+        <h3 class="text-xl font-bold text-white">My invited users</h3>
         <button 
           @click="fetchSharedUsers"
           class="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all text-gray-200 hover:bg-gray-700"
