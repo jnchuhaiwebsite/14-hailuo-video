@@ -3,11 +3,12 @@ import { useRuntimeConfig } from 'nuxt/app'
 // API基础URL
 // console.log('当前环境:', process.env.NODE_ENV);
 
-// const baseUrl = process.env.NODE_ENV === 'development'
-//   ? 'http://192.168.0.205:8686'
-//   : 'https://art.hailuo2.com';
+const baseUrl = process.env.NODE_ENV === 'development'
+  ? 'http://192.168.0.55:8686'
+  : 'https://art.hailuo2.com';
 
-const baseUrl = 'https://art.hailuo2.com';
+// const baseUrl = 'https://art.hailuo2.com';
+// const baseUrl = 'https://art.hailuo2.com';
 
 // console.log('当前baseUrl:', baseUrl);
 // API接口URL列表
@@ -26,6 +27,9 @@ export const urlList = {
   getShareInfo: baseUrl + '/api/hailuo/get_share_info', // 获取用户作品展示详情
   upload: baseUrl + '/api/common/upload', // 上传图片获取url
   getTimesLog: baseUrl + '/api/user/times_log', // 获取使用次数日志、消费记录
+  getPromotionLink: baseUrl + '/api/user/promotion_link', // 获取视频展示
+  getPromotionUsers: baseUrl + '/api/user/promotion_users', // 获取推广用户列表
+  getPromotionScoreLog: baseUrl + '/api/user/promotion_score_log', // 获取积分记录
 }
 
 /**
@@ -73,6 +77,32 @@ export const setUserInfo = async (data: any) => {
     console.error('设置用户信息失败:', error);
     throw error;
   }
+}
+
+/**
+ * 获取视频展示
+ * @returns 视频展示
+ */
+export const getPromotionLink = async () => {
+  return apiRequest(urlList.getPromotionLink, 'GET', undefined, true);
+}
+
+/**
+ * 获取推广用户列表
+ * @param data 数据
+ * @returns 推广用户列表
+ */
+export const getPromotionUsers = async (data:any) => {
+  return apiRequest(urlList.getPromotionUsers+'?page='+data.page+'&page_size='+data.page_size, 'GET', undefined, true);
+}
+
+/**
+ * 获取积分记录
+ * @param data 数据
+ * @returns 积分记录
+ */
+export const getPromotionScoreLog = async (data:any) => {
+  return apiRequest(urlList.getPromotionScoreLog+'?page='+data.page+'&page_size='+data.page_size+'&from_uid='+data.from_uid+'&status='+data.status, 'GET', undefined, true);
 }
 
 /**
