@@ -9,8 +9,18 @@
         <!-- Use Cases -->
         <div class="use-cases">
           <div class="use-case-card">
-            <div class="icon-container">
-              <img src="/icons/film-production.svg" alt="Film Production" class="use-case-icon"/>
+            <div class="video-container" ref="videoContainer1">
+              <video 
+                ref="video1"
+                loop 
+                muted 
+                playsinline 
+                loading="lazy"
+                preload="none"
+                poster="/video/Film-Production.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
+              >
+                <source src="/video/Film-Production.mp4" type="video/mp4">
+              </video>
             </div>
             <h3>Film Production</h3>
             <p>
@@ -19,8 +29,18 @@
           </div>
   
           <div class="use-case-card">
-            <div class="icon-container">
-              <img src="/icons/ad-creative.svg" alt="Advertising" class="use-case-icon"/>
+            <div class="video-container" ref="videoContainer2">
+              <video 
+                ref="video2"
+                loop 
+                muted 
+                playsinline 
+                loading="lazy"
+                preload="none"
+                poster="/video/Advertising.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
+              >
+                <source src="/video/Advertising.mp4" type="video/mp4">
+              </video>
             </div>
             <h3>Advertising</h3>
             <p>
@@ -29,8 +49,18 @@
           </div>
   
           <div class="use-case-card">
-            <div class="icon-container">
-              <img src="/icons/corporate-promo.svg" alt="Corporate Promotions" class="use-case-icon"/>
+            <div class="video-container" ref="videoContainer3">
+              <video 
+                ref="video3"
+                loop 
+                muted 
+                playsinline 
+                loading="lazy"
+                preload="none"
+                poster="/video/Corporate-Promotions.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
+              >
+                <source src="/video/Corporate-Promotions.mp4" type="video/mp4">
+              </video>
             </div>
             <h3>Corporate Promotions</h3>
             <p>
@@ -38,25 +68,60 @@
             </p>
           </div>
         </div>
-  
-        <!-- Call to Action -->
-        <!-- <div class="cta-container">
-          <nuxt-link @click="scrollToHero" class="cta-btn">
-            Start Using Hailuo 02 AI Video Now
-          </nuxt-link>
-        </div> -->
       </div>
     </section>
   </template>
   
   <script setup>
-  // 跳转到首页
-//   const scrollToHero = () => {
-//     const heroSection = document.getElementById('hero');
-//     if (heroSection) {
-//         heroSection.scrollIntoView({ behavior: 'smooth' });
-//     }
-//   };
+  import { ref, onMounted, onUnmounted } from 'vue'
+
+  const videoContainer1 = ref(null)
+  const videoContainer2 = ref(null)
+  const videoContainer3 = ref(null)
+  const video1 = ref(null)
+  const video2 = ref(null)
+  const video3 = ref(null)
+
+  const observers = []
+
+  const handleIntersection = (entries, observer) => {
+    entries.forEach(entry => {
+      const video = entry.target.querySelector('video')
+      if (entry.isIntersecting) {
+        // 当视频进入视口时开始播放
+        video.play().catch(() => {
+          // 处理自动播放策略导致的错误
+          console.log('Video autoplay failed')
+        })
+      } else {
+        // 当视频离开视口时暂停播放
+        video.pause()
+      }
+    })
+  }
+
+  onMounted(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5 // 当50%的视频容器可见时触发
+    }
+
+    const containers = [videoContainer1.value, videoContainer2.value, videoContainer3.value]
+    
+    containers.forEach(container => {
+      if (container) {
+        const observer = new IntersectionObserver(handleIntersection, options)
+        observer.observe(container)
+        observers.push(observer)
+      }
+    })
+  })
+
+  onUnmounted(() => {
+    // 清理所有观察者
+    observers.forEach(observer => observer.disconnect())
+  })
   </script>
   
   <style scoped>
@@ -120,7 +185,7 @@
   .use-case-card {
     background: rgba(31, 31, 31, 0.3);
     backdrop-filter: blur(8px);
-    padding: 30px;
+    padding: 0;
     border-radius: 16px;
     width: calc(33.33% - 30px);
     min-width: 280px;
@@ -133,7 +198,54 @@
     flex-direction: column;
     align-items: center;
     border: 2px solid rgba(124, 58, 237, 0.1);
-  }
+}
+
+.video-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 14px 14px 0 0;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.icon-container {
+    margin-top: -40px;
+    background: rgba(124, 58, 237, 0.1);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(124, 58, 237, 0.2);
+}
+
+.use-case-card h3 {
+    font-size: 1.6rem;
+    margin: 20px 30px;
+    font-weight: 600;
+    color: white;
+}
+
+.use-case-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #999;
+    flex-grow: 1;
+    padding: 0 30px 30px;
+}
   
   .use-case-card::after {
     content: '';
@@ -156,20 +268,6 @@
   
   .use-case-card:hover::after {
     transform: scaleX(1);
-  }
-  
-  .use-case-card h3 {
-    font-size: 1.6rem;
-    margin: 20px 0;
-    font-weight: 600;
-    color: white;
-  }
-  
-  .use-case-card p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #999;
-    flex-grow: 1;
   }
   
   .icon-container {

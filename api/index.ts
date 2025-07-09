@@ -4,7 +4,7 @@ import { useRuntimeConfig } from 'nuxt/app'
 // console.log('当前环境:', process.env.NODE_ENV);
 
 const baseUrl = process.env.NODE_ENV === 'development'
-  ? 'http://192.168.0.55:8686'
+  ? 'https://art.hailuo2.com'
   : 'https://art.hailuo2.com';
 
 // const baseUrl = 'https://art.hailuo2.com';
