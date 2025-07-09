@@ -5,36 +5,40 @@
       style="background: rgba(25, 23, 28, 0.8)"
     >
       <div class="max-w-7xl mx-auto px-4">
-        <div class="flex items-center justify-between h-16">
+        <div class="flex items-center h-16">
           <!-- Logo -->
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 mr-8">
             <NuxtLink to="/">
               <img src="/logo.png" alt="Hailuo02 Video - AI Video from Text or Image in Minutes" class="h-12 lg:h-16" loading="lazy" />
             </NuxtLink>
           </div>
 
           <!-- PC端导航 -->
-          <div class="hidden lg:flex items-center space-x-8">
-            <template v-for="(section, index) in sections" :key="index">
-              <NuxtLink
-                v-if="section.href"
-                :to="section.href"
-                class="text-gray-300 hover:text-[#7C3AED] transition-colors"
-              >
-                {{ section.name }}
-              </NuxtLink>
-              <div
-                v-else-if="section.id"
-                @click="handleNavClick(section.id)"
-                class="text-gray-300 hover:text-[#7C3AED] transition-colors cursor-pointer"
-              >
-                {{ section.name }}
-              </div>
-            </template>
+          <div class="hidden lg:flex items-center flex-grow">
+            <div class="flex items-center space-x-8">
+              <template v-for="(section, index) in sections" :key="index">
+                <NuxtLink
+                  v-if="section.href"
+                  :to="section.href"
+                  class="text-gray-300 hover:text-[#7C3AED] transition-colors whitespace-nowrap"
+                >
+                  {{ section.name }}
+                </NuxtLink>
+                <div
+                  v-else-if="section.id"
+                  @click="handleNavClick(section.id)"
+                  class="text-gray-300 hover:text-[#7C3AED] transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  {{ section.name }}
+                </div>
+              </template>
+            </div>
           </div>
 
           <!-- 用户信息区域 - PC端 -->
-          <UserMenu />
+          <div class="ml-auto">
+            <UserMenu />
+          </div>
 
           <!-- 移动端菜单按钮 -->
           <button
