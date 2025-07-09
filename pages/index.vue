@@ -6,52 +6,71 @@
         id="hero"
         class="min-h-[700px] relative pt-[64px]"
       >
-        <keep-alive>
+        <KeepAlive>
           <HomeHero />
-        </keep-alive>
+        </KeepAlive>
       </section>
 
       <!-- 视频展示 -->
       <section id="cases">
-        <keep-alive>
+        <KeepAlive>
           <VideoShowcase />
-        </keep-alive>
+        </KeepAlive>
       </section>
       
       <!-- 操作步骤 -->
       <section id="how-it-works">
-        <keep-alive>
+        <KeepAlive>
           <HowItWorks />
-        </keep-alive>
+        </KeepAlive>
       </section>
 
       <!-- 特性展示 -->
       <!-- <section id="features-showcase">
-        <keep-alive>
+        <KeepAlive>
           <FeatureShowcase />
-        </keep-alive>
+        </KeepAlive>
       </section> -->
 
+      <section id="hailuo-key-features">
+        <KeepAlive>
+          <HailuoKeyFeatures />
+        </KeepAlive>
+      </section>
+
+      <section id="hailuo-use-cases">
+        <KeepAlive>
+          <HailuoUseCases />
+        </KeepAlive>
+      </section>
+      
       <!-- 用户评论 -->
       <section id="reviews">
-        <keep-alive>
+        <KeepAlive>
           <Reviews />
-        </keep-alive>
+        </KeepAlive>
       </section>
 
       <!-- 定价模块 -->
       <section id="pricing">
-        <keep-alive>
+        <KeepAlive>
           <PricingPlans />
-        </keep-alive>
+        </KeepAlive>
       </section>
 
       <!-- 常见问题模块 -->
       <section id="faq">
-        <keep-alive>
+        <KeepAlive>
           <FaqSection />
-        </keep-alive>
+        </KeepAlive>
       </section>
+
+      <section id="cta">
+        <KeepAlive>
+          <Cta />
+        </KeepAlive>
+      </section>
+
     </main>
   </div>
 </template>

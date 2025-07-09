@@ -1,5 +1,5 @@
 <template>
-  <section id="faq" class="py-20 bg-gradient-to-b from-blue-pale to-[#0F172A]">
+  <section id="faq" class="py-20 bg-gradient-to-b from-blue-pale">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center space-y-6">
         <h2 id="faq-heading" class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#9F7AEA]">

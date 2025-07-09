@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
+  <line x1="12" y1="1" x2="12" y2="23" stroke="#ffffff"></line>
+  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="#ffffff"></path>
+  <circle cx="18" cy="18" r="4" stroke="#ffffff" fill="none"></circle>
+  <path d="M19.5 16.5L16.5 19.5" stroke="#ffffff"></path>
+</svg>
