@@ -12,15 +12,15 @@ export interface RouteItem {
 // 主路由配置
 export const mainRoutes: RouteItem[] = [
   { id: "hero", name: "Home", icon: "home" },
-  { id: "cases", name: "Cases", icon: "image" },
-  { id: "how-it-works", name: "How It Works", icon: "steps" },
+  { id: "AIVideo", name: "AI Video", icon: "AI Video", href: "/Hailuo-AI-Video-Generator" },
+  // { id: "how-it-works", name: "How It Works", icon: "steps" },
   // { id: "features-showcase", name: "Features", icon: "star" },
   // 评价
-  { id: "reviews", name: "Reviews", icon: "star" },
-  { id: "pricing", name: "Pricing", icon: "tag" },
+  // { id: "reviews", name: "Reviews", icon: "star" },
+  { id: "pricing", name: "Pricing", icon: "tag", href: "/PricingPlans" },
   { id: "portfolio", name: "Explore Inspiration", href: "/portfolio", icon: "image" },
   { id: "faq", name: "FAQ", icon: "help" },
-  { id: "blog", name: "Blog", href: "/blog", icon: "book" }
+  // { id: "blog", name: "Blog", href: "/blog", icon: "book" }
 ]
 
 export const useNavigation = () => {

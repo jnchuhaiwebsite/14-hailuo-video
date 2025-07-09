@@ -64,25 +64,26 @@
 
       <!-- 行动号召 -->
       <div class="mt-12 text-center">
-        <nuxt-link 
-          @click="scrollToHero"
+        <button
+          @click="navigateToAiVideo"
           class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 hover:from-[#7C3AED]/90 hover:to-[#7C3AED]/70 shadow-lg transition-all duration-300"
         >
           Start Using Hailuo 02 AI Video Now
-        </nuxt-link>
+        </button>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-    // 跳转到首页
-    const scrollToHero = () => {
-    const heroSection = document.getElementById('hero');
-    if (heroSection) {
-        heroSection.scrollIntoView({ behavior: 'smooth' });
-    }
-    };
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+// 导航到 AI Video 页面
+const navigateToAiVideo = () => {
+  router.push('/Hailuo-AI-Video-Generator')
+}
 </script>
 
 <style scoped>

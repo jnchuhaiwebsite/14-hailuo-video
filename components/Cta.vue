@@ -7,6 +7,10 @@
   </template>
   
   <script setup>
+    import { useRouter } from 'vue-router'
+
+    const router = useRouter()
+
   defineProps({
     title: {
       type: String,
@@ -27,10 +31,7 @@
   });
   // 跳转到首页
 const scrollToHero = () => {
-  const heroSection = document.getElementById('hero');
-  if (heroSection) {
-    heroSection.scrollIntoView({ behavior: 'smooth' });
-  }
+  router.push('/Hailuo-AI-Video-Generator')
 };
   </script>
   

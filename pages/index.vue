@@ -11,12 +11,6 @@
         </KeepAlive>
       </section>
 
-      <!-- 视频展示 -->
-      <section id="cases">
-        <KeepAlive>
-          <VideoShowcase />
-        </KeepAlive>
-      </section>
       
       <!-- 操作步骤 -->
       <section id="how-it-works">
@@ -52,11 +46,11 @@
       </section>
 
       <!-- 定价模块 -->
-      <section id="pricing">
+      <!-- <section id="pricing">
         <KeepAlive>
           <PricingPlans />
         </KeepAlive>
-      </section>
+      </section> -->
 
       <!-- 常见问题模块 -->
       <section id="faq">
