@@ -146,7 +146,7 @@
     const origin = portfolioItem.value.origin;
     navigator.clipboard.writeText(prompt);
     router.push({
-      path: '/',
+      path: '/Hailuo-AI-Video-Generator',
       query: {
         mode: origin ? 'image' : 'text',
         prompt: prompt,

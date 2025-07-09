@@ -21,7 +21,8 @@
             @mouseenter="handleMouseEnter(idx)"
             @mouseleave="handleMouseLeave(idx)"
           >
-            <div class="relative flex items-center justify-center bg-black">
+            <div class="relative flex items-center justify-center bg-black"
+                 @click="goToDetail(item)">
               <video
                 :src="item.generate"
                 :poster="item.origin"
@@ -98,6 +99,7 @@ useSeo({
     origin: string;
     prompt: string;
     userName: string;
+    task_id?: string; // Added task_id to the interface
   }
   
   const router = useRouter();
@@ -203,6 +205,14 @@ useSeo({
         origin: origin || undefined
       }
     });
+  }
+
+  function goToDetail(item: PortfolioItem) {
+    if (item.task_id) {
+      router.push({
+        path: `/portfolio/${item.task_id}`,
+      });
+    }
   }
   </script>
   
