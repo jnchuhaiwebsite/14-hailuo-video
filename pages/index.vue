@@ -86,7 +86,7 @@ import { useNuxtApp } from 'nuxt/app'
 const { $toast } = useNuxtApp() as any
 
 useSeo({
-  title: "Hailuo02 Video | Free online AI video generator",
+  title: "Hailuo 02 Video | Free online AI video generator",
   description: "Create stunning AI videos in seconds using text or images with Hailuo02. No editing needed. Perfect for creators, brands, and educators. Try it free today!"
 });
 
@@ -113,7 +113,7 @@ onMounted(() => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "Hailuo02 Video",
+    name: "Hailuo 02 Video",
     description: "Create stunning AI videos in 3-5minutes using text or images with Hailuo02. No editing needed. Perfect for creators, brands, and educators.",
     applicationCategory: "VideoGenerationApplication",
     operatingSystem: "All",
