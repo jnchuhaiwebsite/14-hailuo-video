@@ -977,7 +977,7 @@ const checkUsageLimit = () => {
   // 检查是否有可用次数
   if (remainingTimes.value <= 0) {
     $toast.warning('Usage limit reached. Please upgrade to premium for more credits')
-    router.push('/PricingPlans');
+    router.push('/pricing');
     return false
   }
 

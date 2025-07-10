@@ -31,7 +31,7 @@
   });
   // 跳转到首页
 const scrollToHero = () => {
-  router.push('/Hailuo-AI-Video-Generator')
+  router.push('/hailuo-ai-video-generator')
 };
   </script>
   

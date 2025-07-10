@@ -98,7 +98,7 @@ onBeforeUnmount(() => {
 
 // 导航到 AI Video 页面
 const navigateToAiVideo = () => {
-  router.push('/Hailuo-AI-Video-Generator')
+  router.push('/hailuo-ai-video-generator')
 }
 </script>
 

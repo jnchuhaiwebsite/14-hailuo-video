@@ -110,7 +110,7 @@ const toggleFaq = (index: number) => {
 
 // 导航到FAQ页面
 const navigateToFaq = () => {
-  router.push('/Faq');
+  router.push('/faq');
 };
 </script>
 
