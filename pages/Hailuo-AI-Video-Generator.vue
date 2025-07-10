@@ -312,7 +312,7 @@ import VideoShowcase from '~/pages/components/VideoShowcase.vue'
 
 // 接口
 import { createTaskImgVideo, createTaskTextVideo,checkTask,getScore,upload } from '~/api'
-
+import { useRouter } from 'vue-router';
 const { $toast } = useNuxtApp() as any
 
 const route = useRoute()
@@ -969,17 +969,15 @@ watch(
   },
   { immediate: true }
 )
-
+const router = useRouter();
 // 检查使用限制
 const checkUsageLimit = () => {
+  // alert(1)
 
   // 检查是否有可用次数
   if (remainingTimes.value <= 0) {
     $toast.warning('Usage limit reached. Please upgrade to premium for more credits')
-    const pricingSection = document.getElementById('pricing')
-    if (pricingSection) {
-      pricingSection.scrollIntoView({ behavior: 'smooth' })
-    }
+    router.push('/PricingPlans');
     return false
   }
 
