@@ -1,5 +1,5 @@
 <template>
-  <section id="faq" class="py-20 bg-gradient-to-b from-blue-pale">
+  <section id="faq" class="py-20 bg-blue-pale">
     
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
@@ -52,14 +52,15 @@
         </div>
       </div>
       
+      
       <!-- CTA Buttons -->
       <div class="text-center mt-12 space-x-4"> 
-        <button
-          @click="scrollToTop"
-          class="bg-gradient-to-r from-[#7C3AED] to-[#9F7AEA] text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-[#7C3AED]/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/50 focus:ring-offset-2 focus:ring-offset-[#0F172A]"
-        >
-          Back to Top
-        </button>
+        <Cta
+          title="Ready to Create Your Own Masterpiece?"
+          description="Join thousands of creators and brands producing amazing video content with Hailuo 02."
+          ctaText="Start Creating Your Hailuo 02 Video Now"
+          ctaLink="/Hailuo-AI-Video-Generator"
+        />
       </div>
     </div>
   </section>
@@ -69,6 +70,7 @@
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router'
 import { useSeo } from '~/composables/useSeo';
+import Cta from '~/components/Cta.vue';
 
 const router = useRouter()
 defineOptions({

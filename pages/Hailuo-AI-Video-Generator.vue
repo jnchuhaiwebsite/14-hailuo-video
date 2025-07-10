@@ -895,9 +895,7 @@ const handleAction = (action: string, ...args: any[]) => {
       })
       break
     case 'inspiration':
-      withLoginCheck(() => {
-        prompt.value = args[0] || ''
-      })
+      prompt.value = args[0] || ''
       break
     case 'selectDuration':
       withLoginCheck(async () => {
