@@ -87,7 +87,8 @@
 
 
   useSeo({
-    title: "Explore AI Video Creations | Inspiration & Showcase - Hailuo 02 AI",
+    // title: "Explore AI Video Creations | Inspiration & Showcase - Hailuo 02 AI",
+    title: "Hailuo 02 AI Inspiration | Explore AI Video Creations  Inspiration & Showcase",
     description: "Discover cinematic AI videos made by Hailuo02 Video users. Get inspired and create your own from text or images—fast, creative, and free to try."
   });
 

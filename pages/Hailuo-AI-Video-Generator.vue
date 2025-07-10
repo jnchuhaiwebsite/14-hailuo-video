@@ -760,6 +760,17 @@ const checkTaskStatus = async (taskId: string) => {
         
         // 清除表单缓存
         localStorage.removeItem('seedanceFormCache')
+      }else if(response.data.status == '-1'){
+        // 任务失败
+        $toast.error(response.data.status_msg || 'Video generation failed')
+        // 停止进度条动画
+        stopProgressAnimation()
+        // 停止检查任务状态
+        stopCheckTask()
+        // 清除任务状态
+        videoTaskStore.clearTask()
+        // 清除表单缓存
+        localStorage.removeItem('seedanceFormCache')
       }
     } else {
       // 任务失败
