@@ -73,13 +73,13 @@
 import { onBeforeMount, defineAsyncComponent, onMounted } from "vue";
 import { useSeo } from '~/composables/useSeo';
 
-const PricingPlans = defineAsyncComponent(() => import('~/components/Pricing.vue'));
+// const PricingPlans = defineAsyncComponent(() => import('~/components/Pricing.vue'));
 const HomeHero = defineAsyncComponent(() => import('~/pages/components/HomeHero.vue'));
 const FaqSection = defineAsyncComponent(() => import('~/pages/components/FaqSection.vue'));
-const VideoShowcase = defineAsyncComponent(() => import('~/pages/components/VideoShowcase.vue'));
-const CaseStudies = defineAsyncComponent(() => import('~/pages/components/CaseStudies.vue'));
+// const VideoShowcase = defineAsyncComponent(() => import('~/pages/components/VideoShowcase.vue'));
+// const CaseStudies = defineAsyncComponent(() => import('~/pages/components/CaseStudies.vue'));
 const HowItWorks = defineAsyncComponent(() => import('~/pages/components/HowItWorks.vue'));
-const FeatureShowcase = defineAsyncComponent(() => import('~/pages/components/FeatureShowcase.vue'));
+// const FeatureShowcase = defineAsyncComponent(() => import('~/pages/components/FeatureShowcase.vue'));
 const Reviews = defineAsyncComponent(() => import('~/pages/components/Reviews.vue'));
 
 import { useNuxtApp } from 'nuxt/app'
