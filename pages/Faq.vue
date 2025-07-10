@@ -1,14 +1,17 @@
 <template>
-  <section id="faq" class="py-20 bg-gradient-to-b from-blue-pale">
+  <section id="faq" class="py-20 bg-blue-pale">
+    
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center space-y-6">
-        <h2 id="faq-heading" class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#9F7AEA]">
-          Frequently Asked Questions(FAQ)
-        </h2>
-        <p class="text-lg text-gray-300/90 max-w-3xl mx-auto leading-relaxed">
-          Get quick answers to common questions about Hailuo 02 Video, including how to use the platform, manage credits, handle network issues, and buy more credits.
-        </p>
-      </div>
+      <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
+        Hailuo AI Video FAQ – Your Questions Answered
+        <!-- - Transform Your Creative Moments into Blockbuster Videos Instantly. -->
+      </h1>
+      <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
+        Explore Frequently Asked Questions About Using Hailuo AI Video for Video Creation, Pricing, Features, and More.
+      </p>
+    </div>
+
       <div class="mt-12 space-y-6">
         <div 
           v-for="(faq, index) in faqItems" 
@@ -49,14 +52,15 @@
         </div>
       </div>
       
+      
       <!-- CTA Buttons -->
       <div class="text-center mt-12 space-x-4"> 
-        <button
-          @click="navigateToFaq"
-          class="bg-gradient-to-r from-[#7C3AED] to-[#9F7AEA] text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-[#7C3AED]/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/50 focus:ring-offset-2 focus:ring-offset-[#0F172A]"
-        >
-          Show More
-        </button>
+        <Cta
+          title="Ready to Create Your Own Masterpiece?"
+          description="Join thousands of creators and brands producing amazing video content with Hailuo 02."
+          ctaText="Start Creating Your Hailuo 02 Video Now"
+          ctaLink="/Hailuo-AI-Video-Generator"
+        />
       </div>
     </div>
   </section>
@@ -64,13 +68,14 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
+import { useSeo } from '~/composables/useSeo';
+import Cta from '~/components/Cta.vue';
 
+const router = useRouter()
 defineOptions({
   name: 'FaqSection'
 })
-
-const router = useRouter();
 
 // FAQ数据
 const faqs = [
@@ -89,18 +94,52 @@ const faqs = [
   {
     question: 'What happens if I run out of credits?',
     answer: 'If you run out of credits, you can subscribe to a plan to purchase additional credits. Simply choose a subscription package that fits your needs and replenish your credits to continue generating videos with Hailuo 02 AI.'
+  },
+  {
+    question: 'Can I use Hailuo 02 AI for commercial projects?',
+    answer: 'Yes, Hailuo 02 AI allows commercial use. Users retain ownership of their generated content and can utilize it for business purposes.'
+  },
+  {
+    question: 'Is there a free trial available for Hailuo 02 AI?',
+    answer: 'Yes, Hailuo 02 AI offers a free trial with limited credits, allowing you to generate a few videos at no cost. Additional credits can be purchased through various subscription plans.'
+  },
+  {
+    question: 'How are credits calculated and consumed in Hailuo 02 AI?',
+    answer: 'Credits are consumed based on the video resolution and duration. For instance, a 6-second 768p video may cost around 10 credits. Subscription plans provide a set number of credits per month, with options to purchase additional credits as needed.'
+  },
+  {
+    question: 'Do credits in Hailuo 02 AI expire?',
+    answer: 'Yes, credits typically expire after 30 days if not used. It\'s advisable to utilize your credits within this period to avoid loss.'
+  },
+  {
+    question: 'What happens if a video generation request is canceled or interrupted?',
+    answer: 'If your network connection is interrupted during the video generation process, the task will continue running. Once the network is restored, you can go to the Personal Center to view and complete the video generation. Please note that any credits consumed up to the point of interruption are non-refundable.'
+  },
+  {
+    question: 'How can I manage my credits and projects in Hailuo 02 AI?',
+    answer: 'You can manage your credits and projects by accessing the Personal Center on the Hailuo 02 platform. Here, you can view your credit balance, track usage, and access your generated videos.'
+  },
+  {
+    question: 'Does Hailuo 02 AI support multiple languages for video generation?',
+    answer: 'Yes, Hailuo 02 AI supports multiple languages, including English, Chinese, Japanese, and Spanish. This allows users from different linguistic backgrounds to create videos using their preferred language.'
   }
 ];
 
 // 初始显示的FAQ数量
 const initialVisibleCount = 4;
+const visibleCount = ref(initialVisibleCount);
 
 // 跟踪每个FAQ项的展开状态
 const openFaqs = ref(Array(faqs.length).fill(true));
 
 // 当前显示的FAQ项目
 const faqItems = computed(() => {
-  return faqs.slice(0, initialVisibleCount);
+  return faqs;
+});
+
+// 是否还有更多FAQ可显示
+const hasMoreItems = computed(() => {
+  return visibleCount.value < faqs.length;
 });
 
 // 切换FAQ项的展开/折叠状态
@@ -108,10 +147,31 @@ const toggleFaq = (index: number) => {
   openFaqs.value[index] = !openFaqs.value[index];
 };
 
-// 导航到FAQ页面
-const navigateToFaq = () => {
-  router.push('/Faq');
+// 显示更多FAQ
+const showMore = () => {
+  visibleCount.value = faqs.length;
 };
+
+// 显示较少FAQ
+const showLess = () => {
+  router.push('/Faq')
+};
+
+// 滚动到顶部
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// 滚动到底部
+const scrollToContact = () => {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+};
+
+  //设置页面元数据
+  useSeo({
+    title: `Hailuo AI Video FAQ – Answers to Common Questions About AI Video Creation`,
+    description: `Find answers to all your questions about Hailuo AI Video, from video generation to pricing plans. Learn how to use AI to create high-quality videos for social media, branding, and education.`,
+  });
 </script>
 
 <style scoped>
