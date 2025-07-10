@@ -23,10 +23,26 @@ export const mainRoutes: RouteItem[] = [
   // { id: "blog", name: "Blog", href: "/blog", icon: "book" }
 ]
 
+
+export const footerMainRoutes: RouteItem[] = [
+  { id: "hero", name: "Home", icon: "home" },
+  { id: "AIVideo", name: "AI Video", icon: "AI Video", href: "/Hailuo-AI-Video-Generator" },
+  // { id: "how-it-works", name: "How It Works", icon: "steps" },
+  // { id: "features-showcase", name: "Features", icon: "star" },
+  // 评价
+  // { id: "reviews", name: "Reviews", icon: "star" },
+  { id: "pricing", name: "Pricing", icon: "tag", href: "/PricingPlans" },
+  { id: "portfolio", name: "Explore Inspiration", href: "/portfolio", icon: "image" },
+  { id: "faq", name: "FAQ", icon: "help", href: "/Faq" },
+  // { id: "blog", name: "Blog", href: "/blog", icon: "book" }
+]
+
+
 export const useNavigation = () => {
   const router = useRouter()
   const activeSection = ref('hero')
   const sections = mainRoutes
+  const footerSections = footerMainRoutes
 
   // 执行滚动到指定section
   const executeScroll = (sectionId: string) => {
@@ -118,6 +134,7 @@ export const useNavigation = () => {
     executeScroll,
     handlePageNavigation,
     handleNavClick,
-    handleScroll
+    handleScroll,
+    footerSections
   }
 } 

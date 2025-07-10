@@ -46,7 +46,7 @@
           <div>
             <h3 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Navigation</h3>
             <div class="flex flex-col gap-2">
-              <template v-for="(section, index) in sections" :key="index">
+              <template v-for="(section, index) in footerSections" :key="index">
                 <NuxtLink v-if="section.href" :to="section.href" 
                   class="text-gray-400 hover:text-[#7C3AED] transition-colors">
                   {{ section.name }}
@@ -84,7 +84,7 @@ interface PartnerSite {
   name: string
 }
 
-const { activeSection, sections, handleNavClick, handleScroll } = useNavigation()
+const { activeSection, sections, handleNavClick, handleScroll, footerSections } = useNavigation()
 
 // 服务端请求友情链接
 const { data: partnerSites, error } = await useAsyncData('partnerSites', async () => {
