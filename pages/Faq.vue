@@ -59,7 +59,7 @@
           title="Ready to Create Your Own Masterpiece?"
           description="Join thousands of creators and brands producing amazing video content with Hailuo 02."
           ctaText="Start Creating Your Hailuo 02 Video Now"
-          ctaLink="/Hailuo-AI-Video-Generator"
+          ctaLink="/hailuo-ai-video-generator"
         />
       </div>
     </div>
@@ -154,7 +154,7 @@ const showMore = () => {
 
 // 显示较少FAQ
 const showLess = () => {
-  router.push('/Faq')
+  router.push('/faq')
 };
 
 // 滚动到顶部
