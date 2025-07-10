@@ -169,7 +169,7 @@ const scrollToContact = () => {
 
   //设置页面元数据
   useSeo({
-    title: `Hailuo AI Video FAQ – Answers to Common Questions About AI Video Creation`,
+    title: `Hailuo AI FAQ | Common Questions on AI Video Creation`,
     description: `Find answers to all your questions about Hailuo AI Video, from video generation to pricing plans. Learn how to use AI to create high-quality videos for social media, branding, and education.`,
   });
 </script>

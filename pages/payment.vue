@@ -84,9 +84,9 @@
         
         <!-- Back to Home Button -->
         <NuxtLink 
-          to="/" 
+          to="/Hailuo-AI-Video-Generator" 
           class="inline-block bg-theme text-black font-medium px-5 py-2 md:px-8 md:py-3 rounded-lg hover:bg-theme-hover transition-colors text-sm md:text-lg">
-          Back to Home
+          Start Creating Your Hailuo 02 Video Now
         </NuxtLink>
       </div>
     </div>

@@ -86,10 +86,10 @@
   import { useSeo } from '~/composables/useSeo';
 
 
-useSeo({
-  title: "Explore AI Video Inspiration – Created with Hailuo02 Video",
-  description: "Discover cinematic AI videos made by Hailuo02 Video users. Get inspired and create your own from text or images—fast, creative, and free to try."
-});
+  useSeo({
+    title: "Explore AI Video Creations | Inspiration & Showcase - Hailuo 02 AI",
+    description: "Discover cinematic AI videos made by Hailuo02 Video users. Get inspired and create your own from text or images—fast, creative, and free to try."
+  });
 
 
   const { $toast } = useNuxtApp() as any
