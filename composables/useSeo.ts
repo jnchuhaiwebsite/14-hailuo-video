@@ -23,7 +23,8 @@ export function useSeo(options: SeoOptions) {
   const fullUrlWithoutSlash = fullUrl.replace(/\/$/, '')
   
   // 确保标题不超过60个字符
-  const title = options.title.length > 60 ? options.title.substring(0, 57) + '...' : options.title
+  // const title = options.title.length > 60 ? options.title.substring(0, 57) + '...' : options.title
+  const title = options.title
   
   // 确保描述在140-160个字符之间
   let description = options.description
