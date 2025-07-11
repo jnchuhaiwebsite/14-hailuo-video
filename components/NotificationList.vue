@@ -99,6 +99,18 @@ const resumeAutoHide = (taskId: string) => {
   notificationStore.resumeAutoHide(taskId)
 }
 
+// 格式化时间
+const formatTime = (timestamp: number): string => {
+  if (!timestamp) return '';
+  
+  const date = new Date(timestamp);
+  return date.toLocaleTimeString('zh-CN', { 
+    hour: '2-digit', 
+    minute: '2-digit',
+    second: '2-digit'
+  });
+}
+
 // 查看视频
 const viewVideo = (videoUrl: string) => {
   // 跳转到个人作品页面

@@ -9,7 +9,7 @@
         <!-- - Transform Your Creative Moments into Blockbuster Videos Instantly. -->
       </h1>
       <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
-        Create high‑quality 1080p AI videos in minutes from text or images—no editing needed. Perfect for creators, brands & educatorsing, marketing, and creative expression.
+        Create high‑quality 1080p AI videos in minutes from text or images—no editing needed. Perfect for creators, brands & educators in marketing, and creative expression.
       </p>
     </div>
 
@@ -64,7 +64,7 @@
               <ArrowUpOnSquareIcon class="h-6 w-6 text-gray-400" />
               <div class="text-center">
                 <p class="text-sm text-gray-300">Click or drag image here</p>
-                <p class="text-xs text-gray-500 mt-0.5">Supports JPG, PNG format, up to 5MB</p>
+                <p class="text-xs text-gray-500 mt-0.5">Supports JPG/JPEG/PNG/WebP format, up to 10MB</p>
               </div>
             </div>
             <div v-else class="relative w-full h-[160px]">
@@ -84,9 +84,13 @@
         </Transition>
         <!-- 提示词 -->
         <div :class="{'space-y-2': activeTab === 'text'}">
-          <label class="block text-sm lg:text-base font-semibold text-gray-300" :class="{'mb-1.5': activeTab === 'text', 'mb-1': activeTab === 'image'}">
-            Prompt
-          </label>
+          <div class="flex items-center" :class="{'mb-1.5': activeTab === 'text', 'mb-1': activeTab === 'image'}">
+            <label class="text-sm lg:text-base font-semibold text-gray-300">Prompt</label>
+            <span class="ml-2 text-xs text-amber-400 italic flex items-center gap-1">
+              <ExclamationCircleIcon class="h-3.5 w-3.5" />
+              (Please avoid harmful or inappropriate content)
+            </span>
+          </div>
           <textarea 
             v-model="prompt"
             class="w-full rounded-lg bg-blue-pale border border-gray-700 text-gray-200 px-2 py-1.5 focus:ring-2 focus:ring-[#7C3AED] focus:border-transparent transition placeholder-gray-500 text-sm lg:text-base h-16 sm:h-20 resize-none" 
@@ -296,7 +300,7 @@
 </template>
 
 <script setup lang="ts">
-import { PlusIcon, PhotoIcon, ChevronDownIcon, ArrowUpTrayIcon, SparklesIcon, ArrowUpOnSquareIcon, XMarkIcon, InformationCircleIcon, ArrowDownTrayIcon, ArrowPathIcon } from '@heroicons/vue/24/outline'
+import { PlusIcon, PhotoIcon, ChevronDownIcon, ArrowUpTrayIcon, SparklesIcon, ArrowUpOnSquareIcon, XMarkIcon, InformationCircleIcon, ArrowDownTrayIcon, ArrowPathIcon, ExclamationCircleIcon } from '@heroicons/vue/24/outline'
 import { FireIcon } from '@heroicons/vue/24/solid'
 import { ref, computed, watch, onUnmounted, onMounted } from 'vue'
 import { useUserStore } from '~/stores/user'
@@ -613,16 +617,18 @@ const inspirationPrompts = [
   },
   {
     label: 'Spaceship',
-    prompt: 'A spaceship slowly flew over, and the small spaceship below was also moving forward'
+    prompt: 'A spaceship slowly flies overhead, while smaller spacecraft move forward below it'
   },
   {
     label: 'Neon light',
-    prompt: "Neon lights flicker in the future city, high-saturation purple and cyan contrast, the wet ground after the rain reflects the city lights, holographic advertisements float in the air, and flying cars travel among the dense high-rise buildings"
+    prompt: "Neon lights flicker in the futuristic city, with high-saturation purple and cyan contrasts. The wet ground after rain reflects the city lights, holographic advertisements float in the air, and flying cars travel among dense high-rise buildings"
   }
 ]
 
 // 预览视频URL
-const previewVideoUrl = 'https://resource.hailuo2.com/hailuo/video/hailuo2-demo.mp4'
+// const previewVideoUrl = 'https://resource.hailuo2.com/hailuo/video/hailuo2-demo.mp4'
+const previewVideoUrl = 'https://source.hailuo2.com/example/hailuo2-demo.mp4'
+
 // const previewVideoUrl = '/img/1750358424507.mp4'
 const previewVideoPoster = '/img/2.webp'
 
@@ -647,19 +653,86 @@ const handleImageUpload = async (event: Event) => {
   if (!input.files?.length) return
   
   const file = input.files[0]
-  if (file.size > 5 * 1024 * 1024) { // 5MB
-    $toast.error('Image size should be less than 5MB')
+  if (file.size > 10 * 1024 * 1024) { // 10MB
+    $toast.error('Image size cannot exceed 10MB')
+    // 重置文件输入元素，使相同文件可以再次选择
+    input.value = ''
     return
   }
   
-  if (!['image/jpeg', 'image/png','image/webp'].includes(file.type)) {
-    $toast.error('Only JPG, PNG and WebP images are supported')
+  if (!['image/jpeg', 'image/png', 'image/webp', 'image/jpg'].includes(file.type)) {
+    $toast.error('Only JPG, JPEG, PNG and WebP formats are supported')
+    // 重置文件输入元素，使相同文件可以再次选择
+    input.value = ''
     return
   }
 
-  selectedImage.value = file
-  // 创建预览URL
-  imagePreview.value = URL.createObjectURL(file)
+  // 检查图片尺寸和长宽比
+  try {
+    const checkResult = await checkImageDimensions(file)
+    if (!checkResult.valid) {
+      $toast.error(checkResult.message)
+      // 重置文件输入元素，使相同文件可以再次选择
+      input.value = ''
+      return
+    }
+    
+    selectedImage.value = file
+    // 创建预览URL
+    imagePreview.value = URL.createObjectURL(file)
+  } catch (error) {
+    console.error('图片验证失败:', error)
+    $toast.error('Image validation failed, please try again')
+  }
+}
+
+// 检查图片尺寸和长宽比
+const checkImageDimensions = (file: File): Promise<{valid: boolean, message: string}> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const img = new Image()
+      img.onload = () => {
+        const width = img.width
+        const height = img.height
+        const ratio = width / height
+        
+        const shortSide = Math.min(width, height)
+        
+        // 检查长宽比：大于2:5(0.4)且小于5:2(2.5)
+        if (ratio < 0.4 || ratio > 2.5) {
+          resolve({
+            valid: false,
+            message: 'Image aspect ratio must be greater than 2:5 and less than 5:2'
+          })
+          return
+        }
+        
+        // 检查短边最小尺寸：300px
+        if (shortSide < 300) {
+          resolve({
+            valid: false,
+            message: 'The short edge of the image must be greater than 300px'
+          })
+          return
+        }
+        
+        resolve({ valid: true, message: '' })
+      }
+      
+      img.onerror = () => {
+        reject(new Error('Failed to load image'))
+      }
+      
+      img.src = e.target?.result as string
+    }
+    
+    reader.onerror = () => {
+      reject(new Error('Unable to read image file'))
+    }
+    
+    reader.readAsDataURL(file)
+  })
 }
 
 // 移除已选择的图片
@@ -808,6 +881,7 @@ const handleVideoRequest = async () => {
 
   // 判断是否是文件，如果是文件，则上传获取url
   if(selectedImage.value instanceof File){
+    
     const uploadResponse = await upload({
       file: selectedImage.value
     })
@@ -860,12 +934,12 @@ const handleVideoRequest = async () => {
       // 开始检查任务状态
       if (response.data?.task_id) {
         // 启动通知系统的任务检查
-        notificationStore.startCheckingTask(response.data.task_id)
+        // notificationStore.startCheckingTask(response.data.task_id)
         
         // 开始循环检查任务状态
         checkTaskInterval = setInterval(() => {
           checkTaskStatus(response.data.task_id)
-        }, 10000) // 每2秒检查一次
+        }, 15000) // 每10秒检查一次
       }
     } else {
       isGenerating.value = false
@@ -875,7 +949,7 @@ const handleVideoRequest = async () => {
        localStorage.removeItem('seedanceFormCache')
     }
   } catch (error) {
-    console.error('创建任务失败！', error)
+    console.error('Task creation failed!', error)
     isGenerating.value = false
     $toast.error('Failed to create video generation task')
     stopProgressAnimation()
@@ -890,11 +964,9 @@ const handleAction = (action: string, ...args: any[]) => {
     case 'switchTab':
       activeTab.value = args[0]
       break
-    case 'prompt':
-      withLoginCheck(() => {
-        // TODO: 处理提示词输入逻辑
-      })
-      break
+    // case 'prompt':
+
+    // break
     case 'generate':
       withLoginCheck(async () => {
         // 检查是否有足够的次数和积分
@@ -996,7 +1068,7 @@ const checkUsageLimit = () => {
   // 检查用户积分是否足够
   // const userCredits = userInfo.value?.free_limit || userInfo.value?.remaining_limit || 0
   if (remainingTimes.value < needCredits.value) {
-    $toast.error(`Insufficient credits. The current operation requires ${needCredits.value} credits, and your account only has ${remainingTimes.value} credits`)
+    $toast.error(`Insufficient credits. This operation requires ${needCredits.value} credits, but your account only has ${remainingTimes.value} credits`)
     const pricingSection = document.getElementById('pricing')
     if (pricingSection) {
       pricingSection.scrollIntoView({ behavior: 'smooth' })
