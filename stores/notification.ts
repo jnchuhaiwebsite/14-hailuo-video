@@ -9,6 +9,8 @@ interface Notification {
   prompt?: string
   origin?: string
   autoHideTimer?: number
+  timestamp?: number
+  type?: string
 }
 
 export const useNotificationStore = defineStore('notification', {
@@ -41,7 +43,7 @@ export const useNotificationStore = defineStore('notification', {
               })
               this.stopCheckingTask(taskId)
               return
-            } else if (response.data.status === '2') {
+            } else if (response.data.status === '-1') {
               // 任务失败
               this.addNotification({
                 taskId,
@@ -58,7 +60,7 @@ export const useNotificationStore = defineStore('notification', {
           this.stopCheckingTask(taskId)
           return
         }
-      }, 2000) // 每2秒检查一次
+      }, 15000) // 每2秒检查一次
       
       this.checkIntervals.set(taskId, interval)
     },
@@ -75,6 +77,14 @@ export const useNotificationStore = defineStore('notification', {
     },
     
     addNotification(notification: Notification) {
+      // 添加时间戳和默认类型
+      if (!notification.timestamp) {
+        notification.timestamp = Date.now();
+      }
+      if (!notification.type) {
+        notification.type = notification.status === 'success' ? 'Video Generation Success' : 'Video Generation Failed';
+      }
+      
       this.notifications.push(notification)
       // 5秒后自动移除通知
       notification.autoHideTimer = window.setTimeout(() => {
