@@ -1,7 +1,7 @@
 <template>
     <section class="hailuo-ai-video-use-cases">
       <div class="container">
-        <h2 class="section-title"> See What's Possible with Hailuo 02 Video</h2>
+        <h2 class="section-title"> See What's Possible with Hailuo 02 AI Video Generator</h2>
         <p class="section-description">
             From social media crazes to cinematic previews, creators are building the future of content.
         </p>

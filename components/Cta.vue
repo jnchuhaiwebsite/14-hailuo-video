@@ -1,8 +1,8 @@
 <template>
     <div class="cta-card bg-blue-pale/80 backdrop-blur-sm border border-gray-700/50 shadow-xl hover:shadow-[#7C3AED]/20 hover:border-[#7C3AED]/40 transition-all duration-300">
       <h3>Ready to Create Your Own Masterpiece?</h3>
-      <p>Join thousands of creators and brands producing amazing video content with Hailuo 02.</p>
-      <nuxt-link @click="scrollToHero" class="cta-btn">Start Creating Your Hailuo 02 Video Now</nuxt-link>
+      <p>Join thousands of creators and brands producing amazing video content with Hailuo 02 AI Video Generator.</p>
+      <nuxt-link @click="scrollToHero" class="cta-btn">Start Creating Your Video Now</nuxt-link>
     </div>
   </template>
   

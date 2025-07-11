@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/50 sm:text-5xl animate-fade-in">
-          How To Use Hailuo 02 Video
+          How To Use Hailuo 02 AI Video Generator
         </h2>
         <p class="mt-4 text-xl text-gray-300 animate-slide-up">
           Create Stunning AI Videos in 3 Simple Steps – Fast, Easy, and No Editing Required.

@@ -22,7 +22,7 @@
     <!-- 内容区域 -->
     <div class="relative z-10 max-w-screen-xl mx-auto px-4 text-center">
       <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-center text-[#F0F0F8] drop-shadow-2xl tracking-tight mb-6 hero-title">
-        Create Professional 1080p Videos with Hailuo 02 Video
+        Hailuo 02  AI Video  Generator
       </h1>
       <p class="text-xl sm:text-2xl text-gray-200 max-w-5xl mx-auto mb-8 hero-text">
         Transform Text and Images into Stunning Videos Quickly and Easily for Your Business, Brand, or Educational Content.

@@ -2,13 +2,13 @@
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             <url>
               <loc>https://www.hailuo2.com</loc>
-              <lastmod>2025-07-10T02:30:00.000Z</lastmod>
+              <lastmod>2025-07-11T02:30:00.000Z</lastmod>
               <changefreq>daily</changefreq>
               <priority>1.0</priority>
             </url>
             <url>
               <loc>https://www.hailuo2.com/blog</loc>
-              <lastmod>2025-06-19T08:30:00.000Z</lastmod>
+              <lastmod>2025-07-11T02:30:00.000Z</lastmod>
               <changefreq>weekly</changefreq>
               <priority>0.8</priority>
             </url>
@@ -36,7 +36,7 @@
   
             <url>
               <loc>https://www.hailuo2.com/portfolio</loc>
-              <lastmod>2025-07-10T02:30:00.000Z</lastmod>
+              <lastmod>2025-07-11T02:30:00.000Z</lastmod>
               <changefreq>weekly</changefreq>
               <priority>0.8</priority>
             </url>
@@ -55,19 +55,19 @@
             </url>
             <url>
               <loc>https://www.hailuo2.com/faq</loc>
-              <lastmod>2025-07-10T02:30:00.000Z</lastmod>
+              <lastmod>2025-07-11T02:30:00.000Z</lastmod>
               <changefreq>daily</changefreq>
               <priority>1.0</priority>
             </url>
             <url>
               <loc>https://www.hailuo2.com/pricing</loc>
-              <lastmod>2025-07-10T02:30:00.000Z</lastmod>
+              <lastmod>2025-07-11T02:30:00.000Z</lastmod>
               <changefreq>daily</changefreq>
               <priority>1.0</priority>
             </url>
             <url>
               <loc>https://www.hailuo2.com/hailuo-ai-video-generator</loc>
-              <lastmod>2025-07-10T02:30:00.000Z</lastmod>
+              <lastmod>2025-07-11T02:30:00.000Z</lastmod>
               <changefreq>daily</changefreq>
               <priority>1.0</priority>
             </url>

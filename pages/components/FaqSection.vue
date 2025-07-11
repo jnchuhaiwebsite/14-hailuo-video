@@ -6,7 +6,7 @@
           Frequently Asked Questions(FAQ)
         </h2>
         <p class="text-lg text-gray-300/90 max-w-3xl mx-auto leading-relaxed">
-          Get quick answers to common questions about Hailuo 02 Video, including how to use the platform, manage credits, handle network issues, and buy more credits.
+          Get quick answers to common questions about Hailuo 02 AI Video Generator, including how to use the platform, manage credits, handle network issues, and buy more credits.
         </p>
       </div>
       <div class="mt-12 space-y-6">
@@ -75,16 +75,16 @@ const router = useRouter();
 // FAQ数据
 const faqs = [
   {
-    question: 'What is Hailuo 02 AI?',
-    answer: 'Hailuo 02 AI is an advanced video generation model developed by MiniMax. It transforms text prompts or images into high-quality, cinematic 1080p videos, featuring realistic physics simulations and director-level camera controls.'
+    question: 'What is Hailuo 02 AI Video Generator?',
+    answer: 'Hailuo 02 AI Video Generator is an advanced video generation model developed by MiniMax. It transforms text prompts or images into high-quality, cinematic 1080p videos, featuring realistic physics simulations and director-level camera controls.'
   },
   {
-    question: 'How do I use Hailuo 02 AI?',
+    question: 'How do I use Hailuo 02 AI Video Generator?',
     answer: 'Simply upload an image or enter a descriptive text prompt on the Hailuo 02 platform. Customize your video settings, such as resolution and duration, and let the AI generate your video in just a few minutes.'
   },
   {
-    question: 'How long does it take to generate a video with Hailuo 02 AI?',
-    answer: 'The generation time for a video with Hailuo 02 AI typically ranges from 3 to 5 minutes. The exact duration may vary depending on the complexity of the prompt and the selected video settings.'
+    question: 'How long does it take to generate a video with Hailuo 02 AI Video Generator?',
+    answer: 'The generation time for a video with Hailuo 02 AI Video Generator typically ranges from 3 to 5 minutes. The exact duration may vary depending on the complexity of the prompt and the selected video settings.'
   },
   {
     question: 'What happens if I run out of credits?',

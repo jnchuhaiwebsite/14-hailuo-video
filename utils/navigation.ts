@@ -34,7 +34,7 @@ export const footerMainRoutes: RouteItem[] = [
   { id: "pricing", name: "Pricing", icon: "tag", href: "/pricing" },
   { id: "portfolio", name: "Explore Inspiration", href: "/portfolio", icon: "image" },
   { id: "faq", name: "FAQ", icon: "help", href: "/faq" },
-  // { id: "blog", name: "Blog", href: "/blog", icon: "book" }
+  { id: "blog", name: "Blog", href: "/blog", icon: "book" }
 ]
 
 
