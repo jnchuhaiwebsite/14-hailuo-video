@@ -4,7 +4,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
       <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
-        Hailuo AI Video FAQ – Your Questions Answered
+        Hailuo AI Video Generator FAQ
         <!-- - Transform Your Creative Moments into Blockbuster Videos Instantly. -->
       </h1>
       <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
@@ -80,35 +80,35 @@ defineOptions({
 // FAQ数据
 const faqs = [
   {
-    question: 'What is Hailuo 02 AI?',
-    answer: 'Hailuo 02 AI is an advanced video generation model developed by MiniMax. It transforms text prompts or images into high-quality, cinematic 1080p videos, featuring realistic physics simulations and director-level camera controls.'
+    question: 'What is Hailuo 02 AI Video Generator?',
+    answer: 'Hailuo 02 AI Video Generator is an advanced video generation model developed by MiniMax. It transforms text prompts or images into high-quality, cinematic 1080p videos, featuring realistic physics simulations and director-level camera controls.'
   },
   {
-    question: 'How do I use Hailuo 02 AI?',
+    question: 'How do I use Hailuo 02 AI Video Generator?',
     answer: 'Simply upload an image or enter a descriptive text prompt on the Hailuo 02 platform. Customize your video settings, such as resolution and duration, and let the AI generate your video in just a few minutes.'
   },
   {
-    question: 'How long does it take to generate a video with Hailuo 02 AI?',
-    answer: 'The generation time for a video with Hailuo 02 AI typically ranges from 3 to 5 minutes. The exact duration may vary depending on the complexity of the prompt and the selected video settings.'
+    question: 'How long does it take to generate a video with Hailuo 02 AI Video Generator?',
+    answer: 'The generation time for a video with Hailuo 02 AI Video Generator typically ranges from 3 to 5 minutes. The exact duration may vary depending on the complexity of the prompt and the selected video settings.'
   },
   {
     question: 'What happens if I run out of credits?',
     answer: 'If you run out of credits, you can subscribe to a plan to purchase additional credits. Simply choose a subscription package that fits your needs and replenish your credits to continue generating videos with Hailuo 02 AI.'
   },
   {
-    question: 'Can I use Hailuo 02 AI for commercial projects?',
-    answer: 'Yes, Hailuo 02 AI allows commercial use. Users retain ownership of their generated content and can utilize it for business purposes.'
+    question: 'Can I use Hailuo 02 AI Video Generator for commercial projects?',
+    answer: 'Yes, Hailuo 02 AI Video Generator allows commercial use. Users retain ownership of their generated content and can utilize it for business purposes.'
   },
   {
-    question: 'Is there a free trial available for Hailuo 02 AI?',
-    answer: 'Yes, Hailuo 02 AI offers a free trial with limited credits, allowing you to generate a few videos at no cost. Additional credits can be purchased through various subscription plans.'
+    question: 'Is there a free trial available for Hailuo 02 AI Video Generator?',
+    answer: 'Yes, Hailuo 02 AI Video Generator offers a free trial with limited credits, allowing you to generate a few videos at no cost. Additional credits can be purchased through various subscription plans.'
   },
   {
-    question: 'How are credits calculated and consumed in Hailuo 02 AI?',
+    question: 'How are credits calculated and consumed in Hailuo 02 AI Video Generator?',
     answer: 'Credits are consumed based on the video resolution and duration. For instance, a 6-second 768p video may cost around 10 credits. Subscription plans provide a set number of credits per month, with options to purchase additional credits as needed.'
   },
   {
-    question: 'Do credits in Hailuo 02 AI expire?',
+    question: 'Do credits in Hailuo 02 AI Video Generator expire?',
     answer: 'Yes, credits typically expire after 30 days if not used. It\'s advisable to utilize your credits within this period to avoid loss.'
   },
   {
@@ -116,12 +116,12 @@ const faqs = [
     answer: 'If your network connection is interrupted during the video generation process, the task will continue running. Once the network is restored, you can go to the Personal Center to view and complete the video generation. Please note that any credits consumed up to the point of interruption are non-refundable.'
   },
   {
-    question: 'How can I manage my credits and projects in Hailuo 02 AI?',
+    question: 'How can I manage my credits and projects in Hailuo 02 AI Video Generator?',
     answer: 'You can manage your credits and projects by accessing the Personal Center on the Hailuo 02 platform. Here, you can view your credit balance, track usage, and access your generated videos.'
   },
   {
-    question: 'Does Hailuo 02 AI support multiple languages for video generation?',
-    answer: 'Yes, Hailuo 02 AI supports multiple languages, including English, Chinese, Japanese, and Spanish. This allows users from different linguistic backgrounds to create videos using their preferred language.'
+    question: 'Does Hailuo 02 AI Video Generator support multiple languages for video generation?',
+    answer: 'Yes, Hailuo 02 AI Video Generator supports multiple languages, including English, Chinese, Japanese, and Spanish. This allows users from different linguistic backgrounds to create videos using their preferred language.'
   }
 ];
 
@@ -169,7 +169,7 @@ const scrollToContact = () => {
 
   //设置页面元数据
   useSeo({
-    title: `Hailuo AI FAQ | Common Questions on AI Video Creation`,
+    title: `Hailuo AI Video Generator FAQ | Your Questions Answered`,
     description: `Find answers to all your questions about Hailuo AI Video, from video generation to pricing plans. Learn how to use AI to create high-quality videos for social media, branding, and education.`,
   });
 </script>

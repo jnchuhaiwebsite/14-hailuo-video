@@ -6,7 +6,7 @@
           Hear What Our Creators Are Saying
         </h2>
         <p class="mt-4 text-lg text-gray-300">
-          See how creators, marketers, and directors are using Hailuo 02 to bring their visions to life.
+          See how creators, marketers, and directors are using Hailuo 02 AI Video Generator to bring their visions to life.
         </p>
       </div>
 

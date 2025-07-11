@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h2 class="text-2xl sm:text-3xl font-extrabold text-white sm:text-4xl">
-            Why Choose Hailuo 02 Video?
+            Why Choose Hailuo 02 AI Video Generator?
         </h2>
         <p class="mt-4 text-base sm:text-xl text-gray-300">
             Go beyond simple generation. We provide tools for true creative control.

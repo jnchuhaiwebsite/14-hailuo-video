@@ -7,7 +7,7 @@
       <!-- 标题区 -->
       <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
       <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
-        Hailuo 02 Video Pricing
+        Hailuo 02 AI Video Generator Pricing
         <!-- - Transform Your Creative Moments into Blockbuster Videos Instantly. -->
       </h1>
       <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
@@ -167,8 +167,8 @@ const handleUpgradePlan = async (plan: any) => {
 
   //设置页面元数据
   useSeo({
-    title: `Hailuo 02 Video Pricing | Minimax Hailuo AI Affordable Plans`,
-    description: `Check out Hailuo 02 Video Pricing plans for casual users, creators, and businesses. Affordable, transparent pricing with no hidden fees. Start creating today.`,
+    title: `Hailuo 02 AI Video Generator Pricing | Minimax Hailuo AI `,
+    description: `Check out Hailuo 02 AI Video Generator Pricing, Generator plans for casual users, creators, and businesses. Affordable, transparent pricing with no hidden fees. Start creating today.`,
   });
 </script>
 

@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-blue-pale pb-10">
     <!-- Page title -->
     <div class="pt-32 pb-12 text-center">
-      <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[#7C3AED]">Hailuo02 Video Blog</h1>
+      <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[#7C3AED]">Hailuo AI Video Generator Blog</h1>
       <p class="text-gray-400">Tips, tutorials, and inspiration for creating professional-quality videos with AI video generation</p>
     </div>
     
@@ -66,12 +66,12 @@ import { useSeo } from '~/composables/useSeo'
 const router = useRouter()
 
 useSeo({
-  title: "Hailuo02 Video Blog - AI Video Generation Tips",
-  description: "Expert guides on creating professional-quality videos with Hailuo02 Video. Learn tips and tricks for AI video generation from text or images.",
-  ogTitle: "Hailuo02 Video Blog - AI Video Generation Tips",
-  ogDescription: "Expert guides on creating professional-quality videos with Hailuo02 Video. Learn tips and tricks for AI video generation from text or images.",
-  twitterTitle: "Hailuo02 Video Blog - AI Video Generation Tips",
-  twitterDescription: "Expert guides on creating professional-quality videos with Hailuo02 Video. Learn tips and tricks for AI video generation from text or images."
+  title: "Hailuo AI Video Generator Blog | AI Video Tips, Templates & Tutorials",
+  description: "Discover the Hailuo AI Video Generator blog: AI video tips, mirror‑control templates, prompt tutorials & real‑world use cases. Start creating cinematic content now!",
+  // ogTitle: "Hailuo02 Video Blog - AI Video Generation Tips",
+  // ogDescription: "Expert guides on creating professional-quality videos with Hailuo02 Video. Learn tips and tricks for AI video generation from text or images.",
+  // twitterTitle: "Hailuo02 Video Blog - AI Video Generation Tips",
+  // twitterDescription: "Expert guides on creating professional-quality videos with Hailuo02 Video. Learn tips and tricks for AI video generation from text or images."
 });
 
 // Use blog posts data
