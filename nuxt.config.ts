@@ -48,7 +48,26 @@ export default defineNuxtConfig({
         { name: 'application-name', content: 'hailuo2' },
       ],
       script: [
-        { src: '/js/c6h.js', async: true } 
+        { src: '/js/c6h.js', async: true }, 
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-TE7JHEHZ6J',
+          async: true
+        },
+        // Google Analytics 配置代码 - 后执行
+        {
+          innerHTML: `
+            // 检查当前页面路径
+            console.log('Google Analytics -before',window.location.pathname);
+            if (window.location.pathname === '/' || window.location.pathname === '/payment') {
+            console.log('Google Analytics -after');  
+            window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TE7JHEHZ6J');
+            }
+          `,
+          type: 'text/javascript'
+        }
       ] // 外部脚本
     }
   },
