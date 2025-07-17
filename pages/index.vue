@@ -34,7 +34,7 @@
 
       <section id="hailuo-use-cases">
         <KeepAlive>
-          <HailuoUseCases />
+          <LazyHailuoUseCases />
         </KeepAlive>
       </section>
       
