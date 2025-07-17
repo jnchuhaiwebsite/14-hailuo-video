@@ -753,7 +753,7 @@ const withLoginCheck = async (callback: () => void | Promise<void>) => {
 // 修改 startProgressAnimation 函数
 const startProgressAnimation = (startFromProgress = 0) => {
   progress.value = startFromProgress
-  const totalDuration = 510000 // 8.5分钟，约7-10分钟的平均值
+  const totalDuration = 180000 // 8.5分钟，约7-10分钟的平均值
   const totalSteps = 99 // 总共99步
   const stepDuration = totalDuration / totalSteps
   const remainingSteps = totalSteps - startFromProgress
