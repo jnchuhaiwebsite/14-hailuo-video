@@ -28,9 +28,9 @@ export function useSeo(options: SeoOptions) {
   
   // 确保描述在140-160个字符之间
   let description = options.description
-  if (description.length > 160) {
-    description = description.substring(0, 157) + '...'
-  }
+  // if (description.length > 160) {
+  //   description = description.substring(0, 157) + '...'
+  // }
 
   useHead({
     title: title,

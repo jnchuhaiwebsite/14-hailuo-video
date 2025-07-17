@@ -44,7 +44,7 @@
         <div class="flex-1 grid grid-cols-2 sm:grid-cols-2 gap-6 md:gap-8">
           <!-- 导航链接 -->
           <div>
-            <h3 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Navigation</h3>
+            <h3 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Resources</h3>
             <div class="flex flex-col gap-2">
               <template v-for="(section, index) in footerSections" :key="index">
                 <NuxtLink v-if="section.href" :to="section.href" 

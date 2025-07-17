@@ -83,8 +83,13 @@
   import { useRoute, useRouter } from 'vue-router';
   import { getShareInfo } from '~/api';
   import { useAsyncData,useNuxtApp } from 'nuxt/app';
+  import { useSeo } from '~/composables/useSeo';
   const { $toast } = useNuxtApp() as any
   
+  useSeo({
+    title: 'Hailuo Al VideoText & Iage to Video Examples',
+    description: 'Find your AI video inspiration in the Hailuo gallery. Get stunning examples with the exact text prompts and camera controls used. Create your masterpiece today!',
+  })
   interface PortfolioItem {
     id: string;
     generate: string;
