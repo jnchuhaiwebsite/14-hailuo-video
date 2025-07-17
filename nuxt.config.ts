@@ -57,14 +57,23 @@ export default defineNuxtConfig({
         {
           innerHTML: `
             // 检查当前页面路径
-            console.log('Google Analytics -before',window.location.pathname);
-            if (window.location.pathname === '/' || window.location.pathname === '/payment') {
-            console.log('Google Analytics -after');  
             window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-TE7JHEHZ6J');
-            }
+          `,
+          type: 'text/javascript'
+        },
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=AW-17364631960',
+          async: true
+        },
+        {
+          innerHTML: `
+            window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17364631960);
           `,
           type: 'text/javascript'
         }
