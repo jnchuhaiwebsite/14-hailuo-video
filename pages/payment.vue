@@ -97,9 +97,16 @@
 import { ref, onMounted } from 'vue'
 import { getSubPlans } from '~/api/index'
 
+// 声明 gtag 全局函数类型
+declare global {
+  interface Window {
+    gtag: (command: string, targetId: string, config?: any) => void;
+  }
+}
 
-// Plan information
+// 套餐信息
 const planInfo = ref<any>(null)
+// 支付状态
 const paymentStatus = ref<'success' | 'failed' | null>(null)
 const isLoading = ref(true)
 
@@ -122,6 +129,13 @@ onMounted(async () => {
     // Set payment status
     if (paySuccess == '1') {
       paymentStatus.value = 'success';
+      // 触发 Google Analytics 转换跟踪
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-17364631960/T0wYCNqM__IaEJiDjdhA',
+          'transaction_id': ''
+        });
+      }
     } else if (payFail == '1') {
       paymentStatus.value = 'failed';
       isLoading.value = false;
