@@ -73,7 +73,7 @@ export default defineNuxtConfig({
             window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'AW-17364631960);
+              gtag('config', 'AW-17364631960');
           `,
           type: 'text/javascript'
         }
