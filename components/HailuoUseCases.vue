@@ -17,7 +17,7 @@
                 playsinline 
                 loading="lazy"
                 preload="none"
-                poster="/video/Film-Production.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
+                poster="/video/Film-Production.mp4"
               >
                 <source src="/video/Film-Production.mp4" type="video/mp4">
               </video>
@@ -37,7 +37,7 @@
                 playsinline 
                 loading="lazy"
                 preload="none"
-                poster="/video/Advertising.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
+                poster="/video/Advertising.mp4"
               >
                 <source src="/video/Advertising.mp4" type="video/mp4">
               </video>
@@ -57,7 +57,7 @@
                 playsinline 
                 loading="lazy"
                 preload="none"
-                poster="/video/Corporate-Promotions.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
+                poster="/video/Corporate-Promotions.mp4"
               >
                 <source src="/video/Corporate-Promotions.mp4" type="video/mp4">
               </video>
