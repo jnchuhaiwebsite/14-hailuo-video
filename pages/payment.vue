@@ -130,6 +130,7 @@ onMounted(async () => {
     if (paySuccess == '1') {
       paymentStatus.value = 'success';
       // 触发 Google Analytics 转换跟踪
+ 
       if (typeof window !== 'undefined' && window.gtag) {
         window.gtag('event', 'conversion', {
           'send_to': 'AW-17364631960/T0wYCNqM__IaEJiDjdhA',

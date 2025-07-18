@@ -174,6 +174,15 @@
           <span class="whitespace-nowrap">{{ isGenerating ? 'Generating...' : 'Generate Video' }}</span>
           <span class="absolute -top-1.5 -right-1.5 bg-[#00b8ff] text-white text-xs font-bold px-1.5 py-0.5 rounded-full shadow border-2 border-white/50 shadow-[0_0_15px_rgba(0,184,255,0.3)]">{{ needCredits }} credits</span>
         </button>
+        
+        <!-- 测试进度条按钮 -->
+        <!-- <button 
+          class="w-full flex items-center justify-center gap-1.5 px-3 mt-2 lg:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-gray-600 to-gray-600/80 hover:from-gray-500 hover:to-gray-500/70 text-white rounded-lg font-medium text-sm lg:text-base shadow-lg transition relative" 
+          @click="handleAction('testProgress')"
+        >
+          <ArrowPathIcon class="h-4 w-4 lg:h-5 lg:w-5" />
+          <span class="whitespace-nowrap">{{ isGenerating ? 'Stop Test' : 'Test Progress Bar' }}</span>
+        </button> -->
       </div>
       <!-- 右侧视频预览 -->
       <div :class="[
@@ -216,11 +225,11 @@
                 <div class="absolute inset-0 flex items-center justify-center text-[#7C3AED] font-bold text-lg">
                   {{ progress.toFixed(0) }}%
                 </div>
-                <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-[#7C3AED] text-base font-medium">Generating your video<span class="loading-dots">...</span></span>
+                <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-[#7C3AED] text-base font-medium">Video is being generated. Please wait a moment; it should take a few minutes.<span class="loading-dots">...</span></span>
               </div>
               <div v-else class="flex flex-col items-center justify-center">
                 <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#7C3AED] border-t-transparent"></div>
-                <span class="mt-3 text-[#7C3AED] text-base font-medium whitespace-nowrap">Generating your video<span class="loading-dots">...</span></span>
+                <span class="mt-3 text-[#7C3AED] text-base font-medium whitespace-nowrap">Video is being generated. Please wait a moment; it should take a few minutes.<span class="loading-dots">...</span></span>
               </div>
             </div>
             <!-- 预览视频 -->
@@ -960,6 +969,7 @@ const handleVideoRequest = async () => {
 
 // 统一的事件处理方法
 const handleAction = (action: string, ...args: any[]) => {
+  
   switch (action) {
     case 'switchTab':
       activeTab.value = args[0]
@@ -976,6 +986,25 @@ const handleAction = (action: string, ...args: any[]) => {
         
         handleVideoRequest()
       })
+      break
+    case 'testProgress':
+      // 测试进度条动画，不触发其他事件
+      if (isGenerating.value) {
+        stopProgressAnimation()
+        stopCheckTask()
+        isGenerating.value = false
+        progress.value = 0
+      } else {
+        isGenerating.value = true
+        progress.value = 0
+        startProgressAnimation()
+        // 5秒后自动停止
+        setTimeout(() => {
+          stopProgressAnimation()
+          stopCheckTask()
+          isGenerating.value = false
+        }, 5000)
+      }
       break
     case 'inspiration':
       prompt.value = args[0] || ''
@@ -1315,6 +1344,18 @@ const containerHeight = computed(() => {
 .loading-dots {
   display: inline-block;
   animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+  0%, 20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 </style> 
