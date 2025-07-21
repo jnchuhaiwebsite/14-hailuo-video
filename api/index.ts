@@ -30,6 +30,7 @@ export const urlList = {
   getPromotionLink: baseUrl + '/api/user/promotion_link', // 获取视频展示
   getPromotionUsers: baseUrl + '/api/user/promotion_users', // 获取推广用户列表
   getPromotionScoreLog: baseUrl + '/api/user/promotion_score_log', // 获取积分记录
+  getSubplansTest: baseUrl + '/api/website/odl',     // 获取测试套餐信息
 }
 
 /**
@@ -77,6 +78,14 @@ export const setUserInfo = async (data: any) => {
     console.error('设置用户信息失败:', error);
     throw error;
   }
+}
+
+/**
+ * 获取套餐信息-测试
+ * @returns 套餐列表
+ */
+export const getSubplansTest = async () => {
+  return apiRequest(urlList.getSubplansTest, 'GET', undefined, false);
 }
 
 /**
