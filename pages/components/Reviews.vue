@@ -15,7 +15,17 @@
         <div class="bg-gray-800 rounded-lg p-8 shadow-xl">
           <div class="mb-6">
             <div class="flex items-center gap-4">
-              <img src="/img/user/6.jpg" alt="David Chen" class="w-16 h-16 rounded-full object-cover" />
+                  <NuxtImg 
+                src="/img/user/6.jpg" 
+                width="64"
+                height="64"
+                format="webp"
+                 alt="David Chen" 
+                   loading="lazy"
+                 class="w-16 h-16 rounded-full object-cover"
+             />   
+
+              <!-- <img src="/img/user/6.jpg" alt="David Chen" class="w-16 h-16 rounded-full object-cover" /> -->
               <div>
                 <h3 class="text-lg font-bold text-white">David Chen</h3>
                 <p class="text-gray-400">Independent Video Producer</p>
@@ -34,7 +44,19 @@
         <div class="bg-gray-800 rounded-lg p-8 shadow-xl">
           <div class="mb-6">
             <div class="flex items-center gap-4">
-              <img src="/img/user/8.jpg" alt="Sarah Lee" class="w-16 h-16 rounded-full object-cover" />
+                 <NuxtImg 
+                src="/img/user/8.jpg" 
+                width="64"
+                height="64"
+                format="webp"
+                 alt="Sarah Lee" 
+                   loading="lazy"
+                 class="w-16 h-16 rounded-full object-cover"
+             />   
+
+
+
+              <!-- <img src="/img/user/8.jpg" alt="Sarah Lee" class="w-16 h-16 rounded-full object-cover" /> -->
               <div>
                 <h4 class="text-lg font-bold text-white">Sarah Lee</h4>
                 <p class="text-gray-400">Social Media Content Creator</p>
@@ -53,7 +75,16 @@
         <div class="bg-gray-800 rounded-lg p-8 shadow-xl">
           <div class="mb-6">
             <div class="flex items-center gap-4">
-              <img src="/img/user/10.jpg" alt="Michael Wang" class="w-16 h-16 rounded-full object-cover" />
+                <NuxtImg 
+                    src="/img/user/10.jpg" 
+                    width="64"
+                    height="64"
+                    format="webp"
+                    alt="Michael Wang" 
+                    loading="lazy"
+                    class="w-16 h-16 rounded-full object-cover"
+                />   
+              <!-- <img src="/img/user/10.jpg" alt="Michael Wang" class="w-16 h-16 rounded-full object-cover" /> -->
               <div>
                 <h4 class="text-lg font-bold text-white">Michael Wang</h4>
                 <p class="text-gray-400">Senior Post-Production Specialist</p>
