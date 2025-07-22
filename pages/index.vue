@@ -86,7 +86,7 @@ import { useNuxtApp } from 'nuxt/app'
 const { $toast } = useNuxtApp() as any
 
 useSeo({
-  title: "Hailuo 02 AI Video Generator | Online & Free | Hailuo2",
+  title: "Hailuo 02 AI Video Generator | Online & Free Trial | Hailuo2",
   description: "Create stunning AI videos in seconds using text or images with Hailuo 02. No editing needed. Perfect for creators, brands, and educators. Try it free today!"
 });
 

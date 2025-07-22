@@ -84,7 +84,13 @@ export default defineNuxtConfig({
     preset: 'cloudflare_pages',
     cloudflare: {
       deployConfig: true,
-      nodeCompat: true
+      nodeCompat: true,
+    //   wrangler:{
+    //     vars:{
+    //         "NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY":"pk_test_d29uZHJvdXMtbmFyd2hhbC0xMy5jbGVyay5hY2NvdW50cy5kZXYk",
+    //         "NUXT_CLERK_SECRET_KEY":"sk_test_PXJ8xb1DxxFXl6Wk0Vs0fQkC8YLn7VICjuYplOxT7q"
+    //     }
+    //   }
     },
     devProxy: {
       '/nuxtRequest': {
@@ -97,10 +103,7 @@ export default defineNuxtConfig({
     prerender: {
       // 预渲染路由
       routes: [
-    
         '/blog',
-        '/blog/feature-update', 
-        '/blog/background-removal-tutorial', 
         '/subsidiary/privacy-policy',
         '/subsidiary/terms-of-service'
       ], // 手动指定所有文章路径
@@ -123,15 +126,15 @@ export default defineNuxtConfig({
   // 使用vite的正确配置方式
   vite: {
     build: {
-      cssCodeSplit: true,
+      cssCodeSplit: false,
       // 强制提取CSS到单独文件
       rollupOptions: {
         output: {
           assetFileNames: (assetInfo) => {
             if (assetInfo.name.endsWith('.css')) {
-              return '_nuxt/css/[name]-[hash][extname]';
+              return '_nuxt/css/[hash]-[extname]';
             }
-            return '_nuxt/assets/[name]-[hash][extname]';
+            return '_nuxt/assets/[hash]-[extname]';
           }
         }
       }
@@ -166,7 +169,7 @@ export default defineNuxtConfig({
     // 强制禁用内联样式，将样式提取到外部文件
     inlineSSRStyles: false,
     // 启用vite特性兼容
-    viteNode: true
+    // viteNode: true
   },
   colorMode: {
     classSuffix: '',

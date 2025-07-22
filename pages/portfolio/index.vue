@@ -3,7 +3,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-            Hailuo AI Video Generator Inspiration Community
+            Hailuo AI Video Inspiration Community
           </h2>
           <p class="mt-4 text-xl text-gray-300">
             From cinematic sci-fi flights to fantasy warrior animations, these videos are created entirely by Hailuo02 Video users using only text or image prompts. Explore their imagination, get inspired, and start crafting your own AI-powered stories.
@@ -88,7 +88,7 @@
 
   useSeo({
     // title: "Explore AI Video Creations | Inspiration & Showcase - Hailuo 02 AI",
-    title: "Hailuo AI Video Generator Inspiration |  Inspiration & Showcase",
+    title: "Hailuo AI Video Inspiration |  Inspiration & Showcase",
     description: "Discover cinematic AI videos made by Hailuo AI Video users. Get inspired and create your own from text or images—fast, creative, and free to try."
   });
 
