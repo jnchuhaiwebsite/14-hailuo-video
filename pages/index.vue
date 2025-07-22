@@ -63,7 +63,8 @@ import { onBeforeMount, defineAsyncComponent, onMounted } from "vue";
 import { useSeo } from '~/composables/useSeo';
 
 
-const HomeHero = defineAsyncComponent(() => import('~/pages/components/HomeHero.vue'));
+import HomeHero from '~/pages/components/HomeHero.vue'
+// const HomeHero = defineAsyncComponent(() => import('~/pages/components/HomeHero.vue'));
 const FaqSection = defineAsyncComponent(() => import('~/pages/components/FaqSection.vue'));
 const HowItWorks = defineAsyncComponent(() => import('~/pages/components/HowItWorks.vue'));
 const Reviews = defineAsyncComponent(() => import('~/pages/components/Reviews.vue'));

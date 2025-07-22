@@ -85,12 +85,12 @@ export default defineNuxtConfig({
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
-    //   wrangler:{
-    //     vars:{
-    //         "NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY":"pk_test_d29uZHJvdXMtbmFyd2hhbC0xMy5jbGVyay5hY2NvdW50cy5kZXYk",
-    //         "NUXT_CLERK_SECRET_KEY":"sk_test_PXJ8xb1DxxFXl6Wk0Vs0fQkC8YLn7VICjuYplOxT7q"
-    //     }
-    //   }
+      wrangler:{
+        vars:{
+            "NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY":"pk_test_d29uZHJvdXMtbmFyd2hhbC0xMy5jbGVyay5hY2NvdW50cy5kZXYk",
+            "NUXT_CLERK_SECRET_KEY":"sk_test_PXJ8xb1DxxFXl6Wk0Vs0fQkC8YLn7VICjuYplOxT7q"
+        }
+      }
     },
     devProxy: {
       '/nuxtRequest': {
@@ -104,6 +104,7 @@ export default defineNuxtConfig({
       // 预渲染路由
       routes: [
         '/blog',
+        '/pricing',
         '/subsidiary/privacy-policy',
         '/subsidiary/terms-of-service'
       ], // 手动指定所有文章路径
