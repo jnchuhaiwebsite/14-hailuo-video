@@ -9,7 +9,14 @@
           <!-- Logo -->
           <div class="flex items-center gap-2 mr-8">
             <NuxtLink to="/">
-              <img src="/logo.png" alt="Hailuo02 Video - AI Video from Text or Image in Minutes" class="h-12 lg:h-16" loading="lazy" />
+                <NuxtImg 
+                src="/logo.png" 
+                alt="image"
+                width="128"
+                height="48"
+                format="webp"
+            
+             />   
             </NuxtLink>
           </div>
 
