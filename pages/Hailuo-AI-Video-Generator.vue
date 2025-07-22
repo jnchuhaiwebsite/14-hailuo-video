@@ -6,7 +6,6 @@
     <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
       <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
         Hailuo AI Video Generator 
-        <!-- - Transform Your Creative Moments into Blockbuster Videos Instantly. -->
       </h1>
       <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
         Create high‑quality 1080p AI videos in minutes from text or images—no editing needed. Perfect for creators, brands & educators in marketing, and creative expression.
@@ -498,9 +497,9 @@ const needCredits = ref(0)
 
 // 监听分辨率和时长变化
 watch([resolution, duration], () => {
-  console.log('分辨率或时长变化:', '分辨率=', resolution.value, '时长=', duration.value)
+  //console.log('分辨率或时长变化:', '分辨率=', resolution.value, '时长=', duration.value)
   const credits = calculateCredits()
-  console.log('重新计算的积分:', credits)
+  //console.log('重新计算的积分:', credits)
   needCredits.value = credits
 }, { immediate: true })
 
@@ -635,10 +634,8 @@ const inspirationPrompts = [
 ]
 
 // 预览视频URL
-// const previewVideoUrl = 'https://resource.hailuo2.com/hailuo/video/hailuo2-demo.mp4'
-const previewVideoUrl = 'https://source.hailuo2.com/example/hailuo2-demo.mp4'
+const previewVideoUrl = 'https://resp.hailuo2.com/hailuo/example/hailuo2-demo.mp4'
 
-// const previewVideoUrl = '/img/1750358424507.mp4'
 const previewVideoPoster = '/img/2.webp'
 
 // 处理视频加载事件

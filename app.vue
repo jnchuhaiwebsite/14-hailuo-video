@@ -11,12 +11,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
     <NotificationList />
-  </div>
 </template>
 
 <style>

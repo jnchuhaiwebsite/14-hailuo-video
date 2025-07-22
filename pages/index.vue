@@ -19,12 +19,7 @@
         </KeepAlive>
       </section>
 
-      <!-- 特性展示 -->
-      <!-- <section id="features-showcase">
-        <KeepAlive>
-          <FeatureShowcase />
-        </KeepAlive>
-      </section> -->
+  
 
       <section id="hailuo-key-features">
         <KeepAlive>
@@ -45,12 +40,6 @@
         </KeepAlive>
       </section>
 
-      <!-- 定价模块 -->
-      <!-- <section id="pricing">
-        <KeepAlive>
-          <PricingPlans />
-        </KeepAlive>
-      </section> -->
 
       <!-- 常见问题模块 -->
       <section id="faq">
@@ -73,20 +62,17 @@
 import { onBeforeMount, defineAsyncComponent, onMounted } from "vue";
 import { useSeo } from '~/composables/useSeo';
 
-// const PricingPlans = defineAsyncComponent(() => import('~/components/Pricing.vue'));
+
 const HomeHero = defineAsyncComponent(() => import('~/pages/components/HomeHero.vue'));
 const FaqSection = defineAsyncComponent(() => import('~/pages/components/FaqSection.vue'));
-// const VideoShowcase = defineAsyncComponent(() => import('~/pages/components/VideoShowcase.vue'));
-// const CaseStudies = defineAsyncComponent(() => import('~/pages/components/CaseStudies.vue'));
 const HowItWorks = defineAsyncComponent(() => import('~/pages/components/HowItWorks.vue'));
-// const FeatureShowcase = defineAsyncComponent(() => import('~/pages/components/FeatureShowcase.vue'));
 const Reviews = defineAsyncComponent(() => import('~/pages/components/Reviews.vue'));
 
 import { useNuxtApp } from 'nuxt/app'
 const { $toast } = useNuxtApp() as any
 
 useSeo({
-  title: "Hailuo 02 AI Video Generator | Online & Free | Hailuo2",
+  title: "Hailuo 02 AI Video Generator | Online & Free Trial | Hailuo2",
   description: "Create stunning AI videos in seconds using text or images with Hailuo 02. No editing needed. Perfect for creators, brands, and educators. Try it free today!"
 });
 
