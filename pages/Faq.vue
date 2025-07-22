@@ -45,7 +45,9 @@
             v-show="openFaqs[index]"
             class="px-6 pb-6 text-gray-300/90 leading-relaxed"
           >
-            <div class="pt-4 border-t border-[#7C3AED]/10" v-html="faq.answer" />
+            <div class="pt-4 border-t border-[#7C3AED]/10">
+              {{ faq.answer }}
+            </div>
           </div>
         </div>
       </div>
