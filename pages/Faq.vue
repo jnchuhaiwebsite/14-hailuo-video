@@ -82,14 +82,6 @@ const faqs = [
     answer: 'Hailuo 02 AI Video Generator is an advanced video generation model developed by MiniMax. It transforms text prompts or images into high-quality, cinematic 1080p videos, featuring realistic physics simulations and director-level camera controls.'
   },
   {
-    question: 'What payment methods do you accept?',
-    answer: 'We currently accept payments via major credit cards including Visa, Mastercard, American Express, Discover, and Japan Credit Bureau (JCB). We strive to offer a variety of secure and convenient payment options for your ease.'
-  },
-   {
-        question: 'My payment was successful, but I don’t see my credits. What should I do next?',
-        answer: 'Please wait 1 minute and refresh the page. If the credits still don’t appear, check your account’s balance in the User Center. If the issue persists, contact us at support@hailuo2.com with your payment proof or order screenshot.'
-    },
-  {
     question: 'How do I use Hailuo 02 AI Video Generator?',
     answer: 'Simply upload an image or enter a descriptive text prompt on the Hailuo 02 platform. Customize your video settings, such as resolution and duration, and let the AI generate your video in just a few minutes.'
   },
@@ -109,23 +101,21 @@ const faqs = [
     question: 'Is there a free trial available for Hailuo 02 AI Video Generator?',
     answer: 'Yes, Hailuo 02 AI Video Generator offers a free trial with limited credits, allowing you to generate a few videos at no cost. Additional credits can be purchased through various subscription plans.'
   },
-
-
   {
     question: 'How are credits calculated and consumed in Hailuo 02 AI Video Generator?',
-    answer: 'Credit consumption depends on both the resolution and duration of the video. For example:\nA 6-second video at 768p resolution consumes 10 credits, while a 10-second video at 768p consumes 20 credits.\nA 6-second video at 1080p resolution consumes 10 credits.\nAdditional credits can be purchased as needed to continue generating videos.'
+    answer: 'Credits are consumed based on the video resolution and duration. For instance, a 6-second 768p video may cost around 10 credits. Subscription plans provide a set number of credits per month, with options to purchase additional credits as needed.'
   },
   {
     question: 'Do credits in Hailuo 02 AI Video Generator expire?',
-    answer: 'No, credits in Hailuo 02 AI Video Generator never expire. Feel free to use them at your convenience without worrying about losing them.'
+    answer: 'Yes, credits typically expire after 30 days if not used. It\'s advisable to utilize your credits within this period to avoid loss.'
   },
   {
     question: 'What happens if a video generation request is canceled or interrupted?',
-    answer: 'If your network connection is interrupted during the video generation process, the task will continue running. Once the network is restored, you can go to the <a href="/profile" style="color:#7C3AED;text-decoration:underline;">Personal Center</a> to view and complete the video generation. Please note that any credits consumed up to the point of interruption are non-refundable.'
+    answer: 'If your network connection is interrupted during the video generation process, the task will continue running. Once the network is restored, you can go to the Personal Center to view and complete the video generation. Please note that any credits consumed up to the point of interruption are non-refundable.'
   },
   {
     question: 'How can I manage my credits and projects in Hailuo 02 AI Video Generator?',
-    answer: 'You can manage your credits and projects by accessing the <a href="/profile" style="color:#7C3AED;text-decoration:underline;">Personal Center</a> on the Hailuo 02 platform. Here, you can view your credit balance, track usage, and access your generated videos.'
+    answer: 'You can manage your credits and projects by accessing the Personal Center on the Hailuo 02 platform. Here, you can view your credit balance, track usage, and access your generated videos.'
   },
   {
     question: 'Does Hailuo 02 AI Video Generator support multiple languages for video generation?',
