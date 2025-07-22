@@ -45,9 +45,7 @@
             v-show="openFaqs[index]"
             class="px-6 pb-6 text-gray-300/90 leading-relaxed"
           >
-            <div class="pt-4 border-t border-[#7C3AED]/10">
-              {{ faq.answer }}
-            </div>
+            <div class="pt-4 border-t border-[#7C3AED]/10" v-html="faq.answer" />
           </div>
         </div>
       </div>
@@ -93,7 +91,7 @@ const faqs = [
   },
   {
     question: 'What happens if I run out of credits?',
-    answer: 'If you run out of credits, you can subscribe to a plan to purchase additional credits. Simply choose a subscription package that fits your needs and replenish your credits to continue generating videos with Hailuo 02 AI.'
+    answer: 'If you run out of credits, you can subscribe to a <a href="/pricing" style="color:#7C3AED;text-decoration:underline;">plan</a> to purchase additional credits. Simply choose a subscription package that fits your needs and replenish your credits to continue generating videos with Hailuo 02 AI.'
   },
   {
     question: 'Can I use Hailuo 02 AI Video Generator for commercial projects?',
@@ -113,11 +111,11 @@ const faqs = [
   },
   {
     question: 'What happens if a video generation request is canceled or interrupted?',
-    answer: 'If your network connection is interrupted during the video generation process, the task will continue running. Once the network is restored, you can go to the Personal Center to view and complete the video generation. Please note that any credits consumed up to the point of interruption are non-refundable.'
+    answer: 'If your network connection is interrupted during the video generation process, the task will continue running. Once the network is restored, you can go to the <a href="/profile" style="color:#7C3AED;text-decoration:underline;">Personal Center</a> to view and complete the video generation. Please note that any credits consumed up to the point of interruption are non-refundable.'
   },
   {
     question: 'How can I manage my credits and projects in Hailuo 02 AI Video Generator?',
-    answer: 'You can manage your credits and projects by accessing the Personal Center on the Hailuo 02 platform. Here, you can view your credit balance, track usage, and access your generated videos.'
+    answer: 'You can manage your credits and projects by accessing the <a href="/profile" style="color:#7C3AED;text-decoration:underline;">Personal Center</a> on the Hailuo 02 platform. Here, you can view your credit balance, track usage, and access your generated videos.'
   },
   {
     question: 'Does Hailuo 02 AI Video Generator support multiple languages for video generation?',
