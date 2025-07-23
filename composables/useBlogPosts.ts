@@ -6,6 +6,7 @@ export interface BlogPost {
   id: string;
   title: string;
   content: string;
+  seoTitle?: string;
   description: string;
   date: string;
   category: string;
@@ -16,8 +17,8 @@ export interface BlogPost {
 // Blog post data
 const blogPostsData: BlogPost[] = [
   {
-    id: 'top-tips-cinematic-video-prompts-hailuo-02-ai',
-    title: 'Top Tips for Cinematic Video Prompts in Hailuo 02 AI Video Generator',
+    id: 'top-tips-for-cinematic-video-prompts-in-hailuo-02-ai',
+    title: 'Top Tips for Cinematic Video Prompts in Hailuo 02 AI',
     content: `
       <h2 class="text-2xl font-bold mb-4">Top Tips for Cinematic Video Prompts in Hailuo 02 AI Video Generator</h2>
       <p>When using Hailuo 02 AI to generate dynamic videos, precise prompt design and camera control are crucial. Below are proven optimization techniques to help you efficiently create video content that meets your expectations.</p>
@@ -128,7 +129,7 @@ const blogPostsData: BlogPost[] = [
       <h3 class="text-xl font-bold my-4">Iterate and Optimize!</h3>
       <p>Mastering Hailuo 02 AI prompts requires continuous experimentation. Start creating your stunning dynamic videos with Hailuo 02 AI Video Generator NOW!</p>
     `,
-    description: 'Learn proven optimization techniques for creating cinematic video prompts in Hailuo 02 AI Video Generator, including action separation, camera control, and prompt formulas',
+    description: 'Master cinematic prompts for Hailuo 02 AI. Our guide covers camera control, expressions & action. Use our winning formula to turn ideas into pro-level videos.',
     date: 'July 23, 2025',
     category: 'Tips',
     skip: false,
