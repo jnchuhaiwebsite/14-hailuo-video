@@ -1,5 +1,56 @@
 /* 导入 Roboto 字体 */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap'); */
+
+/* 1. 定义 Roboto 常规体 (Regular) */
+@font-face {
+    font-family: 'Roboto';
+    /* 给你的字体家族起一个名字，之后会一直用它 */
+    font-style: normal;
+    /* 样式：normal (正常) 或 italic (斜体) */
+    font-weight: 400;
+    /* 字重：这个值必须精确匹配这个文件代表的粗细 */
+    font-display: swap;
+    /* 优化策略：先显示备用字体，加载完再替换 */
+    src: url('/fonts/265822651.woff2') format('woff2'),
+        /* 现代浏览器优先使用 woff2 */
+        /* url('../fonts/roboto-v48-latin-regular.woff2') format('woff'); */
+    /* 备用 woff */
+}
+
+/* 2. 定义 Roboto 粗体 (Bold) */
+@font-face {
+    font-family: 'Roboto';
+    /* 名字必须和上面的一样，这样它们才属于同一个字体家族 */
+    font-style: normal;
+    /* 样式：正常 */
+    font-weight: 700;
+    /* 字重：这个文件代表 700 的粗细 */
+    font-display: swap;
+    src: url('/fonts/265822652.woff2') format('woff2'),
+        /* url('../fonts/roboto-v48-latin-700.woff2') format('woff'); */
+}
+
+/* @font-face {
+    font-family: 'Roboto'; */
+    /* 名字必须和上面的一样，这样它们才属于同一个字体家族 */
+    /* font-style: italic; */
+    /* 样式：正常 */
+    /* font-weight: 700; */
+    /* 字重：这个文件代表 700 的粗细 */
+    /* font-display: swap;
+    src: url('../fonts/roboto-v48-latin-700italic.woff2') format('woff2'), */
+/* } */
+
+/* @font-face { */
+    /* font-family: 'Roboto'; */
+    /* 名字必须和上面的一样，这样它们才属于同一个字体家族 */
+    /* font-style: italic; */
+    /* 样式：正常 */
+    /* font-weight: 400; */
+    /* 字重：这个文件代表 700 的粗细 */
+    /* font-display: swap;
+    src: url('../fonts/roboto-v48-latin-regular.woff2') format('woff2'), */
+/* } */
 
 /* 为了更好的滚动体验，添加滚动内边距，防止内容被导航栏遮挡 */
 section {

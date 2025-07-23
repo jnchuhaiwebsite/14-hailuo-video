@@ -28,6 +28,24 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en' // 设置 HTML 语言
       },
+      link: [
+        // 预加载常规字重的 WOFF2 文件
+        {
+          rel: 'preload',
+          href: '/fonts/265822651.woff2', // 使用从 public 根目录开始的绝对路径
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: 'anonymous' // 加上 anonymous 属性是个好习惯
+        },
+        // (可选) 如果粗体在首屏也很重要，也可以预加载它
+        {
+          rel: 'preload',
+          href: '/fonts/265822652.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: 'anonymous'
+        }
+      ],
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -85,12 +103,12 @@ export default defineNuxtConfig({
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
-    //   wrangler:{
-    //     vars:{
-    //         "NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY":"pk_test_d29uZHJvdXMtbmFyd2hhbC0xMy5jbGVyay5hY2NvdW50cy5kZXYk",
-    //         "NUXT_CLERK_SECRET_KEY":"sk_test_PXJ8xb1DxxFXl6Wk0Vs0fQkC8YLn7VICjuYplOxT7q"
-    //     }
-    //   }
+      wrangler:{
+        vars:{
+            "NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY":"pk_test_d29uZHJvdXMtbmFyd2hhbC0xMy5jbGVyay5hY2NvdW50cy5kZXYk",
+            "NUXT_CLERK_SECRET_KEY":"sk_test_PXJ8xb1DxxFXl6Wk0Vs0fQkC8YLn7VICjuYplOxT7q"
+        }
+      }
     },
     devProxy: {
       '/nuxtRequest': {
