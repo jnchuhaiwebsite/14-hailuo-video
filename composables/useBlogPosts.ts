@@ -16,6 +16,125 @@ export interface BlogPost {
 // Blog post data
 const blogPostsData: BlogPost[] = [
   {
+    id: 'top-tips-cinematic-video-prompts-hailuo-02',
+    title: 'Top Tips for Cinematic Video Prompts in Hailuo 02 AI Video Generator',
+    content: `
+      <h2 class="text-2xl font-bold mb-4">Top Tips for Cinematic Video Prompts in Hailuo 02 AI Video Generator</h2>
+      <p>When using Hailuo 02 AI to generate dynamic videos, precise prompt design and camera control are crucial. Below are proven optimization techniques to help you efficiently create video content that meets your expectations.</p>
+      
+      <h3 class="text-xl font-bold my-4">Separating Action and Visual Descriptions</h3>
+      <p>When crafting prompts, it's recommended to clearly divide them into two parts:</p>
+      
+      <div class="bg-gray-800 p-4 rounded-lg mb-6">
+        <h4 class="font-bold mb-2">1. Action/Camera Movement Description</h4>
+        <ul class="list-disc pl-5 mb-3">
+          <li>Define character movements (e.g., "walking," "turning around")</li>
+          <li>Specify camera techniques (e.g., "zoom in," "pan to the right")</li>
+        </ul>
+        
+        <h4 class="font-bold mb-2">2. Visual Imagery Description</h4>
+        <ul class="list-disc pl-5">
+          <li>Character appearance (costume, facial expressions, etc.)</li>
+          <li>Scene details (background, lighting, special effects, etc.)</li>
+        </ul>
+      </div>
+      
+      <div class="bg-blue-900 p-4 rounded-lg mb-6">
+        <h4 class="font-bold mb-2 text-blue-200">Example:</h4>
+        <p class="text-blue-100">"Slow zoom-in (camera movement) on a woman in a red cloak running through the snow, her eyes filled with determination (visual description)."</p>
+      </div>
+      
+      <h3 class="text-xl font-bold my-4">Precision Control of Movements and Expressions</h3>
+      
+      <h4 class="text-lg font-bold my-3">1. Simplify Action Descriptions</h4>
+      <ul class="list-disc pl-5 mb-6">
+        <li>Start with basic actions (e.g., "look directly at the camera," "walking") before progressing to complex motions</li>
+        <li>Avoid stacking multiple actions and limit each clip to 1 - 2 actions, as Hailuo 02 AI generates 6 or 10 second videos, and excessive movements may be ignored</li>
+      </ul>
+      
+      <h4 class="text-lg font-bold my-3">2. Facial Expression Control for "Speech"</h4>
+      <ul class="list-disc pl-5 mb-6">
+        <li>Accurate, vivid facial expressions significantly enhance video quality, enriching storytelling and character dynamism</li>
+        <li>Avoid negative instructions. For example, instead of saying "do not speak," use positive descriptions like:</li>
+        <ul class="list-disc pl-8 mt-2">
+          <li>"Lips tightly sealed"</li>
+          <li>"Gritting teeth in silence"</li>
+        </ul>
+      </ul>
+      
+      <h3 class="text-xl font-bold my-4">Adding Camera Movements</h3>
+      
+      <h4 class="text-lg font-bold my-3">1. Precise Insertion of Camera Commands</h4>
+      <p class="mb-4">Embed camera movement keywords (e.g., pull in, pan right) directly into the corresponding action descriptions to ensure smooth transitions.</p>
+      
+      <div class="bg-blue-900 p-4 rounded-lg mb-6">
+        <h4 class="font-bold mb-2 text-blue-200">Example:</h4>
+        <p class="text-blue-100">"The character draws a sword (action), the camera quickly pulls back (camera movement), revealing the full battlefield (scene)."</p>
+      </div>
+      
+      <h4 class="text-lg font-bold my-3">2. Common Camera Movement Keywords</h4>
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full border-collapse border border-gray-600">
+          <thead>
+            <tr class="bg-gray-700">
+              <th class="border border-gray-600 px-4 py-2 text-left">Prompt</th>
+              <th class="border border-gray-600 px-4 py-2 text-left">Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border border-gray-600">
+              <td class="border border-gray-600 px-4 py-2">Pull in</td>
+              <td class="border border-gray-600 px-4 py-2">Camera zooms in for a close-up</td>
+            </tr>
+            <tr class="border border-gray-600">
+              <td class="border border-gray-600 px-4 py-2">Pull out</td>
+              <td class="border border-gray-600 px-4 py-2">Camera zooms out to show wider view</td>
+            </tr>
+            <tr class="border border-gray-600">
+              <td class="border border-gray-600 px-4 py-2">Pan left/right</td>
+              <td class="border border-gray-600 px-4 py-2">Camera horizontally moves left/right</td>
+            </tr>
+            <tr class="border border-gray-600">
+              <td class="border border-gray-600 px-4 py-2">Tilt up/down</td>
+              <td class="border border-gray-600 px-4 py-2">Camera vertically angles up/down</td>
+            </tr>
+            <tr class="border border-gray-600">
+              <td class="border border-gray-600 px-4 py-2">Zoom in/out</td>
+              <td class="border border-gray-600 px-4 py-2">Adjusts focal length for tighter/wider shots</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <h3 class="text-xl font-bold my-4">Streamlining Complex Scenes</h3>
+      <ul class="list-disc pl-5 mb-6">
+        <li>Weather Effects (rain, wind, lightning) and Particle Effects (fire, electricity) can be generated with relative stability</li>
+        <li>Complex actions like fight sequences or rapid scene cuts are prone to errors. We recommend generating separate shots and editing them together in post-production</li>
+      </ul>
+      
+      <h3 class="text-xl font-bold my-4">Optimized Prompt Formula</h3>
+      <p class="mb-4">By integrating the above techniques, use this structure to efficiently produce high-quality videos:</p>
+      
+      <div class="bg-green-900 p-4 rounded-lg mb-6">
+        <h4 class="font-bold mb-2 text-green-200">Formula:</h4>
+        <p class="text-green-100">"Scene Description + Camera Movement + Additional Details"</p>
+      </div>
+      
+      <div class="bg-blue-900 p-4 rounded-lg mb-6">
+        <h4 class="font-bold mb-2 text-blue-200">Example:</h4>
+        <p class="text-blue-100">"In a moonlit forest (scene), a wizard raises his staff to summon lightning (action), captured in a low-angle shot that pulls back (camera movement), with the lightning illuminating surrounding trees (VFX)."</p>
+      </div>
+      
+      <h3 class="text-xl font-bold my-4">Iterate and Optimize!</h3>
+      <p>Mastering Hailuo 02 AI prompts requires continuous experimentation. Start creating your stunning dynamic videos with Hailuo 02 AI Video Generator NOW!</p>
+    `,
+    description: 'Learn proven optimization techniques for creating cinematic video prompts in Hailuo 02 AI Video Generator, including action separation, camera control, and prompt formulas',
+    date: 'July 23, 2025',
+    category: 'Tips',
+    skip: false,
+    cta: "Try Now",
+  },
+  {
     id: 'hailuo-02-breaks-global-video-model-cost-record',
     title: 'Hailuo 02 Breaks Global Video Model Cost-Effectiveness Record',
     content: `
@@ -264,7 +383,8 @@ const blogPostsData: BlogPost[] = [
     category: 'Tutorials',
     skip: false,
     cta: "Try Now",
-  }
+  },
+
 ]
 
 export function useBlogPosts() {

@@ -136,7 +136,7 @@ const formatDate = (post: any) => {
 
 //设置页面元数据
 useSeo({
-  title: `${title.value} - Hailuo02 Video Blog`,
+  title: `${title.value}`,
   description: metaDescription.value,
   ogType: 'article',
   ogTitle: `${title.value} - Hailuo02 Video Blog`,
