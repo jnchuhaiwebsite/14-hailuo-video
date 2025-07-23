@@ -42,8 +42,7 @@
             v-show="openFaqs[index]"
             class="px-6 pb-6 text-gray-300/90 leading-relaxed"
           >
-            <div class="pt-4 border-t border-[#7C3AED]/10">
-              {{ faq.answer }}
+            <div class="pt-4 border-t border-[#7C3AED]/10" v-html="faq.answer">
             </div>
           </div>
         </div>
@@ -88,7 +87,7 @@ const faqs = [
   },
   {
     question: 'What happens if I run out of credits?',
-    answer: 'If you run out of credits, you can subscribe to a plan to purchase additional credits. Simply choose a subscription package that fits your needs and replenish your credits to continue generating videos with Hailuo 02 AI.'
+    answer: 'If you run out of credits, you can subscribe to a <a href="/pricing" style="color:#7C3AED;text-decoration:underline;">plan</a> to purchase additional credits. Simply choose a subscription package that fits your needs and replenish your credits to continue generating videos with Hailuo 02 AI. '
   }
 ];
 
