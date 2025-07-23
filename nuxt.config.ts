@@ -28,6 +28,24 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en' // 设置 HTML 语言
       },
+      link: [
+        // 预加载常规字重的 WOFF2 文件
+        {
+          rel: 'preload',
+          href: '/fonts/265822651.woff2', // 使用从 public 根目录开始的绝对路径
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: 'anonymous' // 加上 anonymous 属性是个好习惯
+        },
+        // (可选) 如果粗体在首屏也很重要，也可以预加载它
+        {
+          rel: 'preload',
+          href: '/fonts/265822652.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: 'anonymous'
+        }
+      ],
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -104,6 +122,7 @@ export default defineNuxtConfig({
       // 预渲染路由
       routes: [
         '/blog',
+        '/pricing',
         '/subsidiary/privacy-policy',
         '/subsidiary/terms-of-service'
       ], // 手动指定所有文章路径
