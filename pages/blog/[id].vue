@@ -116,9 +116,15 @@ const relatedPosts = computed(() => {
 //获取文章描述
 const metaDescription = computed(() => {
   if (!post.value) return '';
-  return post.value.description.length > 155 
-    ? post.value.description.substring(0, 155) + '...'
+  return post.value.description.length > 160 
+    ? post.value.description.substring(0, 157) + '...'
     : post.value.description;
+});
+
+//获取文章描述
+const seoTitle = computed(() => {
+  if (!post.value) return '';
+  return post.value.seoTitle || post.value.title + ' - hailuo2';
 });
 
 //获取文章标题
@@ -136,7 +142,7 @@ const formatDate = (post: any) => {
 
 //设置页面元数据
 useSeo({
-  title: `${title.value} - Hailuo02 Video Blog`,
+  title: `${seoTitle.value}`,
   description: metaDescription.value,
   ogType: 'article',
   ogTitle: `${title.value} - Hailuo02 Video Blog`,
