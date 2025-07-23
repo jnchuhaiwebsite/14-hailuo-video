@@ -16,7 +16,7 @@ export interface BlogPost {
 // Blog post data
 const blogPostsData: BlogPost[] = [
   {
-    id: 'top-tips-cinematic-video-prompts-hailuo-02',
+    id: 'top-tips-cinematic-video-prompts-hailuo-02-ai',
     title: 'Top Tips for Cinematic Video Prompts in Hailuo 02 AI Video Generator',
     content: `
       <h2 class="text-2xl font-bold mb-4">Top Tips for Cinematic Video Prompts in Hailuo 02 AI Video Generator</h2>
