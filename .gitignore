@@ -6,6 +6,7 @@
 .cache
 dist
 .wrangler
+.cursor
 
 # Node dependencies
 node_modules

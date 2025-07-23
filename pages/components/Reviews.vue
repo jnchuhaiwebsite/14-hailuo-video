@@ -16,16 +16,14 @@
           <div class="mb-6">
             <div class="flex items-center gap-4">
                   <NuxtImg 
-                src="/img/user/6.jpg" 
+                src="/img/user/6.webp" 
                 width="64"
                 height="64"
-                format="webp"
-                 alt="David Chen" 
-                   loading="lazy"
-                 class="w-16 h-16 rounded-full object-cover"
+                alt="David Chen" 
+                loading="lazy"
+                 class="rounded-full object-cover"
              />   
 
-              <!-- <img src="/img/user/6.jpg" alt="David Chen" class="w-16 h-16 rounded-full object-cover" /> -->
               <div>
                 <h3 class="text-lg font-bold text-white">David Chen</h3>
                 <p class="text-gray-400">Independent Video Producer</p>
@@ -45,18 +43,16 @@
           <div class="mb-6">
             <div class="flex items-center gap-4">
                  <NuxtImg 
-                src="/img/user/8.jpg" 
+                src="/img/user/8.webp" 
                 width="64"
                 height="64"
-                format="webp"
                  alt="Sarah Lee" 
-                   loading="lazy"
-                 class="w-16 h-16 rounded-full object-cover"
+                loading="lazy"
+                 class="rounded-full object-cover"
              />   
 
 
 
-              <!-- <img src="/img/user/8.jpg" alt="Sarah Lee" class="w-16 h-16 rounded-full object-cover" /> -->
               <div>
                 <h4 class="text-lg font-bold text-white">Sarah Lee</h4>
                 <p class="text-gray-400">Social Media Content Creator</p>
@@ -76,15 +72,13 @@
           <div class="mb-6">
             <div class="flex items-center gap-4">
                 <NuxtImg 
-                    src="/img/user/10.jpg" 
+                    src="/img/user/10.webp" 
                     width="64"
                     height="64"
-                    format="webp"
                     alt="Michael Wang" 
                     loading="lazy"
-                    class="w-16 h-16 rounded-full object-cover"
+                    class="rounded-full object-cover"
                 />   
-              <!-- <img src="/img/user/10.jpg" alt="Michael Wang" class="w-16 h-16 rounded-full object-cover" /> -->
               <div>
                 <h4 class="text-lg font-bold text-white">Michael Wang</h4>
                 <p class="text-gray-400">Senior Post-Production Specialist</p>
