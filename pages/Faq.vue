@@ -89,7 +89,7 @@ const faqs = [
   },
    {
         question: 'My payment was successful, but I don’t see my credits. What should I do next?',
-        answer: 'Please wait 1 minute and refresh the page. If the credits still don’t appear, check your account’s balance in the User Center. If the issue persists, contact us at support@hailuo2.com with your payment proof or order screenshot.'
+        answer: 'Please wait 1 minute and refresh the page. If the credits still don’t appear, check your account’s balance in the User Center. If the issue persists, contact us at <a href="mailto:support@hailuo2.com" style="color:#7C3AED;text-decoration:underline;">support@hailuo2.com</a> with your payment proof or order screenshot.'
     },
   {
     question: 'How do I use Hailuo 02 AI Video Generator?',
