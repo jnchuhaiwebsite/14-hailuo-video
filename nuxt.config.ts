@@ -103,12 +103,12 @@ export default defineNuxtConfig({
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
-      wrangler:{
-        vars:{
-            "NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY":"pk_test_d29uZHJvdXMtbmFyd2hhbC0xMy5jbGVyay5hY2NvdW50cy5kZXYk",
-            "NUXT_CLERK_SECRET_KEY":"sk_test_PXJ8xb1DxxFXl6Wk0Vs0fQkC8YLn7VICjuYplOxT7q"
-        }
-      }
+    //   wrangler:{
+    //     vars:{
+    //         "NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY":"pk_test_d29uZHJvdXMtbmFyd2hhbC0xMy5jbGVyay5hY2NvdW50cy5kZXYk",
+    //         "NUXT_CLERK_SECRET_KEY":"sk_test_PXJ8xb1DxxFXl6Wk0Vs0fQkC8YLn7VICjuYplOxT7q"
+    //     }
+    //   }
     },
     devProxy: {
       '/nuxtRequest': {
