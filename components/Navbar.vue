@@ -9,14 +9,9 @@
           <!-- Logo -->
           <div class="flex items-center gap-2 mr-8">
             <NuxtLink to="/">
-                <NuxtImg 
-                src="/logo.png" 
-                alt="image"
-                width="128"
-                height="48"
-                format="webp"
-            
-             />   
+              <span class="bg-gradient-to-r from-[#db2777]  to-[#7C3AED] bg-clip-text text-transparent font-black text-3xl" style="font-weight: 900; -webkit-text-stroke: 1px transparent;">
+                Hailuo2
+              </span>
             </NuxtLink>
           </div>
 

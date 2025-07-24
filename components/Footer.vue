@@ -24,7 +24,10 @@
         <!-- Logo 和描述 -->
         <div class="flex-1">
           <div class="flex flex-col items-start text-left">
-            <img src="/logo2.png" alt="Hailuo02 Video - AI Video from Text or Image in Minutes" loading="lazy" class="h-12 md:h-8 mb-4">
+            <!-- <img src="/logo2.png" alt="Hailuo02 Video - AI Video from Text or Image in Minutes" loading="lazy" class="h-12 md:h-8 mb-4"> -->
+            <span class="bg-gradient-to-r from-[#db2777]  to-[#7C3AED] bg-clip-text text-transparent font-black text-3xl" style="font-weight: 900; -webkit-text-stroke: 1px transparent;">
+                Hailuo2
+              </span>
             <p class="text-sm text-gray-400 max-w-xl mb-4">
               Hailuo 02 is an AI-powered video generation tool that enables users to quickly create high-quality 1080p short videos from text or images, perfect for social media, brand marketing, and educational content.
             </p>
