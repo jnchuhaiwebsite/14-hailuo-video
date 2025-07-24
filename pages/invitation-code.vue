@@ -351,6 +351,16 @@ const fetchUserInfo = async () => {
     userCredits.value = 0
   } finally {
     isLoadingUserInfo.value = false
+    // 新增：如果有localStorage标记，且有有效链接，自动复制
+    if (localStorage.getItem('loginForGetLink') === '1' && userInvitationLink.value) {
+      await copyInvitationLink()
+      localStorage.removeItem('loginForGetLink')
+      // 滚动到rewards部分
+      const rewardsSection = document.getElementById('rewards')
+      if (rewardsSection) {
+        rewardsSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
   }
 }
 
@@ -409,16 +419,6 @@ const showCopySuccessMessage = () => {
 onMounted(async () => {
   if (isSignedIn.value) {
     await fetchUserInfo()
-    // 新增：如果有localStorage标记，自动复制
-    if (localStorage.getItem('loginForGetLink') === '1') {
-      await copyInvitationLink()
-      localStorage.removeItem('loginForGetLink')
-      // 滚动到rewards部分
-      const rewardsSection = document.getElementById('rewards')
-      if (rewardsSection) {
-        rewardsSection.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
   }
 })
 
@@ -427,17 +427,6 @@ watch(isSignedIn, async (newValue: boolean) => {
   if (newValue) {
     // 用户登录后，获取用户信息（包含邀请链接）
     await fetchUserInfo()
-    // 优先用localStorage标记
-    if (localStorage.getItem('loginForGetLink') === '1' || loginForGetLink.value) {
-      await copyInvitationLink()
-      loginForGetLink.value = false
-      localStorage.removeItem('loginForGetLink') // 清除
-      // 滚动到rewards部分
-      const rewardsSection = document.getElementById('rewards')
-      if (rewardsSection) {
-        rewardsSection.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
   }
 })
 </script>
