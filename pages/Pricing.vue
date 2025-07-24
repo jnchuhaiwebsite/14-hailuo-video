@@ -44,7 +44,7 @@
         >
           <div
             v-if="plan.is_popular"
-            class="absolute -top-3 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-theme text-black text-sm rounded-full font-medium"
+            class="absolute -top-3 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-theme text-white text-sm rounded-full font-medium"
           >
             Most Popular
           </div>
