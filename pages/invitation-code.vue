@@ -252,8 +252,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { useSeo } from '~/composables/useSeo'
 import { useClerkAuth } from '~/utils/auth'
 import { useUserStore } from '~/stores/user'
-import { getPromotionLink, getCurrentUser } from '~/api/index'
-import { useRuntimeConfig } from 'nuxt/app'
+import { getCurrentUser } from '~/api/index'
 
 // SEO设置
 useSeo({
@@ -298,7 +297,8 @@ const faqs = ref([
 // 处理Get Link按钮点击
 const handleGetLink = () => {
   if (!isSignedIn.value) {
-    loginForGetLink.value = true // 标记是Get Link触发的登录
+    loginForGetLink.value = true
+    localStorage.setItem('loginForGetLink', '1') // 新增：持久化标记
     showLoginModal.value = true
     return
   }
@@ -409,6 +409,16 @@ const showCopySuccessMessage = () => {
 onMounted(async () => {
   if (isSignedIn.value) {
     await fetchUserInfo()
+    // 新增：如果有localStorage标记，自动复制
+    if (localStorage.getItem('loginForGetLink') === '1') {
+      await copyInvitationLink()
+      localStorage.removeItem('loginForGetLink')
+      // 滚动到rewards部分
+      const rewardsSection = document.getElementById('rewards')
+      if (rewardsSection) {
+        rewardsSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
   }
 })
 
@@ -417,10 +427,11 @@ watch(isSignedIn, async (newValue: boolean) => {
   if (newValue) {
     // 用户登录后，获取用户信息（包含邀请链接）
     await fetchUserInfo()
-    if (loginForGetLink.value) {
-      // 自动复制
+    // 优先用localStorage标记
+    if (localStorage.getItem('loginForGetLink') === '1' || loginForGetLink.value) {
       await copyInvitationLink()
-      loginForGetLink.value = false // 重置
+      loginForGetLink.value = false
+      localStorage.removeItem('loginForGetLink') // 清除
       // 滚动到rewards部分
       const rewardsSection = document.getElementById('rewards')
       if (rewardsSection) {
