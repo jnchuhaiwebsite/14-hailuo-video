@@ -88,7 +88,7 @@
 
 
       <!-- Your Link Card -->
-      <section v-if="isSignedIn" id="rewards" class="py-16 px-4">
+      <section id="rewards" class="py-16 px-4">
         <div class="max-w-4xl mx-auto">
           <div class="bg-blue-pale/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/50 p-8 md:p-12 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">
@@ -98,24 +98,52 @@
               Share this link to start earning. The more you share, the more you earn!
             </p>
             <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 mb-8 border border-gray-600">
-              <div v-if="isLoadingLink" class="text-center text-gray-300">
+              <div v-if="isSignedIn && isLoadingLink" class="text-center text-gray-300">
                 <svg class="animate-spin h-8 w-8 mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
                 Loading invitation link...
               </div>
-              <div v-else-if="userInvitationLink" class="text-lg font-mono text-[#7C3AED] break-all">
-                {{ userInvitationLink }}
+              <div v-else-if="isSignedIn && userInvitationLink" class="relative">
+                <div class="text-lg font-mono text-[#7C3AED] break-all pr-12">
+                  {{ userInvitationLink }}
+                </div>
+                <button 
+                  @click="copyInvitationLink"
+                  class="absolute top-0 right-0 p-2 text-gray-400 hover:text-white transition-colors"
+                  :title="copyStatus"
+                >
+                  <svg v-if="!isCopied" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  <svg v-else class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </button>
               </div>
-              <div v-else class="text-gray-400 text-center">
-                No invitation link available
+              <div v-else class="relative">
+                <div class="text-lg font-mono text-[#7C3AED] break-all pr-12">
+                  https://hailuo2.com?ivcode=XXXXXX
+                </div>
+                <button 
+                  @click="copyInvitationLink"
+                  class="absolute top-0 right-0 p-2 text-gray-400 hover:text-white transition-colors"
+                  :title="copyStatus"
+                >
+                  <svg v-if="!isCopied" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  <svg v-else class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </button>
               </div>
             </div>
             <div class="text-2xl font-semibold text-white">
-              <span v-if="isLoadingUserInfo" class="text-gray-300">Loading points...</span>
+              <span v-if="isSignedIn && isLoadingUserInfo" class="text-gray-300">Loading points...</span>
               <span v-else>
-                Your Current Points: <span class="text-[#7C3AED] text-3xl">{{ userPoints }}</span>
+                Your Current Points: <span class="text-[#7C3AED] text-3xl">{{ isSignedIn ? userPoints : 600 }}</span>
               </span>
             </div>
           </div>
@@ -234,6 +262,8 @@ const userInvitationLink = ref('')
 const userPoints = ref(0)
 const isLoadingLink = ref(false)
 const isLoadingUserInfo = ref(false)
+const isCopied = ref(false)
+const copyStatus = ref('Copy link')
 
 // FAQ数据
 const faqs = ref([
@@ -339,6 +369,41 @@ const fetchInvitationLink = async () => {
 // 切换FAQ展开/收起
 const toggleFaq = (index: number) => {
   faqs.value[index].isOpen = !faqs.value[index].isOpen
+}
+
+// 复制邀请链接
+const copyInvitationLink = async () => {
+  const linkToCopy = isSignedIn.value ? userInvitationLink.value : 'https://hailuo2.com?ivcode=*****'
+  if (!linkToCopy) return
+  
+  try {
+    await navigator.clipboard.writeText(linkToCopy)
+    isCopied.value = true
+    copyStatus.value = 'Copied!'
+    
+    // 3秒后重置状态
+    setTimeout(() => {
+      isCopied.value = false
+      copyStatus.value = 'Copy link'
+    }, 3000)
+  } catch (error) {
+    console.error('Failed to copy link:', error)
+    // 降级方案：使用传统的复制方法
+    const textArea = document.createElement('textarea')
+    textArea.value = linkToCopy
+    document.body.appendChild(textArea)
+    textArea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textArea)
+    
+    isCopied.value = true
+    copyStatus.value = 'Copied!'
+    
+    setTimeout(() => {
+      isCopied.value = false
+      copyStatus.value = 'Copy link'
+    }, 3000)
+  }
 }
 
 // 监听登录状态变化，自动获取用户信息和邀请链接
