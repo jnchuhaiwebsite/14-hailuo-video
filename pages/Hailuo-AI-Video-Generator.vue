@@ -85,7 +85,7 @@
         <div :class="{'space-y-2': activeTab === 'text'}">
           <div class="flex items-center" :class="{'mb-1.5': activeTab === 'text', 'mb-1': activeTab === 'image'}">
             <label class="text-sm lg:text-base font-semibold text-gray-300">Prompt</label>
-            <span class="ml-2 text-xs text-amber-400 italic flex items-center gap-1">
+            <span class="ml-2 text-xs text-amber-400  flex items-center gap-1">
               <ExclamationCircleIcon class="h-3.5 w-3.5" />
               (Please avoid harmful or inappropriate content)
             </span>
