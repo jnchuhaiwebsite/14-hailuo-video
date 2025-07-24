@@ -8,7 +8,7 @@
         Get Your Hailuo AI Invitation Code: Refer Friends & Earn Unlimited Rewards
       </h1>
       <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
-        Share your unique link and get rewarded with points for every single purchase your friends make. Turn your network into endless AI video generations.
+        Share your unique link and get rewarded with Credits for every single purchase your friends make. Turn your network into endless AI video generations.
     </p>
     </div>
 
@@ -18,7 +18,7 @@
       <section class="bg-blue-pale/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/50 p-6 xl:p-8">
         <div class="text-center">
           <h2 class="text-2xl font-bold text-white mb-4">Get Your Invitation Link</h2>
-          <p class="text-gray-300 mb-6">Share your unique link and start earning points for every purchase your friends make.</p>
+          <p class="text-gray-300 mb-6">Share your unique link and start earning Credits for every purchase your friends make.</p>
           <button 
             @click="handleGetLink"
             :disabled="isLoadingLink || isLoadingUserInfo"
@@ -55,7 +55,7 @@
           <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6">
             <div class="text-3xl mb-3">🔁</div>
             <h3 class="text-lg font-semibold text-white mb-2">3. You Earn, Always</h3>
-            <p class="text-gray-300 text-sm">You'll receive reward points for <strong>every single purchase</strong> your friend makes, with no limits!</p>
+            <p class="text-gray-300 text-sm">You'll receive reward Credits for <strong>every single purchase</strong> your friend makes, with no limits!</p>
           </div>
         </div>
       </section>
@@ -69,17 +69,17 @@
           <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6 border-t-4 border-orange-400">
             <h3 class="text-lg font-semibold text-white mb-2">Basic Plan</h3>
             <div class="text-3xl font-bold text-orange-400 mb-1">18</div>
-            <p class="text-gray-300 text-sm">Points Awarded</p>
+            <p class="text-gray-300 text-sm">Credits Awarded</p>
           </div>
           <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6 border-t-4 border-[#7C3AED]">
             <h3 class="text-lg font-semibold text-white mb-2">Pro Plan</h3>
             <div class="text-3xl font-bold text-[#7C3AED] mb-1">58</div>
-            <p class="text-gray-300 text-sm">Points Awarded</p>
+            <p class="text-gray-300 text-sm">Credits Awarded</p>
           </div>
           <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6 border-t-4 border-red-500">
             <h3 class="text-lg font-semibold text-white mb-2">Enterprise Plan</h3>
             <div class="text-3xl font-bold text-red-500 mb-1">208</div>
-            <p class="text-gray-300 text-sm">Points Awarded</p>
+            <p class="text-gray-300 text-sm">Credits Awarded</p>
           </div>
         </div>
       </section>
@@ -141,9 +141,9 @@
               </div>
             </div>
             <div class="text-2xl font-semibold text-white">
-              <span v-if="isSignedIn && isLoadingUserInfo" class="text-gray-300">Loading points...</span>
+              <span v-if="isSignedIn && isLoadingUserInfo" class="text-gray-300">Loading Credits...</span>
               <span v-else>
-                Your Current Points: <span class="text-[#7C3AED] text-3xl">{{ isSignedIn ? userPoints : 600 }}</span>
+                Your Current Credits: <span class="text-[#7C3AED] text-3xl">{{ isSignedIn ? userCredits : 600 }}</span>
               </span>
             </div>
           </div>
@@ -215,7 +215,7 @@
           <div class="text-center mb-6">
             <div class="text-4xl mb-4">🔐</div>
             <h4 class="text-lg font-semibold text-white mb-2">Get Your Valid Invitation Link</h4>
-            <p class="text-gray-300">Please sign in to get your exclusive invitation link and start earning points</p>
+            <p class="text-gray-300">Please sign in to get your exclusive invitation link and start earning Credits</p>
           </div>
           
           <div class="flex gap-3">
@@ -273,8 +273,8 @@ import { useRuntimeConfig } from 'nuxt/app'
 
 // SEO设置
 useSeo({
-  title: "Hailuo AI Invitation Code | Earn Unlimited Points",
-  description: "Get your official Hailuo AI invitation code to share with friends. Earn points for every purchase they make, forever! Use your points for more AI generations."
+  title: "Hailuo AI Invitation Code | Earn Unlimited Credits",
+  description: "Get your official Hailuo AI invitation code to share with friends. Earn Credits for every purchase they make, forever! Use your Credits for more AI generations."
 })
 
 // 引入认证和用户状态
@@ -285,7 +285,7 @@ const userStore = useUserStore()
 const showLoginModal = ref(false)
 const showCopySuccessModal = ref(false)
 const userInvitationLink = ref('')
-const userPoints = ref(0)
+const userCredits = ref(0)
 const isLoadingLink = ref(false)
 const isLoadingUserInfo = ref(false)
 const isCopied = ref(false)
@@ -294,18 +294,18 @@ const copyStatus = ref('Copy link')
 // FAQ数据
 const faqs = ref([
   {
-    question: "Do I only get points for my friend's first purchase?",
-    answer: "<strong>No!</strong> Our program is designed to reward you continuously. You will earn points for <strong>every purchase</strong> your referred friend makes, including initial subscriptions, renewals, and credit packs. There's no limit!",
+    question: "Do I only get Credits for my friend's first purchase?",
+    answer: "<strong>No!</strong> Our program is designed to reward you continuously. You will earn Credits for <strong>every purchase</strong> your referred friend makes, including initial subscriptions, renewals, and credit packs. There's no limit!",
     isOpen: false
   },
   {
-    question: "When do I receive my points?",
-    answer: "Points are credited to your account as soon as your referred friend successfully completes any purchase.",
+    question: "When do I receive my Credits?",
+    answer: "Credits are credited to your account as soon as your referred friend successfully completes any purchase.",
     isOpen: false
   },
   {
-    question: "What can I use my points for?",
-    answer: "Reward points are used exclusively to pay for AI video generations. Think of them as credits for creating more amazing content!",
+    question: "What can I use my Credits for?",
+    answer: "Reward Credits are used exclusively to pay for AI video generations. Think of them as credits for creating more amazing content!",
     isOpen: false
   }
 ])
@@ -357,13 +357,13 @@ const fetchUserInfo = async () => {
   try {
     const response = await getCurrentUser() as any
     if (response.code === 200 && response.data) {
-      // 计算总点数：remaining_limit + free_limit
-      const totalPoints = (response.data.remaining_limit || 0) + (response.data.free_limit || 0)
-      userPoints.value = totalPoints
+      // 计算总积分：remaining_limit + free_limit
+      const totalCredits = (response.data.remaining_limit || 0) + (response.data.free_limit || 0)
+      userCredits.value = totalCredits
     }
   } catch (error) {
     console.error('Failed to fetch user info:', error)
-    userPoints.value = 0
+    userCredits.value = 0
   } finally {
     isLoadingUserInfo.value = false
   }
