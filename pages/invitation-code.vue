@@ -199,7 +199,7 @@
       >
         <!-- 弹框头部 -->
         <div class="flex items-center justify-between p-6 border-b border-gray-700/50">
-          <h3 class="text-xl font-bold text-white">Login Required</h3>
+          <h3 class="text-xl font-bold text-white">Sign In Required</h3>
           <button 
             @click="closeLoginModal"
             class="text-gray-400 hover:text-white transition-colors"
@@ -214,8 +214,8 @@
         <div class="p-6">
           <div class="text-center mb-6">
             <div class="text-4xl mb-4">🔐</div>
-            <h4 class="text-lg font-semibold text-white mb-2">Get Your Invitation Link</h4>
-            <p class="text-gray-300">You need to log in first to get your exclusive invitation link and start earning points</p>
+            <h4 class="text-lg font-semibold text-white mb-2">Get Your Valid Invitation Link</h4>
+            <p class="text-gray-300">Please sign in to get your exclusive invitation link and start earning points</p>
           </div>
           
           <div class="flex gap-3">
@@ -229,9 +229,34 @@
               @click="confirmLogin"
               class="flex-1 py-3 px-4 rounded-lg bg-[#7C3AED] text-white hover:bg-[#8B5CF6] transition-colors"
             >
-              Log In
+              Sign In
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 复制成功提示弹窗 -->
+    <div v-if="showCopySuccessModal" 
+      class="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+    >
+      <div class="relative w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-md bg-gray-800/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden" 
+        @click.stop
+      >
+        <!-- 弹框内容 -->
+        <div class="p-6 text-center">
+          <div class="text-center mb-6">
+            <div class="text-4xl mb-4">✅</div>
+            <h4 class="text-lg font-semibold text-white mb-2">Link Copied Successfully!</h4>
+            <p class="text-gray-300">Your invitation link has been copied to clipboard</p>
+          </div>
+          
+          <button 
+            @click="showCopySuccessModal = false"
+            class="w-full py-3 px-4 rounded-lg bg-[#7C3AED] text-white hover:bg-[#8B5CF6] transition-colors"
+          >
+            Got it
+          </button>
         </div>
       </div>
     </div>
@@ -258,6 +283,7 @@ const userStore = useUserStore()
 
 // 状态管理
 const showLoginModal = ref(false)
+const showCopySuccessModal = ref(false)
 const userInvitationLink = ref('')
 const userPoints = ref(0)
 const isLoadingLink = ref(false)
@@ -373,19 +399,19 @@ const toggleFaq = (index: number) => {
 
 // 复制邀请链接
 const copyInvitationLink = async () => {
-  const linkToCopy = isSignedIn.value ? userInvitationLink.value : 'https://hailuo2.com?ivcode=*****'
+  // 如果未登录，显示登录提示
+  if (!isSignedIn.value) {
+    showLoginModal.value = true
+    return
+  }
+  
+  const linkToCopy = userInvitationLink.value
   if (!linkToCopy) return
   
   try {
     await navigator.clipboard.writeText(linkToCopy)
-    isCopied.value = true
-    copyStatus.value = 'Copied!'
-    
-    // 3秒后重置状态
-    setTimeout(() => {
-      isCopied.value = false
-      copyStatus.value = 'Copy link'
-    }, 3000)
+    // 显示复制成功提示
+    showCopySuccessMessage()
   } catch (error) {
     console.error('Failed to copy link:', error)
     // 降级方案：使用传统的复制方法
@@ -396,14 +422,23 @@ const copyInvitationLink = async () => {
     document.execCommand('copy')
     document.body.removeChild(textArea)
     
-    isCopied.value = true
-    copyStatus.value = 'Copied!'
-    
-    setTimeout(() => {
-      isCopied.value = false
-      copyStatus.value = 'Copy link'
-    }, 3000)
+    // 显示复制成功提示
+    showCopySuccessMessage()
   }
+}
+
+// 显示复制成功消息
+const showCopySuccessMessage = () => {
+  isCopied.value = true
+  copyStatus.value = 'Copied!'
+  showCopySuccessModal.value = true
+  
+  // 3秒后重置状态
+  setTimeout(() => {
+    isCopied.value = false
+    copyStatus.value = 'Copy link'
+    showCopySuccessModal.value = false
+  }, 3000)
 }
 
 // 监听登录状态变化，自动获取用户信息和邀请链接
