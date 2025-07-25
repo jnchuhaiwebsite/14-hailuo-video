@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-28', // 兼容性日期
   devtools: { enabled: true }, // 启用 Nuxt DevTools
   css: [
-    '~/assets/css/tailwind.css', // Tailwind CSS 样式
-    '@/assets/css/main.css', // 主样式文件
+    '@/assets/css/main.css', // 主样式文件 - 先加载
+    '~/assets/css/tailwind.css', // Tailwind CSS 样式 - 后加载
   ],
   plugins: [
     // '~/plugins/google-analytics.client.ts', // Google Analytics 插件（仅客户端）
@@ -29,21 +29,81 @@ export default defineNuxtConfig({
         lang: 'en' // 设置 HTML 语言
       },
       link: [
-        // 预加载常规字重的 WOFF2 文件
+        // 预连接到重要域名
         {
-          rel: 'preload',
-          href: '/fonts/265822651.woff2', // 使用从 public 根目录开始的绝对路径
-          as: 'font',
-          type: 'font/woff2',
-          crossorigin: 'anonymous' // 加上 anonymous 属性是个好习惯
-        },
-        // (可选) 如果粗体在首屏也很重要，也可以预加载它
-        {
-          rel: 'preload',
-          href: '/fonts/265822652.woff2',
-          as: 'font',
-          type: 'font/woff2',
+          rel: 'preconnect',
+          href: 'https://c.cnzz.com',
           crossorigin: 'anonymous'
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://v1.cnzz.com',
+          crossorigin: 'anonymous'
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://www.googletagmanager.com',
+          crossorigin: 'anonymous'
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://www.google-analytics.com',
+          crossorigin: 'anonymous'
+        },
+        // DNS 预取
+        {
+          rel: 'dns-prefetch',
+          href: 'https://c.cnzz.com'
+        },
+        {
+          rel: 'dns-prefetch',
+          href: 'https://v1.cnzz.com'
+        },
+        {
+          rel: 'dns-prefetch',
+          href: 'https://www.googletagmanager.com'
+        },
+        {
+          rel: 'dns-prefetch',
+          href: 'https://www.google-analytics.com'
+        },
+        // 预加载关键字体 - 优化加载顺序
+        {
+          rel: 'preload',
+          href: '/fonts/265822651.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: 'anonymous',
+          fetchpriority: 'high'
+        },
+        // 预加载 LCP 视频资源 - 最高优先级
+        // {
+        //   rel: 'preload',
+        //   href: '/video/haoluo2-home-video.mp4',
+        //   as: 'video',
+        //   type: 'video/mp4',
+        //   fetchpriority: 'high'
+        // },
+        // // 预加载视频海报图片 - 高优先级
+        // {
+        //   rel: 'preload',
+        //   href: '/img/1.webp',
+        //   as: 'image',
+        //   type: 'image/webp',
+        //   fetchpriority: 'high'
+        // },
+        // // 预加载关键 CSS
+        {
+          rel: 'preload',
+          href: '/assets/css/main.css',
+          as: 'style',
+          fetchpriority: 'high'
+        },
+        {
+          rel: 'preload',
+          href: '/assets/css/tailwind.css',
+          as: 'style',
+          fetchpriority: 'high'
         }
       ],
       meta: [
@@ -66,35 +126,9 @@ export default defineNuxtConfig({
         { name: 'application-name', content: 'hailuo2' },
       ],
       script: [
-        { src: '/js/c6h.js', async: true }, 
-        {
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-TE7JHEHZ6J',
-          async: true
-        },
-        // Google Analytics 配置代码 - 后执行
-        {
-          innerHTML: `
-            // 检查当前页面路径
-            window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-TE7JHEHZ6J');
-          `,
-          type: 'text/javascript'
-        },
-        {
-          src: 'https://www.googletagmanager.com/gtag/js?id=AW-17364631960',
-          async: true
-        },
-        {
-          innerHTML: `
-            window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-17364631960');
-          `,
-          type: 'text/javascript'
-        }
+        // 关键脚本 - 立即加载
+        { src: '/js/c6h.js', async: true }
+        // 分析脚本现在通过 LazyAnalytics 组件延迟加载
       ] // 外部脚本
     }
   },
@@ -135,13 +169,6 @@ export default defineNuxtConfig({
       ]
     },
   },
-  // Nuxt3正确的Tailwind配置
-  tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',
-    configPath: 'tailwind.config.ts',
-    exposeConfig: false,
-    viewer: false,
-  },
   // 使用vite的正确配置方式
   vite: {
     build: {
@@ -154,6 +181,15 @@ export default defineNuxtConfig({
               return '_nuxt/css/[hash][extname]';
             }
             return '_nuxt/assets/[hash][extname]';
+          },
+          // 优化代码分割
+          manualChunks: {
+            // 将 Vue 相关代码分离
+            'vue-vendor': ['vue', 'vue-router'],
+            // 将 UI 组件分离
+            'ui-components': ['@heroicons/vue'],
+            // 将工具库分离
+            'utils': ['pinia', 'exifr']
           }
         }
       },
@@ -174,21 +210,40 @@ export default defineNuxtConfig({
         format: {
           comments: false // 移除注释
         }
-      }
+      },
+      // 优化资源大小
+      chunkSizeWarningLimit: 1000,
+      // 启用 gzip 压缩
+      reportCompressedSize: true
     },
     // 确保CSS的sourcemap
     css: {
       devSourcemap: true
+    },
+    // 优化依赖预构建
+    optimizeDeps: {
+      include: [
+        'vue',
+        'vue-router',
+        '@heroicons/vue',
+        'pinia'
+      ],
+      exclude: [
+        'nuxt'
+      ]
+    },
+    // 服务器配置优化
+    server: {
+      hmr: {
+        overlay: false
+      }
     }
   },
   // 强制CSS提取的配置
   experimental: {
     // 启用vite特性兼容
     // viteNode: true
-  },
-  colorMode: {
-    classSuffix: '',
-    preference: 'dark',
-    fallback: 'dark',
-  },
+    // 强制禁用内联样式，将样式提取到外部文件
+    inlineSSRStyles: false,
+  }
 })

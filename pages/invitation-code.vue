@@ -1,6 +1,6 @@
 <template>
   <div
-    class="py-16 bg-blue-pale"
+    class="py-16 bg-blue-pale/80 backdrop-blur-sm"
     aria-labelledby="pricing-heading"
   >
     <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
@@ -20,18 +20,10 @@
           <h2 class="text-2xl font-bold text-white mb-4">Get Your Invitation Link</h2>
           <p class="text-gray-300 mb-6">Share your unique link and start earning Credits for every purchase your friends make.</p>
           <button 
-            @click="handleGetLink"
-            :disabled="isLoadingUserInfo"
-            class="bg-[#7C3AED] hover:bg-[#8B5CF6] disabled:bg-gray-500 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:transform-none disabled:cursor-not-allowed"
+            @click="handleGetLinkClick"
+            class="bg-[#7C3AED] hover:bg-[#8B5CF6] text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
           >
-            <span v-if="isLoadingUserInfo" class="inline-flex items-center">
-              <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Loading...
-            </span>
-            <span v-else>Get Link</span>
+            Get Link
           </button>
         </div>
       </section>
@@ -98,14 +90,7 @@
               Share this link to start earning. The more you share, the more you earn!
             </p>
             <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 mb-8 border border-gray-600">
-              <div v-if="isLoadingUserInfo" class="text-center text-gray-300">
-                <svg class="animate-spin h-8 w-8 mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Loading invitation link...
-              </div>
-              <div v-else class="relative">
+              <div class="relative">
                 <div class="text-lg font-mono text-[#7C3AED] break-all pr-12">
                   {{ userInvitationLink || 'No invitation link available' }}
                 </div>
@@ -125,10 +110,7 @@
               </div>
             </div>
             <div class="text-2xl font-semibold text-white">
-              <span v-if="isLoadingUserInfo" class="text-gray-300">Loading Credits...</span>
-              <span v-else>
-                Your Current Credits: <span class="text-[#7C3AED] text-3xl">{{ userCredits }}</span>
-              </span>
+              Your Current Credits: <span class="text-[#7C3AED] text-3xl">{{ userCredits }}</span>
             </div>
           </div>
         </div>
@@ -175,10 +157,10 @@
 
     <!-- 登录确认弹窗 -->
     <div v-if="showLoginModal" 
-      class="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      class="modal-overlay bg-black/50 backdrop-blur-sm"
       @click="closeLoginModal"
     >
-      <div class="relative w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-md bg-gray-800/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden" 
+      <div class="modal-content w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-md bg-gray-800/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden" 
         @click.stop
       >
         <!-- 弹框头部 -->
@@ -222,9 +204,9 @@
 
     <!-- 复制成功提示弹窗 -->
     <div v-if="showCopySuccessModal" 
-      class="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      class="modal-overlay bg-black/50 backdrop-blur-sm"
     >
-      <div class="relative w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-md bg-gray-800/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden" 
+      <div class="modal-content w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-md bg-gray-800/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden" 
         @click.stop
       >
         <!-- 弹框内容 -->
@@ -295,11 +277,13 @@ const faqs = ref([
 ])
 
 // 处理Get Link按钮点击
-const handleGetLink = () => {
+const handleGetLinkClick = () => {
   if (!isSignedIn.value) {
     loginForGetLink.value = true
     localStorage.setItem('loginForGetLink', '1') // 新增：持久化标记
     showLoginModal.value = true
+    // 确保弹窗显示时页面不滚动
+    document.body.style.overflow = 'hidden'
     return
   }
   // 直接滚动到rewards部分
@@ -312,6 +296,7 @@ const handleGetLink = () => {
 // 确认登录
 const confirmLogin = () => {
   showLoginModal.value = false
+  document.body.style.overflow = ''
   loginForGetLink.value = true // 再次确保
   // 触发登录按钮点击
   try {
@@ -327,6 +312,7 @@ const confirmLogin = () => {
 // 关闭登录弹窗
 const closeLoginModal = () => {
   showLoginModal.value = false
+  document.body.style.overflow = ''
 }
 
 // 获取用户信息
@@ -407,11 +393,15 @@ const showCopySuccessMessage = () => {
   copyStatus.value = 'Copied!'
   showCopySuccessModal.value = true
   
+  // 确保弹窗显示时页面不滚动
+  document.body.style.overflow = 'hidden'
+  
   // 3秒后重置状态
   setTimeout(() => {
     isCopied.value = false
     copyStatus.value = 'Copy link'
     showCopySuccessModal.value = false
+    document.body.style.overflow = ''
   }, 3000)
 }
 
@@ -466,5 +456,25 @@ watch(isSignedIn, async (newValue: boolean) => {
 
 .animate-gradient-x {
   animation: gradient-x 3s ease infinite;
+}
+
+/* 弹窗样式优化 */
+.modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 100 !important;
+}
+
+.modal-content {
+  position: relative !important;
+  margin: 0 !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
 }
 </style> 

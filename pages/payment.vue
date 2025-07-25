@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-blue-pale flex items-center justify-center px-4 pt-12 pb-4">
+  <div class="min-h-screen bg-blue-pale/80 backdrop-blur-sm flex items-center justify-center px-4 pt-12 pb-4">
     <!-- Loading Dots -->
     <div v-if="isLoading" class="flex space-x-3">
       <div class="w-3 h-3 bg-theme rounded-full animate-bounce-1 opacity-75"></div>
@@ -89,7 +89,7 @@
 
         <!-- Back to Home Button -->
         <NuxtLink to="/hailuo-ai-video-generator"
-          class="inline-block bg-theme text-black font-medium px-5 py-2 md:px-8 md:py-3 rounded-lg hover:bg-theme-hover transition-colors text-sm md:text-lg">
+          class="inline-block bg-theme text-white font-medium px-5 py-2 md:px-8 md:py-3 rounded-lg hover:bg-theme-hover transition-colors text-sm md:text-lg">
           Start Creating Your Hailuo 02 Video Now
         </NuxtLink>
       </div>

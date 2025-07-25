@@ -1,5 +1,5 @@
 <template>
-    <section class="py-20 bg-blue-pale">
+    <section class="py-20 bg-blue-pale/80 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
@@ -220,8 +220,5 @@
   <style>
   .break-inside-avoid {
     break-inside: avoid;
-  }
-  body{
-    background-color: rgb(25 23 28 / var(--tw-bg-opacity, 1));
   }
   </style> 

@@ -131,89 +131,90 @@
 
   <!-- 移动端用户菜单（在导航滑出菜单内）-->
   <template v-if="isMobile">
-    <div v-if="isSignedIn" class="pt-4 border-t border-gray-200 flex justify-between">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <img
-            :src="userDisplay?.imageUrl || '/default-avatar.png'"
-            :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Hailuo02 Video` : 'Default User Avatar - Hailuo02 Video'"
-            loading="lazy"
-            class="w-10 h-10 rounded-full object-cover ring-2 ring-baby-pink/20"
-          />
-          <div>
-            <p class="text-gray-800 font-medium text-base">
-              {{ userDisplay?.username }}
-            </p>
-            <p
-              v-if="userDisplay?.email"
-              class="text-xs text-gray-500 max-w-[180px] truncate"
-            >
-              {{ userDisplay?.email }}
-            </p>
+    <div v-if="isSignedIn" class="pt-4 border-t border-gray-200">
+      <!-- 用户信息区域 -->
+      <div class="flex items-center gap-3 mb-4">
+        <img
+          :src="userDisplay?.imageUrl || '/default-avatar.png'"
+          :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Hailuo02 Video` : 'Default User Avatar - Hailuo02 Video'"
+          loading="lazy"
+          class="w-10 h-10 rounded-full object-cover ring-2 ring-baby-pink/20"
+        />
+        <div>
+          <p class="text-gray-800 font-medium text-base">
+            {{ userDisplay?.username }}
+          </p>
+          <p
+            v-if="userDisplay?.email"
+            class="text-xs text-gray-500 max-w-[180px] truncate"
+          >
+            {{ userDisplay?.email }}
+          </p>
 
-            <div class="mt-1">
-              <div class="flex items-center py-2">
-                <p class="text-xs text-gray-600">
-                  Credits:
-                </p>
-                <div class="ml-2">
-                  <template v-if="isCreditsLoading">
-                    <div class="w-4 h-4 border-2 border-baby-coral border-t-transparent rounded-full animate-spin"></div>
-                  </template>
-                  <template v-else>
-                    <p class="text-lg font-medium text-baby-coral text-green-800">
-                      {{ limit || 0 }}
-                    </p>
-                  </template>
-                </div>
+          <div class="mt-1">
+            <div class="flex items-center py-2">
+              <p class="text-xs text-gray-600">
+                Credits:
+              </p>
+              <div class="ml-2">
+                <template v-if="isCreditsLoading">
+                  <div class="w-4 h-4 border-2 border-baby-coral border-t-transparent rounded-full animate-spin"></div>
+                </template>
+                <template v-else>
+                  <p class="text-lg font-medium text-baby-coral text-green-800">
+                    {{ limit || 0 }}
+                  </p>
+                </template>
               </div>
-              
-              <div v-if="vipLastTime" class="flex justify-between">
-                <p class="text-xs text-gray-600">VIP expiration time:</p>
-                <p class="text-xs text-gray-400">
-                  {{ vipLastTime }}
-                </p>
-              </div>
-
+            </div>
+            
+            <div v-if="vipLastTime" class="flex justify-between">
+              <p class="text-xs text-gray-600">VIP expiration time:</p>
+              <p class="text-xs text-gray-400">
+                {{ vipLastTime }}
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 分享链接按钮 -->
-      <button
-        v-if="hasPromotionPermission && promotionLink"
-        @click="copyPromotionLink"
-        class="mt-4 w-full py-2 px-4 flex items-center justify-center gap-2 rounded-lg bg-baby-pink/10 hover:bg-baby-pink/20 transition-all duration-200 hover:scale-[1.02] text-sm font-medium text-baby-coral"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
-        </svg>
-        copy promotion link
-      </button>
-
-      <!-- 退出按钮 -->
-      <SignOutButton>
+      <!-- 按钮区域 - 垂直排列 -->
+      <div class="space-y-3">
+        <!-- 分享链接按钮 -->
         <button
-          class="mt-4 py-2 px-4 flex items-center justify-center gap-2 rounded-lg bg-baby-pink/10 hover:bg-baby-pink/20 transition-all duration-200 hover:scale-[1.02] text-sm font-medium text-red-500">
-          <!-- Heroicons: logout/arrow-right-on-rectangle -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-4 h-4 transition-transform duration-200 group-hover:scale-110"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
-            />
-            </svg>
-          logout
+          v-if="hasPromotionPermission && promotionLink"
+          @click="copyPromotionLink"
+          class="w-full py-3 px-6 flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-baby-pink/20 to-baby-coral/10 border border-baby-pink/30 hover:from-baby-pink/30 hover:to-baby-coral/20 active:scale-95 transition-all duration-300 text-base font-semibold text-baby-coral shadow-sm hover:shadow-md"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+          </svg>
+          <span class="whitespace-nowrap">copy promotion link</span>
         </button>
-      </SignOutButton>
+
+        <!-- 退出按钮 -->
+        <SignOutButton>
+          <button
+            class="w-full py-3 px-6 flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-red-50 to-red-100/50 border border-red-200/50 hover:from-red-100/50 hover:to-red-200/30 active:scale-95 transition-all duration-300 text-base font-semibold text-red-600 shadow-sm hover:shadow-md">
+            <!-- Heroicons: logout/arrow-right-on-rectangle -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+              />
+              </svg>
+            <span class="whitespace-nowrap">Sign Out</span>
+          </button>
+        </SignOutButton>
+      </div>
     </div>
 
     <!-- 移动端登录按钮 -->

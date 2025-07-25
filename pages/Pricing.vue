@@ -1,6 +1,6 @@
 <template>
   <div
-    class="py-16 bg-blue-pale"
+    class="py-16 bg-blue-pale/80 backdrop-blur-sm"
     aria-labelledby="pricing-heading"
   >
 

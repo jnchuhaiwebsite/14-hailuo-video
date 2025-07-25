@@ -1,20 +1,32 @@
 <template>
   <div class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
     <!-- 背景视频 -->
-    <video 
+    <OptimizedVideo
       ref="videoRef"
       class="absolute inset-0 w-full h-full object-cover"
-      autoplay 
-      loop 
-      muted 
-      playsinline
-      preload="auto"
+      :autoplay="true"
+      :loop="true"
+      :muted="true"
+      :playsinline="true"
+      :preload="'auto'"
+      :fetchpriority="'high'"
       :src="previewVideoUrl"
       :poster="previewVideoPoster"
       @canplay="handleVideoCanPlay"
       @loadeddata="handleVideoLoaded"
-      defaultMuted
-    ></video>
+    />
+    
+    <!-- 优化的海报图片 - 作为备用 -->
+    <OptimizedImage
+      :src="previewVideoPoster"
+      alt="Hailuo 02 AI Video Generator Background"
+      class="absolute inset-0 w-full h-full object-cover opacity-0"
+      :loading="'eager'"
+      :fetchpriority="'high'"
+      :preload="true"
+      :format="'webp'"
+      :quality="90"
+    />
     
     <!-- 半透明蒙版 -->
     <div class="absolute inset-0 bg-black/60"></div>

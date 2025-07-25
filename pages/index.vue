@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mx-auto bg-blue-pale">
+  <div class="w-full mx-auto bg-blue-pale/80 backdrop-blur-sm">
     <main class="max-w-24xl mx-auto min-h-screen">
       <!-- 首屏区块 -->
       <section
