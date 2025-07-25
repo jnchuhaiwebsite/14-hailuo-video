@@ -232,9 +232,9 @@
 import { ref, computed, onMounted } from "vue";
 import { useClerkAuth } from '~/utils/auth'
 import { useUserStore } from '~/stores/user';
-import { setUserInfo, getPromotionLink } from '~/api/index'
+import { setUserInfo, getCurrentUser } from '~/api/index'
 import { useNuxtApp } from 'nuxt/app'
-import { useRuntimeConfig } from '#app'
+import { useRuntimeConfig } from 'nuxt/app'
 
 const props = defineProps({
   isMobile: {
@@ -253,7 +253,6 @@ const showUserMenu = ref(false);
 const isAuthLoading = ref(true);
 const isCreditsLoading = ref(false);
 const promotionLink = ref('')
-const isLoadingLink = ref(false)
 const hasPromotionPermission = ref(false)  // 添加权限状态
 
 // 引入auth认证
@@ -268,44 +267,36 @@ const {
 const getUserInfo = async () => {
   try {
     isCreditsLoading.value = true;
-    const userData = await userStore.fetchUserInfo();
-    if (userData) {
+    
+    const response = await getCurrentUser() as any;
+    if (response.code === 200 && response.data) {
+      const userData = response.data;
+      
       // 更新用户信息
-      limit.value = userData.free_limit+userData.remaining_limit|| 0;
+      limit.value = userData.free_limit + userData.remaining_limit || 0;
       vipLastTime.value = userData.vipLastTime || "";
       
-      // 获取分享链接
-      await fetchPromotionLink();
+      // 处理分享链接
+      if (userData.ivcode) {
+        hasPromotionPermission.value = true;
+        const baseUrl = useRuntimeConfig().public.baseUrl;
+        promotionLink.value = `${baseUrl}?ivcode=${userData.ivcode}`;
+      } else {
+        hasPromotionPermission.value = false;
+        promotionLink.value = '';
+      }
+    } else {
+      // 如果获取失败，清除分享链接
+      hasPromotionPermission.value = false;
+      promotionLink.value = '';
     }
   } catch (error) {
     console.error("获取用户信息失败:", error);
+    // 出错时清除分享链接
+    hasPromotionPermission.value = false;
+    promotionLink.value = '';
   } finally {
     isCreditsLoading.value = false;
-  }
-}
-
-// 获取分享链接
-const fetchPromotionLink = async () => {
-  if (isLoadingLink.value) return
-  
-  isLoadingLink.value = true
-  try {
-    const response = await getPromotionLink() as any
-    if (response.code === 500 && response.msg === 'this website  no permission') {
-      hasPromotionPermission.value = false
-      promotionLink.value = ''
-      return
-    }
-    hasPromotionPermission.value = true
-    const baseUrl = useRuntimeConfig().public.baseUrl
-    console.log('useRuntimeConfig().public', useRuntimeConfig().public)
-    promotionLink.value = `${baseUrl}?ivcode=${response.data.ivcode}`
-  } catch (error) {
-    console.error('Failed to fetch promotion link:', error)
-    hasPromotionPermission.value = false
-    promotionLink.value = ''
-  } finally {
-    isLoadingLink.value = false
   }
 }
 
@@ -402,7 +393,7 @@ onMounted(async () => {
       const ivcode = urlParams.get('ivcode');
 
       // 构建setUserInfo的参数对象
-      const userInfoParams = {
+      const userInfoParams: any = {
         uuid: user.id,
         email,
         from_login,
