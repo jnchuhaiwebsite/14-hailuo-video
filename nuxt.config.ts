@@ -164,7 +164,7 @@ export default defineNuxtConfig({
     }
   },
   build: {
-    analyze: true, // 启用打包分析
+    analyze: false, // 启用打包分析
     // 代码压缩配置
     terser: {
       compress: {
