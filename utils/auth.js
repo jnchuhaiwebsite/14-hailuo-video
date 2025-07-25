@@ -1,7 +1,21 @@
 import { useUser, useClerk, useAuth } from '#imports'
 import { ref, computed, watchEffect } from 'vue'
-import { logoutCookie } from '~/api/index'
+import { logoutCookie, getCurrentUser } from '~/api/index'
 import { useUserStore } from '~/stores/user'
+
+// 简单的token检查函数
+const getValidToken = () => {
+  if (typeof document === 'undefined') return null; // 服务端渲染时跳过
+  
+  const nameEQ = 'auth_token=';
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+};
 
 // 创建认证事件总线
 const authEventBus = {
@@ -31,6 +45,38 @@ const authEventBus = {
 
 // 导出事件总线，以便其他组件可以监听认证事件
 export const useAuthEvents = () => authEventBus
+
+/**
+ * 预检测用户登录状态
+ * 在加载Clerk之前先检查本地token
+ */
+async function preCheckUserLogin() {
+  try {
+    // 检查是否有有效的本地token
+    const token = getValidToken();
+    if (!token) {
+      return { isLoggedIn: false, userData: null };
+    }
+
+    // 如果有token，尝试获取用户信息
+    const response = await getCurrentUser();
+    if (response && response.code === 200 && response.data) {
+      return { 
+        isLoggedIn: true, 
+        userData: response.data 
+      };
+    } else {
+      // token无效，清除本地存储
+      logoutCookie();
+      return { isLoggedIn: false, userData: null };
+    }
+  } catch (error) {
+    console.error('预检测用户登录状态失败:', error);
+    // 出错时清除本地存储
+    logoutCookie();
+    return { isLoggedIn: false, userData: null };
+  }
+}
 
 /**
  * Clerk认证工具函数
@@ -237,8 +283,33 @@ export function useClerkAuth() {
 
   /**
    * 初始化认证，自动监听状态变化
+   * @param {boolean} skipPreCheck 是否跳过预检测，直接加载Clerk
    */
-  function initAuth() {
+  async function initAuth(skipPreCheck = false) {
+    if (!skipPreCheck) {
+      // 先进行预检测
+      try {
+        const preCheckResult = await preCheckUserLogin();
+        
+        if (preCheckResult.isLoggedIn) {
+          // 用户已登录，直接设置状态，不需要加载Clerk
+          authState.value.isLoggedIn = true;
+          authState.value.loginStatus = 'Logged in';
+          authState.value.authStatus = 'Logged in (pre-check)';
+          authState.value.isCheckingAuth = false;
+          authState.value.isLoading = false;
+          authState.value.isLoaded = true;
+          
+          // 触发预检测登录事件
+          authEventBus.emit('preCheckLogin', preCheckResult.userData);
+          return;
+        }
+      } catch (error) {
+        console.error('预检测失败，继续加载Clerk:', error);
+      }
+    }
+    
+    // 如果预检测失败或用户未登录，则加载Clerk
     watchLoginStatus()//监听用户登录状态变化
     watchClerkStatus()//监听Clerk加载状态
   }
