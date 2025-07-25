@@ -1,13 +1,17 @@
 <template>
   <div class="min-h-screen bg-blue-pale/80 backdrop-blur-sm">
-    <div class="pt-32 py-10 mx-auto w-11/12 max-w-4xl">
-      <NuxtLink
+    <div class="pt-20 pb-4 px-4">
+      <Breadcrumbs :items="breadcrumbItems" />
+    </div>
+    <div class="py-10 mx-auto w-11/12 max-w-4xl">
+      
+      <!-- <NuxtLink
         to="/blog"
         class="inline-flex items-center text-gray-300 hover:text-[#7C3AED] transition-colors mb-8 group font-medium"
       >
         <div class="w-3 h-3 border-l-2 border-b-2 border-gray-300 group-hover:border-[#7C3AED] transform rotate-45 mr-2 transition-colors"></div>
         Back to Blog
-      </NuxtLink>
+      </NuxtLink> -->
 
       <!-- Loading state -->
       <div v-if="pending" class="flex justify-center items-center py-20">
@@ -117,6 +121,12 @@ const relatedPosts = computed(() => {
     .filter(p => p.category === post.value?.category && p.id !== post.value?.id)
     .slice(0, 2); // Just show maximum 2 related posts
 });
+
+const breadcrumbItems = computed(() => [
+  { text: 'Hailuo AI Blog', to: '/blog' },
+  { text: post.value?.id || 'Blog Post'} // 使用文章标题而不是ID
+]);
+
 
 //获取文章描述
 const metaDescription = computed(() => {
