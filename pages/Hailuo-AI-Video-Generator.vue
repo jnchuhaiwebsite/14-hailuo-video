@@ -394,17 +394,17 @@ const scoreConfig = ref<ScoreItem[]>([])
 const getScoreConfig = async () => {
   try {
     console.log('正在获取积分配置...')
-    const response = await getScore() as any
-    if (response.code === 200) {
-      console.log('积分配置获取成功:', response.data)
-      scoreConfig.value = response.data
-      // 立即更新积分显示
-      const credits = calculateCredits()
-      console.log('计算得到的积分:', credits, '当前分辨率:', resolution.value, '当前时长:', duration.value)
-      needCredits.value = credits
-    } else {
-      console.error('获取积分配置失败:', response)
-    }
+    // 直接设置积分配置数据
+    scoreConfig.value = [
+      { id: 1, resolution: "768P", duration: 6, score: 10 },
+      { id: 2, resolution: "768P", duration: 10, score: 20 },
+      { id: 3, resolution: "1080p", duration: 6, score: 20 }
+    ]
+    console.log('积分配置获取成功:', scoreConfig.value)
+    // 立即更新积分显示
+    const credits = calculateCredits()
+    console.log('计算得到的积分:', credits, '当前分辨率:', resolution.value, '当前时长:', duration.value)
+    needCredits.value = credits
   } catch (error) {
     console.error('获取积分配置失败:', error)
   }
