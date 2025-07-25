@@ -21,22 +21,22 @@
         >
           <div class="px-4 py-3 border-b border-baby-pink/20">
             <div class="flex items-center gap-3 mb-2">
-              <img
+              <!-- <img
                 :src="userDisplay?.imageUrl || '/default-avatar.png'"
                 :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Hailuo02 Video` : 'Default User Avatar - Hailuo02 Video'"
                 loading="lazy"
                 class="w-10 h-10 rounded-full object-cover ring-2 ring-baby-pink/20"
-              />
+              /> -->
               <div>
                 <p class="text-gray-800 text-sm font-medium">
                   {{ userDisplay?.username }}
                 </p>
-                <p
+                <!-- <p
                   v-if="userDisplay?.email"
                   class="text-xs text-gray-500 truncate max-w-[160px]"
                 >
                   {{ userDisplay?.email }}
-                </p>
+                </p> -->
               </div>
             </div>
 
@@ -134,26 +134,26 @@
     <div v-if="isSignedIn" class="pt-4 border-t border-gray-200">
       <!-- 用户信息区域 -->
       <div class="flex items-center gap-3 mb-4">
-        <img
+        <!-- <img
           :src="userDisplay?.imageUrl || '/default-avatar.png'"
           :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Hailuo02 Video` : 'Default User Avatar - Hailuo02 Video'"
           loading="lazy"
           class="w-10 h-10 rounded-full object-cover ring-2 ring-baby-pink/20"
-        />
+        /> -->
         <div>
-          <p class="text-gray-800 font-medium text-base">
+          <p class="text-gray-800 font-medium text-white">
             {{ userDisplay?.username }}
           </p>
-          <p
+          <!-- <p
             v-if="userDisplay?.email"
             class="text-xs text-gray-500 max-w-[180px] truncate"
           >
             {{ userDisplay?.email }}
-          </p>
+          </p> -->
 
           <div class="mt-1">
             <div class="flex items-center py-2">
-              <p class="text-xs text-gray-600">
+              <p class="text-xs text-gray-600 text-white">
                 Credits:
               </p>
               <div class="ml-2">
