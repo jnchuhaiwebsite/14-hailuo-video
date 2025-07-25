@@ -230,7 +230,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watchEffect } from "vue";
 import { useClerkAuth } from '~/utils/auth'
 import { useUserStore } from '~/stores/user';
 import { setUserInfo, getCurrentUser } from '~/api/index'
@@ -256,6 +256,10 @@ const isCreditsLoading = ref(false);
 const promotionLink = ref('')
 const hasPromotionPermission = ref(false)  // 添加权限状态
 
+// 添加防重复请求的标记
+const isGettingUserInfo = ref(false);
+const hasGotUserInfo = ref(false);
+
 // 引入auth认证
 const { 
   user, 
@@ -266,7 +270,15 @@ const {
 
 // 获取用户信息，次数、昵称、头像等
 const getUserInfo = async () => {
+  // 防止重复请求
+  if (isGettingUserInfo.value || hasGotUserInfo.value) {
+    console.log('跳过重复的getUserInfo调用');
+    return;
+  }
+  
   try {
+    console.log('开始获取用户信息...');
+    isGettingUserInfo.value = true;
     isCreditsLoading.value = true;
     
     const response = await getCurrentUser() as any;
@@ -286,10 +298,15 @@ const getUserInfo = async () => {
         hasPromotionPermission.value = false;
         promotionLink.value = '';
       }
+      
+      // 标记已获取用户信息
+      hasGotUserInfo.value = true;
+      console.log('用户信息获取成功');
     } else {
       // 如果获取失败，清除分享链接
       hasPromotionPermission.value = false;
       promotionLink.value = '';
+      console.log('用户信息获取失败:', response);
     }
   } catch (error) {
     console.error("获取用户信息失败:", error);
@@ -298,6 +315,7 @@ const getUserInfo = async () => {
     promotionLink.value = '';
   } finally {
     isCreditsLoading.value = false;
+    isGettingUserInfo.value = false;
   }
 }
 
@@ -325,8 +343,10 @@ const toggleUserMenu = async () => {
     // 显示菜单
     showUserMenu.value = true;
 
-    // 刷新用户信息
+    // 刷新用户信息（强制刷新）
     try {
+      // 重置标记，允许重新获取用户信息
+      hasGotUserInfo.value = false;
       await getUserInfo();
     } catch (err) {
       console.error("Failed to refresh user info:", err);
@@ -353,18 +373,52 @@ const copyPromotionLink = () => {
 
 onMounted(async () => {
   try {
-    // 初始化认证
-    initAuth();
+    // 初始化认证（启用预检测）
+    await initAuth();
 
-    // 设置一个超时，确保loading状态不会永久存在
+    // 立即检查当前状态，如果Clerk已经加载完成，立即结束loading
+    if (isSignedIn.value !== undefined) {
+      isAuthLoading.value = false;
+      if (isSignedIn.value && !hasGotUserInfo.value) {
+        await getUserInfo();
+      }
+    }
+
+    // 减少超时时间，从5秒改为2秒
     setTimeout(() => {
       isAuthLoading.value = false;
-    }, 5000);
+    }, 2000);
     
     // 如果已经登录，立即获取用户信息
-    if (isSignedIn.value) {
+    if (isSignedIn.value && !hasGotUserInfo.value) {
       await getUserInfo();
+      isAuthLoading.value = false; // 立即设置loading为false
     }
+    
+    // 监听预检测登录事件
+    on('preCheckLogin', async (userData: any) => {
+      console.log('预检测登录成功，用户数据:', userData);
+      isAuthLoading.value = false;
+      
+      // 直接使用预检测获取的用户数据，避免再次请求API
+      if (userData && !hasGotUserInfo.value) {
+        limit.value = userData.free_limit + userData.remaining_limit || 0;
+        vipLastTime.value = userData.vipLastTime || "";
+        
+        // 处理分享链接
+        if (userData.ivcode) {
+          hasPromotionPermission.value = true;
+          const baseUrl = useRuntimeConfig().public.baseUrl;
+          promotionLink.value = `${baseUrl}?ivcode=${userData.ivcode}`;
+        } else {
+          hasPromotionPermission.value = false;
+          promotionLink.value = '';
+        }
+        
+        // 标记已获取用户信息
+        hasGotUserInfo.value = true;
+      }
+    });
     
     // 监听登录事件
     on('login', async (user: any) => {
@@ -408,7 +462,10 @@ onMounted(async () => {
       }
 
       setUserInfo(userInfoParams).then(() => {
-        getUserInfo();
+        // 只有在还没有获取用户信息时才调用
+        if (!hasGotUserInfo.value) {
+          getUserInfo();
+        }
       }).catch(() => {
         isAuthLoading.value = false;
       });
@@ -419,13 +476,15 @@ onMounted(async () => {
       limit.value = 0;
       vipLastTime.value = "";
       isAuthLoading.value = false;
+      // 重置用户信息获取状态
+      hasGotUserInfo.value = false;
     });
 
     // 监听Clerk加载完成事件，更新认证加载状态
     on('clerkLoaded', async (isSignedIn: boolean) => {
       isAuthLoading.value = false;
       // 如果Clerk加载完成且用户已登录，获取用户信息
-      if (isSignedIn) {
+      if (isSignedIn && !hasGotUserInfo.value) {
         await getUserInfo();
       }
     });
@@ -434,6 +493,17 @@ onMounted(async () => {
     on('error', (error: any) => {
       isAuthLoading.value = false;
       console.error("认证系统错误:", error);
+    });
+
+    // 添加额外的状态检查，确保loading状态不会卡住
+    // 监听isSignedIn的变化
+    watchEffect(() => {
+      if (isSignedIn.value !== undefined) {
+        // 如果用户状态已经确定，立即结束loading
+        setTimeout(() => {
+          isAuthLoading.value = false;
+        }, 100);
+      }
     });
 
     // 点击外部关闭用户菜单
