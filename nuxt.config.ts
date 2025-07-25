@@ -150,11 +150,29 @@ export default defineNuxtConfig({
       rollupOptions: {
         output: {
           assetFileNames: (assetInfo) => {
-            if (assetInfo.name.endsWith('.css')) {
+            if (assetInfo.name?.endsWith('.css')) {
               return '_nuxt/css/[hash][extname]';
             }
             return '_nuxt/assets/[hash][extname]';
           }
+        }
+      },
+      // 代码压缩配置 - 正确的位置
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true, // 移除 console 语句
+          drop_debugger: true, // 移除 debugger 语句
+          pure_funcs: ['console.log', 'console.info', 'console.warn', 'console.error'], // 移除特定的函数调用
+          passes: 3, // 增加压缩次数
+          dead_code: true, // 移除未使用的代码
+          global_defs: {
+            'process.env.NODE_ENV': '"production"' // 定义全局变量
+          }
+        },
+        mangle: true, // 混淆变量名
+        format: {
+          comments: false // 移除注释
         }
       }
     },
@@ -163,30 +181,8 @@ export default defineNuxtConfig({
       devSourcemap: true
     }
   },
-  build: {
-    analyze: true, // 启用打包分析
-    // 代码压缩配置
-    terser: {
-      compress: {
-        drop_console: true, // 移除 console 语句
-        drop_debugger: true, // 移除 debugger 语句
-        pure_funcs: ['console.log', 'console.info'], // 移除特定的函数调用
-        passes: 3, // 增加压缩次数
-        dead_code: true, // 移除未使用的代码
-        global_defs: {
-          'process.env.NODE_ENV': 'production' // 定义全局变量
-        }
-      },
-      mangle: true, // 混淆变量名
-      output: {
-        comments: false // 移除注释
-      }
-    }
-  },
   // 强制CSS提取的配置
   experimental: {
-    // 强制禁用内联样式，将样式提取到外部文件
-    inlineSSRStyles: false,
     // 启用vite特性兼容
     // viteNode: true
   },
