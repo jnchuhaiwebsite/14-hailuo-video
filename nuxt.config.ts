@@ -245,5 +245,5 @@ export default defineNuxtConfig({
     // viteNode: true
     // 强制禁用内联样式，将样式提取到外部文件
     inlineSSRStyles: false,
-  },
+  }
 })
