@@ -229,7 +229,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watchEffect } from "vue";
 import { useClerkAuth } from '~/utils/auth'
 import { useUserStore } from '~/stores/user';
 import { setUserInfo, getCurrentUser } from '~/api/index'
@@ -355,14 +355,23 @@ onMounted(async () => {
     // 初始化认证
     initAuth();
 
-    // 设置一个超时，确保loading状态不会永久存在
+    // 立即检查当前状态，如果Clerk已经加载完成，立即结束loading
+    if (isSignedIn.value !== undefined) {
+      isAuthLoading.value = false;
+      if (isSignedIn.value) {
+        await getUserInfo();
+      }
+    }
+
+    // 减少超时时间，从5秒改为2秒
     setTimeout(() => {
       isAuthLoading.value = false;
-    }, 5000);
+    }, 2000);
     
     // 如果已经登录，立即获取用户信息
     if (isSignedIn.value) {
       await getUserInfo();
+      isAuthLoading.value = false; // 立即设置loading为false
     }
     
     // 监听登录事件
@@ -433,6 +442,17 @@ onMounted(async () => {
     on('error', (error: any) => {
       isAuthLoading.value = false;
       console.error("认证系统错误:", error);
+    });
+
+    // 添加额外的状态检查，确保loading状态不会卡住
+    // 监听isSignedIn的变化
+    watchEffect(() => {
+      if (isSignedIn.value !== undefined) {
+        // 如果用户状态已经确定，立即结束loading
+        setTimeout(() => {
+          isAuthLoading.value = false;
+        }, 100);
+      }
     });
 
     // 点击外部关闭用户菜单

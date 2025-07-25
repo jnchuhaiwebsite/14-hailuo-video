@@ -108,6 +108,9 @@ export function useClerkAuth() {
         }
         
         authState.value.isCheckingAuth = false
+        
+        // 立即触发clerkLoaded事件，确保组件能快速响应
+        authEventBus.emit('clerkLoaded', isSignedIn.value)
       }
     })
   }
@@ -162,7 +165,7 @@ export function useClerkAuth() {
       }
     }, 200)
     
-    // 设置超时器
+    // 减少超时时间，从10秒改为3秒
     setTimeout(() => {
       if (!isLoaded.value) {
         authState.value.isInitializing = false//Clerk初始化中
@@ -178,7 +181,7 @@ export function useClerkAuth() {
         // 清除检查器
         clearInterval(checkInterval)
       }
-    }, 10000)
+    }, 3000)
     
     // 使用try-catch捕获可能的错误
     try {
