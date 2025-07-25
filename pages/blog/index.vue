@@ -1,5 +1,8 @@
 <template>
-  <div class="min-h-screen bg-blue-pale pb-10">
+  <div class="min-h-screen bg-blue-pale/80 backdrop-blur-sm pb-10">
+        <div class="pt-20 pb-4 px-4">
+      <Breadcrumbs :items="breadcrumbItems" />
+    </div>
     <!-- Page title -->
     <div class="pt-32 pb-12 text-center">
       <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[#7C3AED]">Hailuo AI Video Generator Blog</h1>
@@ -86,6 +89,10 @@ const {
 const navigateToBlog = (id) => {
   router.push(`/blog/${id}`)
 }
+
+const breadcrumbItems = ([
+  { text: 'Hailuo AI Blog' },
+]);
 
 // Set canonical URL when mounted
 onMounted(() => {
