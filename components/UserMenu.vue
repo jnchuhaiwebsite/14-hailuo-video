@@ -21,29 +21,29 @@
         >
           <div class="px-4 py-3 border-b border-baby-pink/20">
             <div class="flex items-center gap-3 mb-2">
-              <img
+              <!-- <img
                 :src="userDisplay?.imageUrl || '/default-avatar.png'"
                 :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Hailuo02 Video` : 'Default User Avatar - Hailuo02 Video'"
                 loading="lazy"
                 class="w-10 h-10 rounded-full object-cover ring-2 ring-baby-pink/20"
-              />
+              /> -->
               <div>
                 <p class="text-gray-800 text-sm font-medium">
                   {{ userDisplay?.username }}
                 </p>
-                <p
+                <!-- <p
                   v-if="userDisplay?.email"
                   class="text-xs text-gray-500 truncate max-w-[160px]"
                 >
                   {{ userDisplay?.email }}
-                </p>
+                </p> -->
               </div>
             </div>
 
             <div class="space-y-1 mt-2">
               <div class="flex items-center py-2">
                 <p class="text-xs text-gray-600">
-                  Credits: 
+                  My Credits: 
                 </p>
                 <div class="ml-2">
                   <template v-if="isCreditsLoading">
@@ -75,7 +75,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2 transition-transform duration-200 group-hover:scale-110">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
             </svg>
-            Personal Center
+            My Videos
           </NuxtLink>
 
           <!-- 分享链接 -->
@@ -134,27 +134,27 @@
     <div v-if="isSignedIn" class="pt-4 border-t border-gray-200">
       <!-- 用户信息区域 -->
       <div class="flex items-center gap-3 mb-4">
-        <img
+        <!-- <img
           :src="userDisplay?.imageUrl || '/default-avatar.png'"
           :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Hailuo02 Video` : 'Default User Avatar - Hailuo02 Video'"
           loading="lazy"
           class="w-10 h-10 rounded-full object-cover ring-2 ring-baby-pink/20"
-        />
+        /> -->
         <div>
-          <p class="text-gray-800 font-medium text-base">
+          <p class="text-gray-800 font-medium text-white">
             {{ userDisplay?.username }}
           </p>
-          <p
+          <!-- <p
             v-if="userDisplay?.email"
             class="text-xs text-gray-500 max-w-[180px] truncate"
           >
             {{ userDisplay?.email }}
-          </p>
+          </p> -->
 
           <div class="mt-1">
             <div class="flex items-center py-2">
-              <p class="text-xs text-gray-600">
-                Credits:
+              <p class="text-xs text-gray-600 text-white">
+               My Credits:
               </p>
               <div class="ml-2">
                 <template v-if="isCreditsLoading">

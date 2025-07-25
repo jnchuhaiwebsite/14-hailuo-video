@@ -3,7 +3,7 @@
     <!-- 用户信息卡片 -->
     <div class="max-w-7xl mx-auto bg-gray-800 p-4 sm:p-6 rounded-lg shadow-sm mb-4 sm:mb-6">
       <!-- 基本信息 -->
-      <div class="flex flex-col items-center space-y-4">
+      <!-- <div class="flex flex-col items-center space-y-4">
         <div class="relative">
           <img :src="userInfo.avatar||'/img/default-avatar.png'" alt="avatar" class="w-24 h-24 rounded-full border-4 border-gray-700 shadow-md">
           <div v-if="userInfo.vip_last_time > 0" class="absolute -bottom-2 -right-2 bg-yellow-500 text-gray-900 rounded-full p-1">
@@ -18,7 +18,7 @@
             <span v-if="userInfo.vip_last_time > 0" class="px-2 py-1 bg-yellow-900 text-yellow-100 text-xs sm:text-sm rounded-full">VIP Member</span>
           </div>
         </div>
-      </div>
+      </div> -->
       
       <!-- 使用次数信息 -->
       <div class="mt-6 sm:mt-8">
