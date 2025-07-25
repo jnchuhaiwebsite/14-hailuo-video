@@ -330,7 +330,7 @@ const userDisplay = computed<User | null>(() => {
   if (!user.value) return null;
 
   return {
-    username: user.value.username || user.value.firstName || "User",
+    username: user.value.username || user.value.fullName || "User",
     email: user.value.emailAddresses?.[0]?.emailAddress,
     imageUrl: user.value.imageUrl + '?width=64&height=64',
   };
