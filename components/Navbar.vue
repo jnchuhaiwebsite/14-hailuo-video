@@ -132,7 +132,7 @@
                 class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
                 @click="() => { isOpen = false; }"
               >
-                Personal Center
+                My Videos
               </NuxtLink>
             </div>
 
