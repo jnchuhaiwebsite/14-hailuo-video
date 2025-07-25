@@ -43,7 +43,7 @@
             <div class="space-y-1 mt-2">
               <div class="flex items-center py-2">
                 <p class="text-xs text-gray-600">
-                  Credits: 
+                  My Credits: 
                 </p>
                 <div class="ml-2">
                   <template v-if="isCreditsLoading">
@@ -154,7 +154,7 @@
           <div class="mt-1">
             <div class="flex items-center py-2">
               <p class="text-xs text-gray-600 text-white">
-                Credits:
+               My Credits:
               </p>
               <div class="ml-2">
                 <template v-if="isCreditsLoading">
