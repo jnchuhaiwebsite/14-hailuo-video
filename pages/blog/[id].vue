@@ -26,7 +26,11 @@
         </div>
 
         <!-- Rich text content -->
-        <div class="text-gray-300 space-y-6 [&>h1]:text-2xl [&>h1]:font-bold [&>h1]:text-gray-100 [&>h2]:text-xl [&>h2]:font-bold [&>h2]:text-gray-100 [&>h3]:text-lg [&>h3]:font-bold [&>h3]:text-gray-100 [&>p]:text-gray-300 [&>p]:leading-relaxed [&>a]:text-[#7C3AED] [&>a]:hover:text-[#8B5CF6] [&>strong]:text-gray-100 [&>code]:text-gray-100 [&>code]:bg-gray-700 [&>code]:px-1 [&>code]:py-0.5 [&>code]:rounded [&>blockquote]:border-l-4 [&>blockquote]:border-[#7C3AED] [&>blockquote]:pl-4 [&>blockquote]:text-gray-300 [&>hr]:border-gray-600 [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:marker:text-gray-400 [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:marker:text-gray-400" v-html="post.content"></div>
+        <div 
+          ref="contentRef"
+          class="text-gray-300 space-y-6 [&>h1]:text-2xl [&>h1]:font-bold [&>h1]:text-gray-100 [&>h2]:text-xl [&>h2]:font-bold [&>h2]:text-gray-100 [&>h3]:text-lg [&>h3]:font-bold [&>h3]:text-gray-100 [&>p]:text-gray-300 [&>p]:leading-relaxed [&>a]:text-[#7C3AED] [&>a]:hover:text-[#8B5CF6] [&>strong]:text-gray-100 [&>code]:text-gray-100 [&>code]:bg-gray-700 [&>code]:px-1 [&>code]:py-0.5 [&>code]:rounded [&>blockquote]:border-l-4 [&>blockquote]:border-[#7C3AED] [&>blockquote]:pl-4 [&>blockquote]:text-gray-300 [&>hr]:border-gray-600 [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:marker:text-gray-400 [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:marker:text-gray-400" 
+          v-html="post.content"
+        ></div>
 
         <!-- Related articles section -->
         <div class="mt-12 pt-8 border-t border-gray-700" v-if="relatedPosts.length > 0">
@@ -74,7 +78,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted } from "vue";
+import { computed, ref, onMounted, watch, nextTick } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useBlogPosts } from '~/composables/useBlogPosts';
 import { useSeo } from '~/composables/useSeo';
@@ -82,6 +86,7 @@ import { useSeo } from '~/composables/useSeo';
 const route = useRoute();
 const router = useRouter();
 const pending = ref(false);
+const contentRef = ref<HTMLElement>();
 
 //获取文章数据
 const { getPostById, allPosts, getCategoryLabel } = useBlogPosts();
@@ -139,6 +144,29 @@ const title = computed(() => {
 const formatDate = (post: any) => {
   return post.date;
 };
+
+// 处理内容中的链接点击
+const handleContentLinks = () => {
+  if (!contentRef.value) return;
+  
+  const links = contentRef.value.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      if (href) {
+        router.push(href);
+      }
+    });
+  });
+};
+
+// 监听内容变化并处理链接
+watch(() => post.value, () => {
+  nextTick(() => {
+    handleContentLinks();
+  });
+}, { immediate: true });
 
 //设置页面元数据
 useSeo({

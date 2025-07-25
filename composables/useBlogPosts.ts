@@ -17,6 +17,86 @@ export interface BlogPost {
 // Blog post data
 const blogPostsData: BlogPost[] = [
   {
+    id: 'hailuo-ai-invitation-code-ultimate-guide',
+    title: 'Unlock Unlimited Creativity: The Ultimate Guide to Your Hailuo AI Invitation Code',
+    content: `
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-6">Unlock Unlimited Creativity: The Ultimate Guide to Your Hailuo AI Invitation Code</h2>
+        
+        <p class="mb-6 text-lg">Welcome to the cutting edge of content creation. At Hailuo AI, we're building a world where your imagination is the only limit to producing stunning, professional-quality videos. But what if you could push those limits even further, generating more content simply by sharing the tools you love?</p>
+
+        <p class="mb-6 text-lg">That's exactly why we created the Hailuo AI Referral Program. It's our way of thanking our community of creators and empowering you to produce even more. This guide will walk you through everything you need to know about your <strong>Hailuo AI invitation code</strong> and how it can become your ticket to unlimited creativity.</p>
+
+        <h3 class="text-xl font-bold my-6">What is the Hailuo AI Referral Program?</h3>
+
+        <p class="mb-6">Simply put, it's a reward system built for our users. When you invite a new user to Hailuo AI through your unique link, you earn points. But here's what makes our program truly special: you don't just earn points on their first purchase. <strong>You earn points on <em>every single purchase</em> they make, forever.</strong></p>
+
+        <p class="mb-6">This isn't a one-time bonus; it's a continuous stream of rewards that grows with your network.</p>
+
+        <h3 class="text-xl font-bold my-6">How to Start Earning in 3 Simple Steps</h3>
+
+        <p class="mb-6">Getting started is incredibly easy. We've streamlined the process so you can focus on creating and sharing.</p>
+
+        <ol class="list-decimal pl-6 mb-6 space-y-4">
+          <li class="text-lg">
+            <strong>Share Your Link:</strong> First, find your unique <code class="bg-gray-800 text-blue-300 px-2 py-1 rounded">hailuo ai invitation code</code> link in your user center. Copy it and share it with friends, colleagues, on social media, or in your creative communities.
+          </li>
+          <li class="text-lg">
+            <strong>Your Friend Makes a Purchase:</strong> When someone signs up using your link and purchases any plan (Basic, Pro, or Enterprise), the system automatically tracks it back to you.
+          </li>
+          <li class="text-lg">
+            <strong>You Earn, Always:</strong> The moment their purchase is complete, points are instantly added to your account. This process repeats for every single purchase they make in the future.
+          </li>
+        </ol>
+        
+        <h3 class="text-xl font-bold my-6">The "Forever" Reward: Why Our Program is Different</h3>
+
+        <p class="mb-6">Most referral programs thank you once. We believe in building lasting relationships. By rewarding you for every purchase a referred user makes, we ensure that your initial effort of sharing continues to pay off.</p>
+
+        <p class="mb-6">Think of it this way: a single successful referral can become a source of points for months or even years, funding your creative projects long-term. There are no limits to how many people you can refer or how many points you can earn.</p>
+
+        <h4 class="text-lg font-bold my-4">A Breakdown of the Rewards</h4>
+
+        <p class="mb-6">Transparency is key, so you'll always know exactly what you're earning. For every purchase your referred friend makes, you'll be rewarded with the following points:</p>
+        
+        <ul class="space-y-3 mb-6">
+          <li class="flex items-center">
+            <span class="text-green-400 mr-3 text-xl">✓</span>
+            <span class="text-lg"><strong>Enterprise Plan Purchase:</strong> Get <strong>208 Points</strong></span>
+          </li>
+          <li class="flex items-center">
+            <span class="text-green-400 mr-3 text-xl">✓</span>
+            <span class="text-lg"><strong>Pro Plan Purchase:</strong> Get <strong>58 Points</strong></span>
+          </li>
+          <li class="flex items-center">
+            <span class="text-green-400 mr-3 text-xl">✓</span>
+            <span class="text-lg"><strong>Basic Plan Purchase:</strong> Get <strong>18 Points</strong></span>
+          </li>
+        </ul>
+
+        <h3 class="text-xl font-bold my-6">Turning Points into Pixels: What Your Rewards Are For</h3>
+
+        <p class="mb-6">We want to keep things simple and valuable. Your reward points have one, powerful purpose: <strong>to pay for AI video generations.</strong></p>
+
+        <p class="mb-6">Every point you earn is a credit you can use to bring another idea to life. They cannot be used for subscription discounts or upgrades, ensuring that their value is tied directly to what matters most—creating more content.</p>
+
+        <div class="bg-gradient-to-r from-blue-900 to-purple-900 p-8 rounded-lg my-8 text-center">
+          <h3 class="text-2xl font-bold mb-4 text-white">Ready to Start? Find Your Hailuo AI Invitation Code Now!</h3>
+          <p class="text-blue-100 mb-6">Your journey to earning unlimited rewards starts now. Log in to your Hailuo AI account, navigate to the user center, and find your invitation link.</p>
+          <a href="/invitation-code" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
+            Go to My Account
+          </a>
+        </div>
+      </div>
+    `,
+    seoTitle: 'Your Hailuo AI Invitation Code: An Ultimate Guide',
+    description: 'Learn how the Hailuo AI invitation code lets you earn unlimited points for AI video generation. Refer friends and get rewarded for every purchase, forever.',
+    date: 'July 24, 2025',
+    category: 'Guide',
+    skip: false,
+    cta: "Get Started",
+  },
+  {
     id: 'top-tips-for-cinematic-video-prompts-in-hailuo-02-ai',
     title: 'Top Tips for Cinematic Video Prompts in Hailuo 02 AI',
     content: `
