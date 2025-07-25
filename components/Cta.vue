@@ -11,24 +11,7 @@
 
     const router = useRouter()
 
-  defineProps({
-    title: {
-      type: String,
-      required: true
-    },
-    description: {
-      type: String,
-      required: true
-    },
-    ctaText: {
-      type: String,
-      required: true
-    },
-    ctaLink: {
-      type: String,
-      required: true
-    }
-  });
+
   // 跳转到首页
 const scrollToHero = () => {
   router.push('/hailuo-ai-video-generator')
