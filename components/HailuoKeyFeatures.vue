@@ -76,14 +76,14 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 
-const router = useRouter()
+// const router = useRouter()
 
-// 导航到 AI Video 页面
-const navigateToAiVideo = () => {
-  router.push('/hailuo-ai-video-generator')
-}
+// // 导航到 AI Video 页面
+// const navigateToAiVideo = () => {
+//   router.push('/hailuo-ai-video-generator')
+// }
 </script>
 
 <style scoped>
