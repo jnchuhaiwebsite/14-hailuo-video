@@ -77,22 +77,22 @@ export default defineNuxtConfig({
           fetchpriority: 'high'
         },
         // 预加载 LCP 视频资源 - 最高优先级
-        {
-          rel: 'preload',
-          href: '/video/haoluo2-home-video.mp4',
-          as: 'video',
-          type: 'video/mp4',
-          fetchpriority: 'high'
-        },
-        // 预加载视频海报图片 - 高优先级
-        {
-          rel: 'preload',
-          href: '/img/1.webp',
-          as: 'image',
-          type: 'image/webp',
-          fetchpriority: 'high'
-        },
-        // 预加载关键 CSS
+        // {
+        //   rel: 'preload',
+        //   href: '/video/haoluo2-home-video.mp4',
+        //   as: 'video',
+        //   type: 'video/mp4',
+        //   fetchpriority: 'high'
+        // },
+        // // 预加载视频海报图片 - 高优先级
+        // {
+        //   rel: 'preload',
+        //   href: '/img/1.webp',
+        //   as: 'image',
+        //   type: 'image/webp',
+        //   fetchpriority: 'high'
+        // },
+        // // 预加载关键 CSS
         {
           rel: 'preload',
           href: '/assets/css/main.css',
@@ -243,5 +243,7 @@ export default defineNuxtConfig({
   experimental: {
     // 启用vite特性兼容
     // viteNode: true
+    // 强制禁用内联样式，将样式提取到外部文件
+    inlineSSRStyles: false,
   },
 })
