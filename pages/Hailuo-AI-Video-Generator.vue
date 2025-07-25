@@ -1,6 +1,6 @@
 <template>
   <div
-    class="py-16 bg-blue-pale"
+    class="py-16 bg-blue-pale/80 backdrop-blur-sm"
     aria-labelledby="pricing-heading"
   >
     <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
@@ -393,45 +393,26 @@ const scoreConfig = ref<ScoreItem[]>([])
 // 获取积分配置
 const getScoreConfig = async () => {
   try {
-    console.log('正在获取积分配置...')
     // 直接设置积分配置数据
     scoreConfig.value = [
       { id: 1, resolution: "768P", duration: 6, score: 10 },
       { id: 2, resolution: "768P", duration: 10, score: 20 },
       { id: 3, resolution: "1080p", duration: 6, score: 20 }
     ]
-    console.log('积分配置获取成功:', scoreConfig.value)
     // 立即更新积分显示
     const credits = calculateCredits()
-    console.log('计算得到的积分:', credits, '当前分辨率:', resolution.value, '当前时长:', duration.value)
     needCredits.value = credits
   } catch (error) {
-    console.error('获取积分配置失败:', error)
   }
 }
 
 // 计算所需积分
 const calculateCredits = () => {
   if (!scoreConfig.value || scoreConfig.value.length === 0) {
-    console.warn('积分配置为空，无法计算积分')
     return 0
   }
   
   const durationInt = parseInt(duration.value)
-  console.log('查找积分配置:', '分辨率=', resolution.value, '时长=', durationInt, '原始时长值=', duration.value, '类型=', typeof duration.value)
-  
-  // 详细打印每个积分配置项
-  console.log('所有可用配置:')
-  scoreConfig.value.forEach((item, index) => {
-    console.log(`配置项 ${index}:`, {
-      resolution: item.resolution,
-      duration: item.duration,
-      score: item.score,
-      resolutionMatch: item.resolution === resolution.value,
-      durationMatch: item.duration === durationInt,
-      durationTypeCheck: typeof item.duration
-    })
-  })
   
   // 尝试直接匹配
   let config = scoreConfig.value.find((item: any) => 
@@ -441,7 +422,6 @@ const calculateCredits = () => {
   
   // 如果没有找到匹配，尝试字符串比较
   if (!config) {
-    console.log('尝试使用字符串比较查找匹配')
     config = scoreConfig.value.find((item: any) => 
       item.resolution === resolution.value && 
       String(item.duration) === duration.value
@@ -449,41 +429,33 @@ const calculateCredits = () => {
   }
   
   if (config) {
-    console.log('找到匹配的积分配置:', config)
     return config.score
   } else {
-    console.warn('未找到匹配的积分配置，尝试查找相似配置')
-    
     // 尝试只匹配分辨率
     const resolutionMatch = scoreConfig.value.find(item => item.resolution === resolution.value)
     if (resolutionMatch) {
-      console.log('找到分辨率匹配的配置:', resolutionMatch)
       return resolutionMatch.score
     }
     
     // 尝试只匹配时长
     const durationMatch = scoreConfig.value.find(item => item.duration === durationInt)
     if (durationMatch) {
-      console.log('找到时长匹配的配置:', durationMatch)
       return durationMatch.score
     }
     
     // 如果还是没找到，使用第一个配置项
-    console.warn('没有找到任何匹配，使用默认配置')
     return scoreConfig.value[0]?.score || 0
   }
 }
 
 // 强制刷新积分配置和计算
 const refreshCredits = async () => {
-  console.log('强制刷新积分配置')
   try {
     // 先尝试重新获取积分配置
     await getScoreConfig()
     
     // 然后重新计算积分
     const credits = calculateCredits()
-    console.log('刷新后的积分:', credits)
     needCredits.value = credits
     return credits
   } catch (error) {
@@ -497,11 +469,12 @@ const needCredits = ref(0)
 
 // 监听分辨率和时长变化
 watch([resolution, duration], () => {
-  //console.log('分辨率或时长变化:', '分辨率=', resolution.value, '时长=', duration.value)
-  const credits = calculateCredits()
-  //console.log('重新计算的积分:', credits)
-  needCredits.value = credits
-}, { immediate: true })
+  // 只有在积分配置已加载时才计算积分
+  if (scoreConfig.value && scoreConfig.value.length > 0) {
+    const credits = calculateCredits()
+    needCredits.value = credits
+  }
+}, { immediate: false }) // 移除 immediate: true，避免在初始化时执行
 
 // 在 setup 中添加
 const videoTaskStore = useVideoTaskStore()
@@ -549,50 +522,11 @@ const restoreFormState = () => {
 
 // 修改 onMounted
 onMounted(async () => {
+  // 获取用户信息
+  await userStore.fetchUserInfo()
+  
   // 获取积分配置并等待完成
   await getScoreConfig()
-  console.log('组件挂载完成，当前积分值:', needCredits.value)
-
-  // 检查是否有未完成的任务
-  // const storedTask = videoTaskStore.getStoredTask()
-  // if (storedTask && storedTask.isGenerating) {
-  //   isGenerating.value = true
-  //   prompt.value = storedTask.prompt
-  //   activeTab.value = storedTask.type
-    
-  //   // 重新开始检查任务状态
-  //   checkTaskInterval = setInterval(() => {
-  //     checkTaskStatus(storedTask.taskId)
-  //   }, 2000)
-  //   // 恢复表单状态（页面切换时）
-  //   restoreFormState()
-  // } else {
-  //   // 如果没有未完成的任务，清空表单缓存
-  //   localStorage.removeItem('seedanceFormCache')
-  //   // 清空表单状态
-  //   localStorage.removeItem('seedanceFormState')
-  // }
-  
-  // 处理URL参数
-  const { mode, prompt: urlPrompt, origin: urlOrigin } = route.query
-  
-  if(mode){
-    // 清空 URL 中的查询参数
-    const url = new URL(window.location.href)
-    url.search = ''
-    window.history.replaceState({}, '', url.toString())
-  }
-  if (urlPrompt) {
-    prompt.value = urlPrompt as string
-  }
-
-  if (mode === 'image' && urlOrigin) {
-    activeTab.value = 'image'
-    selectedImage.value = urlOrigin as any;
-    imagePreview.value = urlOrigin as any;
-  } else if (mode === 'text') {
-    activeTab.value = 'text'
-  }
 })
 
 // 修改 onUnmounted
@@ -878,6 +812,7 @@ const handleVideoRequest = async () => {
     $toast.warning('Please enter a prompt')
     return
   }
+  
   // 清理旧的视频URL
   if (generatedVideoUrl.value) {
     URL.revokeObjectURL(generatedVideoUrl.value)
@@ -887,7 +822,6 @@ const handleVideoRequest = async () => {
 
   // 判断是否是文件，如果是文件，则上传获取url
   if(selectedImage.value instanceof File){
-    
     const uploadResponse = await upload({
       file: selectedImage.value
     })
@@ -924,8 +858,10 @@ const handleVideoRequest = async () => {
       }
     }
     const response = await request(requestData) as any;
+    
     // 更新用户信息以刷新使用次数
     await userStore.fetchUserInfo(true)
+    
     if (response.code === 200) {
       // 保存任务信息到 store
       videoTaskStore.setTask({
@@ -1007,41 +943,24 @@ const handleAction = (action: string, ...args: any[]) => {
       prompt.value = args[0] || ''
       break
     case 'selectDuration':
-      withLoginCheck(async () => {
-        console.log('选择时长:', args[0], '类型:', typeof args[0])
-        // 先更新时长
-        duration.value = args[0]
-        
-        // 确保分辨率合法（10s时只能选768p）
-        if (args[0] === '10' && resolution.value === '1080p') {
-          console.log('10s视频只能选择768p分辨率，自动调整分辨率')
-          resolution.value = '768p'
-        }
-        
-        // 强制刷新积分配置并更新积分值
-        const credits = await refreshCredits()
-        console.log('时长变化后重新计算的积分:', credits)
-        
-        // 确保UI更新
-        setTimeout(() => {
-          needCredits.value = credits
-        }, 0)
-      })
+      // 先更新时长
+      duration.value = args[0]
+      
+      // 确保分辨率合法（10s时只能选768p）
+      if (args[0] === '10' && resolution.value === '1080p') {
+        resolution.value = '768p'
+      }
+      
+      // 直接计算积分
+      const durationCredits = calculateCredits()
+      needCredits.value = durationCredits
       break
     case 'selectResolution':
-      withLoginCheck(async () => {
-        console.log('选择分辨率:', args[0])
-        resolution.value = args[0]
-        
-        // 强制刷新积分配置并更新积分值
-        const credits = await refreshCredits()
-        console.log('分辨率变化后重新计算的积分:', credits)
-        
-        // 确保UI更新
-        setTimeout(() => {
-          needCredits.value = credits
-        }, 0)
-      })
+      resolution.value = args[0]
+      
+      // 直接计算积分
+      const resolutionCredits = calculateCredits()
+      needCredits.value = resolutionCredits
       break
     case 'selectOption':
       withLoginCheck(() => {
@@ -1059,13 +978,18 @@ const remainingTimes = ref(userStore.userInfo?.free_limit+userStore.userInfo?.re
 // 修改 checkLoginStatus 函数
 const checkLoginStatus = async () => {
   if (!userInfo.value) {
-    // 缓存当前表单数据（用于请求时）
-    cacheFormData()
-    const loginButton = document.getElementById('bindLogin')
-    if (loginButton) {
-      loginButton.click()
+    // 先尝试获取用户信息
+    await userStore.fetchUserInfo()
+    
+    if (!userStore.userInfo) {
+      // 缓存当前表单数据（用于请求时）
+      cacheFormData()
+      const loginButton = document.getElementById('bindLogin')
+      if (loginButton) {
+        loginButton.click()
+      }
+      return false
     }
-    return false
   }
   return true
 }
@@ -1081,7 +1005,6 @@ watch(
 const router = useRouter();
 // 检查使用限制
 const checkUsageLimit = () => {
-  // alert(1)
 
   // 检查是否有可用次数
   if (remainingTimes.value <= 0) {
@@ -1090,9 +1013,7 @@ const checkUsageLimit = () => {
     return false
   }
 
-
   // 检查用户积分是否足够
-  // const userCredits = userInfo.value?.free_limit || userInfo.value?.remaining_limit || 0
   if (remainingTimes.value < needCredits.value) {
     $toast.error(`Insufficient credits. This operation requires ${needCredits.value} credits, but your account only has ${remainingTimes.value} credits`)
     const pricingSection = document.getElementById('pricing')

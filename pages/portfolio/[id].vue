@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-blue-pale">
+    <div class="min-h-screen bg-blue-pale/80 backdrop-blur-sm">
       <div class="pt-32 py-10 mx-auto w-11/12 max-w-4xl">
         <NuxtLink
           to="/portfolio"

@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 bg-blue-pale">
+  <section class="py-20 bg-blue-pale/80 backdrop-blur-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/50 sm:text-5xl animate-fade-in">

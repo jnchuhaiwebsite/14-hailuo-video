@@ -52,6 +52,11 @@ onMounted(() => {
   color: var(--theme-primary);
 }
 
+/* 强制保持全局背景颜色 */
+html, body {
+  background-color: var(--bg-primary) !important;
+}
+
 /* 博客相关样式 */
 .blog-page-gradient {
   background-image: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
