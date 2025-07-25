@@ -1,6 +1,6 @@
 <template>
   <div
-    class="py-16 bg-blue-pale"
+    class="py-16 bg-blue-pale/80 backdrop-blur-sm"
     aria-labelledby="pricing-heading"
   >
     <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">

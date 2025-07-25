@@ -1,6 +1,6 @@
 <template>
   <div
-    class="py-16 bg-blue-pale"
+    class="py-16 bg-blue-pale/80 backdrop-blur-sm"
     aria-labelledby="pricing-heading"
   >
     <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
@@ -497,11 +497,12 @@ const needCredits = ref(0)
 
 // 监听分辨率和时长变化
 watch([resolution, duration], () => {
-  //console.log('分辨率或时长变化:', '分辨率=', resolution.value, '时长=', duration.value)
-  const credits = calculateCredits()
-  //console.log('重新计算的积分:', credits)
-  needCredits.value = credits
-}, { immediate: true })
+  // 只有在积分配置已加载时才计算积分
+  if (scoreConfig.value && scoreConfig.value.length > 0) {
+    const credits = calculateCredits()
+    needCredits.value = credits
+  }
+}, { immediate: false }) // 移除 immediate: true，避免在初始化时执行
 
 // 在 setup 中添加
 const videoTaskStore = useVideoTaskStore()
@@ -549,6 +550,11 @@ const restoreFormState = () => {
 
 // 修改 onMounted
 onMounted(async () => {
+  // 获取用户信息
+  console.log('组件挂载，开始获取用户信息...')
+  await userStore.fetchUserInfo()
+  console.log('用户信息获取完成:', userStore.userInfo)
+  
   // 获取积分配置并等待完成
   await getScoreConfig()
   console.log('组件挂载完成，当前积分值:', needCredits.value)
@@ -870,42 +876,57 @@ const checkTaskStatus = async (taskId: string) => {
 
 // 视频生成请求
 const handleVideoRequest = async () => {
+  console.log('=== 开始处理视频生成请求 ===')
+  console.log('当前标签页:', activeTab.value)
+  console.log('当前提示词:', prompt.value)
+  console.log('当前选择的图片:', selectedImage.value)
+  
   if (activeTab.value === 'image' && !selectedImage.value) {
+    console.log('图片模式但未选择图片')
     $toast.warning('Please upload an image')
     return
   }
   if (!prompt.value.trim()) {
+    console.log('提示词为空')
     $toast.warning('Please enter a prompt')
     return
   }
+  console.log('基础验证通过，开始清理旧视频URL')
+  
   // 清理旧的视频URL
   if (generatedVideoUrl.value) {
     URL.revokeObjectURL(generatedVideoUrl.value)
     generatedVideoUrl.value = ''
   }
   isGenerating.value = true
+  console.log('设置生成状态为true')
 
   // 判断是否是文件，如果是文件，则上传获取url
   if(selectedImage.value instanceof File){
-    
+    console.log('检测到文件，开始上传图片')
     const uploadResponse = await upload({
       file: selectedImage.value
     })
     if (uploadResponse.code === 200) {
+      console.log('图片上传成功')
       selectedImage.value = uploadResponse.data as any
     } else {
+      console.log('图片上传失败:', uploadResponse.msg)
       $toast.error(uploadResponse.msg || 'Failed to upload image')
       isGenerating.value = false
       stopProgressAnimation()
       return
     }
   }
+  console.log('开始进度条动画')
   //开始进度条动画
   startProgressAnimation()
   try {
+    console.log('准备构建请求数据...')
     let requestData = {} as any;
     let request = null;
     if(activeTab.value == 'text'){
+      console.log('使用文本转视频API')
       request = createTaskTextVideo
       requestData = {
         prompt: prompt.value,
@@ -914,6 +935,7 @@ const handleVideoRequest = async () => {
         is_show: isShow.value
       }
     }else{
+      console.log('使用图片转视频API')
       request = createTaskImgVideo
       requestData = {
           image_url: selectedImage.value||imagePreview.value,
@@ -923,10 +945,17 @@ const handleVideoRequest = async () => {
           is_show: isShow.value
       }
     }
+    console.log('请求数据:', requestData)
+    console.log('开始发送API请求...')
     const response = await request(requestData) as any;
+    console.log('API响应:', response)
+    
     // 更新用户信息以刷新使用次数
+    console.log('更新用户信息...')
     await userStore.fetchUserInfo(true)
+    
     if (response.code === 200) {
+      console.log('API请求成功，开始保存任务信息')
       // 保存任务信息到 store
       videoTaskStore.setTask({
         taskId: response.data.task_id,
@@ -939,6 +968,7 @@ const handleVideoRequest = async () => {
       
       // 开始检查任务状态
       if (response.data?.task_id) {
+        console.log('开始检查任务状态，任务ID:', response.data.task_id)
         // 启动通知系统的任务检查
         // notificationStore.startCheckingTask(response.data.task_id)
         
@@ -948,6 +978,7 @@ const handleVideoRequest = async () => {
         }, 15000) // 每10秒检查一次
       }
     } else {
+      console.log('API请求失败:', response.msg)
       isGenerating.value = false
       $toast.error(response.msg || 'Video generation failed, please try again')
       stopProgressAnimation()
@@ -975,11 +1006,28 @@ const handleAction = (action: string, ...args: any[]) => {
 
     // break
     case 'generate':
+      console.log('=== 生成按钮被点击 ===')
+      console.log('当前用户信息:', userInfo.value)
+      console.log('当前剩余次数:', remainingTimes.value)
+      console.log('当前需要积分:', needCredits.value)
+      console.log('当前是否正在生成:', isGenerating.value)
+      
       withLoginCheck(async () => {
+        console.log('=== 登录检查通过 ===')
         // 检查是否有足够的次数和积分
-        if (!checkUsageLimit()) return
+        console.log('开始检查使用限制...')
+        if (!checkUsageLimit()) {
+          console.log('使用限制检查失败')
+          return
+        }
+        console.log('使用限制检查通过')
+        
         // 检查是否正在生成
-        if (isGenerating.value) return
+        if (isGenerating.value) {
+          console.log('正在生成中，忽略此次点击')
+          return
+        }
+        console.log('开始处理视频生成请求...')
         
         handleVideoRequest()
       })
@@ -1007,41 +1055,29 @@ const handleAction = (action: string, ...args: any[]) => {
       prompt.value = args[0] || ''
       break
     case 'selectDuration':
-      withLoginCheck(async () => {
-        console.log('选择时长:', args[0], '类型:', typeof args[0])
-        // 先更新时长
-        duration.value = args[0]
-        
-        // 确保分辨率合法（10s时只能选768p）
-        if (args[0] === '10' && resolution.value === '1080p') {
-          console.log('10s视频只能选择768p分辨率，自动调整分辨率')
-          resolution.value = '768p'
-        }
-        
-        // 强制刷新积分配置并更新积分值
-        const credits = await refreshCredits()
-        console.log('时长变化后重新计算的积分:', credits)
-        
-        // 确保UI更新
-        setTimeout(() => {
-          needCredits.value = credits
-        }, 0)
-      })
+      console.log('选择时长:', args[0], '类型:', typeof args[0])
+      // 先更新时长
+      duration.value = args[0]
+      
+      // 确保分辨率合法（10s时只能选768p）
+      if (args[0] === '10' && resolution.value === '1080p') {
+        console.log('10s视频只能选择768p分辨率，自动调整分辨率')
+        resolution.value = '768p'
+      }
+      
+      // 直接计算积分
+      const durationCredits = calculateCredits()
+      console.log('时长变化后重新计算的积分:', durationCredits)
+      needCredits.value = durationCredits
       break
     case 'selectResolution':
-      withLoginCheck(async () => {
-        console.log('选择分辨率:', args[0])
-        resolution.value = args[0]
-        
-        // 强制刷新积分配置并更新积分值
-        const credits = await refreshCredits()
-        console.log('分辨率变化后重新计算的积分:', credits)
-        
-        // 确保UI更新
-        setTimeout(() => {
-          needCredits.value = credits
-        }, 0)
-      })
+      console.log('选择分辨率:', args[0])
+      resolution.value = args[0]
+      
+      // 直接计算积分
+      const resolutionCredits = calculateCredits()
+      console.log('分辨率变化后重新计算的积分:', resolutionCredits)
+      needCredits.value = resolutionCredits
       break
     case 'selectOption':
       withLoginCheck(() => {
@@ -1058,15 +1094,32 @@ const remainingTimes = ref(userStore.userInfo?.free_limit+userStore.userInfo?.re
 
 // 修改 checkLoginStatus 函数
 const checkLoginStatus = async () => {
+  console.log('=== 开始检查登录状态 ===')
+  console.log('用户信息:', userInfo.value)
+  console.log('Cookie内容:', document.cookie)
+  console.log('是否包含auth_token:', document.cookie.includes('auth_token='))
+  
   if (!userInfo.value) {
-    // 缓存当前表单数据（用于请求时）
-    cacheFormData()
-    const loginButton = document.getElementById('bindLogin')
-    if (loginButton) {
-      loginButton.click()
+    console.log('用户信息为空，尝试重新获取...')
+    // 先尝试获取用户信息
+    await userStore.fetchUserInfo()
+    console.log('重新获取后的用户信息:', userStore.userInfo)
+    
+    if (!userStore.userInfo) {
+      console.log('用户未登录，准备触发登录')
+      // 缓存当前表单数据（用于请求时）
+      cacheFormData()
+      const loginButton = document.getElementById('bindLogin')
+      if (loginButton) {
+        console.log('找到登录按钮，准备点击')
+        loginButton.click()
+      } else {
+        console.log('未找到登录按钮')
+      }
+      return false
     }
-    return false
   }
+  console.log('用户已登录')
   return true
 }
 
@@ -1081,19 +1134,22 @@ watch(
 const router = useRouter();
 // 检查使用限制
 const checkUsageLimit = () => {
-  // alert(1)
+  console.log('=== 开始检查使用限制 ===')
+  console.log('剩余次数:', remainingTimes.value)
+  console.log('需要积分:', needCredits.value)
 
   // 检查是否有可用次数
   if (remainingTimes.value <= 0) {
+    console.log('剩余次数不足，跳转到定价页面')
     $toast.warning('Usage limit reached. Please upgrade to premium for more credits')
     router.push('/pricing');
     return false
   }
-
+  console.log('剩余次数检查通过')
 
   // 检查用户积分是否足够
-  // const userCredits = userInfo.value?.free_limit || userInfo.value?.remaining_limit || 0
   if (remainingTimes.value < needCredits.value) {
+    console.log('积分不足，当前积分:', remainingTimes.value, '需要积分:', needCredits.value)
     $toast.error(`Insufficient credits. This operation requires ${needCredits.value} credits, but your account only has ${remainingTimes.value} credits`)
     const pricingSection = document.getElementById('pricing')
     if (pricingSection) {
@@ -1102,6 +1158,7 @@ const checkUsageLimit = () => {
     return false
   }
   
+  console.log('使用限制检查全部通过')
   return true
 }
 
