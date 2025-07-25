@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-28', // 兼容性日期
   devtools: { enabled: true }, // 启用 Nuxt DevTools
   css: [
-    '~/assets/css/tailwind.css', // Tailwind CSS 样式
-    '@/assets/css/main.css', // 主样式文件
+    '@/assets/css/main.css', // 主样式文件 - 先加载
+    '~/assets/css/tailwind.css', // Tailwind CSS 样式 - 后加载
   ],
   plugins: [
     // '~/plugins/google-analytics.client.ts', // Google Analytics 插件（仅客户端）

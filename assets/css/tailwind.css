@@ -64,7 +64,9 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    /* 保持自定义背景颜色，不被 Tailwind 覆盖 */
+    background: var(--bg-primary) !important;
   }
 }
 
