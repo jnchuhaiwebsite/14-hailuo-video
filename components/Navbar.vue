@@ -134,6 +134,14 @@
               >
                 My Videos
               </NuxtLink>
+              <NuxtLink
+                v-if="isSignedIn"
+                to="/user-center"
+                class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
+                @click="() => { isOpen = false; }"
+              >
+                用户中心
+              </NuxtLink>
             </div>
 
             <!-- 移动端用户菜单 -->
