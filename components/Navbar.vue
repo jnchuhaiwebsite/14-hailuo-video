@@ -128,7 +128,7 @@
               </template>
               <NuxtLink
                 v-if="isSignedIn"
-                to="/profile"
+                to="/user-center/videos"
                 class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
                 @click="() => { isOpen = false; }"
               >
@@ -136,11 +136,19 @@
               </NuxtLink>
               <NuxtLink
                 v-if="isSignedIn"
-                to="/user-center"
+                to="/user-center/credits"
                 class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
                 @click="() => { isOpen = false; }"
               >
-                用户中心
+                My Credits
+              </NuxtLink>
+              <NuxtLink
+                v-if="isSignedIn"
+                to="/user-center/orders"
+                class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
+                @click="() => { isOpen = false; }"
+              >
+                My Orders
               </NuxtLink>
             </div>
 
