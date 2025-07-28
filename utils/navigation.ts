@@ -40,12 +40,16 @@ export const footerMainRoutes: RouteItem[] = [
   { id: "blog", name: "Blog", href: "/blog", icon: "book" }
 ]
 
+export const productsRoutes: RouteItem[] = [
+  { id: "Android App", name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo" },
+]
 
 export const useNavigation = () => {
   const router = useRouter()
   const activeSection = ref('hero')
   const sections = mainRoutes
   const footerSections = footerMainRoutes
+  const productsSections = productsRoutes
 
   // 执行滚动到指定section
   const executeScroll = (sectionId: string) => {
@@ -138,6 +142,7 @@ export const useNavigation = () => {
     handlePageNavigation,
     handleNavClick,
     handleScroll,
-    footerSections
+    footerSections,
+    productsSections
   }
 } 
