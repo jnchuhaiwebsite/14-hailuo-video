@@ -46,8 +46,20 @@
             <span class="text-gray-300">{{ formatDate(video.created_at) }}</span>
           </div>
           <div class="mt-3">
-            <button @click="downloadVideo(video)" v-if="video.generate_image" class="w-full px-3 py-2 bg-[#7C3AED] hover:bg-blue-700 rounded text-white text-sm transition-colors">
-              Download
+            <button 
+              @click="downloadVideo(video)" 
+              v-if="video.generate_image" 
+              class="w-full px-3 py-2 bg-[#7C3AED] hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed rounded text-white text-sm transition-colors flex items-center justify-center gap-2"
+              :disabled="downloadingVideo === video.task_id"
+            >
+              <svg v-if="downloadingVideo === video.task_id" class="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              {{ downloadingVideo === video.task_id ? 'Downloading...' : 'Download' }}
             </button>
           </div>
         </div>
@@ -85,11 +97,15 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { getOpusList } from '~/api'
+import { useNuxtApp } from 'nuxt/app'
+
+const { $toast } = useNuxtApp() as any
 
 // 响应式数据
 const videos = ref([])
 const videoFilter = ref('all')
 const loading = ref(false)
+const downloadingVideo = ref(null)
 const pagination = ref({ page: 1, page_size: 6, total: 0 })
 
 // 方法
@@ -145,14 +161,53 @@ const getVideoStatusText = (status) => {
   return statusTexts[String(status)] || 'Unknown'
 }
 
-const downloadVideo = (video) => {
-  if (video.generate_image) {
+const downloadVideo = async (video) => {
+  if (!video.generate_image) {
+    console.error('No video URL available')
+    $toast.error('视频链接不可用')
+    return
+  }
+
+  try {
+    // 设置下载状态
+    downloadingVideo.value = video.task_id
+
+    // 获取视频文件
+    const response = await fetch(video.generate_image)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    // 获取视频数据
+    const blob = await response.blob()
+    
+    // 创建下载链接
+    const url = window.URL.createObjectURL(blob)
     const link = document.createElement('a')
-    link.href = video.generate_image
-    link.download = `video_${video.task_id}.mp4`
+    link.href = url
+    
+    // 设置文件名（使用任务ID和当前时间戳）
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-')
+    const fileName = `hailuo_video_${video.task_id}_${timestamp}.mp4`
+    link.download = fileName
+    
+    // 触发下载
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
+    
+    // 清理URL对象
+    window.URL.revokeObjectURL(url)
+    
+    console.log(`视频已下载: ${fileName}`)
+    $toast.success('视频下载成功！')
+    
+  } catch (error) {
+    console.error('下载视频失败:', error)
+    $toast.error('下载失败，请稍后重试')
+  } finally {
+    // 清除下载状态
+    downloadingVideo.value = null
   }
 }
 
@@ -160,8 +215,10 @@ const copyPrompt = async (prompt) => {
   try {
     await navigator.clipboard.writeText(prompt || '')
     console.log('Prompt copied to clipboard')
+    $toast.success('提示词已复制到剪贴板')
   } catch (error) {
     console.error('Copy failed:', error)
+    $toast.error('复制失败，请手动复制')
   }
 }
 
