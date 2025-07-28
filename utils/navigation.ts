@@ -7,12 +7,18 @@ export interface RouteItem {
   name: string
   icon?: string
   href?: string
+  children?: RouteItem[]
 }
 
 // 主路由配置
 export const mainRoutes: RouteItem[] = [
   { id: "hero", name: "Home", icon: "home" },
   { id: "AIVideo", name: "AI Video", icon: "AI Video", href: "/hailuo-ai-video-generator" },
+  { id: "Products", name: "Products", icon: "Products",
+    children: [
+      { name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo" },
+    ]
+  },
   // { id: "how-it-works", name: "How It Works", icon: "steps" },
   // { id: "features-showcase", name: "Features", icon: "star" },
   // 评价
