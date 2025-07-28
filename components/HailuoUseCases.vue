@@ -17,9 +17,9 @@
                 playsinline 
                 loading="lazy"
                 preload="none"
-                poster="/video/Film-Production.mp4"
+                poster="https://resp.hailuo2.com/hailuo/video/Film-Production.mp4"
               >
-                <source src="/video/Film-Production.mp4" type="video/mp4">
+                <source src="https://resp.hailuo2.com/hailuo/video/Film-Production.mp4" type="video/mp4">
               </video>
             </div>
             <h3>Film Production</h3>
@@ -37,9 +37,9 @@
                 playsinline 
                 loading="lazy"
                 preload="none"
-                poster="/video/Advertising.mp4"
+                poster="https://resp.hailuo2.com/hailuo/video/Advertising.mp4"
               >
-                <source src="/video/Advertising.mp4" type="video/mp4">
+                <source src="https://resp.hailuo2.com/hailuo/video/Advertising.mp4" type="video/mp4">
               </video>
             </div>
             <h3>Advertising</h3>
@@ -53,13 +53,13 @@
               <video 
                 ref="video3"
                 loop 
-                muted 
+                muted
                 playsinline 
                 loading="lazy"
                 preload="none"
-                poster="/video/Corporate-Promotions.mp4"
+                poster="https://resp.hailuo2.com/hailuo/video/Corporate-Promotions.mp4"
               >
-                <source src="/video/Corporate-Promotions.mp4" type="video/mp4">
+                <source src="https://resp.hailuo2.com/hailuo/video/Corporate-Promotions.mp4" type="video/mp4">
               </video>
             </div>
             <h3>Corporate Promotions</h3>

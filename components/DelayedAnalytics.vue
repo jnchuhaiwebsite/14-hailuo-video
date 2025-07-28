@@ -14,12 +14,12 @@ declare global {
 
 onMounted(() => {
   // 延迟加载 CNZZ 统计
-  const loadCNZZ = () => {
-    const script = document.createElement('script')
-    script.src = 'https://c.cnzz.com/core.php?web_id=1280000000&t=z'
-    script.async = true
-    document.head.appendChild(script)
-  }
+  // const loadCNZZ = () => {
+  //   const script = document.createElement('script')
+  //   script.src = 'https://c.cnzz.com/core.php?web_id=1280000000&t=z'
+  //   script.async = true
+  //   document.head.appendChild(script)
+  // }
 
   // 延迟加载 Google Analytics
   const loadGoogleAnalytics = () => {
@@ -60,7 +60,7 @@ onMounted(() => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         // 当页面可见时加载分析脚本
-        loadCNZZ()
+        // loadCNZZ()
         loadGoogleAnalytics()
         loadGoogleAds()
         observer.disconnect()
