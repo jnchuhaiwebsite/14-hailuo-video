@@ -57,8 +57,8 @@ const router = useRouter()
 const videoRef = ref<HTMLVideoElement | null>(null)
 
 // 预览视频URL
-const previewVideoUrl = '/video/haoluo2-home-video.mp4'
-const previewVideoPoster = '/img/1.webp'
+const previewVideoUrl = 'https://resp.hailuo2.com/hailuo/home/haoluo2-home-video.mp4'
+const previewVideoPoster = 'https://resp.hailuo2.com/hailuo/home/haoluo2-home-video.webp'
 
 // 尝试播放视频的函数
 const tryPlayVideo = async () => {
