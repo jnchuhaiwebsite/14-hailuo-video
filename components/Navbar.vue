@@ -19,8 +19,59 @@
           <div class="hidden lg:flex items-center flex-grow">
             <div class="flex items-center space-x-8">
               <template v-for="(section, index) in sections" :key="index">
+                <!-- 有子菜单的导航项 -->
+                <div v-if="section.children && section.children.length > 0" class="relative group">
+                  <button
+                    @click="toggleDropdown(index)"
+                    @mouseenter="openDropdown = index"
+                    class="text-gray-300 hover:text-[#7C3AED] transition-colors whitespace-nowrap flex items-center gap-1"
+                  >
+                    {{ section.name }}
+                    <svg
+                      class="w-4 h-4 transition-transform duration-200"
+                      :class="{ 'rotate-180': openDropdown === index }"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  <!-- 下拉菜单 -->
+                  <div
+                    v-show="openDropdown === index"
+                    @mouseenter="openDropdown = index"
+                    @mouseleave="openDropdown = null"
+                    class="absolute top-full left-0 mt-2 w-40 backdrop-blur-md shadow-lg z-50 border border-gray-600/30 rounded-lg overflow-hidden"
+                    style="background: rgba(25, 23, 28, 0.95)"
+                  >
+                    <template v-for="(child, childIndex) in section.children" :key="childIndex">
+                      <a
+                        v-if="child.href"
+                        :href="child.href"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors flex items-center justify-between"
+                      >
+                        <span>{{ child.name }}</span>
+                        <span class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full">Beta</span>
+                      </a>
+                      <div
+                        v-else-if="child.id"
+                        @click="handleNavClick(child.id)"
+                        class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors cursor-pointer flex items-center justify-between"
+                      >
+                        <span>{{ child.name }}</span>
+                        <span class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full">Beta</span>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+                
+                <!-- 普通导航项 -->
                 <NuxtLink
-                  v-if="section.href"
+                  v-else-if="section.href"
                   :to="section.href"
                   class="text-gray-300 hover:text-[#7C3AED] transition-colors whitespace-nowrap"
                 >
@@ -110,8 +161,54 @@
             <!-- 导航链接 -->
             <div class="space-y-2 mb-6">
               <template v-for="(section, index) in sections" :key="index">
+                <!-- 有子菜单的导航项 -->
+                <div v-if="section.children && section.children.length > 0" class="space-y-1">
+                  <button
+                    @click="toggleMobileDropdown(index)"
+                    class="w-full text-left text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors flex items-center justify-between"
+                  >
+                    {{ section.name }}
+                    <svg
+                      class="w-4 h-4 transition-transform duration-200"
+                      :class="{ 'rotate-180': openMobileDropdown === index }"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  <!-- 移动端子菜单 -->
+                  <div
+                    v-show="openMobileDropdown === index"
+                    class="pl-4 space-y-1"
+                  >
+                    <template v-for="(child, childIndex) in section.children" :key="childIndex">
+                      <a
+                        v-if="child.href"
+                        :href="child.href"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors"
+                        @click="() => { isOpen = false; }"
+                      >
+                        {{ child.name }}
+                      </a>
+                      <div
+                        v-else-if="child.id"
+                        @click="() => { handleNavClick(child.id); isOpen = false; }"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors cursor-pointer"
+                      >
+                        {{ child.name }}
+                      </div>
+                    </template>
+                  </div>
+                </div>
+                
+                <!-- 普通导航项 -->
                 <NuxtLink
-                  v-if="section.href"
+                  v-else-if="section.href"
                   :to="section.href"
                   class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
                   @click="() => { isOpen = false; }"
@@ -162,13 +259,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onUnmounted, onMounted } from "vue";
+import { ref, watch, onUnmounted, onMounted, onBeforeUnmount } from "vue";
 import { useNavigation } from "~/utils/navigation";
 import { useClerkAuth } from '~/utils/auth';
 import { useRouter, useRoute } from 'vue-router';
 
 // 状态管理
 const isOpen = ref(false);
+const openDropdown = ref<number | null>(null);
+const openMobileDropdown = ref<number | null>(null);
 const { isSignedIn } = useClerkAuth();
 const router = useRouter();
 const route = useRoute();
@@ -176,6 +275,24 @@ const route = useRoute();
 // 使用导航工具
 const { activeSection, sections, handleNavClick, handleScroll, executeScroll } =
   useNavigation();
+
+// 切换PC端下拉菜单
+const toggleDropdown = (index: number) => {
+  if (openDropdown.value === index) {
+    openDropdown.value = null;
+  } else {
+    openDropdown.value = index;
+  }
+};
+
+// 切换移动端下拉菜单
+const toggleMobileDropdown = (index: number) => {
+  if (openMobileDropdown.value === index) {
+    openMobileDropdown.value = null;
+  } else {
+    openMobileDropdown.value = index;
+  }
+};
 
 onMounted(() => {
   // 只重置overflow，不改变滚动位置
@@ -206,7 +323,7 @@ watch(isOpen, (newValue) => {
 });
 
 // 组件卸载时恢复body滚动并移除事件监听
-onUnmounted(() => {
+onBeforeUnmount(() => {
   document.body.style.overflow = "";
   window.removeEventListener("scroll", handleScroll);
 });
