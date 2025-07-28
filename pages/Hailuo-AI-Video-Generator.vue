@@ -570,7 +570,7 @@ const inspirationPrompts = [
 // 预览视频URL
 const previewVideoUrl = 'https://resp.hailuo2.com/hailuo/example/hailuo2-demo.mp4'
 
-const previewVideoPoster = '/img/2.webp'
+const previewVideoPoster = 'https://resp.hailuo2.com/hailuo/home/hailuo2-demo.webp'
 
 // 处理视频加载事件
 const handleVideoLoadStart = (video: HTMLVideoElement) => {
