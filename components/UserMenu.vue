@@ -17,7 +17,7 @@
         <!-- 用户下拉菜单 -->
         <div
           v-if="showUserMenu"
-          class="absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-50"
+          class="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-50"
         >
           <div class="px-4 py-3 border-b border-baby-pink/20">
             <div class="flex items-center gap-3 mb-2">
