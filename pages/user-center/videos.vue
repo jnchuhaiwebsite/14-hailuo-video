@@ -9,7 +9,7 @@
         <option value="processing">Processing</option>
         <option value="failed">Failed</option>
       </select>
-      <button @click="loadVideos(1)" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white transition-colors">
+      <button @click="loadVideos(1)" class="px-4 py-2 bg-[#7C3AED] hover:bg-blue-700 rounded-lg text-white transition-colors">
         Refresh
       </button>
     </div>
@@ -46,7 +46,7 @@
             <span class="text-gray-300">{{ formatDate(video.created_at) }}</span>
           </div>
           <div class="mt-3">
-            <button @click="downloadVideo(video)" v-if="video.generate_image" class="w-full px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white text-sm transition-colors">
+            <button @click="downloadVideo(video)" v-if="video.generate_image" class="w-full px-3 py-2 bg-[#7C3AED] hover:bg-blue-700 rounded text-white text-sm transition-colors">
               Download
             </button>
           </div>

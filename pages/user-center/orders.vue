@@ -2,7 +2,7 @@
   <!-- 订单列表 -->
   <div class="flex items-center justify-between mb-6">
     <h2 class="text-xl font-bold text-white">My Orders</h2>
-    <button @click="loadOrders(1)" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white transition-colors">
+    <button @click="loadOrders(1)" class="px-4 py-2 bg-[#7C3AED] hover:bg-blue-700 rounded-lg text-white transition-colors">
       Refresh
     </button>
   </div>

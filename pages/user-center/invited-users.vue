@@ -10,7 +10,7 @@
         </div>
         <button 
           @click="copyShareLink" 
-          class="px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white transition-colors flex items-center gap-2"
+          class="px-4 py-3 bg-[#7C3AED] hover:bg-blue-700 rounded-lg text-white transition-colors flex items-center gap-2"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -24,7 +24,7 @@
   <!-- 邀请用户列表 -->
   <div class="flex items-center justify-between mb-6">
     <h2 class="text-xl font-bold text-white">My Invited Users</h2>
-    <button @click="loadInvitedUsers(1)" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white transition-colors">
+    <button @click="loadInvitedUsers(1)" class="px-4 py-2 bg-[#7C3AED] hover:bg-blue-700 rounded-lg text-white transition-colors">
       Refresh
     </button>
   </div>

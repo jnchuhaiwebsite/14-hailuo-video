@@ -20,7 +20,7 @@
                     :class="[
                       'w-full text-left px-4 py-3 rounded-lg transition-colors flex items-center gap-3',
                       $route.path === item.route
-                        ? 'bg-blue-600 text-white'
+                        ? 'bg-[#7C3AED] text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                     ]"
                   >

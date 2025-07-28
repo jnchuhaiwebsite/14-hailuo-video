@@ -288,12 +288,12 @@ const {
 } = useClerkAuth();
 
 // 获取用户信息，次数、昵称、头像等
-const getUserInfo = async () => {
-  // 防止重复请求
-  // if (isGettingUserInfo.value || hasGotUserInfo.value) {
-  //   console.log('跳过重复的getUserInfo调用');
-  //   return;
-  // }
+const getUserInfo = async (forceRefresh = false) => {
+  // 防止重复请求，除非强制刷新
+  if (!forceRefresh && (isGettingUserInfo.value || hasGotUserInfo.value)) {
+    console.log('跳过重复的getUserInfo调用');
+    return;
+  }
   
   try {
     console.log('开始获取用户信息...');
@@ -338,6 +338,28 @@ const getUserInfo = async () => {
   }
 }
 
+// 设置用户信息的统一方法
+const setUserData = (userData: any) => {
+  if (!userData) return;
+  
+  limit.value = userData.free_limit + userData.remaining_limit || 0;
+  vipLastTime.value = userData.vipLastTime || "";
+  
+  // 处理分享链接
+  if (userData.ivcode) {
+    hasPromotionPermission.value = true;
+    const baseUrl = useRuntimeConfig().public.baseUrl;
+    promotionLink.value = `${baseUrl}?ivcode=${userData.ivcode}`;
+  } else {
+    hasPromotionPermission.value = false;
+    promotionLink.value = '';
+  }
+  
+  // 标记已获取用户信息
+  hasGotUserInfo.value = true;
+  console.log('用户信息设置成功');
+}
+
 // 转换用户数据为组件需要格式
 interface User {
   username: string;
@@ -364,9 +386,7 @@ const toggleUserMenu = async () => {
 
     // 刷新用户信息（强制刷新）
     try {
-      // 重置标记，允许重新获取用户信息
-      hasGotUserInfo.value = false;
-      await getUserInfo();
+      await getUserInfo(true);
     } catch (err) {
       console.error("Failed to refresh user info:", err);
     }
@@ -408,12 +428,6 @@ onMounted(async () => {
       isAuthLoading.value = false;
     }, 2000);
     
-    // 如果已经登录，立即获取用户信息
-    if (isSignedIn.value && !hasGotUserInfo.value) {
-      await getUserInfo();
-      isAuthLoading.value = false; // 立即设置loading为false
-    }
-    
     // 监听预检测登录事件
     on('preCheckLogin', async (userData: any) => {
       console.log('预检测登录成功，用户数据:', userData);
@@ -421,21 +435,7 @@ onMounted(async () => {
       
       // 直接使用预检测获取的用户数据，避免再次请求API
       if (userData && !hasGotUserInfo.value) {
-        limit.value = userData.free_limit + userData.remaining_limit || 0;
-        vipLastTime.value = userData.vipLastTime || "";
-        
-        // 处理分享链接
-        if (userData.ivcode) {
-          hasPromotionPermission.value = true;
-          const baseUrl = useRuntimeConfig().public.baseUrl;
-          promotionLink.value = `${baseUrl}?ivcode=${userData.ivcode}`;
-        } else {
-          hasPromotionPermission.value = false;
-          promotionLink.value = '';
-        }
-        
-        // 标记已获取用户信息
-        hasGotUserInfo.value = true;
+        setUserData(userData);
       }
     });
     
@@ -481,11 +481,12 @@ onMounted(async () => {
       }
 
       setUserInfo(userInfoParams).then(() => {
-        // 只有在还没有获取用户信息时才调用
+        // 设置用户信息成功后，只有在还没有获取用户信息时才调用
         if (!hasGotUserInfo.value) {
           getUserInfo();
         }
-      }).catch(() => {
+      }).catch((error) => {
+        console.error("设置用户信息失败:", error);
         isAuthLoading.value = false;
       });
     });
