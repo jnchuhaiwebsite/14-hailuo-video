@@ -31,6 +31,7 @@ export const urlList = {
   getPromotionUsers: baseUrl + '/api/user/promotion_users', // 获取推广用户列表
   getPromotionScoreLog: baseUrl + '/api/user/promotion_score_log', // 获取积分记录
   getSubplansTest: baseUrl + '/api/website/odl',     // 获取测试套餐信息
+  getPayLog: baseUrl + '/api/user/pay_log', // 获取支付记录
 }
 
 /**
@@ -78,6 +79,15 @@ export const setUserInfo = async (data: any) => {
     console.error('设置用户信息失败:', error);
     throw error;
   }
+}
+
+/**
+ * 获取支付记录
+ * @param data 数据
+ * @returns 支付记录
+ */
+export const getPayLog = async (data:any) => {
+  return apiRequest(urlList.getPayLog+'?page='+data.page+'&page_size='+data.page_size, 'GET', undefined, true);
 }
 
 /**

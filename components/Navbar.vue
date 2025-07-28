@@ -128,11 +128,27 @@
               </template>
               <NuxtLink
                 v-if="isSignedIn"
-                to="/profile"
+                to="/user-center/videos"
                 class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
                 @click="() => { isOpen = false; }"
               >
                 My Videos
+              </NuxtLink>
+              <NuxtLink
+                v-if="isSignedIn"
+                to="/user-center/credits"
+                class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
+                @click="() => { isOpen = false; }"
+              >
+                My Credits
+              </NuxtLink>
+              <NuxtLink
+                v-if="isSignedIn"
+                to="/user-center/orders"
+                class="block text-gray-300 hover:text-[#7C3AED] text-base py-2 transition-colors"
+                @click="() => { isOpen = false; }"
+              >
+                My Orders
               </NuxtLink>
             </div>
 

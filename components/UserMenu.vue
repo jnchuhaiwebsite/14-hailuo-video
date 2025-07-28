@@ -68,7 +68,7 @@
 
           <!-- 个人中心入口 -->
           <NuxtLink
-            to="/profile"
+            to="/user-center/videos"
             class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center transition-all duration-200 hover:text-baby-coral"
             @click="showUserMenu = false"
           >
@@ -77,7 +77,26 @@
             </svg>
             My Videos
           </NuxtLink>
-
+          <NuxtLink
+            to="/user-center/credits"
+            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center transition-all duration-200 hover:text-baby-coral"
+            @click="showUserMenu = false"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2 transition-transform duration-200 group-hover:scale-110">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+            My Credits
+          </NuxtLink>
+          <NuxtLink
+            to="/user-center/orders"
+            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center transition-all duration-200 hover:text-baby-coral"
+            @click="showUserMenu = false"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2 transition-transform duration-200 group-hover:scale-110">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+            My Orders
+          </NuxtLink>
           <!-- 分享链接 -->
           <button
             v-if="hasPromotionPermission && promotionLink"
@@ -269,9 +288,9 @@ const {
 } = useClerkAuth();
 
 // 获取用户信息，次数、昵称、头像等
-const getUserInfo = async () => {
-  // 防止重复请求
-  if (isGettingUserInfo.value || hasGotUserInfo.value) {
+const getUserInfo = async (forceRefresh = false) => {
+  // 防止重复请求，除非强制刷新
+  if (!forceRefresh && (isGettingUserInfo.value || hasGotUserInfo.value)) {
     console.log('跳过重复的getUserInfo调用');
     return;
   }
@@ -319,6 +338,28 @@ const getUserInfo = async () => {
   }
 }
 
+// 设置用户信息的统一方法
+const setUserData = (userData: any) => {
+  if (!userData) return;
+  
+  limit.value = userData.free_limit + userData.remaining_limit || 0;
+  vipLastTime.value = userData.vipLastTime || "";
+  
+  // 处理分享链接
+  if (userData.ivcode) {
+    hasPromotionPermission.value = true;
+    const baseUrl = useRuntimeConfig().public.baseUrl;
+    promotionLink.value = `${baseUrl}?ivcode=${userData.ivcode}`;
+  } else {
+    hasPromotionPermission.value = false;
+    promotionLink.value = '';
+  }
+  
+  // 标记已获取用户信息
+  hasGotUserInfo.value = true;
+  console.log('用户信息设置成功');
+}
+
 // 转换用户数据为组件需要格式
 interface User {
   username: string;
@@ -345,9 +386,7 @@ const toggleUserMenu = async () => {
 
     // 刷新用户信息（强制刷新）
     try {
-      // 重置标记，允许重新获取用户信息
-      hasGotUserInfo.value = false;
-      await getUserInfo();
+      await getUserInfo(true);
     } catch (err) {
       console.error("Failed to refresh user info:", err);
     }
@@ -389,12 +428,6 @@ onMounted(async () => {
       isAuthLoading.value = false;
     }, 2000);
     
-    // 如果已经登录，立即获取用户信息
-    if (isSignedIn.value && !hasGotUserInfo.value) {
-      await getUserInfo();
-      isAuthLoading.value = false; // 立即设置loading为false
-    }
-    
     // 监听预检测登录事件
     on('preCheckLogin', async (userData: any) => {
       console.log('预检测登录成功，用户数据:', userData);
@@ -402,21 +435,7 @@ onMounted(async () => {
       
       // 直接使用预检测获取的用户数据，避免再次请求API
       if (userData && !hasGotUserInfo.value) {
-        limit.value = userData.free_limit + userData.remaining_limit || 0;
-        vipLastTime.value = userData.vipLastTime || "";
-        
-        // 处理分享链接
-        if (userData.ivcode) {
-          hasPromotionPermission.value = true;
-          const baseUrl = useRuntimeConfig().public.baseUrl;
-          promotionLink.value = `${baseUrl}?ivcode=${userData.ivcode}`;
-        } else {
-          hasPromotionPermission.value = false;
-          promotionLink.value = '';
-        }
-        
-        // 标记已获取用户信息
-        hasGotUserInfo.value = true;
+        setUserData(userData);
       }
     });
     
@@ -462,11 +481,12 @@ onMounted(async () => {
       }
 
       setUserInfo(userInfoParams).then(() => {
-        // 只有在还没有获取用户信息时才调用
+        // 设置用户信息成功后，只有在还没有获取用户信息时才调用
         if (!hasGotUserInfo.value) {
           getUserInfo();
         }
-      }).catch(() => {
+      }).catch((error) => {
+        console.error("设置用户信息失败:", error);
         isAuthLoading.value = false;
       });
     });
