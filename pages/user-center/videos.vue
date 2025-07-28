@@ -4,7 +4,7 @@
     <h2 class="text-xl font-bold text-white">My Videos</h2>
     <div class="flex gap-2">
       <select v-model="videoFilter" @change="loadVideos(1)" class="px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
-        <option value="all">All</option>
+        <!-- <option value="all">All</option> -->
         <option value="completed">Completed</option>
         <option value="processing">Processing</option>
         <option value="failed">Failed</option>
@@ -99,11 +99,11 @@ import { ref, onMounted } from 'vue'
 import { getOpusList } from '~/api'
 import { useNuxtApp } from 'nuxt/app'
 
-const { $toast } = useNuxtApp() as any
+const { $toast } = useNuxtApp()
 
 // 响应式数据
 const videos = ref([])
-const videoFilter = ref('all')
+const videoFilter = ref('completed')
 const loading = ref(false)
 const downloadingVideo = ref(null)
 const pagination = ref({ page: 1, page_size: 6, total: 0 })
@@ -200,7 +200,7 @@ const downloadVideo = async (video) => {
     window.URL.revokeObjectURL(url)
     
     console.log(`视频已下载: ${fileName}`)
-    $toast.success('视频下载成功！')
+    $toast.success('Video downloaded successfully!')
     
   } catch (error) {
     console.error('下载视频失败:', error)
