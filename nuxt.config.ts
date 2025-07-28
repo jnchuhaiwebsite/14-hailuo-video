@@ -76,6 +76,14 @@ export default defineNuxtConfig({
           crossorigin: 'anonymous',
           fetchpriority: 'high'
         },
+        {
+          rel: 'preload',
+          href: '/fonts/265822652.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: 'anonymous',
+          fetchpriority: 'high'
+        },
         // 预加载 LCP 视频资源 - 最高优先级
         // {
         //   rel: 'preload',
