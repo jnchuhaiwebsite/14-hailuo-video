@@ -60,7 +60,7 @@ onMounted(() => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         // 当页面可见时加载分析脚本
-        loadCNZZ()
+        // loadCNZZ()
         loadGoogleAnalytics()
         loadGoogleAds()
         observer.disconnect()
