@@ -66,7 +66,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { getPayLog } from '~/api'
-
+import { useHead } from "nuxt/app";
+useHead({
+  title: 'My Orders - Hailuo02 Video',
+  meta: [
+    { name: 'robots', content: 'noindex' }
+  ]
+})
 // 响应式数据
 const orders = ref([])
 const loading = ref(false)

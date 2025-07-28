@@ -97,8 +97,14 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { getOpusList } from '~/api'
-import { useNuxtApp } from 'nuxt/app'
+import { useNuxtApp, useHead } from 'nuxt/app'
 
+useHead({
+  title: 'My Videos - Hailuo02 Video',
+  meta: [
+    { name: 'robots', content: 'noindex' }
+  ]
+})
 const { $toast } = useNuxtApp()
 
 // 响应式数据

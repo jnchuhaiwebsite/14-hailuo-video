@@ -46,8 +46,13 @@
 </template>
 
 <script setup>
-import { useSeo } from '~/composables/useSeo'
-
+import { useHead } from "nuxt/app";
+useHead({
+  title: 'User Center - Hailuo02 Video',
+  meta: [
+    { name: 'robots', content: 'noindex' }
+  ]
+})
 // 导航项配置
 const navigationItems = [
   {
@@ -76,48 +81,6 @@ const navigationItems = [
     icon: 'ShareIcon'
   }
 ]
-
-// 图标组件
-const CreditCardIcon = {
-  template: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-    <line x1="1" y1="10" x2="23" y2="10"></line>
-  </svg>`
-}
-
-const ShoppingCartIcon = {
-  template: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <circle cx="9" cy="21" r="1"></circle>
-    <circle cx="20" cy="21" r="1"></circle>
-    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-  </svg>`
-}
-
-const VideoCameraIcon = {
-  template: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <polygon points="23 7 16 12 23 17 23 7"></polygon>
-    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-  </svg>`
-}
-
-const ShareIcon = {
-  template: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <circle cx="18" cy="5" r="3"></circle>
-    <circle cx="6" cy="12" r="3"></circle>
-    <circle cx="18" cy="19" r="3"></circle>
-    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-  </svg>`
-}
-
-// SEO配置
-useSeo({
-  title: 'User Center - Hailuo2 AI Video Generator',
-  description: 'Manage your account information, credits, orders, videos and sharing records. Hailuo2 provides professional AI video generation services.',
-  ogTitle: 'User Center - Hailuo2 AI Video Generator',
-  ogDescription: 'Manage your account information, credits, orders, videos and sharing records.',
-  ogType: 'website'
-})
 </script>
 
 <style scoped>

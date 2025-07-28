@@ -84,7 +84,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { getCurrentUser, getPromotionUsers } from '~/api'
-
+import { useHead } from "nuxt/app";
+useHead({
+  title: 'My Invited Users - Hailuo02 Video',
+  meta: [
+    { name: 'robots', content: 'noindex' }
+  ]
+})
 // 响应式数据
 const invitedUsersList = ref([])
 const loading = ref(false)
