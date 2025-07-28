@@ -290,10 +290,10 @@ const {
 // 获取用户信息，次数、昵称、头像等
 const getUserInfo = async () => {
   // 防止重复请求
-  if (isGettingUserInfo.value || hasGotUserInfo.value) {
-    console.log('跳过重复的getUserInfo调用');
-    return;
-  }
+  // if (isGettingUserInfo.value || hasGotUserInfo.value) {
+  //   console.log('跳过重复的getUserInfo调用');
+  //   return;
+  // }
   
   try {
     console.log('开始获取用户信息...');
