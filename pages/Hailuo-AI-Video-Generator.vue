@@ -193,8 +193,8 @@
         <div class="flex flex-col justify-center items-center w-full h-full bg-gradient-to-br from-blue-pale/50 via-blue-pale/50 to-blue-pale/50 rounded-[16px]">
           <div class="relative w-full h-[480px] flex items-center justify-center">
             <!-- 进度条 -->
-            <div v-if="isGenerating" class="absolute inset-0 flex items-center justify-center">
-              <div v-if="progress > 0" class="relative w-24 h-24">
+            <div v-if="isGenerating" class="absolute inset-0 flex flex-col items-center justify-center">
+              <div v-if="progress > 0" class="relative w-24 h-24 mb-8 sm:mb-12">
                 <svg class="w-full h-full" viewBox="0 0 100 100">
                   <circle
                     class="text-gray-700"
@@ -224,11 +224,13 @@
                 <div class="absolute inset-0 flex items-center justify-center text-[#7C3AED] font-bold text-lg">
                   {{ progress.toFixed(0) }}%
                 </div>
-                <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-[#7C3AED] text-base font-medium">Video is being generated. Please wait a moment; it should take a few minutes.<span class="loading-dots">...</span></span>
               </div>
-              <div v-else class="flex flex-col items-center justify-center">
+              <div v-else class="flex flex-col items-center justify-center mb-8 sm:mb-12">
                 <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#7C3AED] border-t-transparent"></div>
-                <span class="mt-3 text-[#7C3AED] text-base font-medium whitespace-nowrap">Video is being generated. Please wait a moment; it should take a few minutes.<span class="loading-dots">...</span></span>
+              </div>
+              <!-- 提示文字 - 独立定位 -->
+              <div class="text-[#7C3AED] text-sm sm:text-base font-medium text-center max-w-[280px] sm:max-w-none px-2">
+                Video is being generated. Please wait a moment; it should take a few minutes.<span class="loading-dots">...</span>
               </div>
             </div>
             <!-- 预览视频 -->
@@ -270,23 +272,25 @@
                 preload="none"
                 @loadeddata="videoLoading = false"
               ></video>
+              <!-- 下载按钮 - 手机端优化 -->
               <button 
                 @click="handleDownload"
-                class="absolute top-0 right-0 bg-black/60 text-[#7C3AED] px-3 py-1.5 rounded-lg text-xs font-medium shadow-lg flex items-center gap-1.5 transition-all duration-300 hover:bg-black/70 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-sm hover:shadow-[#7C3AED]"
+                class="absolute top-1 right-1 sm:top-3 sm:right-3 bg-black/80 text-[#7C3AED] px-1.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-medium shadow-lg flex items-center gap-0.5 sm:gap-1.5 transition-all duration-300 hover:bg-black/90 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-sm hover:shadow-[#7C3AED] z-20 min-w-[32px] sm:min-w-auto"
                 :disabled="isDownloading"
               >
-                <ArrowDownTrayIcon v-if="!isDownloading" class="w-4 h-4" />
-                <ArrowPathIcon v-else class="w-4 h-4 animate-spin" />
-                {{ isDownloading ? 'Downloading...' : 'Download' }}
+                <ArrowDownTrayIcon v-if="!isDownloading" class="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                <ArrowPathIcon v-else class="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-spin flex-shrink-0" />
+                <span class="hidden sm:inline">{{ isDownloading ? 'Downloading...' : 'Download' }}</span>
+                <span class="sm:hidden text-xs font-bold">{{ isDownloading ? '...' : 'Download' }}</span>
               </button>
-              <!-- 添加提示文本 -->
-              <div class="absolute top-0 left-0 bg-black/60 text-white/90 px-3 py-1.5 rounded-lg text-xs font-medium shadow-lg flex items-center justify-center gap-1.5 whitespace-nowrap">
-                <span>Video has been generated, visit</span>
-                <NuxtLink to="/profile" class="text-[#7C3AED] hover:text-[#7C3AED]/80 transition-colors">
+              <!-- 提示文本 - 手机端优化 -->
+              <!-- <div class="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-auto bg-black/70 text-white/90 px-2 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium shadow-lg flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-1.5 z-10">
+                <span class="text-center sm:text-left">Video generated, visit</span>
+                <NuxtLink to="/profile" class="text-[#7C3AED] hover:text-[#7C3AED]/80 transition-colors text-center sm:text-left">
                   profile-My Works
                 </NuxtLink>
-                <span>to view</span>
-              </div>
+                <span class="text-center sm:text-left">to view</span>
+              </div> -->
             </div>
             <!-- 视频加载中 -->
             <div v-else class="absolute inset-0 flex items-center justify-center">
