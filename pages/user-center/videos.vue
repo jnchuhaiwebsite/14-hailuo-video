@@ -170,7 +170,7 @@ const getVideoStatusText = (status) => {
 const downloadVideo = async (video) => {
   if (!video.generate_image) {
     console.error('No video URL available')
-    $toast.error('视频链接不可用')
+    $toast.error('Video link unavailable')
     return
   }
 
@@ -210,7 +210,7 @@ const downloadVideo = async (video) => {
     
   } catch (error) {
     console.error('下载视频失败:', error)
-    $toast.error('下载失败，请稍后重试')
+    $toast.error('Download failed, please try again later')
   } finally {
     // 清除下载状态
     downloadingVideo.value = null
@@ -221,10 +221,10 @@ const copyPrompt = async (prompt) => {
   try {
     await navigator.clipboard.writeText(prompt || '')
     console.log('Prompt copied to clipboard')
-    $toast.success('提示词已复制到剪贴板')
+    $toast.success('Prompt copied to clipboard')
   } catch (error) {
     console.error('Copy failed:', error)
-    $toast.error('复制失败，请手动复制')
+    $toast.error('Copy failed, please copy manually')
   }
 }
 
