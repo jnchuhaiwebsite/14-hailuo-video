@@ -17,6 +17,7 @@ export const mainRoutes: RouteItem[] = [
   { id: "Products", name: "Products", icon: "Products",
     children: [
       { name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo" },
+      { name: "iOS App", href: "https://apps.apple.com/gb/app/hailuovideo-ai-generator/id6747421701" },
     ]
   },
   // { id: "how-it-works", name: "How It Works", icon: "steps" },
@@ -42,6 +43,7 @@ export const footerMainRoutes: RouteItem[] = [
 
 export const productsRoutes: RouteItem[] = [
   { id: "Android App", name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo" },
+  { id: "iOS App", name: "iOS App", href: "https://apps.apple.com/gb/app/hailuovideo-ai-generator/id6747421701" },
 ]
 
 export const useNavigation = () => {
