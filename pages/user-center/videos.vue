@@ -59,7 +59,7 @@
               <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
               </svg>
-              {{ downloadingVideo === video.task_id ? 'Downloading...' : (isIOS ? 'Open Video' : 'Download') }}
+              {{ downloadingVideo === video.task_id ? 'Downloading...' : 'Download' }}
             </button>
           </div>
         </div>
@@ -92,61 +92,10 @@
       </div>
     </div>
   </div>
-  
-  <!-- iOS设备操作指导模态框 -->
-  <div v-if="showIOSGuide" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-gray-800 rounded-lg p-6 max-w-md mx-4">
-      <div class="text-center mb-6">
-        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-white mb-2">Save Video on iOS Device</h3>
-        <p class="text-gray-300 text-sm">Due to iOS security restrictions, manual saving is required</p>
-      </div>
-      
-      <div class="space-y-3 mb-6">
-        <div class="flex items-start space-x-3">
-          <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span class="text-white text-xs font-bold">1</span>
-          </div>
-          <p class="text-gray-300 text-sm">Click the button below to open the video</p>
-        </div>
-        <div class="flex items-start space-x-3">
-          <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span class="text-white text-xs font-bold">2</span>
-          </div>
-          <p class="text-gray-300 text-sm">Long press the video and select "Save to Photos"</p>
-        </div>
-        <div class="flex items-start space-x-3">
-          <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span class="text-white text-xs font-bold">3</span>
-          </div>
-          <p class="text-gray-300 text-sm">Or tap the share button and select "Save to Photos"</p>
-        </div>
-      </div>
-      
-      <div class="flex space-x-3">
-        <button 
-          @click="openVideoForIOS"
-          class="flex-1 px-4 py-2 bg-[#7C3AED] hover:bg-blue-700 rounded-lg text-white font-medium transition-colors"
-        >
-          Open Video
-        </button>
-        <button 
-          @click="closeIOSGuide"
-          class="flex-1 px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-lg text-white font-medium transition-colors"
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { getOpusList } from '~/api'
 import { useNuxtApp, useHead } from 'nuxt/app'
 
@@ -164,11 +113,6 @@ const videoFilter = ref('completed')
 const loading = ref(false)
 const downloadingVideo = ref(null)
 const pagination = ref({ page: 1, page_size: 6, total: 0 })
-const showIOSGuide = ref(false)
-const currentVideo = ref(null)
-
-// 计算属性
-const isIOS = computed(() => /iPad|iPhone|iPod/.test(navigator.userAgent))
 
 // 方法
 const loadVideos = async (page = 1) => {
@@ -226,7 +170,7 @@ const getVideoStatusText = (status) => {
 const downloadVideo = async (video) => {
   if (!video.generate_image) {
     console.error('No video URL available')
-    $toast.error('Video link unavailable')
+    $toast.error('视频链接不可用')
     return
   }
 
@@ -234,45 +178,39 @@ const downloadVideo = async (video) => {
     // 设置下载状态
     downloadingVideo.value = video.task_id
 
-    if (isIOS.value) {
-      // iOS设备显示操作指导
-      currentVideo.value = video
-      showIOSGuide.value = true
-    } else {
-      // 非iOS设备使用传统下载方式
-      const response = await fetch(video.generate_image)
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-
-      // 获取视频数据
-      const blob = await response.blob()
-      
-      // 创建下载链接
-      const url = window.URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      
-      // 设置文件名（使用任务ID和当前时间戳）
-      const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-')
-      const fileName = `hailuo_video_${video.task_id}_${timestamp}.mp4`
-      link.download = fileName
-      
-      // 触发下载
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      
-      // 清理URL对象
-      window.URL.revokeObjectURL(url)
-      
-      console.log(`视频已下载: ${fileName}`)
-      $toast.success('Video downloaded successfully!')
+    // 获取视频文件
+    const response = await fetch(video.generate_image)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
+
+    // 获取视频数据
+    const blob = await response.blob()
+    
+    // 创建下载链接
+    const url = window.URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    
+    // 设置文件名（使用任务ID和当前时间戳）
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-')
+    const fileName = `hailuo_video_${video.task_id}_${timestamp}.mp4`
+    link.download = fileName
+    
+    // 触发下载
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    
+    // 清理URL对象
+    window.URL.revokeObjectURL(url)
+    
+    console.log(`视频已下载: ${fileName}`)
+    $toast.success('Video downloaded successfully!')
     
   } catch (error) {
     console.error('下载视频失败:', error)
-    $toast.error('Download failed, please try again later')
+    $toast.error('下载失败，请稍后重试')
   } finally {
     // 清除下载状态
     downloadingVideo.value = null
@@ -283,29 +221,11 @@ const copyPrompt = async (prompt) => {
   try {
     await navigator.clipboard.writeText(prompt || '')
     console.log('Prompt copied to clipboard')
-    $toast.success('Prompt copied to clipboard')
+    $toast.success('提示词已复制到剪贴板')
   } catch (error) {
     console.error('Copy failed:', error)
-    $toast.error('Copy failed, please copy manually')
+    $toast.error('复制失败，请手动复制')
   }
-}
-
-const openVideoForIOS = () => {
-  if (currentVideo.value && currentVideo.value.generate_image) {
-    const newWindow = window.open(currentVideo.value.generate_image, '_blank')
-    if (newWindow) {
-      $toast.success('Video opened, please follow the instructions to save to Photos')
-    } else {
-      $toast.error('Unable to open video, please check browser settings')
-    }
-    showIOSGuide.value = false
-    currentVideo.value = null
-  }
-}
-
-const closeIOSGuide = () => {
-  showIOSGuide.value = false
-  currentVideo.value = null
 }
 
 // 页面加载时初始化
