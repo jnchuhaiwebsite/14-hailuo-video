@@ -67,12 +67,15 @@ async function preCheckUserLogin() {
       };
     } else {
       // token无效，清除本地存储
+      console.log('🧹 预检测发现无效token，清理脏数据...');
+      console.log('清理原因: 服务器验证失败 (code:', response?.code, ')');
       logoutCookie();
       return { isLoggedIn: false, userData: null };
     }
   } catch (error) {
-    console.error('预检测用户登录状态失败:', error);
+    console.error('❌ 预检测用户登录状态失败:', error);
     // 出错时清除本地存储
+    console.log('🧹 预检测出错，清理可能的脏数据...');
     logoutCookie();
     return { isLoggedIn: false, userData: null };
   }
@@ -145,20 +148,93 @@ export function useClerkAuth() {
           // 重置退出处理标记
           isHandlingSignOut = false
         } else {
+          // 检查是否存在无效的本地认证数据 - 无论是否正在处理退出都要检查
+          const localToken = getValidToken()
+          if (localToken) {
+            console.log('🧹 检测到脏数据: Clerk确认用户未登录，但本地存在无效token:', localToken.substring(0, 20) + '...')
+            console.log('📋 立即清理无效的本地认证数据...')
+            // 触发脏数据清理事件
+            authEventBus.emit('dirtyDataDetected', { token: localToken })
+            
+            // 立即清理脏数据，不依赖handleSignOut
+            try {
+              logoutCookie()
+              useUserStore().clearUserInfo()
+              console.log('✅ 脏数据清理完成')
+            } catch (error) {
+              console.error('❌ 脏数据清理失败:', error)
+            }
+          }
+          
           if (!isHandlingSignOut) { // 防止重复处理退出
             authState.value.isLoggedIn = false
             authState.value.loginStatus = 'Not logged in'
             authState.value.authStatus = 'Not logged in'
-            handleSignOut()
+            handleSignOut() // 处理其他退出逻辑
           }
         }
         
         authState.value.isCheckingAuth = false
         
+        // 最终检查：确保没有遗留的脏数据
+        setTimeout(() => {
+          forceDirtyDataCheck()
+        }, 500)
+        
         // 立即触发clerkLoaded事件，确保组件能快速响应
         authEventBus.emit('clerkLoaded', isSignedIn.value)
       }
     })
+  }
+
+  /**
+   * 强制检查并清理脏数据
+   * 在认证状态稳定后进行最终检查
+   */
+  function forceDirtyDataCheck() {
+    // 只在客户端执行
+    if (typeof document === 'undefined') return
+    
+    const currentToken = getValidToken()
+    const isCurrentlyLoggedIn = authState.value.isLoggedIn
+    
+    console.log('🔍 执行强制脏数据检查...')
+    console.log('当前登录状态:', isCurrentlyLoggedIn)
+    console.log('本地Token存在:', !!currentToken)
+    
+    // 如果显示未登录但存在token，则强制清理
+    if (!isCurrentlyLoggedIn && currentToken) {
+      console.log('🚨 发现状态不一致: 未登录状态但存在token，强制清理!')
+      console.log('清理的Token:', currentToken.substring(0, 20) + '...')
+      
+      try {
+        logoutCookie()
+        useUserStore().clearUserInfo()
+        console.log('✅ 强制清理完成')
+        
+        // 触发强制清理事件
+        authEventBus.emit('forceDirtyDataCleaned', { 
+          reason: 'status_inconsistency',
+          token: currentToken 
+        })
+        
+        // 再次验证清理结果
+        const tokenAfterClean = getValidToken()
+        if (tokenAfterClean) {
+          console.error('⚠️ 警告: 强制清理后仍有残留数据:', tokenAfterClean)
+        } else {
+          console.log('🎉 确认: 所有脏数据已清理干净')
+        }
+      } catch (error) {
+        console.error('❌ 强制清理失败:', error)
+      }
+    } else if (!isCurrentlyLoggedIn && !currentToken) {
+      console.log('✅ 状态一致: 未登录且无本地token')
+    } else if (isCurrentlyLoggedIn && currentToken) {
+      console.log('✅ 状态一致: 已登录且有本地token')
+    } else if (isCurrentlyLoggedIn && !currentToken) {
+      console.log('⚠️ 状态可疑: 显示已登录但无本地token (可能正常)')
+    }
   }
 
   /**
@@ -171,12 +247,29 @@ export function useClerkAuth() {
     // 设置标记，避免重复处理
     isHandlingSignOut = true
     
-    // 清除本地存储
+    // 清除本地存储（如果还未清理）
     try {
-      logoutCookie();
-      useUserStore().clearUserInfo();
+      // 检查清理前的状态
+      const tokenBeforeClean = getValidToken()
+      if (tokenBeforeClean) {
+        console.log('🗑️ handleSignOut: 清理剩余认证数据...')
+        console.log('清理前的token:', tokenBeforeClean.substring(0, 20) + '...')
+        
+        logoutCookie();
+        useUserStore().clearUserInfo();
+        
+        // 验证清理结果
+        const tokenAfterClean = getValidToken()
+        if (!tokenAfterClean) {
+          console.log('✅ handleSignOut: 认证数据清理完成')
+        } else {
+          console.warn('⚠️ 警告: handleSignOut清理后仍有残留数据')
+        }
+      } else {
+        console.log('ℹ️ handleSignOut: 认证数据已经被清理，跳过重复清理')
+      }
     } catch (error) {
-      console.error('退出登录失败:', error)
+      console.error('❌ handleSignOut退出登录失败:', error)
     }
     
     // 重置应用状态
@@ -261,6 +354,7 @@ export function useClerkAuth() {
    * 主动触发退出登录操作
    */
   async function logout() {
+    logoutCookie()
     // 如果已经在处理退出流程，则不重复执行
     if (isHandlingSignOut) return
     
