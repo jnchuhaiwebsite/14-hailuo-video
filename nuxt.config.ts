@@ -76,7 +76,11 @@ export default defineNuxtConfig({
           crossorigin: 'anonymous',
           fetchpriority: 'high'
         },
+<<<<<<< HEAD
          {
+=======
+        {
+>>>>>>> ad437965a2906d1f9ccf0d7b872b585e20b905c8
           rel: 'preload',
           href: '/fonts/265822652.woff2',
           as: 'font',
@@ -84,6 +88,26 @@ export default defineNuxtConfig({
           crossorigin: 'anonymous',
           fetchpriority: 'high'
         },
+<<<<<<< HEAD
+=======
+        // 预加载 LCP 视频资源 - 最高优先级
+        // {
+        //   rel: 'preload',
+        //   href: '/video/haoluo2-home-video.mp4',
+        //   as: 'video',
+        //   type: 'video/mp4',
+        //   fetchpriority: 'high'
+        // },
+        // // 预加载视频海报图片 - 高优先级
+        // {
+        //   rel: 'preload',
+        //   href: '/img/1.webp',
+        //   as: 'image',
+        //   type: 'image/webp',
+        //   fetchpriority: 'high'
+        // },
+        // // 预加载关键 CSS
+>>>>>>> ad437965a2906d1f9ccf0d7b872b585e20b905c8
         {
           rel: 'preload',
           href: '/assets/css/main.css',
