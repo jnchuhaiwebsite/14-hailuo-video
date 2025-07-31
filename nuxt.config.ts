@@ -76,7 +76,7 @@ export default defineNuxtConfig({
           crossorigin: 'anonymous',
           fetchpriority: 'high'
         },
-        {
+         {
           rel: 'preload',
           href: '/fonts/265822652.woff2',
           as: 'font',
@@ -84,23 +84,6 @@ export default defineNuxtConfig({
           crossorigin: 'anonymous',
           fetchpriority: 'high'
         },
-        // 预加载 LCP 视频资源 - 最高优先级
-        // {
-        //   rel: 'preload',
-        //   href: '/video/haoluo2-home-video.mp4',
-        //   as: 'video',
-        //   type: 'video/mp4',
-        //   fetchpriority: 'high'
-        // },
-        // // 预加载视频海报图片 - 高优先级
-        // {
-        //   rel: 'preload',
-        //   href: '/img/1.webp',
-        //   as: 'image',
-        //   type: 'image/webp',
-        //   fetchpriority: 'high'
-        // },
-        // // 预加载关键 CSS
         {
           rel: 'preload',
           href: '/assets/css/main.css',
@@ -247,6 +230,7 @@ export default defineNuxtConfig({
       }
     }
   },
+  
   // 强制CSS提取的配置
   experimental: {
     // 启用vite特性兼容
