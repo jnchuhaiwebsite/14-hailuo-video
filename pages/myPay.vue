@@ -93,6 +93,15 @@ import { getSubplansTest, payOrder } from "~/api/index";
 import { useClerkAuth } from '~/utils/auth';
 import { useNotificationStore } from '~/stores/notification';
 import { ArrowLeftIcon } from '@heroicons/vue/24/outline'
+import { useHead } from "nuxt/app";
+
+
+useHead({
+  title: 'My Pay - Hailuo02 Video',
+  meta: [
+    { name: 'robots', content: 'noindex' }
+  ]
+})
 // 引入auth认证
 const {
   isSignedIn

@@ -99,8 +99,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { getSubPlans } from '~/api/index'
+import { getSubPlans, getCurrentUser } from '~/api/index'
 
+// 用户邮箱
+const email = ref<string>('')
 // 声明 gtag 全局函数类型
 declare global {
   interface Window {
@@ -124,6 +126,16 @@ const getPlanFeatures = (plan: any): string[] => {
 // Get plan information on page load
 onMounted(async () => {
   try {
+    // 获取用户信息
+    try {
+      const response = await getCurrentUser() as any;
+      if (response.data && response.data.email) {
+        email.value = response.data.email;
+      }
+    } catch (userError) {
+      console.error('Failed to get user info:', userError);
+    }
+
     // Get URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const level = urlParams.get('level');
@@ -134,12 +146,13 @@ onMounted(async () => {
     if (paySuccess == '1') {
       paymentStatus.value = 'success';
       // 触发 Google Analytics 转换跟踪
-
+      console.log(email.value);
       if (typeof window !== 'undefined' && window.gtag) {
         // window.gtag('event', 'conversion', {
         //   'send_to': 'AW-17364631960/T0wYCNqM__IaEJiDjdhA',
         //   'transaction_id': ''
         // });
+        window.gtag('set', 'user_data', { 'email': email.value});
         window.gtag('event', 'conversion', {
           'send_to': 'AW-17364631960/WX2DCKOk5vQaEJiDjdhA',
           'value': 1.0,

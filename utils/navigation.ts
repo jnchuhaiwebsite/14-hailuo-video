@@ -7,12 +7,19 @@ export interface RouteItem {
   name: string
   icon?: string
   href?: string
+  children?: RouteItem[]
 }
 
 // 主路由配置
 export const mainRoutes: RouteItem[] = [
   { id: "hero", name: "Home", icon: "home" },
   { id: "AIVideo", name: "AI Video", icon: "AI Video", href: "/hailuo-ai-video-generator" },
+  { id: "Products", name: "Products", icon: "Products",
+    children: [
+      { name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo" },
+      { name: "iOS App", href: "https://apps.apple.com/gb/app/hailuovideo-ai-generator/id6747421701" },
+    ]
+  },
   // { id: "how-it-works", name: "How It Works", icon: "steps" },
   // { id: "features-showcase", name: "Features", icon: "star" },
   // 评价
@@ -34,12 +41,17 @@ export const footerMainRoutes: RouteItem[] = [
   { id: "blog", name: "Blog", href: "/blog", icon: "book" }
 ]
 
+export const productsRoutes: RouteItem[] = [
+  { id: "Android App", name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo" },
+  { id: "iOS App", name: "iOS App", href: "https://apps.apple.com/gb/app/hailuovideo-ai-generator/id6747421701" },
+]
 
 export const useNavigation = () => {
   const router = useRouter()
   const activeSection = ref('hero')
   const sections = mainRoutes
   const footerSections = footerMainRoutes
+  const productsSections = productsRoutes
 
   // 执行滚动到指定section
   const executeScroll = (sectionId: string) => {
@@ -132,6 +144,7 @@ export const useNavigation = () => {
     handlePageNavigation,
     handleNavClick,
     handleScroll,
-    footerSections
+    footerSections,
+    productsSections
   }
 } 
