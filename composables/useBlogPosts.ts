@@ -17,6 +17,136 @@ export interface BlogPost {
 // Blog post data
 const blogPostsData: BlogPost[] = [
   {
+    id: 'hailuo-02-shanghai-film-festival',
+    title: 'Hailuo 02 Unlocked the AI Film Creation Code at the 27th Shanghai Film Festival',
+    content: `
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-6">Hailuo 02 Unlocked the AI Film Creation Code at the 27th Shanghai Film Festival</h2>
+        
+        <p class="mb-6 text-lg">During the <strong>27th Shanghai International Film Festival</strong>, MiniMax brought the AI video model Hailuo 02 to the venue and held a creative sharing session titled "The Future of AI Imaging Has Started", discussing the future of AI film and television creation with academic representatives, film and television celebrities and AI creators.</p>
+
+        <h3 class="text-xl font-bold my-6">Hailuo 02 Advantages over Traditional Creation:</h3>
+
+        <h4 class="text-lg font-bold my-4">• Surprising Creativity</h4>
+        
+        <p class="mb-6 text-lg">MiniMax's director stated, "The biggest difference between Hailuo 02 and traditional production is that AI isn't just a tool that follows instructions; its unpredictability can also lead to unexpected surprises."</p>
+        
+        <p class="mb-6 text-lg">AI is no longer simply mimicking traditional film and television effects; it starts generating unique content.</p>
+
+        <h4 class="text-lg font-bold my-4">• Creative Equality</h4>
+        
+        <p class="mb-6 text-lg">Director of the Experimental Center of the Shanghai Theatre Academy's Film School stated, "The emergence of AI is not just a technological revolution; it also provides more creators with opportunities to create narrative content."</p>
+        
+        <p class="mb-6 text-lg">Technology should not be a barrier to entry, but rather a force for equal creative rights.</p>
+
+        <h4 class="text-lg font-bold my-4">• Reduced Costs</h4>
+        
+        <p class="mb-6 text-lg">Hailuo 02 breaks the global record for cost-effective video model effects. Hailuo 02 can fully respond to complex commands and physical representations, ensuring even carefully crafted prompts receive better feedback.</p>
+        
+        <p class="mb-6 text-lg">This allows creators to efficiently optimize their creations multiple times.</p>
+
+        <h3 class="text-xl font-bold my-6">The Future Potential of AI Film and Television</h3>
+
+        <p class="mb-6 text-lg">AI film director Joey shared, "We can truly create films in four dimensions, like detective stories, where you can search for clues and interact with the characters in the film."</p>
+
+        <p class="mb-6 text-lg">In the future, it's possible to blend virtual production technology with live action. Future AI-powered imaging will lead to an explosion in the scale of content, embracing emerging trends like gaming, interactive storytelling, and real-time generation.</p>
+
+        <div class="bg-gradient-to-r from-purple-900 to-blue-900 p-8 rounded-lg my-8 text-center">
+          <h3 class="text-2xl font-bold mb-4 text-white">Ready to Create Your Own Film?</h3>
+          <p class="text-purple-100 mb-6">If you also want to create your own film and television works, use Hailuo 02 to realize your dream NOW!</p>
+          <a href="/hailuo-ai-video-generator" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
+            Start Creating with Hailuo 02
+          </a>
+        </div>
+      </div>
+    `,
+    seoTitle: 'Hailuo 02 Unlocked the AI Film Creation Code at the 27th Shanghai Film Festival',
+    description: 'The Hailuo 02 team shared their experience in AI film creation at the 27th Shanghai International Film Festival, summarizing its advantages over traditional film and television production: surprising creativity, equal creation, and low cost.',
+    date: 'Aug 1, 2025',
+    category: 'Event',
+    skip: false,
+    cta: "Create Now",
+  },
+  {
+    id: 'hailuo-02-vs-veo-3-kling-2-comparison',
+    title: 'Hailuo 02 VS. VEO 3 and Kling 2: Image to Video AI Generator Comparison',
+    content: `
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-6">Hailuo 02 VS. VEO 3 and Kling 2: Image to Video AI Generator Comparison</h2>
+        
+        <p class="mb-6 text-lg">Hailuo 02 is an AI video generation model launched by MiniMax. It ranks second in the Image to Video category on the <strong>Artificial Analysis Video Arena Leaderboard</strong>, surpassing well-known video models such as Google Veo 3 and Kling 2. Let's take a look at how Hailuo 02 outperformed Veo 3 and Kling 2.</p>
+
+        <h3 class="text-xl font-bold my-6">Outstanding Cinematic Quality:</h3>
+
+        <ul class="list-disc pl-6 mb-6 space-y-3">
+          <li class="text-lg">Hailuo 02 can generate richer and smoother camera movements, producing more coherent and narrative-driven videos. This is thanks to its built-in professional cinematic techniques, which can be freely applied through prompts.</li>
+          <li class="text-lg">When generating videos with multiple actions, Veo 3 may produce stiff transitions that resemble a PowerPoint presentation.</li>
+          <li class="text-lg">Moreover, Veo3 does not allow users to upload images containing people for video generation, while Hailuo 02 permits this, offering greater flexibility and convenience.</li>
+        </ul>
+
+        <h3 class="text-xl font-bold my-6">Natural and Realistic Physics:</h3>
+
+        <ul class="list-disc pl-6 mb-6 space-y-3">
+          <li class="text-lg">Hailuo's videos feature more comprehensive physics simulations. Even without specific prompts, the model automatically incorporates object interactions, environmental influences, and other details—resulting in a more lifelike output.</li>
+          <li class="text-lg">In contrast, Kling 2 may overlook certain natural physical phenomena when not explicitly instructed.</li>
+        </ul>
+
+        <p class="mb-6 text-lg">For example, with the prompt "A girl gets frightened by a monster emerging from a swamp and runs away," Hailuo 02 naturally simulates the difficulty of fleeing through swampy terrain—showing the girl lifting her legs higher and moving at a slower and more labored pace. Meanwhile, Kling 2 generates a video where the girl runs as if on flat ground, lacking realistic resistance. This creates an unnatural, overly artificial "AI look" in comparison.</p>
+
+        <h3 class="text-xl font-bold my-6">More Precise Control:</h3>
+
+        <p class="mb-6 text-lg">Hailuo 02 allows for detailed motion control of characters through prompts, combined with specified camera movements, to achieve video results that better match the creator's vision.</p>
+
+        <h4 class="text-lg font-bold my-4">Key advantages:</h4>
+
+        <ul class="list-disc pl-6 mb-6 space-y-2">
+          <li class="text-lg">Maintain consistent character behavior across shots</li>
+          <li class="text-lg">Achieve cinematic framing without post-production edits</li>
+        </ul>
+
+        <p class="mb-6 text-lg">This level of directed control surpasses Veo 3 and Kling 2's more generalized output.</p>
+
+        <h3 class="text-xl font-bold my-6">More Affordable Pricing:</h3>
+
+        <p class="mb-6 text-lg">Hailuo 02 offers greater flexibility and cost efficiency compared to Veo 3:</p>
+
+        <h4 class="text-lg font-bold my-4">Resolution Options:</h4>
+
+        <ul class="list-disc pl-6 mb-6 space-y-2">
+          <li class="text-lg">6-second videos at 1080P</li>
+          <li class="text-lg">6-second or 10-second videos at 768P</li>
+          <li class="text-lg">Veo 3 only supports 8-second 1080P clips</li>
+        </ul>
+
+        <h4 class="text-lg font-bold my-4">Budget-Friendly:</h4>
+
+        <p class="mb-6 text-lg">With <a href="/pricing" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300"><strong>lower generation costs</strong></a>, Hailuo 02 is ideal for iterative experimentation—letting creators refine prompts and perfect results through multiple attempts.</p>
+
+        <h3 class="text-xl font-bold my-6">Why Hailuo02?</h3>
+
+        <ul class="list-disc pl-6 mb-6 space-y-2">
+          <li class="text-lg"><strong>Hollywood-grade cinematography</strong> – Dynamic shots with intentional framing</li>
+          <li class="text-lg"><strong>Expressive motion physics</strong> – Natural weight, impact, and interaction</li>
+          <li class="text-lg"><strong>Director-level control</strong> – Fine-tune actions and perspectives via prompts</li>
+        </ul>
+
+        <div class="bg-gradient-to-r from-blue-900 to-purple-900 p-8 rounded-lg my-8 text-center">
+          <h3 class="text-2xl font-bold mb-4 text-white">Ready to Experience the Difference?</h3>
+          <p class="text-blue-100 mb-6">Unleash your creativity with Hailuo 02 AI Video Generator right NOW!</p>
+          <a href="/hailuo-ai-video-generator" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
+            Try Hailuo 02 Now
+          </a>
+        </div>
+      </div>
+    `,
+    seoTitle: 'Hailuo 02 vs VEO 3 vs Kling 2: AI Video Generator Comparison 2025',
+    description: 'Compare Hailuo 02 with VEO 3 and Kling 2 AI video generators. Discover why Hailuo 02 leads in cinematic quality, physics simulation, control precision, and cost-effectiveness.',
+    date: 'Aug 1, 2025',
+    category: 'Comparison',
+    skip: false,
+    cta: "Try Now",
+  },
+  {
     id: 'hailuo-ai-invitation-code-ultimate-guide',
     title: 'Unlock Unlimited Creativity: The Ultimate Guide to Your Hailuo AI Invitation Code',
     content: `
