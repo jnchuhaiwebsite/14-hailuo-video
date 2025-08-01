@@ -148,15 +148,13 @@ export function useClerkAuth() {
           // 重置退出处理标记
           isHandlingSignOut = false
         } else {
-          // 检查是否存在无效的本地认证数据 - 无论是否正在处理退出都要检查
+          // 简单检测：Clerk未登录但本地存在Cookie，直接清理
           const localToken = getValidToken()
           if (localToken) {
-            console.log('🧹 检测到脏数据: Clerk确认用户未登录，但本地存在无效token:', localToken.substring(0, 20) + '...')
-            console.log('📋 立即清理无效的本地认证数据...')
-            // 触发脏数据清理事件
-            authEventBus.emit('dirtyDataDetected', { token: localToken })
+            console.log('🧹 检测到脏数据: Clerk未登录但本地存在Cookie，直接清理')
+            console.log('Token:', localToken.substring(0, 20) + '...')
             
-            // 立即清理脏数据，不依赖handleSignOut
+            // 直接清理Cookie，不进行复杂验证
             try {
               logoutCookie()
               useUserStore().clearUserInfo()
@@ -187,6 +185,8 @@ export function useClerkAuth() {
     })
   }
 
+
+
   /**
    * 强制检查并清理脏数据
    * 在认证状态稳定后进行最终检查
@@ -202,21 +202,15 @@ export function useClerkAuth() {
     console.log('当前登录状态:', isCurrentlyLoggedIn)
     console.log('本地Token存在:', !!currentToken)
     
-    // 如果显示未登录但存在token，则强制清理
+    // 如果显示未登录但存在token，直接清理
     if (!isCurrentlyLoggedIn && currentToken) {
-      console.log('🚨 发现状态不一致: 未登录状态但存在token，强制清理!')
+      console.log('🚨 发现状态不一致: 未登录状态但存在token，直接清理')
       console.log('清理的Token:', currentToken.substring(0, 20) + '...')
       
       try {
         logoutCookie()
         useUserStore().clearUserInfo()
         console.log('✅ 强制清理完成')
-        
-        // 触发强制清理事件
-        authEventBus.emit('forceDirtyDataCleaned', { 
-          reason: 'status_inconsistency',
-          token: currentToken 
-        })
         
         // 再次验证清理结果
         const tokenAfterClean = getValidToken()

@@ -45,7 +45,7 @@
         <!-- 设置脏数据区域 -->
         <div class="p-4 bg-orange-50 border border-orange-200 rounded-lg">
           <h3 class="text-sm font-semibold text-orange-800 mb-3">🗂️ 设置脏数据测试</h3>
-          <div class="grid grid-cols-1 gap-2">
+          <div class="grid grid-cols-2 gap-2">
             <button
               @click="setInvalidToken"
               class="w-full px-3 py-2 bg-orange-500 text-white text-sm font-medium rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-colors"
@@ -69,6 +69,12 @@
               class="w-full px-3 py-2 bg-orange-600 text-white text-sm font-medium rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-colors"
             >
               设置损坏的数据
+            </button>
+            <button
+              @click="setExpiredValidFormatToken"
+              class="w-full px-3 py-2 bg-red-500 text-white text-sm font-medium rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors"
+            >
+              设置失效的正常格式Token
             </button>
           </div>
         </div>
@@ -166,8 +172,10 @@
           <li>• <strong>过期Token</strong>：设置已过期的token，测试过期处理机制</li>
           <li>• <strong>不匹配数据</strong>：token和过期时间不匹配，测试一致性检查</li>
           <li>• <strong>损坏数据</strong>：包含特殊字符的无效数据，测试异常处理</li>
+          <li>• <strong>🆕 失效正常格式Token</strong>：模拟用户退出时页面关闭导致的脏数据</li>
           <li>• <strong>删除Cookie</strong>：完全清除认证数据，测试未登录状态处理</li>
           <li>• <strong>🆕 自动清理测试</strong>：设置脏数据后自动刷新页面，测试系统自动检测和清理机制</li>
+          <li>• <strong>🆕 简单清理逻辑</strong>：只要Clerk显示未登录但本地有Cookie，就直接清理</li>
           <li>• 设置脏数据后建议刷新页面或访问需要认证的页面观察系统行为</li>
           <li>• 可以用来测试自动重登录、错误处理、数据验证等功能</li>
           <li>• 💡 观察浏览器控制台日志，查看详细的清理过程</li>
@@ -543,6 +551,7 @@ const setMismatchedTokenAndExpiry = () => {
  * 设置损坏的数据
  */
 const setCorruptedData = () => {
+  lastOperation.value = '设置损坏数据'
   const corruptedToken = '<!@#$%^&*()_+{}[]|\\:";\'<>?,./`~corrupted_data'
   const invalidExpiry = 'not_a_timestamp'
   
@@ -555,6 +564,36 @@ const setCorruptedData = () => {
     addLog('✅ 设置损坏数据成功 (包含特殊字符)')
   } else {
     addLog('❌ 设置损坏数据失败')
+  }
+  
+  setTimeout(() => {
+    refreshCookieStatus()
+  }, 100)
+}
+
+/**
+ * 设置失效的正常格式Token (模拟用户退出时页面关闭导致的脏数据)
+ */
+const setExpiredValidFormatToken = () => {
+  lastOperation.value = '设置失效的正常格式Token'
+  
+  // 生成看起来像真实JWT的token格式
+  const realLookingToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkZha2UgVXNlciIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxNTE2MjM5MDIyfQ.' + Math.random().toString(36).substring(7)
+  const futureExpiry = (Date.now() + 24 * 60 * 60 * 1000).toString() // 未来24小时
+  
+  console.log('🎭 设置看起来正常但服务端已失效的Token...')
+  console.log('模拟场景: 用户退出时页面关闭太快，Cookie未及时清理')
+  console.log('Token格式:', realLookingToken.substring(0, 50) + '...')
+  
+  const success1 = setCookie('auth_token', realLookingToken)
+  const success2 = setCookie('auth_token_expiry', futureExpiry)
+  
+  if (success1 && success2) {
+    addLog('✅ 设置失效正常格式Token成功 (服务端已失效)')
+    console.log('📋 这种token格式正常，但服务端验证会失败')
+    console.log('📋 测试目的: 验证服务端token验证机制')
+  } else {
+    addLog('❌ 设置失效正常格式Token失败')
   }
   
   setTimeout(() => {
