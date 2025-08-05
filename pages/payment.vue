@@ -146,15 +146,19 @@ onMounted(async () => {
     if (paySuccess == '1') {
       paymentStatus.value = 'success';
       // 触发 Google Analytics 转换跟踪
+      function gtag(...args: any[]) {
+          window.dataLayer.push(arguments)
+        }
       console.log(email.value);
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (typeof window !== 'undefined') {
         // window.gtag('event', 'conversion', {
         //   'send_to': 'AW-17364631960/T0wYCNqM__IaEJiDjdhA',
         //   'transaction_id': ''
         // });
-        window.gtag('set', 'user_data', { 'email': email.value});
-        window.gtag('event', 'conversion', {
-          'send_to': 'AW-17364631960/WX2DCKOk5vQaEJiDjdhA',
+
+        gtag('set', 'user_data', { 'email': email.value});
+        gtag('event', 'conversion', {
+          'send_to': 'AW-17364631960/BKMACNHPgYAbEJiDjdhA',
           'value': 1.0,
           'currency': 'USD',
           'transaction_id': ''
