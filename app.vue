@@ -2,7 +2,7 @@
 import { useNotificationStore } from '~/stores/notification'
 import { onMounted } from 'vue'
 import NotificationList from '~/components/NotificationList.vue'
-
+import StatisticsTracker from '~/components/StatisticsTracker.vue'
 const notificationStore = useNotificationStore()
 
 onMounted(() => {
@@ -15,6 +15,7 @@ onMounted(() => {
       <NuxtPage />
     </NuxtLayout>
     <NotificationList />
+    <StatisticsTracker />
 </template>
 
 <style>

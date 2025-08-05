@@ -32,6 +32,7 @@ export const urlList = {
   getPromotionScoreLog: baseUrl + '/api/user/promotion_score_log', // 获取积分记录
   getSubplansTest: baseUrl + '/api/website/odl',     // 获取测试套餐信息
   getPayLog: baseUrl + '/api/user/pay_log', // 获取支付记录
+  statistics: baseUrl + '/api/statistics/pvuv', // 删除用户作品列表
 }
 
 /**
@@ -79,6 +80,17 @@ export const setUserInfo = async (data: any) => {
     console.error('设置用户信息失败:', error);
     throw error;
   }
+}
+
+/**
+ * 获取统计信息
+ * @param data 统计信息数据
+ * @returns 统计信息
+ */
+export const statistics = async (data: any) => {
+  // 构建基础URL参数
+  let url = `${urlList.statistics}?visitor_id=${data.userCode}`
+  return apiRequest(url, 'GET', undefined, false);
 }
 
 /**
