@@ -150,7 +150,7 @@ onMounted(async () => {
           window.dataLayer.push(arguments)
         }
       console.log(email.value);
-      if (typeof window !== 'undefined') {
+ 
         // window.gtag('event', 'conversion', {
         //   'send_to': 'AW-17364631960/T0wYCNqM__IaEJiDjdhA',
         //   'transaction_id': ''
@@ -163,7 +163,6 @@ onMounted(async () => {
           'currency': 'USD',
           'transaction_id': ''
         });
-      }
     } else if (payFail == '1') {
       paymentStatus.value = 'failed';
       isLoading.value = false;
