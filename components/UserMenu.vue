@@ -493,6 +493,10 @@ onMounted(async () => {
     });
     
     on('logout', async () => {
+      console.log('🧹 [UserMenu] 清除用户界面状态')
+      document.cookie = `auth_token=; Path=/; max-age=0;`;
+      document.cookie = `auth_token_expiry=; Path=/; max-age=0;`;
+      console.log('清除cookie成功');
       // 清除用户界面状态
       limit.value = 0;
       vipLastTime.value = "";
