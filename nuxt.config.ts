@@ -190,7 +190,7 @@ export default defineNuxtConfig({
         compress: {
           drop_console: false, // 移除 console 语句
           drop_debugger: true, // 移除 debugger 语句
-          pure_funcs: ['console.log', 'console.info', 'console.warn', 'console.error'], // 移除特定的函数调用
+          pure_funcs: ['console.info', 'console.warn', 'console.error'], // 移除特定的函数调用
           passes: 3, // 增加压缩次数
           dead_code: true, // 移除未使用的代码
           global_defs: {
