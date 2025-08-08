@@ -91,6 +91,7 @@ import { getSubPlans, payOrder } from "~/api/index";
 import { useClerkAuth } from '~/utils/auth';
 import { useSeo } from '~/composables/useSeo';
 import { useAsyncData } from 'nuxt/app';
+import { isMobile, detectDeviceType } from '~/utils/platformDetection';
 // 引入auth认证
 const {
   isSignedIn
@@ -135,8 +136,17 @@ const getButtonClass = (plan: any): string => {
     }
 };
 
+
+
 // 处理升级计划
 const handleUpgradePlan = async (plan: any) => {
+  // 简单检测当前平台
+  const isMobileDevice = isMobile();
+  const platform = isMobileDevice ? '1' : '2'; // 1: 移动端 2: PC端
+  // console.log(`当前平台: ${platform}`);
+  // 详细设备信息（保留用于调试）
+  // const deviceInfo = detectDeviceType();
+  // console.log('详细设备信息:', deviceInfo);
   // 如果没有登录，则提示登录并触发登录
   if (!isSignedIn.value) {
     try {
@@ -152,7 +162,7 @@ const handleUpgradePlan = async (plan: any) => {
 
   upgradingPlanId.value = plan.code;
   try {
-    const response = (await payOrder({ price_id: plan.code })) as any;
+    const response = (await payOrder({ price_id: plan.code, device_type: platform })) as any;
     if (response.code === 200 && response.data?.url) {
       window.location.href = response.data.url;
     } else {

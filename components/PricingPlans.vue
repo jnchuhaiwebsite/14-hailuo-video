@@ -88,6 +88,7 @@
 import { ref } from "vue";
 import { getSubPlans, payOrder } from "~/api/index";
 import { useClerkAuth } from '~/utils/auth';
+import { isMobile, detectDeviceType } from '~/utils/platformDetection';
 
 import { useAsyncData } from 'nuxt/app';
 // 引入auth认证
@@ -134,8 +135,32 @@ const getButtonClass = (plan: any): string => {
   }
 };
 
+
+
 // 处理升级计划
 const handleUpgradePlan = async (plan: any) => {
+  // 简单检测当前平台
+  const isMobileDevice = isMobile();
+  const platform = isMobileDevice ? '移动端' : 'PC端';
+  console.log(`当前平台: ${platform}`);
+  
+  // 详细设备信息（保留用于调试）
+  const deviceInfo = detectDeviceType();
+  console.log('详细设备信息:', deviceInfo);
+  
+  // 如果没有登录，则提示登录并触发登录
+  if (!isSignedIn.value) {
+    try {
+      const loginBtn = document.querySelector('#bindLogin') as HTMLElement;
+      if (loginBtn) {
+        loginBtn.click();
+      }
+    } catch (error) {
+      console.error("Failed to find login:", error);
+    }
+    return;
+  }
+  
   // 如果没有登录，则提示登录并触发登录
   if (!isSignedIn.value) {
     try {
