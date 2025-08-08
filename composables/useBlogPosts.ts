@@ -17,6 +17,66 @@ export interface BlogPost {
 // Blog post data
 const blogPostsData: BlogPost[] = [
   {
+    id: 'how-to-use-hailuo-prompts-to-create-rich-film-and-television-effects',
+    title: 'How to Use Hailuo Prompts to Create Rich Film and Television Effects',
+    content: `
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-6">How to Use Hailuo Prompts to Create Rich Film and Television Effects</h2>
+        
+        <div class="my-6">
+          <img src="https://resp.hailuo2.com/hailuo/blog/image/hailuo-clip-screenshot.webp" alt="Hailuo AI Video Competition Showcase" class="w-full max-w-2xl mx-auto mb-2" loading="lazy" />
+          <p class="text-sm text-gray-300 text-center">Hailuo and WaytoAGI AI Video Competition Showcase</p>
+        </div>
+        
+        <p class="mb-6 text-lg">Hailuo and the AI community WaytoAGI jointly organized an AI video competition that received numerous outstanding submissions. The outstanding videos were featured at the WAIC exhibition, showcasing not only wild imagination but also Hailuo's creative potential.</p>
+
+        <h3 class="text-xl font-bold my-6">Camera Movement</h3>
+        
+        <p class="mb-6 text-lg">Hailuo 02 possesses an exceptional understanding and expressive ability for camera movement. You can choose from stable tracking shots to handheld close-ups, slowly zooming in to focus on a character's emotions, and even using drones to capture panoramic city shots.</p>
+        
+        <p class="mb-6 text-lg">Hailuo 02 can maintain character consistency across multiple shots, demonstrating its ability to understand and orchestrate shots, making it highly suitable for short films, visual advertisements, and other creative scenarios.</p>
+
+        <h3 class="text-xl font-bold my-6">Shot Rhythm</h3>
+        
+        <p class="mb-6 text-lg">Shot rhythm can enhance the thrill of action. For example, the camera can follow the details of a speeding motorcycle's tires crushing gravel, spinning at high speed and kicking up dust. The protagonist's bike can leap onto a sand dune, tumbling through the air, landing firmly, and continuing its rapid progress. These descriptions can create a complete rhythm and layering of action in the video.</p>
+
+        <h3 class="text-xl font-bold my-6">Physical Movement</h3>
+        
+        <p class="mb-6 text-lg">Ball sports are often a challenge in AI-generated videos. This is partly due to the physical effects of the ball's bounce and rotation, and partly due to the natural and fluid interactions between characters involved. Hailuo 02 perfectly captures these effects, even including multiplayer interactions.</p>
+        
+        <p class="mb-6 text-lg">Example prompts: A soccer player takes a run-up and shoots a powerful shot. The ball spins rapidly towards the top right corner of the goal. The goalkeeper dives in but misses, and the ball hits the net and bounces back.</p>
+
+        <h3 class="text-xl font-bold my-6">Intense Fighting</h3>
+        
+        <p class="mb-6 text-lg">Hailuo 02 can process and generate complex and engaging fight videos. The seamless interaction between movement and the environment, combined with highly immersive camera shots, creates a truly compelling and impactful experience. Furthermore, you can apply a variety of special effects, such as recreating a battle between gods or a freehand sword fight in the style of ink painting.</p>
+
+        <h3 class="text-xl font-bold my-6">Performance Details</h3>
+        
+        <p class="mb-6 text-lg">Hailuo 02 demonstrates a sophisticated understanding and performance of emotional cues. Not only does it accurately match color tones, lighting, and camera language, but it also dynamically adjusts character expressions, movement rhythm, and scene composition to create a cohesive and unified emotional atmosphere.</p>
+        
+        <p class="mb-6 text-lg">Example prompts: cues range from sadness to rage to regret, and from happiness to surprise to relief.</p>
+
+        <h3 class="text-xl font-bold my-6">Subject Reference</h3>
+        
+        <p class="mb-6 text-lg">Hailuo 02 allows you to upload an image as primary reference, accurately transferring the subject from the reference image to the generated video, achieving highly realistic character reproduction. This is an excellent tool for creating creative series.</p>
+
+        <div class="bg-gradient-to-r from-purple-900 to-blue-900 p-8 rounded-lg my-8 text-center">
+          <h3 class="text-2xl font-bold mb-4 text-white">Ready to Create Your Own Film?</h3>
+          <p class="text-purple-100 mb-6">If you also want to create your own film and television works, use Hailuo 02 to realize your dream NOW!</p>
+          <a href="/hailuo-ai-video-generator" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
+            Start Creating with Hailuo 02
+          </a>
+        </div>
+      </div>
+    `,
+    seoTitle: 'How to Use Hailuo Prompts to Create Rich Film and Television Effects',
+    description: 'This article introduces the use of Hailuo 02 prompts from the perspectives of camera movement, shot rhythm, physical movement, intense fighting, performance details, and subject reference to generate wonderful visual effects.',
+    date: 'August 2, 2025',
+    category: 'Tutorials',
+    skip: false,
+    cta: "Start Creating",
+  },
+  {
     id: 'hailuo-02-shanghai-film-festival',
     title: 'Hailuo 02 Unlocked the AI Film Creation Code at the 27th Shanghai Film Festival',
     content: `
