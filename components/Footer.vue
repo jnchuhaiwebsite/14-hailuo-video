@@ -4,7 +4,7 @@
       
       <!-- 友情链接区域 -->
       <div class="mb-8">
-        <h3 class="text-[#7C3AED] font-medium mb-4 text-left text-sm md:text-lg">Partner Sites</h3>
+        <h2 class="text-[#7C3AED] font-medium mb-4 text-left text-sm md:text-lg">Partner Sites</h2>
         <div class="flex flex-wrap gap-x-6 gap-y-2">
           <a v-for="(item,index) in partnerSites" :key="index" 
              :href="item.url" 
@@ -44,7 +44,7 @@
         <div class="flex-1 grid grid-cols-3 gap-6 md:gap-8">
           <!-- 导航链接 -->
           <div>
-            <h3 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Resources</h3>
+            <h2 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Resources</h2>
             <div class="flex flex-col gap-2">
               <template v-for="(section, index) in footerSections" :key="index">
                 <NuxtLink v-if="section.href" :to="section.href" class="text-gray-400 hover:text-[#7C3AED] transition-colors">{{ section.name }}</NuxtLink>
@@ -53,7 +53,7 @@
             </div>
           </div>
           <div>
-            <h3 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Products</h3>
+            <h2 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Products</h2>
             <div class="flex flex-col gap-2">
               <template v-for="(section, index) in productsSections" :key="index">
                 <NuxtLink v-if="section.href" :to="section.href" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#7C3AED] transition-colors flex items-center gap-2">
@@ -66,7 +66,7 @@
           </div>
           <!-- 法律条款 -->
           <div>
-            <h3 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Legal</h3>
+            <h2 class="text-[#7C3AED] font-medium mb-4 text-sm md:text-lg">Legal</h2>
             <div class="flex flex-col gap-2">
               <NuxtLink to="/subsidiary/privacy-policy" class="text-gray-400 hover:text-[#7C3AED] transition-colors">Privacy Policy</NuxtLink>
               <NuxtLink to="/subsidiary/terms-of-service" class="text-gray-400 hover:text-[#7C3AED] transition-colors">Terms of Service</NuxtLink>
