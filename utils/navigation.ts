@@ -14,6 +14,7 @@ export interface RouteItem {
 export const mainRoutes: RouteItem[] = [
   { id: "hero", name: "Home", icon: "home" },
   { id: "AIVideo", name: "AI Video", icon: "AI Video", href: "/hailuo-ai-video-generator" },
+  { id: "Seedance", name: "Seedance", icon: "Seedance", href: "/seedance" },
   { id: "Products", name: "Products", icon: "Products",
     children: [
       { name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo" },
