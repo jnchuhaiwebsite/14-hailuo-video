@@ -57,7 +57,11 @@
                         class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors flex items-center justify-between"
                       >
                         <span>{{ child.name }}</span>
-                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
                       </a>
                       
                       <!-- 内部链接使用NuxtLink -->
@@ -67,7 +71,11 @@
                         class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors flex items-center justify-between"
                       >
                         <span>{{ child.name }}</span>
-                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
                       </NuxtLink>
                       <div
                         v-else-if="child.id"
@@ -75,7 +83,11 @@
                         class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>{{ child.name }}</span>
-                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
                       </div>
                     </template>
                   </div>
@@ -204,30 +216,42 @@
                         :href="child.href"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors flex items-center"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors flex items-center justify-between"
                         @click="() => { isOpen = false; }"
                       >
                         <span>{{ child.name }}</span>
-                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
                       </a>
                       
                       <!-- 内部链接使用NuxtLink -->
                       <NuxtLink
                         v-else-if="child.href"
                         :to="child.href"
-                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors flex items-center"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors flex items-center justify-between"
                         @click="() => { isOpen = false; }"
                       >
                         <span>{{ child.name }}</span>
-                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
                       </NuxtLink>
                       <div
                         v-else-if="child.id"
                         @click="() => { handleNavClick(child.id); isOpen = false; }"
-                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors cursor-pointer flex items-center"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>{{ child.name }}</span>
-                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
                       </div>
                     </template>
                   </div>
@@ -308,6 +332,7 @@ const {
   executeScroll,
   shouldOpenInNewTab,
   shouldShowBeta,
+  getBadgeInfo,
   getSubNavStyle
 } = useNavigation();
 
@@ -406,5 +431,28 @@ onBeforeUnmount(() => {
 /* 隐藏Chrome等浏览器的滚动条 */
 .overflow-x-auto::-webkit-scrollbar {
   display: none;
+}
+
+/* 角标动画效果 */
+@keyframes pulse-hot {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes pulse-new {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.text-xs.bg-red-500 {
+  animation: pulse-hot 2s infinite;
+  font-weight: 600;
+  box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+}
+
+.text-xs.bg-green-500 {
+  animation: pulse-new 2s infinite;
+  font-weight: 600;
+  box-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
 }
 </style> 

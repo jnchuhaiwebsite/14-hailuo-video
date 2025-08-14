@@ -10,6 +10,10 @@ export interface RouteItem {
   children?: RouteItem[]
   openInNewTab?: boolean  // 是否在新标签页打开
   showBeta?: boolean      // 是否显示beta标签
+  badge?: {
+    text: string;         // 角标文本
+    type: 'hot' | 'new';  // 角标类型：hot 或 new
+  }
 }
 
 // 导航全局配置
@@ -29,8 +33,22 @@ export const mainRoutes: RouteItem[] = [
 
   { id: "AIVideo", name: "AI Video", icon: "AI Video",
     children: [
-      { name: "Hailuo 02", href: "/hailuo-ai-video-generator" },
-      { name: "Seedance 1.0 Pro", href: "/seedance-1-0-pro" },
+      { 
+        name: "Hailuo 02", 
+        href: "/hailuo-ai-video-generator",
+        badge: {
+          text: "Hot",
+          type: "hot"
+        } 
+      },
+      { 
+        name: "Seedance 1.0 Pro", 
+        href: "/seedance-1-0-pro",
+        badge: {
+          text: "New",
+          type: "new"
+        }
+      },
     ]
   },
   { id: "APP", name: "APP", icon: "APP", href: "/hailuo-app" },
@@ -76,6 +94,11 @@ export const useNavigation = () => {
   // 检查是否应该显示beta标签
   const shouldShowBeta = (route: RouteItem) => {
     return route.showBeta ?? navConfig.defaults.showBeta
+  }
+
+  // 检查是否显示角标及角标信息
+  const getBadgeInfo = (route: RouteItem) => {
+    return route.badge
   }
   
   // 获取子导航样式
@@ -177,6 +200,7 @@ export const useNavigation = () => {
     // 新增配置相关方法
     shouldOpenInNewTab,
     shouldShowBeta,
+    getBadgeInfo,
     getSubNavStyle
   }
 } 

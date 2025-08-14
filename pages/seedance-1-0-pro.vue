@@ -42,9 +42,7 @@ import SeedanceAdvantages from '~/components/seedance/SeedanceAdvantages.vue';
 // const HomeHero = defineAsyncComponent(() => import('~/components/seedance/seedanceHero.vue'));
 const FaqSection = defineAsyncComponent(() => import('~/components/seedance/FaqSection.vue'));
 const CaseStudies = defineAsyncComponent(() => import('~/components/seedance/CaseStudies.vue'));
-const HowItWorks = defineAsyncComponent(() => import('~/components/seedance/HowItWorks.vue'));
-const FeatureShowcase = defineAsyncComponent(() => import('~/components/seedance/FeatureShowcase.vue'));
-const Reviews = defineAsyncComponent(() => import('~/components/seedance/Reviews.vue'));
+
 
 
 import { useNotificationStore } from '~/stores/notification';

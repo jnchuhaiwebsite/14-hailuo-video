@@ -1,32 +1,40 @@
 <template>
-  <div id="faq" class="relative w-full py-16 bg-blue-pale/80 backdrop-blur-sm" aria-labelledby="faq-heading">
-    <!-- 标题 -->
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 id="faq-heading" class="text-4xl font-bricolage-grotesque lg:text-5xl xl:text-6xl 2xl:text-[4rem] bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/50 bg-clip-text text-transparent whitespace-nowrap lg:whitespace-normal text-center mb-8 leading-loose mobile-large-title">Seedance 1.0 Pro - FAQ</h2>
-      
+  <section id="faq" class="py-20 bg-blue-pale/80 backdrop-blur-sm" aria-labelledby="faq-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 id="faq-heading" class="text-3xl font-extrabold text-white sm:text-4xl">Seedance 1.0 Pro - FAQ</h2>
+        <p class="mt-4 text-xl text-gray-300">
+          Get answers to the most frequently asked questions about Seedance 1.0 Pro. 
+          <span class="block mt-2">If you need further assistance, don't hesitate to reach out to us at 
+            <a href="mailto:support@hailuo2.com" class="faq-support-link">
+              support@hailuo2.com
+            </a>
+          </span>
+        </p>
+      </div>
       <!-- 问题列表 -->
-      <div class="max-w-4xl mx-auto">
+      <div class="mt-16 max-w-4xl mx-auto">
         <div 
           v-for="(item, index) in faqs" 
           :key="index"
-          class="border-b border-[#7C3AED]/20 py-6 hover:bg-[#7C3AED]/5 transition-colors duration-200 rounded-lg px-4"
+          class="bg-gray-800 mb-4 rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
         >
           <!-- 问题标题（可点击切换展开/折叠） -->
           <div 
-            class="w-full text-left flex justify-between items-center cursor-pointer" 
+            class="p-6 w-full text-left flex justify-between items-center cursor-pointer bg-gray-800" 
             @click="toggleItem(index)"
             :aria-expanded="openItems[index]"
             :aria-controls="`faq-answer-${index}`"
           >
-            <h3 class="text-lg text-white font-medium flex items-center">
-              <svg class="w-5 h-5 mr-2 text-[#7C3AED]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <h3 class="text-xl font-semibold text-white flex items-center">
+              <svg class="w-5 h-5 mr-3 text-[#7C3AED]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
               </svg>
               {{ item.question }}
             </h3>
             <!-- 箭头图标（根据展开状态旋转） -->
             <svg 
-              class="w-5 h-5 text-[#7C3AED] transform transition-transform duration-200" 
+              class="w-6 h-6 text-[#7C3AED] transform transition-transform duration-200" 
               :class="{'rotate-180': openItems[index]}"
               xmlns="http://www.w3.org/2000/svg" 
               viewBox="0 0 20 20" 
@@ -40,25 +48,27 @@
           <!-- 问题答案（展开时显示） -->
           <div 
             v-show="openItems[index]"
-            class="mt-3 text-gray-300 overflow-hidden transition-all duration-300"
+            class="px-6 pb-6 bg-gray-800 text-gray-300 overflow-hidden transition-all duration-300"
             :id="`faq-answer-${index}`"
           >
-            <p class="leading-relaxed">{{ item.answer }}</p>
+            <p class="leading-relaxed whitespace-pre-line">{{ item.answer }}</p>
           </div>
         </div>
       </div>
       
-      <!-- 添加一个跳转按钮 -->
-      <!-- <div class="text-center mt-10">
-        <NuxtLink
-          to="/seedance/faq"
-          class="bg-[#7C3AED]/50 text-white hover:bg-[#7C3AED]/90 text-gray-900 font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer inline-block"
+      <div class="mt-16 text-center">
+        <div class="text-2xl text-gray-400 mb-6">
+          Ready to create professional videos with Seedance 1.0 Pro?
+        </div>
+        <button
+          @click="scrollToTop"
+          class="bg-[#7C3AED]/50 text-white hover:bg-[#7C3AED]/90 font-semibold px-8 py-4 rounded-lg transition-colors focus:outline-none text-xl"
         >
-          Show More
-        </NuxtLink>
-      </div> -->
+          Generate with Seedance 1.0 Pro
+        </button>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -71,22 +81,43 @@ defineOptions({
 // FAQ数据
 const faqs = [
   {
-    question: 'What makes Seedance 1.0 Pro different from other AI video tools?',
-    answer: 'Seedance 1.0 Pro is the only AI video platform that delivers true multi-shot narrative capabilities with professional cinematography. Our proprietary motion engine creates fluid, physically accurate movements while maintaining perfect subject consistency across scenes. Unlike basic tools that generate single clips, Seedance 1.0 Pro creates complete visual stories with multiple camera angles and seamless transitions.'
+    "question": "How do I use Seedance 1.0 Pro?",
+    "answer": "Using Seedance 1.0 Pro is a straightforward three-step process designed for ease and efficiency. First, select your creation method by choosing either a detailed text prompt or an image as your starting point. Next, customize your video parameters, including resolution, aspect ratio, and duration, to align with your creative vision. Finally, generate your video and watch as Seedance 1.0 Pro transforms your input into a cinema-quality production with seamless narratives and fluid motion transitions. This intuitive process ensures professional results without the need for technical expertise."
   },
   {
-    question: 'Who benefits most from using Seedance 1.0 Pro?',
-    answer: 'Seedance 1.0 Pro serves diverse professional needs: marketers create high-converting product videos in minutes instead of days; content creators produce consistent, high-quality videos at scale; filmmakers rapidly prototype complex scenes; and educators develop engaging visual learning materials. Whether you\'re a solo entrepreneur or part of a creative team, Seedance 1.0 Pro dramatically reduces production time while maintaining professional quality standards.'
+    "question": "What are the requirements for uploading images?",
+    "answer": "To ensure optimal video quality, images should be in JPEG, PNG, WEBP, BMP, TIFF, or GIF format, with a maximum size of 10MB. The dimensions must be between 300px and 6000px, and the aspect ratio should range from 0.4 to 2.5."
   },
   {
-    question: 'What specific video types can I create with Seedance 1.0 Pro?',
-    answer: 'Seedance 1.0 Pro excels at creating diverse professional content: product demonstrations with multiple angles and perfect lighting, conceptual marketing videos with seamless scene transitions, educational explainers with visual metaphors, dynamic social media content, cinematic narratives with proper storytelling structure, and custom style animations from photorealistic to stylized. Our platform interprets complex prompts to create coherent visual stories across multiple shots.'
+    "question": "How long does it take to generate a video?",
+    "answer": "Seedance 1.0 Pro delivers results with impressive speed. Most high-quality videos are ready in just 1–2 minutes, enabling you to quickly test ideas, refine your vision, and create without long production delays."
   },
   {
-    question: 'What technical specifications do Seedance 1.0 Pro videos offer?',
-    answer: 'Seedance 1.0 Pro generates studio-quality 1080p HD video with professional color grading and lighting. Videos feature cinema-grade stability with our proprietary motion smoothing technology, supporting multiple aspect ratios (1:1, 16:9, 4:3, 21:9, 9:16, 3:4) for any platform requirement. Our advanced rendering engine maintains perfect subject consistency across multiple shots while supporting diverse visual styles from photorealistic to artistic interpretations.'
+    "question": "How does Seedance 1.0 Pro pricing work?",
+    "answer": "Our pricing is simple and transparent—no subscriptions, no hidden fees. Seedance 1.0 Pro uses a pay-as-you-go credit system, letting you purchase the right credit pack for your needs. Credits never expire, giving you complete flexibility."
   },
-];
+  {
+    "question": "How are credits calculated and used?",
+    "answer": `Credits are based on video resolution and duration. Higher resolution or longer videos require more processing power, which means more credits. For example:
+
+• 5-second 480p video – 4 credits
+• 10-second 480p video – 8 credits
+• 5-second 720p video – 10 credits
+• 10-second 720p video – 20 credits
+• 5-second 1080p video – 20 credits
+• 10-second 1080p video – 400 credits`
+  },
+  {
+    "question": "Can I use the videos I make for my business or YouTube channel?",
+    "answer": "Yes. Every video created with purchased credits includes full commercial rights. You can use them in marketing, advertising, social media, YouTube, and more—royalty-free. You own 100% of what you create."
+  },
+  {
+    "question": "Are there any restrictions on what I can create?",
+    "answer": "We encourage creativity but strictly prohibit harmful content. Seedance 1.0 Pro cannot be used to produce hateful, dangerous, or explicit adult material. Our commitment is to maintain a safe and responsible creative platform."
+  },
+
+]
+
 
 // 初始显示的FAQ数量
 const initialVisibleCount = 4;
@@ -99,6 +130,14 @@ const openItems = ref(Array(faqs.length).fill(true));
 const toggleItem = (index: number) => {
   openItems.value[index] = !openItems.value[index];
 };
+
+// 滚动到页面顶部
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
 </script>
 
 <style scoped>
@@ -107,7 +146,7 @@ const toggleItem = (index: number) => {
   transform: rotate(180deg);
 }
 
-/* 滑动过渡效果 */
+/* 添加过渡效果 */
 .transition-all {
   transition-property: all;
 }
@@ -120,17 +159,26 @@ const toggleItem = (index: number) => {
   transition-duration: 300ms;
 }
 
-/* 按钮悬浮效果 */
-.hover\:shadow-lg:hover {
-  box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3), 0 4px 6px -2px rgba(124, 58, 237, 0.2);
+/* 增强卡片阴影效果 */
+.shadow-xl {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
 }
 
-/* 添加发光效果 */
-.bg-\[\#7C3AED\] {
-  box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+.hover\:shadow-2xl:hover {
+  box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.15), 0 10px 10px -5px rgba(124, 58, 237, 0.1);
 }
 
-.bg-\[\#7C3AED\]:hover {
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+/* 自定义支持邮箱链接样式 */
+.faq-support-link {
+  color: #7C3AED !important;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.faq-support-link:hover {
+  color: #9461F7 !important;
 }
 </style> 
