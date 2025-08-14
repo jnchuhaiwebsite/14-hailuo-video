@@ -1,17 +1,11 @@
-User-agent: Googlebot
-Allow: /                 # 允许Google抓取全站（默认行为，可省略）
-Disallow: /admin/        # 屏蔽后台管理目录
-Disallow: /tmp/          # 屏蔽临时文件目录
-Disallow: /private/      # 屏蔽私有内容目录
-Disallow: /search?       # 屏蔽动态搜索结果页（如适用）
-
-# 通用规则（适用于所有搜索引擎）
 User-agent: *
 Allow: /  
 Disallow: /admin/        # 其他引擎也屏蔽敏感目录
 Disallow: /tmp/
 Disallow: /private/
 Disallow: /search?
+Disallow: /_nuxt/*
+Disallow: /mypay
 
 # 声明网站地图
 Sitemap: https://www.hailuo2.com/sitemap.xml
