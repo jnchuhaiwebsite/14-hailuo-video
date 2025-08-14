@@ -332,7 +332,7 @@
               <video 
                 v-if="pageLoaded && videoLoadTriggered"
                 ref="previewVideo"
-                src="https://resp.seedancepro.net/seedance/sendance/sendance-1.0-pro-video.mp4"
+                src="https://resp.hailuo2.com/hailuo/video/Seedance-1-0-pro.mp4"
                 :poster="posterUrl"
                 class="w-full h-full max-h-full object-contain rounded-2xl" 
                 autoplay 
@@ -415,7 +415,7 @@ import { useNuxtApp } from 'nuxt/app'
 import { useVideoTaskStore } from '~/stores/videoTask'
 import { useImage } from '#imports'
 const posterUrl = useImage({
-  src: 'https://resp.seedancepro.net/seedance/image_case/1.webp',
+  src: 'https://resp.hailuo2.com/hailuo/image/Seedance-1-0-pro.webp',
   width: 600,
   quality: 80,
   format: 'webp'

@@ -26,18 +26,15 @@ export const navConfig = {
 // 主路由配置
 export const mainRoutes: RouteItem[] = [
   { id: "hero", name: "Home", icon: "home" },
+
   { id: "AIVideo", name: "AI Video", icon: "AI Video",
     children: [
       { name: "Hailuo 02", href: "/hailuo-ai-video-generator" },
       { name: "Seedance 1.0 Pro", href: "/seedance-1-0-pro" },
     ]
   },
-  { id: "Products", name: "Products", icon: "Products",
-    children: [
-      { name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo", openInNewTab: true,showBeta: true  },
-      { name: "iOS App", href: "https://apps.apple.com/gb/app/hailuovideo-ai-generator/id6747421701", openInNewTab: true ,showBeta: true },
-    ]
-  },
+  { id: "APP", name: "APP", icon: "APP", href: "/hailuo-app" },
+
   // { id: "how-it-works", name: "How It Works", icon: "steps" },
   // { id: "features-showcase", name: "Features", icon: "star" },
   // 评价
