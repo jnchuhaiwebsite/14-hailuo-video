@@ -43,27 +43,39 @@
                     v-show="openDropdown === index"
                     @mouseenter="openDropdown = index"
                     @mouseleave="openDropdown = null"
-                    class="absolute top-full left-0 mt-2 w-40 backdrop-blur-md shadow-lg z-50 border border-gray-600/30 rounded-lg overflow-hidden"
-                    style="background: rgba(25, 23, 28, 0.95)"
+                    class="absolute top-full left-0 mt-2 backdrop-blur-md shadow-lg z-50 border border-gray-600/30 rounded-lg overflow-hidden"
+                    :class="{'whitespace-nowrap': getSubNavStyle().noWrap}"
+                    style="background: rgba(25, 23, 28, 0.95); min-width: 160px;"
                   >
                     <template v-for="(child, childIndex) in section.children" :key="childIndex">
+                      <!-- 外部链接使用a标签 -->
                       <a
-                        v-if="child.href"
+                        v-if="child.href && (child.href.startsWith('http') || shouldOpenInNewTab(child))"
                         :href="child.href"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors flex items-center justify-between"
                       >
                         <span>{{ child.name }}</span>
-                        <span class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full">Beta</span>
+                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
                       </a>
+                      
+                      <!-- 内部链接使用NuxtLink -->
+                      <NuxtLink
+                        v-else-if="child.href"
+                        :to="child.href"
+                        class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors flex items-center justify-between"
+                      >
+                        <span>{{ child.name }}</span>
+                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                      </NuxtLink>
                       <div
                         v-else-if="child.id"
                         @click="handleNavClick(child.id)"
                         class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>{{ child.name }}</span>
-                        <span class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full">Beta</span>
+                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
                       </div>
                     </template>
                   </div>
@@ -183,24 +195,39 @@
                   <div
                     v-show="openMobileDropdown === index"
                     class="pl-4 space-y-1"
+                    :class="{'whitespace-nowrap overflow-x-auto': getSubNavStyle().noWrap}"
                   >
                     <template v-for="(child, childIndex) in section.children" :key="childIndex">
+                      <!-- 外部链接使用a标签 -->
                       <a
-                        v-if="child.href"
+                        v-if="child.href && (child.href.startsWith('http') || shouldOpenInNewTab(child))"
                         :href="child.href"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors flex items-center"
                         @click="() => { isOpen = false; }"
                       >
-                        {{ child.name }}
+                        <span>{{ child.name }}</span>
+                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
                       </a>
+                      
+                      <!-- 内部链接使用NuxtLink -->
+                      <NuxtLink
+                        v-else-if="child.href"
+                        :to="child.href"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors flex items-center"
+                        @click="() => { isOpen = false; }"
+                      >
+                        <span>{{ child.name }}</span>
+                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                      </NuxtLink>
                       <div
                         v-else-if="child.id"
                         @click="() => { handleNavClick(child.id); isOpen = false; }"
-                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors cursor-pointer"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors cursor-pointer flex items-center"
                       >
-                        {{ child.name }}
+                        <span>{{ child.name }}</span>
+                        <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
                       </div>
                     </template>
                   </div>
@@ -273,8 +300,16 @@ const router = useRouter();
 const route = useRoute();
 
 // 使用导航工具
-const { activeSection, sections, handleNavClick, handleScroll, executeScroll } =
-  useNavigation();
+const { 
+  activeSection, 
+  sections, 
+  handleNavClick, 
+  handleScroll, 
+  executeScroll,
+  shouldOpenInNewTab,
+  shouldShowBeta,
+  getSubNavStyle
+} = useNavigation();
 
 // 切换PC端下拉菜单
 const toggleDropdown = (index: number) => {
@@ -345,5 +380,21 @@ onBeforeUnmount(() => {
 /* 覆盖hover效果 */
 .hover-text-theme:hover {
   color: var(--baby-coral) !important;
+}
+
+/* 子导航样式 */
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -ms-overflow-style: none; /* IE和Edge */
+}
+
+/* 隐藏Chrome等浏览器的滚动条 */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
 }
 </style> 

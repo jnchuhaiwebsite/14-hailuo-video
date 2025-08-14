@@ -33,6 +33,10 @@ export const urlList = {
   getSubplansTest: baseUrl + '/api/website/odl',     // 获取测试套餐信息
   getPayLog: baseUrl + '/api/user/pay_log', // 获取支付记录
   statistics: baseUrl + '/api/statistics/pvuv', // 删除用户作品列表
+
+  //seedance
+  createTasksImgVideoSeedance: baseUrl + '/api/task/seedance/img2video',     // 创建任务-图生视频
+  createTasksTextVideoSeedance: baseUrl + '/api/task/seedance/text2video',     // 创建任务-文生视频
 }
 
 /**
@@ -533,6 +537,44 @@ const apiRequest = async <T>(url: string, method: 'GET' | 'POST', data?: any, ne
     }
   } catch (error: any) {
     console.error(`API请求异常 ${method} ${url}:`, error);
+    throw error;
+  }
+}
+
+/**
+ * 创建任务-文生视频
+ * @param prompt - 描述-必填
+ * @param resolution - 分辨率-必填
+ * @param ratio - 比例-必填
+ * @param duration - 时长-必填
+ * @param is_show - 是否显示-必填
+ * @returns {Object} - 返回任务结果
+ */
+export const createTaskTextVideoSeedance = async (data: any) => {
+  try {
+    return await apiRequest(urlList.createTasksTextVideoSeedance, 'POST', data, true);
+  } catch (error) {
+    console.error('创建任务失败:', error);
+    throw error;
+  }
+}
+
+
+/**
+ * 创建任务-图生视频
+ * @param prompt - 描述-必填
+ * @param image_file - 图片文件-必填
+ * @param resolution - 分辨率-必填
+ * @param ratio - 比例-必填
+ * @param duration - 时长-必填
+ * @param is_show - 是否显示-必填
+ * @returns {Object} - 返回任务结果
+ */
+export const createTaskImgVideoSeedance = async (data: any) => {
+  try {
+    return await apiRequest(urlList.createTasksImgVideoSeedance, 'POST', data, true);
+  } catch (error) {
+    console.error('创建任务失败:', error);
     throw error;
   }
 }

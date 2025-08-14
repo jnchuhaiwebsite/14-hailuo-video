@@ -73,7 +73,7 @@ import { useNotificationStore } from '~/stores/notification';
 const notificationStore = useNotificationStore();
 useSeo({
   title: "Seedance 1.0 Pro: Advanced Multi-Shot AI Video Generator",
-  description: "Create professional cinematic videos with Seedance 1.0 Pro. Transform text or images into seamless multi-shot narratives with industry-leading motion quality. Try now."
+  description: "Create professional cinematic videos with Seedance 1.0 Pro. Transform text or images into seamless multi-shot narratives with industry-leading motion quality."
 });
 
 // 处理支付回调

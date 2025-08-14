@@ -426,7 +426,7 @@ const posterUrl = useImage({
 import { correctImageOrientation } from '~/utils/imageOrientation'
 
 // 接口
-import { createTaskImgVideo, createTaskTextVideo,checkTask,getScore,upload } from '~/api'
+import { createTaskImgVideoSeedance, createTaskTextVideoSeedance,checkTask,getScore,upload } from '~/api'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -1244,7 +1244,7 @@ const handleVideoRequest = async () => {
     let requestData = {} as any;
     let request = null;
     if(activeTab.value == 'text'){
-      request = createTaskTextVideo
+      request = createTaskTextVideoSeedance
       requestData = {
         prompt: prompt.value,
         resolution: resolution.value,
@@ -1253,7 +1253,7 @@ const handleVideoRequest = async () => {
         is_show: isShow.value
       }
     }else{
-      request = createTaskImgVideo
+      request = createTaskImgVideoSeedance
       requestData = {
           image_url: selectedImage.value||imagePreview.value,
           prompt: prompt.value,
