@@ -14,12 +14,14 @@ export interface RouteItem {
 export const mainRoutes: RouteItem[] = [
   { id: "hero", name: "Home", icon: "home" },
   { id: "AIVideo", name: "AI Video", icon: "AI Video", href: "/hailuo-ai-video-generator" },
-  { id: "Products", name: "Products", icon: "Products",
-    children: [
-      { name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo" },
-      { name: "iOS App", href: "https://apps.apple.com/gb/app/hailuovideo-ai-generator/id6747421701" },
-    ]
-  },
+  { id: "APP", name: "APP", icon: "APP", href: "/hailuo-app" },
+  // { id: "Products", name: "Products", icon: "Products",
+  //   children: [
+  //     { name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo" },
+  //     { name: "iOS App", href: "https://apps.apple.com/gb/app/hailuovideo-ai-generator/id6747421701" },
+  //   ]
+  // },
+
   // { id: "how-it-works", name: "How It Works", icon: "steps" },
   // { id: "features-showcase", name: "Features", icon: "star" },
   // 评价
