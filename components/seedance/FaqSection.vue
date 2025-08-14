@@ -93,7 +93,7 @@ const initialVisibleCount = 4;
 const visibleCount = ref(initialVisibleCount);
 
 // 跟踪每个FAQ项的展开状态
-const openItems = ref(Array(faqs.length).fill(false));
+const openItems = ref(Array(faqs.length).fill(true));
 
 // 切换FAQ项的展开/折叠状态
 const toggleItem = (index: number) => {

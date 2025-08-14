@@ -5,14 +5,20 @@
   >
 
       <!-- 标题区 -->
-      <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
-      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
+      <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1600px] mx-auto px-2 sm:px-3 lg:px-4">
+      <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x pb-2">
         Hailuo 02 AI Video Generator Pricing
         <!-- - Transform Your Creative Moments into Blockbuster Videos Instantly. -->
       </h1>
-      <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
+      <p class="mt-4 text-base text-gray-200 text-center max-w-4xl font-medium">
         Affordable and Flexible Plans to Meet Your Video Creation Needs – Start Creating Professional Videos Today
       </p>
+                 <div class="mt-6 max-w-5xl mx-auto border-2 border-[#7C3AED]/30 rounded-full px-8 py-4 backdrop-blur-sm bg-[#7C3AED]/5">
+           <p class="text-lg text-center font-semibold">
+             <span>🔥</span>
+             <span class="bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-lg"> Recommendation: Choose higher-tier plans for lower credit costs!</span>
+           </p>
+         </div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4">

@@ -15,40 +15,16 @@
       </section>
 
       <!-- 案例展示1 -->
-      <section id="cases">
-        <keep-alive>
-          <CaseStudies />
-        </keep-alive>
-      </section>
+      <CaseStudies />
       
-      <!-- 操作步骤 -->
-      <section id="how-it-works">
-        <keep-alive>
-          <HowItWorks />
-        </keep-alive>
-      </section>
+      <!-- Seedance 1.0 Pro 介绍模块 -->
+      <WhatIsSeedance />
 
-      <!-- 特性展示 -->
-      <section id="features-showcase">
-        <keep-alive>
-          <FeatureShowcase />
-        </keep-alive>
-      </section>
-
-      <!-- 用户评论 -->
-      <!-- <section id="Reviews">
-        <keep-alive>
-          <Reviews />
-        </keep-alive>
-      </section> -->
+      <!-- Seedance 1.0 核心优势 -->
+      <SeedanceAdvantages />
 
       <!-- 常见问题模块 -->
-      <section id="faq">
-        <keep-alive>
-          <FaqSection />
-        </keep-alive>
-      </section>
-      <FreeCta />
+      <FaqSection />
     </main>
   </div>
 </template>
@@ -59,6 +35,8 @@ import { useSeo } from '~/composables/useSeo';
 
 import TitleSection from '~/components/seedance/TitleSection.vue';
 import MainSection from '~/components/seedance/MainSection.vue';
+import WhatIsSeedance from '~/components/seedance/WhatIsSeedance.vue';
+import SeedanceAdvantages from '~/components/seedance/SeedanceAdvantages.vue';
 
 // const PricingPlans = defineAsyncComponent(() => import('~/components/PricingPlans.vue'));
 // const HomeHero = defineAsyncComponent(() => import('~/components/seedance/seedanceHero.vue'));
@@ -72,8 +50,8 @@ const Reviews = defineAsyncComponent(() => import('~/components/seedance/Reviews
 import { useNotificationStore } from '~/stores/notification';
 const notificationStore = useNotificationStore();
 useSeo({
-  title: "Seedance 1.0 Pro: Advanced Multi-Shot AI Video Generator",
-  description: "Create professional cinematic videos with Seedance 1.0 Pro. Transform text or images into seamless multi-shot narratives with industry-leading motion quality."
+  title: "Seedance 1.0 Pro AI Video Generator | Create Pro Videos",
+  description: "Seedance 1.0 Pro AI Video Generator lets you create cinematic multi-shot videos in 1080p with style control and smooth motion. Perfect for creators and marketers"
 });
 
 // 处理支付回调

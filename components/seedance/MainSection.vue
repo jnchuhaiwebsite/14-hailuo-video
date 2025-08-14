@@ -413,7 +413,6 @@ import { useUserStore } from '~/stores/user'
 import { useRoute } from 'vue-router'
 import { useNuxtApp } from 'nuxt/app'
 import { useVideoTaskStore } from '~/stores/videoTask'
-import { useNotificationStore } from '~/stores/notification'
 import { useImage } from '#imports'
 const posterUrl = useImage({
   src: 'https://resp.seedancepro.net/seedance/image_case/1.webp',
@@ -430,7 +429,7 @@ import { createTaskImgVideoSeedance, createTaskTextVideoSeedance,checkTask,getSc
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const notificationStore = useNotificationStore()
+const { $toast } = useNuxtApp() as any
 
 const route = useRoute()
 const activeTab = ref('text') // 'text' 或 'image'
@@ -529,37 +528,37 @@ const scoreConfigData = {
       "id": 1,
       "resolution": "480p",
       "duration": 5,
-      "score": 2
+      "score": 4
     },
     {
       "id": 2,
       "resolution": "480p",
       "duration": 10,
-      "score": 4
+      "score": 8
     },
     {
       "id": 3,
       "resolution": "1080p",
       "duration": 5,
-      "score": 10
+      "score": 20
     },
     {
       "id": 4,
       "resolution": "1080p",
       "duration": 10,
-      "score": 20
+      "score": 40
     },
     {
       "id": 5,
       "resolution": "720p",
       "duration": 5,
-      "score": 5
+      "score": 10
     },
     {
       "id": 6,
       "resolution": "720p",
       "duration": 10,
-      "score": 10
+      "score": 20
     }
   ],
   "success": true
@@ -984,22 +983,14 @@ const handleImageUpload = async (event: Event) => {
   // 1. 检查图片格式
   const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/bmp', 'image/tiff', 'image/gif']
   if (!allowedTypes.includes(file.type)) {
-    notificationStore.addNotification({
-      taskId: `image-type-error-${Date.now()}`,
-      status: 'error',
-      message: 'Unsupported image format. Please use JPEG, PNG, WEBP, BMP, TIFF, or GIF.'
-    })
+    $toast.error('Unsupported image format. Please use JPEG, PNG, WEBP, BMP, TIFF, or GIF.');
     cleanup()
     return
   }
 
   // 2. 检查图片大小
   if (file.size > 10 * 1024 * 1024) { // 10MB
-    notificationStore.addNotification({
-      taskId: `image-size-error-${Date.now()}`,
-      status: 'error',
-      message: 'Image size should be less than 10MB.'
-    })
+    $toast.error('Image size should be less than 10MB.');
     cleanup()
     return
   }
@@ -1013,11 +1004,7 @@ const handleImageUpload = async (event: Event) => {
       
       // 检查宽高长度
       if (width < 300 || width > 6000 || height < 300 || height > 6000) {
-        notificationStore.addNotification({
-          taskId: `image-dimension-error-${Date.now()}`,
-          status: 'error',
-          message: 'Image dimensions must be between 300px and 6000px.'
-        })
+        $toast.error('Image dimensions must be between 300px and 6000px.');
         cleanup()
         return
       }
@@ -1025,11 +1012,7 @@ const handleImageUpload = async (event: Event) => {
       // 检查宽高比
       const aspectRatio = width / height
       if (aspectRatio < 0.4 || aspectRatio > 2.5) {
-        notificationStore.addNotification({
-          taskId: `image-aspect-ratio-error-${Date.now()}`,
-          status: 'error',
-          message: 'Image aspect ratio must be between 0.4 and 2.5.'
-        })
+        $toast.error('Image aspect ratio must be between 0.4 and 2.5.');
         cleanup()
         return
       }
@@ -1040,21 +1023,13 @@ const handleImageUpload = async (event: Event) => {
       cleanup()
     }
     img.onerror = () => {
-        notificationStore.addNotification({
-            taskId: `image-load-error-${Date.now()}`,
-            status: 'error',
-            message: 'Failed to load image, it may be corrupted.'
-        })
+        $toast.error('Failed to load image, it may be corrupted.');
         cleanup()
     }
     img.src = e.target?.result as string
   }
   reader.onerror = () => {
-    notificationStore.addNotification({
-        taskId: `image-read-error-${Date.now()}`,
-        status: 'error',
-        message: 'Failed to read file.'
-    })
+    $toast.error('Failed to read file.');
     cleanup()
   }
   reader.readAsDataURL(file)
@@ -1148,6 +1123,12 @@ const checkTaskStatus = async (taskId: string) => {
         stopProgressAnimation()
         stopCheckTask()
         
+        // 显示成功提示
+        $toast.success('Video generation completed successfully!');
+        
+        // 更新用户信息以刷新剩余积分
+        await userStore.fetchUserInfo(true)
+        
         // 清除任务状态
         videoTaskStore.clearTask()
         
@@ -1160,15 +1141,15 @@ const checkTaskStatus = async (taskId: string) => {
         localStorage.removeItem('seedanceFormCache')
       }else if(response.data.status == '-1' || response.data.status == '-2'){
         // 任务失败
-        notificationStore.addNotification({
-          taskId: `task-error-${Date.now()}`,
-          status: 'error',
-          message: response.data.status_msg || 'Video generation failed'
-        });
+        $toast.error(response.data.status_msg || 'Video generation failed');
         // 停止进度条动画
         stopProgressAnimation()
         // 停止检查任务状态
         stopCheckTask()
+        
+        // 更新用户信息以刷新剩余积分（任务失败可能也会消耗积分）
+        await userStore.fetchUserInfo(true)
+        
         // 清除任务状态
         videoTaskStore.clearTask()
         // 清除表单缓存
@@ -1176,15 +1157,15 @@ const checkTaskStatus = async (taskId: string) => {
       }
     } else {
       // 任务失败
-      notificationStore.addNotification({
-        taskId: `task-error-${Date.now()}`,
-        status: 'error',
-        message: response.msg || 'Video generation failed'
-      });
+      $toast.error(response.msg || 'Video generation failed');
       // 停止进度条动画
       stopProgressAnimation()
       // 停止检查任务状态
       stopCheckTask()
+      
+      // 更新用户信息以刷新剩余积分
+      await userStore.fetchUserInfo(true)
+      
       // 清除任务状态
       videoTaskStore.clearTask()
       // 清除表单缓存
@@ -1198,19 +1179,11 @@ const checkTaskStatus = async (taskId: string) => {
 // 视频生成请求
 const handleVideoRequest = async () => {
   if (activeTab.value === 'image' && !selectedImage.value) {
-    notificationStore.addNotification({
-      taskId: `image-upload-warning-${Date.now()}`,
-      status: 'info',
-      message: 'Please upload an image'
-    });
+    $toast.warning('Please upload an image');
     return
   }
   if (!prompt.value.trim()) {
-    notificationStore.addNotification({
-      taskId: `prompt-warning-${Date.now()}`,
-      status: 'info',
-      message: 'Please enter a prompt'
-    });
+    $toast.warning('Please enter a prompt');
     return
   }
   // 清理旧的视频URL
@@ -1228,11 +1201,7 @@ const handleVideoRequest = async () => {
     if (uploadResponse.code === 200) {
       selectedImage.value = uploadResponse.data as any
     } else {
-      notificationStore.addNotification({
-        taskId: `image-upload-error-${Date.now()}`,
-        status: 'error',
-        message: uploadResponse.msg || 'Failed to upload image'
-      });
+      $toast.error(uploadResponse.msg || 'Failed to upload image');
       isGenerating.value = false
       stopProgressAnimation()
       return
@@ -1278,8 +1247,8 @@ const handleVideoRequest = async () => {
       
       // 开始检查任务状态
       if (response.data?.task_id) {
-        // 启动通知系统的任务检查
-        // notificationStore.startCheckingTask(response.data.task_id)
+        // 显示开始生成的提示
+        $toast.success('Video generation started, please wait...');
         
         // 开始循环检查任务状态
         checkTaskInterval = setInterval(() => {
@@ -1288,11 +1257,7 @@ const handleVideoRequest = async () => {
       }
     } else {
       isGenerating.value = false
-      notificationStore.addNotification({
-        taskId: `video-gen-error-${Date.now()}`,
-        status: 'error',
-        message: response.msg || 'Video generation failed, please try again'
-      });
+      $toast.error(response.msg || 'Video generation failed, please try again');
       stopProgressAnimation()
        // 清除请求缓存
        localStorage.removeItem('seedanceFormCache')
@@ -1300,11 +1265,7 @@ const handleVideoRequest = async () => {
   } catch (error) {
     console.error('创建任务失败！', error)
     isGenerating.value = false
-    notificationStore.addNotification({
-      taskId: `task-create-error-${Date.now()}`,
-      status: 'error',
-      message: 'Failed to create video generation task'
-    });
+    $toast.error('Failed to create video generation task');
     stopProgressAnimation()
     // 清除请求缓存
     localStorage.removeItem('seedanceFormCache')
@@ -1353,13 +1314,18 @@ const remainingTimes = ref(userStore.userInfo?.free_limit+userStore.userInfo?.re
 // 修改 checkLoginStatus 函数
 const checkLoginStatus = async () => {
   if (!userInfo.value) {
-    // 缓存当前表单数据（用于请求时）
-    cacheFormData()
-    const loginButton = document.getElementById('bindLogin')
-    if (loginButton) {
-      loginButton.click()
+    // 先尝试获取用户信息
+    await userStore.fetchUserInfo()
+    
+    if (!userStore.userInfo) {
+      // 缓存当前表单数据（用于请求时）
+      cacheFormData()
+      const loginButton = document.getElementById('bindLogin')
+      if (loginButton) {
+        loginButton.click()
+      }
+      return false
     }
-    return false
   }
   return true
 }
@@ -1375,15 +1341,20 @@ watch(
 
 // 检查使用限制
 const checkUsageLimit = () => {
+  // 检查是否有可用次数
   if (remainingTimes.value <= 0) {
-    notificationStore.addNotification({
-      taskId: `credits-warning-${Date.now()}`,
-      status: 'info',
-      message: 'Usage limit reached. Please upgrade to premium for more credits'
-    });
-    router.push('/pricing')
+    $toast.warning('Usage limit reached. Please upgrade to premium for more credits');
+    router.push('/pricing');
     return false
   }
+
+  // 检查用户积分是否足够
+  if (remainingTimes.value < needCredits.value) {
+    $toast.error(`Insufficient credits. This operation requires ${needCredits.value} credits, but your account only has ${remainingTimes.value} credits`);
+    router.push('/pricing');
+    return false
+  }
+  
   return true
 }
 
@@ -1412,11 +1383,7 @@ const handleDownload = async () => {
     window.URL.revokeObjectURL(url)
   } catch (error) {
     console.error('Download failed:', error)
-    notificationStore.addNotification({
-      taskId: `download-error-${Date.now()}`,
-      status: 'error',
-      message: 'Download failed, please try again later'
-    });
+    $toast.error('Download failed, please try again later');
   } finally {
     isDownloading.value = false
   }

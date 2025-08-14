@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-          Seedance 1.0 Pro Creative Gallery
+          Seedance 1.0 Pro Examples
         </h2>
         <p class="mt-4 text-xl text-gray-300">
           Browse these professional Seedance 1.0 Pro examples, copy any prompt verbatim, and instantly create your own studio-quality videos with our advanced multi-shot AI technology.
@@ -75,20 +75,19 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useNotificationStore } from '~/stores/notification';
-
-const notificationStore = useNotificationStore();
+import { useNuxtApp } from 'nuxt/app'
+const { $toast } = useNuxtApp() as any
 
 const cases = [
   {
-    video: "https://resp.seedancepro.net/seedance/CaseStudies/Motorcycle-Rider.mp4",
-    poster: "https://resp.seedancepro.net/seedance/image_case/Motorcycle-Rider.webp",
-    desc: "A superbike rider leans hard into a sharp turn on a winding mountain road at night. The powerful headlight cuts through the pitch-black darkness, creating long, dramatic light trails. High speed, cinematic."
+    video: "https://resp.hailuo2.com/hailuo/video/City-Awakens-with-Cycling.mp4",
+    poster: "https://resp.hailuo2.com/hailuo/image/City-Awakens-with-Cycling.webp",
+    desc: "The sun slowly rises between tall buildings. [Ground tracking shot] Bicycle tires roll over dew-covered streets. The rider passes under a bridge, where sunlight filters through in dappled patches, as the whole city gradually wakes."
   },
   {
-    video: "https://resp.seedancepro.net/seedance/CaseStudies/Daisy-Field.mp4",
-    poster: "https://resp.seedancepro.net/seedance/image_case/Daisy-Field.webp",
-    desc: "An ethereal field of daisies gently sways in the breeze, with a light mist lingering in the background. [Macro tilt-shift shot] The camera focuses on a single, dew-kissed daisy petal, swaying delicately. [Slow dolly-out] The camera then slowly pulls back, revealing the vast, sweeping depth of the entire field."
+    video: "https://resp.hailuo2.com/hailuo/video/Comic-Style-Morning-Stretch.mp4",
+    poster: "https://resp.hailuo2.com/hailuo/image/Comic-Style-Morning-Stretch.webp",
+    desc: "In an American comic-style 2D animation, a medium-close shot captures a young, handsome white man releasing his hands, stretching, and yawning. The scene cuts to a woman holding a camera, photographing the man, who sits with his hands clasped, elbows resting on his knees. The shot then switches to an overhead view of a magazine on a table, as a hand enters from the lower left corner, setting down a steaming cup of coffee on the magazine."
   },
   {
     video: "https://resp.seedancepro.net/seedance/CaseStudies/Pixel-City.mp4",
@@ -106,9 +105,9 @@ const cases = [
     desc: "Multiple shots, film noir style. Shot 1: A detective enters a dimly lit room, light slanting through dusty blinds. Shot 2: A close-up on his gloved hand examining clues on a desk—a faded photograph, a mysterious key. Shot 3: He picks up the key, holding it up to the light. Shot 4: Cut to a tight shot of his face, half in shadow, his eyes narrowing in thought."
   },
   {
-    video: "https://resp.seedancepro.net/seedance/CaseStudies/Old-Man-in-a-Cafe.mp4",
-    poster: "https://resp.seedancepro.net/seedance/image_case/Old-Man-in-a-Cafe.webp",
-    desc: "In a cozy cafe, a close-up shot of an elderly man. He sits lost in thought, his gaze distant and pensive. His expression slowly transforms as an idea dawns on him, shifting from deep contemplation to a soft, knowing smile. He leans forward slightly, a glint of discovery in his eyes, holding a mysterious yet satisfied grin."
+    video: "https://resp.hailuo2.com/hailuo/video/Quantum-Lab-Crisis.mp4",
+    poster: "https://resp.hailuo2.com/hailuo/image/Quantum-Lab-Crisis.webp",
+    desc: "A surreal sci-fi movie scene in a panoramic view: inside a futuristic laboratory, at the center stands a quantum computer, surrounded by a scientist operating a holographic projection screen. The camera cuts to a close-up of the quantum computer, which suddenly bursts into a red glow. Then the shot shifts to a low-angle close-up of the scientist’s face, the red halo casting over him as his expression turns anxious."
   },
   {
     video: "https://resp.seedancepro.net/seedance/CaseStudies/Felted-Deer.mp4",
@@ -121,9 +120,9 @@ const cases = [
     desc: "Cinematic aerial drone shot of a dense forest at sunrise. Golden hour light streams through thick layers of morning mist. The camera slowly pushes forward just above the tree canopy, gradually revealing a majestic waterfall in the distance. Hyperrealistic detail, soft lighting, and a shallow depth of field create a dreamy, ethereal atmosphere."
   },
   {
-    video: "https://resp.seedancepro.net/seedance/CaseStudies/Girl-on-the-Rocks.mp4",
-    poster: "https://resp.seedancepro.net/seedance/image_case/Girl-on-the-Rocks.webp",
-    desc: "A beautiful young woman in a white dress stands on the rocks by the sea, her hair flowing in the wind. She gazes down at a message in a bottle she holds, her fingertips gently tracing its surface. The background is a vast, azure ocean with gentle waves. Handheld camera shot with a slight, natural shake, as if breathing. Focus is on her side profile."
+    video: "https://resp.hailuo2.com/hailuo/video/Red-Alien-Horizon.mp4",
+    poster: "https://resp.hailuo2.com/hailuo/image/Red-Alien-Horizon.webp",
+    desc: "At sunset, a blazing red alien landscape stretches out. Massive arched rock formations rise from the plain. A giant planet hangs low in the sky. Three human explorers walk slowly across the reflective ground. The camera follows them toward the gleaming horizon, their long shadows stretching across the warm red sand. A gentle breeze lifts crimson dust. Ahead, towering spires pierce the clouds like ancient alien monoliths. A colossal ringed planet gradually emerges on the right. The camera slowly tracks along their left side, framing their silhouettes against the molten sky, highlighting their scale and solitude. As they approach the largest structure, the reflection of the sky and shapes flickers beneath them, like fading memories of Earth."
   }
 ];
 
@@ -262,11 +261,7 @@ onUnmounted(() => {
 function copyDesc(idx: number) {
   navigator.clipboard.writeText(cases[idx].desc);
   copiedIndex.value = idx;
-  notificationStore.addNotification({
-    taskId: `copy-success-${Date.now()}`,
-    status: 'success',
-    message: 'copied to clipboard'
-  });
+  $toast.success('copied to clipboard')
 }
 
 function scrollToTop() {

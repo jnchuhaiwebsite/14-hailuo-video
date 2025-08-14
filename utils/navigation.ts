@@ -28,8 +28,8 @@ export const mainRoutes: RouteItem[] = [
   { id: "hero", name: "Home", icon: "home" },
   { id: "AIVideo", name: "AI Video", icon: "AI Video",
     children: [
-      { name: "Hailuo AI Video Generator", href: "/hailuo-ai-video-generator" },
-      { name: "Seedance 1.0 Pro", href: "/seedance" },
+      { name: "Hailuo 02", href: "/hailuo-ai-video-generator" },
+      { name: "Seedance 1.0 Pro", href: "/seedance-1-0-pro" },
     ]
   },
   { id: "Products", name: "Products", icon: "Products",

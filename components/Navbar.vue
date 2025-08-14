@@ -330,8 +330,10 @@ const toggleMobileDropdown = (index: number) => {
 };
 
 onMounted(() => {
-  // 只重置overflow，不改变滚动位置
-  document.body.style.overflow = "";
+  // 仅在移动菜单关闭状态下设置overflow
+  if (!isOpen.value) {
+    document.body.style.overflow = "";
+  }
 
   // 添加滚动事件监听
   window.addEventListener("scroll", handleScroll);
@@ -353,13 +355,21 @@ watch(isOpen, (newValue) => {
   if (newValue) {
     document.body.style.overflow = "hidden";
   } else {
-    document.body.style.overflow = "";
+    // 给一个短暂延迟再恢复滚动，防止布局跳动
+    setTimeout(() => {
+      if (!isOpen.value) { // 再次检查，防止快速切换导致的问题
+        document.body.style.overflow = "";
+      }
+    }, 50);
   }
 });
 
-// 组件卸载时恢复body滚动并移除事件监听
+// 组件卸载时只移除事件监听，不修改overflow
 onBeforeUnmount(() => {
-  document.body.style.overflow = "";
+  // 只有当移动菜单关闭时才重置overflow，防止错位
+  if (!isOpen.value) {
+    document.body.style.overflow = "";
+  }
   window.removeEventListener("scroll", handleScroll);
 });
 </script>

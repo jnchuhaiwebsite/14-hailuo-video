@@ -2,7 +2,7 @@
   <!-- 标题区 -->
   <div class=" w-full max-w-[1360px] mx-auto flex flex-col items-center relative z-10 px-2 sm:px-3 lg:px-4 mt-[64px] mb-10 bg-blue-pale/80 backdrop-blur-sm">
     <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
-      Seedance 1.0 Pro: Next-Gen AI Video Creator
+      Seedance 1.0 Pro AI Video Generator
     </h1>
     <!-- 注册送积分提示 -->
     <!-- <div class="mt-3 sm:mt-4 px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-2.5 lg:py-3 bg-gradient-to-r from-[#7C3AED]/20 to-[#7C3AED]/10 rounded-full border border-[#7C3AED]/30 backdrop-blur-sm inline-flex items-center max-w-full">

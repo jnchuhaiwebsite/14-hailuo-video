@@ -35,8 +35,8 @@ export const urlList = {
   statistics: baseUrl + '/api/statistics/pvuv', // 删除用户作品列表
 
   //seedance
-  createTasksImgVideoSeedance: baseUrl + '/api/task/seedance/img2video',     // 创建任务-图生视频
-  createTasksTextVideoSeedance: baseUrl + '/api/task/seedance/text2video',     // 创建任务-文生视频
+  createTasksImgVideoSeedance: baseUrl + '/api/task/volcengine/img2video',     // 创建任务-图生视频
+  createTasksTextVideoSeedance: baseUrl + '/api/task/volcengine/text2video',     // 创建任务-文生视频
 }
 
 /**
