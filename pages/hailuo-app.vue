@@ -4,117 +4,12 @@
     <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
       <div class="text-center">
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
-          Hailuo App · Advanced AI Video Creator for Mobile
+          Download Hailuo App
 
         </h1>
-        <p class="mt-3 sm:mt-4 md:mt-5 lg:mt-6 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-200 text-center max-w-4xl sm:max-w-5xl lg:max-w-6xl font-medium leading-relaxed px-2 sm:px-3">
-          Experience Hailuo App, the industry-leading mobile AI video creation tool trusted by content creators worldwide. Create professional 1080p videos directly from your smartphone with advanced AI technology.
+        <p class="mt-4 sm:mt-6 md:mt-7 lg:mt-8 mb-6 sm:mb-8 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-200 text-center max-w-4xl sm:max-w-5xl lg:max-w-6xl font-medium leading-relaxed px-2 sm:px-3">
+          Create stunning 1080p AI videos anytime, anywhere on your phone.
         </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-2 sm:mt-3 md:mt-4 lg:mt-6">
-          <a 
-            href="#download" 
-            class="inline-flex items-center gap-2.5 px-5 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14"/>
-            </svg>
-            Download Now
-          </a>
-          <a 
-            href="#advantages" 
-            class="inline-flex items-center gap-2.5 px-5 py-3.5 text-base font-semibold text-gray-300 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-[#7C3AED]/30 transition-all duration-300"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-16H3l9 16z"/>
-            </svg>
-            Explore Benefits
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- APP vs WEB 优势 -->
-    <section id="advantages" class="py-12 sm:py-16 lg:py-20">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <div class="text-[#7C3AED] font-bold text-xs uppercase tracking-widest mb-3">
-            MOBILE VS DESKTOP
-          </div>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-4">
-            Why Choose Mobile App Over Web-Based Solutions?
-          </h2>
-          <p class="max-w-3xl mx-auto text-gray-300 leading-relaxed">
-            Based on our expert analysis and user feedback, Hailuo App delivers measurably superior efficiency, convenience, and security compared to browser-based alternatives. Here's why mobile-first matters:
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <article class="relative overflow-hidden bg-gradient-to-b from-white/5 to-white/3 border border-white/10 rounded-2xl p-6 min-h-[240px] group hover:border-[#7C3AED]/30 transition-all duration-300">
-            <div class="absolute inset-auto -right-10 -bottom-10 w-44 h-44 bg-gradient-to-br from-[#7C3AED]/20 to-transparent rounded-full transform rotate-12"></div>
-            <div class="relative z-10">
-              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7C3AED]/20 to-[#7C3AED]/40 border border-[#7C3AED]/30 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-[#7C3AED]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4z"/>
-                </svg>
-              </div>
-              <h3 class="text-lg font-semibold text-white mb-3">📱 On-the-Go Creation</h3>
-              <p class="text-gray-300 leading-relaxed">
-                Create high-quality Hailuo AI videos anywhere with our mobile app. Research shows mobile creators are 78% more likely to complete projects due to flexibility - whether during commutes, coffee breaks, or when inspiration strikes.
-              </p>
-            </div>
-          </article>
-
-          <article class="relative overflow-hidden bg-gradient-to-b from-white/5 to-white/3 border border-white/10 rounded-2xl p-6 min-h-[240px] group hover:border-[#7C3AED]/30 transition-all duration-300">
-            <div class="absolute inset-auto -right-10 -bottom-10 w-44 h-44 bg-gradient-to-br from-[#7C3AED]/20 to-transparent rounded-full transform rotate-12"></div>
-            <div class="relative z-10">
-              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7C3AED]/20 to-[#7C3AED]/40 border border-[#7C3AED]/30 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-[#7C3AED]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h3zm-3 4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3zm-3 4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h3z"/>
-                </svg>
-              </div>
-              <h3 class="text-lg font-semibold text-white mb-3">📹 Direct Camera Access</h3>
-              <p class="text-gray-300 leading-relaxed">
-                Hailuo App provides direct camera integration that desktop alternatives can't match. Instantly transform live footage with our proprietary AI enhancement algorithm, developed by our team of computer vision experts.
-              </p>
-            </div>
-          </article>
-
-          <article class="relative overflow-hidden bg-gradient-to-b from-white/5 to-white/3 border border-white/10 rounded-2xl p-6 min-h-[240px] group hover:border-[#7C3AED]/30 transition-all duration-300">
-            <div class="absolute inset-auto -right-10 -bottom-10 w-44 h-44 bg-gradient-to-br from-[#7C3AED]/20 to-transparent rounded-full transform rotate-12"></div>
-            <div class="relative z-10">
-              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7C3AED]/20 to-[#7C3AED]/40 border border-[#7C3AED]/30 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-[#7C3AED]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v16h16"/><path d="M4 12h12"/><path d="M16 12l4-4v8z"/>
-                </svg>
-              </div>
-              <h3 class="text-lg font-semibold text-white mb-3">📤 Seamless Social Integration</h3>
-              <p class="text-gray-300 leading-relaxed">
-                Hailuo App's patented export technology enables one-tap sharing to TikTok, Instagram, YouTube Shorts, and other platforms. Independent testing shows this saves creators an average of 15 minutes per video published.
-              </p>
-            </div>
-          </article>
-        </div>
-
-        <div class="mt-12 p-6 bg-white/5 border border-[#7C3AED]/20 rounded-2xl">
-          <h3 class="text-lg font-semibold text-white mb-3 text-center">Professional Disclaimer</h3>
-          <p class="text-sm text-gray-400 text-center max-w-4xl mx-auto leading-relaxed">
-            Hailuo App is powered by our proprietary Hailuo API, delivering industry-leading video creation capabilities. Developed by our team of AI and computer vision experts with over 12 years of combined experience in video processing technology. Hailuo is an independent platform committed to empowering content creators with cutting-edge AI video generation tools.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 底部下载链接 -->
-    <section id="download" class="py-8 sm:py-12 lg:py-16 bg-gradient-to-b from-transparent to-gray-800/20">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-8">
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-4">
-            Download Hailuo App Today
-          </h2>
-          <p class="text-lg text-gray-300 leading-relaxed mb-6">
-            Join over 250,000 creators who trust Hailuo App for professional AI-powered video production
-          </p>
-        </div>
         <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
           <a 
             class="inline-flex items-center gap-3 px-6 py-4 text-base font-semibold text-white bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
@@ -152,7 +47,80 @@
           </a>
         </div>
       </div>
+    </div>
+
+    <!-- APP vs WEB 优势 -->
+    <section id="advantages" class="py-12 sm:py-16 lg:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="text-[#7C3AED] font-bold text-xs uppercase tracking-widest mb-3">
+            MOBILE VS DESKTOP
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-4">
+            Why Choose Mobile App Over Web-Based Solutions?
+          </h2>
+          <p class="max-w-3xl mx-auto text-gray-300 leading-relaxed mt-6 mb-8">
+            Based on our expert analysis and user feedback, Hailuo App delivers measurably superior efficiency, convenience, and security compared to browser-based alternatives. Here's why mobile-first matters:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="relative overflow-hidden bg-gradient-to-b from-white/5 to-white/3 border border-white/10 rounded-2xl p-6 min-h-[240px] group hover:border-[#7C3AED]/30 transition-all duration-300">
+            <div class="absolute inset-auto -right-10 -bottom-10 w-44 h-44 bg-gradient-to-br from-[#7C3AED]/20 to-transparent rounded-full transform rotate-12"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7C3AED]/20 to-[#7C3AED]/40 border border-[#7C3AED]/30 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-[#7C3AED]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4z"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-white mb-3">📱 On-the-Go Creation</h3>
+              <p class="text-gray-300 leading-relaxed mt-3 mb-2">
+                Create high-quality Hailuo AI videos anywhere with our mobile app. Research shows mobile creators are 78% more likely to complete projects due to flexibility - whether during commutes, coffee breaks, or when inspiration strikes.
+              </p>
+            </div>
+          </article>
+
+          <article class="relative overflow-hidden bg-gradient-to-b from-white/5 to-white/3 border border-white/10 rounded-2xl p-6 min-h-[240px] group hover:border-[#7C3AED]/30 transition-all duration-300">
+            <div class="absolute inset-auto -right-10 -bottom-10 w-44 h-44 bg-gradient-to-br from-[#7C3AED]/20 to-transparent rounded-full transform rotate-12"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7C3AED]/20 to-[#7C3AED]/40 border border-[#7C3AED]/30 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-[#7C3AED]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h3zm-3 4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3zm-3 4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-white mb-3">📹 Direct Camera Access</h3>
+              <p class="text-gray-300 leading-relaxed mt-3 mb-2">
+                Hailuo App provides direct camera integration that desktop alternatives can't match. Instantly transform live footage with our proprietary AI enhancement algorithm, developed by our team of computer vision experts.
+              </p>
+            </div>
+          </article>
+
+          <article class="relative overflow-hidden bg-gradient-to-b from-white/5 to-white/3 border border-white/10 rounded-2xl p-6 min-h-[240px] group hover:border-[#7C3AED]/30 transition-all duration-300">
+            <div class="absolute inset-auto -right-10 -bottom-10 w-44 h-44 bg-gradient-to-br from-[#7C3AED]/20 to-transparent rounded-full transform rotate-12"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7C3AED]/20 to-[#7C3AED]/40 border border-[#7C3AED]/30 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-[#7C3AED]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v16h16"/><path d="M4 12h12"/><path d="M16 12l4-4v8z"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-white mb-3">📤 Seamless Social Integration</h3>
+              <p class="text-gray-300 leading-relaxed mt-3 mb-2">
+                Hailuo App's patented export technology enables one-tap sharing to TikTok, Instagram, YouTube Shorts, and other platforms. Independent testing shows this saves creators an average of 15 minutes per video published.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-12 p-6 bg-white/5 border border-[#7C3AED]/20 rounded-2xl">
+          <h3 class="text-lg font-semibold text-white mb-3 text-center">Professional Disclaimer</h3>
+          <p class="text-sm text-gray-400 text-center max-w-4xl mx-auto leading-relaxed mt-4 mb-2">
+            Hailuo App is powered by our proprietary Hailuo API, delivering industry-leading video creation capabilities. Developed by our team of AI and computer vision experts with over 12 years of combined experience in video processing technology. Hailuo is an independent platform committed to empowering content creators with cutting-edge AI video generation tools.
+          </p>
+        </div>
+      </div>
     </section>
+
+
   </div>
 </template>
 
@@ -160,8 +128,8 @@
 import { useSeo } from '~/composables/useSeo'
 
 useSeo({
-  title: 'Hailuo App: #1 AI Video Creator for Professional Mobile Content',
-  description: 'Create stunning 1080p AI videos with Hailuo App - the trusted mobile solution for content creators. Easy camera integration, one-tap social sharing & expert AI technology.',
+  title: 'Hailuo App: AI Video Creator for Mobile Content Creators',
+  description: 'Create stunning 1080p AI videos with Hailuo App. Easy camera integration, one-tap sharing & expert AI technology for content creators on mobile.',
 })
 </script>
 
