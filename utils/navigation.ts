@@ -34,20 +34,14 @@ export const mainRoutes: RouteItem[] = [
   { id: "AIVideo", name: "AI Video", icon: "AI Video",
     children: [
       { 
-        name: "Hailuo 02", 
+        name: "Hailuo 02🔥 ", 
         href: "/hailuo-ai-video-generator",
-        badge: {
-          text: "Hot",
-          type: "hot"
-        } 
+       
       },
       { 
-        name: "Seedance 1.0 Pro", 
+        name: "Seedance 1.0 Pro🔥", 
         href: "/seedance-1-0-pro",
-        badge: {
-          text: "New",
-          type: "new"
-        }
+ 
       },
     ]
   },

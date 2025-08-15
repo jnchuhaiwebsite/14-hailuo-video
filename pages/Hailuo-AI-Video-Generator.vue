@@ -1108,7 +1108,7 @@ const containerHeight = computed(() => {
 
   //设置页面元数据
   useSeo({
-    title: `Hailuo AI Video Generator | Create Stunning Video from Text & Image | minimax Hailuo  02`,
+    title: `Hailuo AI Video Generator | Create Stunning Video from Text & Image`,
     description: `Create 1080p short videos from text or images with Hailuo AI Video Generator. Perfect for social media, brand marketing, and educational content.`,
   });
 </script>

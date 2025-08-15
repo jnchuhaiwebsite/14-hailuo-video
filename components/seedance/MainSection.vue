@@ -63,10 +63,10 @@
               </button>
             </div>
           </div>
-          <div class="text-center text-sm text-gray-400 my-2">
+          <!-- <div class="text-center text-sm text-gray-400 my-2">
               <span>Want to create an image with AI first? Try our </span>
               <NuxtLink to="/ai-image" class="text-[#7C3AED] hover:underline font-semibold">AI Image Generator</NuxtLink>
-          </div>
+          </div> -->
         </div>
       </Transition>
       <!-- 提示词 -->
@@ -75,9 +75,7 @@
           <label class="block text-sm lg:text-base font-semibold text-gray-300">
             Enter Prompt
           </label>
-          <NuxtLink to="/seedance/prompt-guide" class="ml-2 text-xs lg:text-sm text-theme-accent hover:underline">
-            (prompt-guide)
-          </NuxtLink>
+
         </div>
         <textarea 
           v-model="prompt"
