@@ -301,11 +301,11 @@
       </div>
     </div>
       <!-- 视频展示 -->
-  <div class="w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
+  <!-- <div class="w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
     <section id="video-showcase" class="mt-12 lg:mt-16">
       <VideoShowcase />
     </section>
-  </div>
+  </div> -->
   </div>
 
 
