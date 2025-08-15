@@ -915,6 +915,7 @@ const handleAction = (action: string, ...args: any[]) => {
 
     // break
     case 'generate':
+    progress.value = 0
       withLoginCheck(async () => {
         // 检查是否有足够的次数和积分
         if (!checkUsageLimit()) return
