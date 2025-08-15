@@ -3,7 +3,7 @@
     <!-- 头部 / 首屏 -->
     <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
-          Download Hailuo App
+          Download App
         </h1>
         <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
           Create stunning 1080p AI videos anytime, anywhere on your phone.

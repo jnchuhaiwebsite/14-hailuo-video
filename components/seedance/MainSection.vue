@@ -1246,7 +1246,7 @@ const handleVideoRequest = async () => {
       // 开始检查任务状态
       if (response.data?.task_id) {
         // 显示开始生成的提示
-        $toast.success('Video generation started, please wait...');
+        // $toast.success('Video generation started, please wait...');
         
         // 开始循环检查任务状态
         checkTaskInterval = setInterval(() => {
