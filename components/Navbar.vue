@@ -9,9 +9,11 @@
           <!-- Logo -->
           <div class="flex items-center gap-2 mr-8">
             <NuxtLink to="/">
-              <span class="bg-gradient-to-r from-[#db2777]  to-[#7C3AED] bg-clip-text text-transparent font-black text-3xl" style="font-weight: 900; -webkit-text-stroke: 1px transparent;">
-                Hailuo2
-              </span>
+              <img 
+                src="https://resp.hailuo2.com/hailuo/image/logo.webp" 
+                alt="Hailuo2 Logo" 
+                class="h-8 w-auto"
+              />
             </NuxtLink>
           </div>
 
@@ -43,27 +45,51 @@
                     v-show="openDropdown === index"
                     @mouseenter="openDropdown = index"
                     @mouseleave="openDropdown = null"
-                    class="absolute top-full left-0 mt-2 w-40 backdrop-blur-md shadow-lg z-50 border border-gray-600/30 rounded-lg overflow-hidden"
-                    style="background: rgba(25, 23, 28, 0.95)"
+                    class="absolute top-full left-0 mt-2 backdrop-blur-md shadow-lg z-50 border border-gray-600/30 rounded-lg overflow-hidden"
+                    :class="{'whitespace-nowrap': getSubNavStyle().noWrap}"
+                    style="background: rgba(25, 23, 28, 0.95); min-width: 160px;"
                   >
                     <template v-for="(child, childIndex) in section.children" :key="childIndex">
+                      <!-- 外部链接使用a标签 -->
                       <a
-                        v-if="child.href"
+                        v-if="child.href && (child.href.startsWith('http') || shouldOpenInNewTab(child))"
                         :href="child.href"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors flex items-center justify-between"
                       >
                         <span>{{ child.name }}</span>
-                        <span class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full">Beta</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
                       </a>
+                      
+                      <!-- 内部链接使用NuxtLink -->
+                      <NuxtLink
+                        v-else-if="child.href"
+                        :to="child.href"
+                        class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors flex items-center justify-between"
+                      >
+                        <span>{{ child.name }}</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
+                      </NuxtLink>
                       <div
                         v-else-if="child.id"
                         @click="handleNavClick(child.id)"
                         class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-[#7C3AED] transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>{{ child.name }}</span>
-                        <span class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full">Beta</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
                       </div>
                     </template>
                   </div>
@@ -183,24 +209,51 @@
                   <div
                     v-show="openMobileDropdown === index"
                     class="pl-4 space-y-1"
+                    :class="{'whitespace-nowrap overflow-x-auto': getSubNavStyle().noWrap}"
                   >
                     <template v-for="(child, childIndex) in section.children" :key="childIndex">
+                      <!-- 外部链接使用a标签 -->
                       <a
-                        v-if="child.href"
+                        v-if="child.href && (child.href.startsWith('http') || shouldOpenInNewTab(child))"
                         :href="child.href"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors flex items-center justify-between"
                         @click="() => { isOpen = false; }"
                       >
-                        {{ child.name }}
+                        <span>{{ child.name }}</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
                       </a>
+                      
+                      <!-- 内部链接使用NuxtLink -->
+                      <NuxtLink
+                        v-else-if="child.href"
+                        :to="child.href"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors flex items-center justify-between"
+                        @click="() => { isOpen = false; }"
+                      >
+                        <span>{{ child.name }}</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
+                      </NuxtLink>
                       <div
                         v-else-if="child.id"
                         @click="() => { handleNavClick(child.id); isOpen = false; }"
-                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors cursor-pointer"
+                        class="block text-gray-400 hover:text-[#7C3AED] text-sm py-1 transition-colors cursor-pointer flex items-center justify-between"
                       >
-                        {{ child.name }}
+                        <span>{{ child.name }}</span>
+                        <div class="flex items-center">
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
+                        </div>
                       </div>
                     </template>
                   </div>
@@ -273,8 +326,17 @@ const router = useRouter();
 const route = useRoute();
 
 // 使用导航工具
-const { activeSection, sections, handleNavClick, handleScroll, executeScroll } =
-  useNavigation();
+const { 
+  activeSection, 
+  sections, 
+  handleNavClick, 
+  handleScroll, 
+  executeScroll,
+  shouldOpenInNewTab,
+  shouldShowBeta,
+  getBadgeInfo,
+  getSubNavStyle
+} = useNavigation();
 
 // 切换PC端下拉菜单
 const toggleDropdown = (index: number) => {
@@ -295,8 +357,10 @@ const toggleMobileDropdown = (index: number) => {
 };
 
 onMounted(() => {
-  // 只重置overflow，不改变滚动位置
-  document.body.style.overflow = "";
+  // 仅在移动菜单关闭状态下设置overflow
+  if (!isOpen.value) {
+    document.body.style.overflow = "";
+  }
 
   // 添加滚动事件监听
   window.addEventListener("scroll", handleScroll);
@@ -318,13 +382,21 @@ watch(isOpen, (newValue) => {
   if (newValue) {
     document.body.style.overflow = "hidden";
   } else {
-    document.body.style.overflow = "";
+    // 给一个短暂延迟再恢复滚动，防止布局跳动
+    setTimeout(() => {
+      if (!isOpen.value) { // 再次检查，防止快速切换导致的问题
+        document.body.style.overflow = "";
+      }
+    }, 50);
   }
 });
 
-// 组件卸载时恢复body滚动并移除事件监听
+// 组件卸载时只移除事件监听，不修改overflow
 onBeforeUnmount(() => {
-  document.body.style.overflow = "";
+  // 只有当移动菜单关闭时才重置overflow，防止错位
+  if (!isOpen.value) {
+    document.body.style.overflow = "";
+  }
   window.removeEventListener("scroll", handleScroll);
 });
 </script>
@@ -345,5 +417,44 @@ onBeforeUnmount(() => {
 /* 覆盖hover效果 */
 .hover-text-theme:hover {
   color: var(--baby-coral) !important;
+}
+
+/* 子导航样式 */
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -ms-overflow-style: none; /* IE和Edge */
+}
+
+/* 隐藏Chrome等浏览器的滚动条 */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
+/* 角标动画效果 */
+@keyframes pulse-hot {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes pulse-new {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.text-xs.bg-red-500 {
+  animation: pulse-hot 2s infinite;
+  font-weight: 600;
+  box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+}
+
+.text-xs.bg-green-500 {
+  animation: pulse-new 2s infinite;
+  font-weight: 600;
+  box-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
 }
 </style> 
