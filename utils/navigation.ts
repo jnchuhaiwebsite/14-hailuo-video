@@ -39,9 +39,12 @@ export const mainRoutes: RouteItem[] = [
        
       },
       { 
-        name: "Seedance 1.0 Pro🔥", 
+        name: "Seedance 1.0 Pro", 
         href: "/seedance-1-0-pro",
- 
+        badge: {
+          text: "New",
+          type: "new"
+        }
       },
     ]
   },

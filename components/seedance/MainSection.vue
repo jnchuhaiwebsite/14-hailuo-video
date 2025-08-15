@@ -250,8 +250,8 @@
       <div class="flex flex-col justify-center items-center w-full h-full bg-gradient-to-br from-gray-900/50 via-gray-800/50 to-gray-900/50 rounded-[20px]">
         <div class="relative w-full h-[500px] md:h-[550px] lg:h-[600px] flex items-center justify-center">
           <!-- 进度条 -->
-          <div v-if="isGenerating" class="absolute inset-0 flex items-center justify-center z-10">
-            <div v-if="progress > 0" class="relative w-32 h-32">
+          <div v-if="isGenerating" class="absolute inset-0 flex flex-col items-center justify-center z-10">
+            <div v-if="progress > 0" class="relative w-24 h-24 mb-8 sm:mb-12">
               <svg class="w-full h-full" viewBox="0 0 100 100">
                 <circle
                   class="text-gray-700"
@@ -278,13 +278,16 @@
                   }"
                 />
               </svg>
-              <div class="absolute inset-0 flex items-center justify-center text-[#7C3AED] font-bold text-xl">
+              <div class="absolute inset-0 flex items-center justify-center text-[#7C3AED] font-bold text-lg">
                 {{ progress.toFixed(0) }}%
               </div>
             </div>
-            <div v-else class="flex flex-col items-center justify-center">
-              <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#7C3AED] border-t-transparent"></div>
-              <p class="text-[#7C3AED] text-sm mt-3">Processing...</p>
+            <div v-else class="flex flex-col items-center justify-center mb-8 sm:mb-12">
+              <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#7C3AED] border-t-transparent"></div>
+            </div>
+            <!-- 提示文字 - 独立定位 -->
+            <div class="text-[#7C3AED] text-sm sm:text-base font-medium text-center max-w-[280px] sm:max-w-none px-2">
+              Video is being generated. Please wait a moment; it should take a few minutes.<span class="loading-dots">...</span>
             </div>
           </div>
           <!-- 预览视频 -->
@@ -1611,5 +1614,22 @@ const restoreFormData = () => {
   min-width: auto !important;
   height: 1rem !important;
   width: 1rem !important;
+}
+
+/* 加载点动画 */
+.loading-dots {
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 </style> 
