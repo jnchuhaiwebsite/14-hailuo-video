@@ -144,7 +144,7 @@ onMounted(async () => {
 
     // Set payment status
     if (paySuccess == '1') {
-      paymentStatus.value = 'failed';
+      paymentStatus.value = 'success';
       // 触发 Google Analytics 转换跟踪
       function gtag(...args: any[]) {
           window.dataLayer.push(arguments)
