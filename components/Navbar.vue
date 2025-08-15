@@ -9,9 +9,11 @@
           <!-- Logo -->
           <div class="flex items-center gap-2 mr-8">
             <NuxtLink to="/">
-              <span class="bg-gradient-to-r from-[#db2777]  to-[#7C3AED] bg-clip-text text-transparent font-black text-3xl" style="font-weight: 900; -webkit-text-stroke: 1px transparent;">
-                Hailuo2
-              </span>
+              <img 
+                src="https://resp.hailuo2.com/hailuo/image/logo.webp" 
+                alt="Hailuo2 Logo" 
+                class="h-8 w-auto"
+              />
             </NuxtLink>
           </div>
 

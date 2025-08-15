@@ -50,7 +50,7 @@ export function useSeo(options: SeoOptions) {
       },
       { property: 'og:type', content: options.ogType || 'website' },
       { property: 'og:url', content: fullUrlWithoutSlash },
-      { property: 'og:image', content: options.ogImage || `${baseUrl}/logo.png` },
+      { property: 'og:image', content: options.ogImage || `${baseUrl}/hl-ogimage.webp` },
       { property: 'og:site_name', content: 'hailuo2' },
       ...(options.other || []),
 
@@ -64,7 +64,7 @@ export function useSeo(options: SeoOptions) {
         name: 'twitter:description',
         content: options.twitterDescription || description,
       },
-      { name: 'twitter:image', content: options.twitterImage || `${baseUrl}/logo.png` },
+      { name: 'twitter:image', content: options.twitterImage || `${baseUrl}/hl-ogimage.webp` },
     ],
     link: [{ rel: 'canonical', href: fullUrlWithoutSlash }],
   })
