@@ -8,19 +8,44 @@ export interface RouteItem {
   icon?: string
   href?: string
   children?: RouteItem[]
+  openInNewTab?: boolean  // 是否在新标签页打开
+  showBeta?: boolean      // 是否显示beta标签
+  badge?: {
+    text: string;         // 角标文本
+    type: 'hot' | 'new';  // 角标类型：hot 或 new
+  }
+}
+
+// 导航全局配置
+export const navConfig = {
+  subNavStyle: {
+    noWrap: true,  // 子导航不换行
+  },
+  defaults: {
+    openInNewTab: false,  // 默认不在新标签页打开
+    showBeta: false       // 默认不显示beta标签
+  }
 }
 
 // 主路由配置
 export const mainRoutes: RouteItem[] = [
   { id: "hero", name: "Home", icon: "home" },
-  { id: "AIVideo", name: "AI Video", icon: "AI Video", href: "/hailuo-ai-video-generator" },
+
+  { id: "AIVideo", name: "AI Video", icon: "AI Video",
+    children: [
+      { 
+        name: "Hailuo 02🔥 ", 
+        href: "/hailuo-ai-video-generator",
+       
+      },
+      { 
+        name: "Seedance 1.0 Pro🔥", 
+        href: "/seedance-1-0-pro",
+ 
+      },
+    ]
+  },
   { id: "APP", name: "APP", icon: "APP", href: "/hailuo-app" },
-  // { id: "Products", name: "Products", icon: "Products",
-  //   children: [
-  //     { name: "Android App", href: "https://play.google.com/store/apps/details?id=com.cykj.hilo" },
-  //     { name: "iOS App", href: "https://apps.apple.com/gb/app/hailuovideo-ai-generator/id6747421701" },
-  //   ]
-  // },
 
   // { id: "how-it-works", name: "How It Works", icon: "steps" },
   // { id: "features-showcase", name: "Features", icon: "star" },
@@ -54,6 +79,24 @@ export const useNavigation = () => {
   const sections = mainRoutes
   const footerSections = footerMainRoutes
   const productsSections = productsRoutes
+  
+  // 检查是否应该在新标签页打开
+  const shouldOpenInNewTab = (route: RouteItem) => {
+    return route.openInNewTab ?? navConfig.defaults.openInNewTab
+  }
+  
+  // 检查是否应该显示beta标签
+  const shouldShowBeta = (route: RouteItem) => {
+    return route.showBeta ?? navConfig.defaults.showBeta
+  }
+
+  // 检查是否显示角标及角标信息
+  const getBadgeInfo = (route: RouteItem) => {
+    return route.badge
+  }
+  
+  // 获取子导航样式
+  const getSubNavStyle = () => navConfig.subNavStyle
 
   // 执行滚动到指定section
   const executeScroll = (sectionId: string) => {
@@ -147,6 +190,11 @@ export const useNavigation = () => {
     handleNavClick,
     handleScroll,
     footerSections,
-    productsSections
+    productsSections,
+    // 新增配置相关方法
+    shouldOpenInNewTab,
+    shouldShowBeta,
+    getBadgeInfo,
+    getSubNavStyle
   }
 } 

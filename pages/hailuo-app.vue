@@ -2,15 +2,13 @@
   <div class="py-16 bg-blue-pale/80 backdrop-blur-sm">
     <!-- 头部 / 首屏 -->
     <div class="mt-[64px] mb-10 flex flex-col items-center relative z-10 w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
-      <div class="text-center">
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#db2777] bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-gradient-x">
           Download Hailuo App
-
         </h1>
-        <p class="mt-4 sm:mt-6 md:mt-7 lg:mt-8 mb-6 sm:mb-8 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-200 text-center max-w-4xl sm:max-w-5xl lg:max-w-6xl font-medium leading-relaxed px-2 sm:px-3">
+        <p class="mt-4 text-base text-gray-200 text-center max-w-2xl font-medium">
           Create stunning 1080p AI videos anytime, anywhere on your phone.
         </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+        <div class="mt-8 sm:mt-10 md:mt-12 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
           <a 
             class="inline-flex items-center gap-3 px-6 py-4 text-base font-semibold text-white bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             href="https://apps.apple.com/gb/app/hailuovideo-ai-generator/id6747421701" 
@@ -46,7 +44,6 @@
             </div>
           </a>
         </div>
-      </div>
     </div>
 
     <!-- APP vs WEB 优势 -->
