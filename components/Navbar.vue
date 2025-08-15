@@ -60,8 +60,8 @@
                       >
                         <span>{{ child.name }}</span>
                         <div class="flex items-center">
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs border border-red-500 text-red-500 px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs text-[#7C3AED] px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
                           <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
                         </div>
                       </a>
@@ -74,8 +74,8 @@
                       >
                         <span>{{ child.name }}</span>
                         <div class="flex items-center">
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs border border-red-500 text-red-500 px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs text-[#7C3AED] px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
                           <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
                         </div>
                       </NuxtLink>
@@ -86,8 +86,8 @@
                       >
                         <span>{{ child.name }}</span>
                         <div class="flex items-center">
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs border border-red-500 text-red-500 px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs text-[#7C3AED] px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
                           <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
                         </div>
                       </div>
@@ -223,8 +223,8 @@
                       >
                         <span>{{ child.name }}</span>
                         <div class="flex items-center">
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs border border-red-500 text-red-500 px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs text-[#7C3AED] px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
                           <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
                         </div>
                       </a>
@@ -238,8 +238,8 @@
                       >
                         <span>{{ child.name }}</span>
                         <div class="flex items-center">
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs border border-red-500 text-red-500 px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs text-[#7C3AED] px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
                           <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
                         </div>
                       </NuxtLink>
@@ -250,8 +250,8 @@
                       >
                         <span>{{ child.name }}</span>
                         <div class="flex items-center">
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
-                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'hot'" class="text-xs border border-red-500 text-red-500 px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
+                          <span v-if="getBadgeInfo(child) && getBadgeInfo(child)?.type === 'new'" class="text-xs text-[#7C3AED] px-1.5 py-0.5 rounded-full ml-2">{{ getBadgeInfo(child)?.text }}</span>
                           <span v-if="shouldShowBeta(child)" class="text-xs bg-[#7C3AED] text-white px-1.5 py-0.5 rounded-full ml-2">Beta</span>
                         </div>
                       </div>
@@ -446,15 +446,15 @@ onBeforeUnmount(() => {
   50% { transform: scale(1.05); }
 }
 
-.text-xs.bg-red-500 {
-  animation: pulse-hot 2s infinite;
-  font-weight: 600;
-  box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
-}
-
-.text-xs.bg-green-500 {
-  animation: pulse-new 2s infinite;
-  font-weight: 600;
-  box-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
-}
+ .text-xs.border-red-500 {
+   animation: pulse-hot 2s infinite;
+   font-weight: 600;
+   box-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
+ }
+ 
+ .text-xs.border-green-500 {
+   animation: pulse-new 2s infinite;
+   font-weight: 600;
+   box-shadow: 0 0 5px rgba(34, 197, 94, 0.3);
+ }
 </style> 
