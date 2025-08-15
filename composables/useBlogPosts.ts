@@ -21,7 +21,6 @@ const blogPostsData: BlogPost[] = [
     title: 'Use Hailuo 02 to Reduce Your Creation Costs',
     content: `
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-2xl font-bold mb-6">Use Hailuo 02 to Reduce Your Creation Costs</h2>
         
         <div class="my-6">
           <img src="https://resp.hailuo2.com/hailuo/blog/image/hailuo-price-plan.webp" alt="Hailuo Price Plan" class="w-full max-w-2xl mx-auto mb-2" loading="lazy" />
@@ -30,24 +29,24 @@ const blogPostsData: BlogPost[] = [
         
         <p class="mb-6 text-lg">Hailuo 02 can create 10-second, uninterrupted 1080P videos with stunning visual effects. However, the core value of Hailuo 02 lies not in "showing off technology" but in reshaping the "narrative cost" of high-quality visual content. What once required professional film studios to execute creatively can now be done with just a prompt. The focus of content creation has shifted from "production capability" to "creative capability."</p>
 
-        <h3 class="text-xl font-bold my-6">The Revolution of Content Density</h3>
+        <h2 class="text-xl font-bold my-6">The Revolution of Content Density</h2>
         
         <p class="mb-6 text-lg">In the past, "imagination" was the only way to compensate for limited visual presentation capabilities. Now, Hailuo 02 allows you to directly bridge the gap from "imagination" to "visual presentation," filling the divide between "imagination" and "reality." Moreover, what Hailuo 02 offers isn't just simple illustrations, but micro-films. The competition in content creation has shifted from "writing" to "storyboarding". Hailuo 02 enables the creation of videos with rich, detailed content density.</p>
 
-        <h3 class="text-xl font-bold my-6">B-roll Freedom</h3>
+        <h2 class="text-xl font-bold my-6">B-roll Freedom</h2>
         
         <p class="mb-6 text-lg">B-roll, or supplemental footage, has always been a challenge for traditional filmmakers. Creators often face the choice of either spending high costs on commercial video assets or spending significant time searching for free material, which often leads to video homogenization. Shooting original footage independently also requires substantial time and labor costs.</p>
         
         <p class="mb-6 text-lg">Hailuo 02, with its powerful dynamic effects, physical simulation and precise control over camera angles, can generate video footage that meets your exact expectations. This not only saves costs but also represents a complete liberation of creativity. Production costs are no longer a constraint; the ability to harness AI to bring your creative vision to life is now the most crucial skill.</p>
 
-        <h3 class="text-xl font-bold my-6">Industrial Production of Emotional Value</h3>
+        <h2 class="text-xl font-bold my-6">Industrial Production of Emotional Value</h2>
         
         <p class="mb-6 text-lg">What's the core of short videos? "Emotion." The key to a video's viral success lies in quickly capturing the viewer's emotions within a few seconds. Hailuo 02 can industrialize the production of "emotion." It allows you to customize blockbuster-level visual spectacles to captivate and shock audiences, delivering emotional value and generating traffic in bulk.</p>
 
         <p class="mb-6 text-lg">Try Hailuo 02 for free now with free credits. For more videos and effects, you can generate 18 1080p videos for just $10 per month. Read about the <a href="/pricing" class="text-blue-400 hover:text-blue-300">pricing plans</a> to choose the one that's right for you.</p>
 
         <div class="bg-gradient-to-r from-purple-900 to-blue-900 p-8 rounded-lg my-8 text-center">
-          <h3 class="text-2xl font-bold mb-4 text-white">Ready to Reduce Your Creation Costs?</h3>
+          <h2 class="text-2xl font-bold mb-4 text-white">Ready to Reduce Your Creation Costs?</h2>
           <p class="text-purple-100 mb-6">Start using Hailuo 02 today and transform your creative process!</p>
           <a href="/hailuo-ai-video-generator" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
             Try Hailuo 02 Now
