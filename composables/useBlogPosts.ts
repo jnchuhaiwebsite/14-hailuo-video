@@ -54,7 +54,7 @@ const blogPostsData: BlogPost[] = [
         </div>
       </div>
     `,
-    seoTitle: 'Hailuo, high-quality visual content, narrative cost',
+    seoTitle: 'Use Hailuo 02 to Reduce Your Creation Costs',
     description: 'Hailuo 02 turns imagination into visual products, reduces video material costs, and realizes the industrial production of emotional value.',
     date: 'August 3, 2025',
     category: 'Insights',
