@@ -23,12 +23,17 @@
       <div class="flex flex-col md:flex-row gap-8 md:gap-16">
         <!-- Logo 和描述 -->
         <div class="flex-1">
-          <div class="flex flex-col items-start text-left">
-            <span class="bg-gradient-to-r from-[#db2777]  to-[#7C3AED] bg-clip-text text-transparent font-black text-3xl" style="font-weight: 900; -webkit-text-stroke: 1px transparent;">
-                Hailuo2
-              </span>
-            <p class="text-sm text-gray-400 max-w-xl mb-4">
-                Hailuo2 is an AI-powered video generation tool based on the Hailuo 02 model, enabling users to quickly create high-quality 1080p short videos from text or images, making it perfect for social media, brand marketing, and educational content.            </p>
+                     <div class="flex flex-col items-start text-left">
+             <div class="flex items-start gap-4 mb-4">
+               <img 
+                 src="https://resp.hailuo2.com/hailuo/image/logo.webp" 
+                 alt="Hailuo2 Logo" 
+                 class="h-20 w-auto flex-shrink-0"
+               />
+               <p class="text-sm text-gray-400 max-w-xl">
+                   Hailuo2 is an AI-powered video generation tool based on the Hailuo 02 model, enabling users to quickly create high-quality 1080p short videos from text or images, making it perfect for social media, brand marketing, and educational content.
+               </p>
+             </div>
             <div class="flex flex-col items-start gap-2 text-sm text-gray-500">
               <p>© 2025 Hailuo02 Video. All rights reserved.</p>
               <div class="text-left">
