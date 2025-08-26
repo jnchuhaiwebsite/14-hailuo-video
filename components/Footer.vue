@@ -9,7 +9,7 @@
           <a v-for="(item,index) in partnerSites" :key="index" 
              :href="item.url" 
              target="_blank" 
-             rel="noopener nofollow" 
+             rel="noopener" 
              class="text-gray-400 hover:text-[#7C3AED] transition-colors text-sm">
             {{ item.name }}
           </a>
