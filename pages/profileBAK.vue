@@ -752,9 +752,17 @@ import { useUserStore } from '~/stores/user'
 import { getOpusList, checkTask, getTimesLog, getPromotionLink, getPromotionUsers, getPromotionScoreLog } from '~/api'
 import { SparklesIcon } from '@heroicons/vue/24/outline'
 import { useRuntimeConfig } from 'nuxt/app'
+import { useHead } from "nuxt/app";
 
+useHead({
+  title: 'User Center - Hailuo02 Video',
+  meta: [
+    { name: 'robots', content: 'noindex' }
+  ]
+})
 // Get user info
 const userStore = useUserStore()
+
 
 import { useNuxtApp } from 'nuxt/app'
 const { $toast } = useNuxtApp() as any

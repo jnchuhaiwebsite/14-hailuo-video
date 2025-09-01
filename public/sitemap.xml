@@ -9,29 +9,29 @@
             <url>
               <loc>https://www.hailuo2.com/blog</loc>
               <lastmod>2025-07-11T02:30:00.000Z</lastmod>
-              <changefreq>weekly</changefreq>
+              <changefreq>monthly</changefreq>
               <priority>0.8</priority>
             </url>
 
             <url>
               <loc>https://www.hailuo2.com/blog/hailuo-02-breaks-global-video-model-cost-record</loc>
               <lastmod>2025-06-19T08:30:00.000Z</lastmod>
-              <changefreq>weekly</changefreq>
-              <priority>0.7</priority>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
             </url>
 
             <url>
               <loc>https://www.hailuo2.com/blog/image-to-video-generation</loc>
               <lastmod>2025-06-19T08:30:00.000Z</lastmod>
-              <changefreq>weekly</changefreq>
-              <priority>0.7</priority>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
             </url>
 
             <url>
               <loc>https://www.hailuo2.com/blog/text-to-video-generation</loc>
               <lastmod>2025-06-19T08:30:00.000Z</lastmod>
-              <changefreq>weekly</changefreq>
-              <priority>0.7</priority>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
             </url>
   
             <url>
@@ -43,20 +43,20 @@
             <url>
               <loc>https://www.hailuo2.com/subsidiary/privacy-policy</loc>
               <lastmod>2025-06-19T08:30:00.000Z</lastmod>
-              <changefreq>weekly</changefreq>
+              <changefreq>monthly</changefreq>
               <priority>0.8</priority>
             </url>
 
             <url>
               <loc>https://www.hailuo2.com/subsidiary/terms-of-service</loc>
               <lastmod>2025-06-19T08:30:00.000Z</lastmod>
-              <changefreq>weekly</changefreq>
+              <changefreq>monthly</changefreq>
               <priority>0.8</priority>
             </url>
             <url>
               <loc>https://www.hailuo2.com/faq</loc>
               <lastmod>2025-07-11T02:30:00.000Z</lastmod>
-              <changefreq>daily</changefreq>
+              <changefreq>weekly</changefreq>
               <priority>1.0</priority>
             </url>
             <url>
@@ -74,8 +74,8 @@
             <url>
               <loc>https://www.hailuo2.com/blog/top-tips-for-cinematic-video-prompts-in-hailuo-02-ai</loc>
               <lastmod>2025-07-23T06:30:00.000Z</lastmod>
-              <changefreq>daily</changefreq>
-              <priority>1.0</priority>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
             </url>
             <url>
               <loc>https://www.hailuo2.com/invitation-code</loc>
@@ -86,26 +86,26 @@
             <url>
               <loc>https://www.hailuo2.com/blog/hailuo-ai-invitation-code-ultimate-guide</loc>
               <lastmod>2025-07-25T08:30:00.000Z</lastmod>
-              <changefreq>daily</changefreq>
-              <priority>1.0</priority>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
             </url>
             <url>
               <loc>https://www.hailuo2.com/blog/hailuo-02-shanghai-film-festival</loc>
               <lastmod>2025-08-01T08:30:00.000Z</lastmod>
-              <changefreq>daily</changefreq>
-              <priority>1.0</priority>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
             </url>
             <url>
               <loc>https://www.hailuo2.com/blog/hailuo-02-vs-veo-3-kling-2-comparison</loc>
               <lastmod>2025-08-01T08:30:00.000Z</lastmod>
-              <changefreq>daily</changefreq>
-              <priority>1.0</priority>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
             </url>
             <url>
               <loc>https://www.hailuo2.com/blog/how-to-use-hailuo-prompts-to-create-rich-film-and-television-effects</loc>
               <lastmod>2025-08-08T01:30:00.000Z</lastmod>
-              <changefreq>daily</changefreq>
-              <priority>1.0</priority>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
             </url>
             <url>
               <loc>https://www.hailuo2.com/hailuo-app</loc>
@@ -122,8 +122,8 @@
             <url>
               <loc>https://www.hailuo2.com/blog/use-hailuo-02-to-reduce-your-creation-costs</loc>
               <lastmod>2025-08-15T01:30:00.000Z</lastmod>
-              <changefreq>daily</changefreq>
-              <priority>1.0</priority>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
             </url>
             
         </urlset>
