@@ -1285,6 +1285,7 @@ const handleAction = (action: string, ...args: any[]) => {
       })
       break
     case 'generate':
+    progress.value = 0
       withLoginCheck(async () => {
         //检查是否有次数
         if (!checkUsageLimit()) return

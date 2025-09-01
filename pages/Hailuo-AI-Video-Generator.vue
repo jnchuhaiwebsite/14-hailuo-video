@@ -301,11 +301,11 @@
       </div>
     </div>
       <!-- 视频展示 -->
-  <div class="w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
+  <!-- <div class="w-full max-w-[1360px] mx-auto px-2 sm:px-3 lg:px-4">
     <section id="video-showcase" class="mt-12 lg:mt-16">
       <VideoShowcase />
     </section>
-  </div>
+  </div> -->
   </div>
 
 
@@ -915,6 +915,7 @@ const handleAction = (action: string, ...args: any[]) => {
 
     // break
     case 'generate':
+    progress.value = 0
       withLoginCheck(async () => {
         // 检查是否有足够的次数和积分
         if (!checkUsageLimit()) return
