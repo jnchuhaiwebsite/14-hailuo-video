@@ -107,7 +107,7 @@ definePageMeta({
 
 useSeo({
   title: 'Hailuo 02 | Terms of Service',
-  description: 'Read our terms of service for Hailuo 02 AI-powered video generation services.'
+  description: 'Read the Terms of Service for Hailuo 02 AI-powered video generation services. Learn about our policies, user rights, and how to maximize the platform's features'
 })
 </script>
 
