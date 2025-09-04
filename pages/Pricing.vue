@@ -183,7 +183,7 @@ const handleUpgradePlan = async (plan: any) => {
 
   //设置页面元数据
   useSeo({
-    title: `Hailuo 02 AI Video Generator Pricing | Minimax Hailuo AI `,
+    title: `Hailuo 02 AI Video Generator Pricing`,
     description: `Explore Hailuo 02 AI Video Generator pricing for casual users, creators, and businesses. Affordable, transparent plans with no hidden fees. Start now!`,
   });
 </script>
