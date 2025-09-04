@@ -57,7 +57,7 @@
           <h2 class="text-2xl font-bold text-white mb-2 font-medium text-center">
             {{ plan.name }}
           </h2>
-          <p class="text-gray-400 mb-6 text-center">{{ plan.description }}</p>
+          <h3 class="text-gray-400 mb-6 text-center">{{ plan.description }}</h3>
           <div class="text-5xl font-bold text-white mb-6 text-center">
             ${{ plan.price }} <span class="text-gray-400 text-base font-normal">one-time</span>
           </div>
