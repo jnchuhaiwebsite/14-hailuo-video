@@ -6,6 +6,11 @@ Disallow: /private/
 Disallow: /search?
 Disallow: /_nuxt/*
 Disallow: /mypay
+Disallow: /*.php$
+Disallow: /*.gz$
+Disallow: /*.7z$
+Disallow: /*.zip$ 
+Disallow: /profile
 
 # 声明网站地图
 Sitemap: https://www.hailuo2.com/sitemap.xml

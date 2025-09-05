@@ -57,7 +57,7 @@
           <h2 class="text-2xl font-bold text-white mb-2 font-medium text-center">
             {{ plan.name }}
           </h2>
-          <p class="text-gray-400 mb-6 text-center">{{ plan.description }}</p>
+          <h3 class="text-gray-400 mb-6 text-center">{{ plan.description }}</h3>
           <div class="text-5xl font-bold text-white mb-6 text-center">
             ${{ plan.price }} <span class="text-gray-400 text-base font-normal">one-time</span>
           </div>
@@ -183,8 +183,8 @@ const handleUpgradePlan = async (plan: any) => {
 
   //设置页面元数据
   useSeo({
-    title: `Hailuo 02 AI Video Generator Pricing | Minimax Hailuo AI `,
-    description: `Check out Hailuo 02 AI Video Generator Pricing, Generator plans for casual users, creators, and businesses. Affordable, transparent pricing with no hidden fees. Start creating today.`,
+    title: `Hailuo 02 AI Video Generator Pricing`,
+    description: `Explore Hailuo 02 AI Video Generator pricing for casual users, creators, and businesses. Affordable, transparent plans with no hidden fees. Start now!`,
   });
 </script>
 
