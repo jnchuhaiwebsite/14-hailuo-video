@@ -1067,7 +1067,7 @@ const handleVideoRequest = async () => {
       // if(safeMode.value) {
         request = createTaskImgVideoHailuoSafeButton
         requestData = {
-          secure: true,
+          secure: safeMode.value  ,
           first_img_url: selectedImage.value || imagePreview.value,
           last_img_url: lastFrameImage.value || '', // 尾帧图片，可选
           prompt: prompt.value,
