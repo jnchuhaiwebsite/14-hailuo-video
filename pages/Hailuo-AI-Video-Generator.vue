@@ -29,7 +29,7 @@
               class="tab-button flex-1 flex items-center justify-center gap-1 px-0 py-0 h-8 sm:h-10 rounded-lg transition-all duration-300 font-bold text-sm lg:text-base shadow group"
               :class="activeTab === 'text' ? 'active bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 text-white shadow-lg ring-2 ring-[#7C3AED]' : 'text-gray-300 hover:bg-[#7C3AED]/20 hover:text-[#7C3AED]'"
             >
-              <span class="whitespace-nowrap">Text to Video</span>
+              <h2 class="whitespace-nowrap">Text to Video</h2>
               <PlusIcon class="h-3 w-3 lg:h-4 lg:w-4" :class="activeTab === 'text' ? 'text-gray-900' : 'text-gray-300 group-hover:text-gray-900'" />
             </button>
             <button 
@@ -37,7 +37,7 @@
               class="tab-button flex-1 flex items-center justify-center gap-1 px-0 py-0 h-8 sm:h-10 rounded-lg transition-all duration-300 font-bold text-sm lg:text-base shadow group"
               :class="activeTab === 'image' ? 'active bg-gradient-to-r from-[#7C3AED] to-[#7C3AED]/80 text-white shadow-lg ring-2 ring-[#7C3AED]' : 'text-gray-300 hover:bg-[#7C3AED]/20 hover:text-[#7C3AED]'"
             >
-              <span class="whitespace-nowrap">Image to Video</span>
+              <h2 class="whitespace-nowrap">Image to Video</h2>
               <PhotoIcon class="h-3 w-3 lg:h-4 lg:w-4" :class="activeTab === 'image' ? 'text-gray-900' : 'text-gray-300 group-hover:text-gray-900'" />
             </button>
           </div>
@@ -1353,7 +1353,7 @@ const containerHeight = computed(() => {
 
   //设置页面元数据
   useSeo({
-    title: `Hailuo AI Video Generator | Create Stunning Video from Text & Image`,
+    title: `Hailuo AI Video Generator | Best AI Video Maker Online`,
     description: `Create 1080p short videos from text or images with Hailuo AI Video Generator. Perfect for social media, brand marketing, and educational content.`,
   });
 </script>
