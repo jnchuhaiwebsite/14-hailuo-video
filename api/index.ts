@@ -37,6 +37,10 @@ export const urlList = {
   //seedance
   createTasksImgVideoSeedance: baseUrl + '/api/task/volcengine/img2video',     // 创建任务-图生视频
   createTasksTextVideoSeedance: baseUrl + '/api/task/volcengine/text2video',     // 创建任务-文生视频
+
+  //海螺安全按钮模式
+  createTasksImgVideoHailuoSafeButton: baseUrl + '/api/task/hl2/genvideo', // 获取海螺安全模式创建视频
+  checkTaskHailuoSafeButton: baseUrl + '/api/task/hl2/check_task_status', // 获取海螺安全模式查询视频
 }
 
 /**
@@ -166,6 +170,28 @@ export const createTaskImgVideo = async (data: any) => {
     throw error;
   }
 }
+
+/**
+ * 创建任务-图生视频
+ * @param prompt - 描述-必填
+ * @param image_file - 图片文件-必填
+ * @param resolution - 分辨率-必填
+ * @param ratio - 比例-必填
+ * @param duration - 时长-必填
+ * @param is_show - 是否显示-必填
+ * @returns {Object} - 返回任务结果
+ */
+export const createTaskImgVideoHailuoSafeButton = async (data: any) => {
+  try {
+    return await apiRequest(urlList.createTasksImgVideoHailuoSafeButton, 'POST', data, true);
+  } catch (error) {
+    console.error('创建任务失败:', error);
+    throw error;
+  }
+}
+
+
+
 /**
  * 创建任务-文生视频
  * @param prompt - 描述-必填
@@ -189,7 +215,7 @@ export const createTaskTextVideo = async (data: any) => {
  * @returns 套餐列表
  */
 export const getSubPlans = async () => {
-  return apiRequest(urlList.getSubPlans, 'GET', undefined, false);
+  return apiRequest(urlList.getSubPlans+'?type=1', 'GET', undefined, false);
 }
 
 /**
@@ -227,6 +253,15 @@ export const getOpusList = async (data: any) => {
  */
 export const checkTask = async (task_id:string) => {
   return apiRequest(urlList.checkTask+'?task_id='+task_id, 'GET', undefined, true);
+}
+
+/**
+ * 检查任务
+ * @param task_id 任务id
+ * @returns 任务结果
+ */
+export const checkTaskHailuoSafeButton = async (task_id:string) => {
+  return apiRequest(urlList.checkTaskHailuoSafeButton+'?task_id='+task_id, 'GET', undefined, true);
 }
 
 /**

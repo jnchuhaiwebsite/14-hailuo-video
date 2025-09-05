@@ -47,40 +47,122 @@
           enter-active-class="animate-smooth-in"
           leave-active-class="animate-smooth-out"
         >
-          <div v-if="activeTab === 'image'" class="w-full border-2 border-dashed border-gray-700 rounded-lg p-3 hover:border-[#7C3AED] transition-colors cursor-pointer mb-3 relative bg-blue-pale">
-            <input 
-              type="file" 
-              accept="image/jpeg,image/png" 
-              class="hidden" 
-              ref="fileInput"
-              @change="handleImageUpload"
-            />
-            <div 
-              v-if="!imagePreview" 
-              class="flex flex-col items-center justify-center gap-1.5"
-              @click="handleImageUploadClick"
-            >
-              <ArrowUpOnSquareIcon class="h-6 w-6 text-gray-400" />
-              <div class="text-center">
-                <p class="text-sm text-gray-300">Click or drag image here</p>
-                <p class="text-xs text-gray-500 mt-0.5">Supports JPG/JPEG/PNG/WebP format, up to 10MB</p>
+          <div v-if="activeTab === 'image'" class="w-full mb-3">
+            <div class="flex items-center gap-2 mb-2">
+              <label class="text-sm font-medium text-gray-300">First Frame Image</label>
+              <div class="group relative">
+                <InformationCircleIcon class="h-4 w-4 text-gray-400 cursor-help hover:text-[#7C3AED] transition-colors" />
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-gray-100 text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 w-64 border border-gray-600">
+                  <div class="text-center">
+                    <p class="font-medium text-[#7C3AED] mb-1">Starting Image</p>
+                    <p class="leading-relaxed">
+                      Upload the starting image for video generation. 
+                      This will be the first frame of your video.
+                    </p>
+                  </div>
+                  <!-- 小箭头 -->
+                  <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+                </div>
               </div>
             </div>
-            <div v-else class="relative w-full h-[160px]">
-              <img 
-                :src="imagePreview" 
-                class="w-full h-full object-contain rounded-lg"
-                alt="Preview"
+            <div class="w-full border-2 border-dashed border-gray-700 rounded-lg p-3 hover:border-[#7C3AED] transition-colors cursor-pointer relative bg-blue-pale">
+              <input 
+                type="file" 
+                accept="image/jpeg,image/png" 
+                class="hidden" 
+                ref="fileInput"
+                @change="handleImageUpload"
               />
-              <button 
-                @click="removeSelectedImage"
-                class="absolute -top-1.5 -right-1.5 p-0.5 bg-red-600 rounded-full hover:bg-red-700 transition-colors"
+              <div 
+                v-if="!imagePreview" 
+                class="flex flex-col items-center justify-center gap-1.5"
+                @click="handleImageUploadClick"
               >
-                <XMarkIcon class="h-5 w-5 text-white" />
-              </button>
+                <ArrowUpOnSquareIcon class="h-6 w-6 text-gray-400" />
+                <div class="text-center">
+                  <p class="text-sm text-gray-300">Click or drag image here</p>
+                  <p class="text-xs text-gray-500 mt-0.5">Supports JPG/JPEG/PNG/WebP format, up to 10MB</p>
+                </div>
+              </div>
+              <div v-else class="relative w-full h-[160px]">
+                <img 
+                  :src="imagePreview" 
+                  class="w-full h-full object-contain rounded-lg"
+                  alt="Preview"
+                />
+                <button 
+                  @click="removeSelectedImage"
+                  class="absolute -top-1.5 -right-1.5 p-0.5 bg-red-600 rounded-full hover:bg-red-700 transition-colors"
+                >
+                  <XMarkIcon class="h-5 w-5 text-white" />
+                </button>
+              </div>
             </div>
           </div>
         </Transition>
+        
+        <!-- 尾帧图片上传（仅在安全模式开启时显示） -->
+        <Transition
+          enter-active-class="animate-smooth-in"
+          leave-active-class="animate-smooth-out"
+        >
+          <div v-if="activeTab === 'image'" class="w-full mb-3">
+            <div class="flex items-center gap-2 mb-2">
+              <label class="text-sm font-medium text-gray-300">Last Frame Image</label>
+              <div class="group relative">
+                <InformationCircleIcon class="h-4 w-4 text-gray-400 cursor-help hover:text-[#7C3AED] transition-colors" />
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-gray-100 text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 w-80 border border-gray-600">
+                  <div class="text-center">
+                    <p class="font-medium text-[#7C3AED] mb-1">Aspect Ratio Notice</p>
+                    <p class="leading-relaxed">
+                      When the aspect ratios of the first and last frame images are inconsistent, 
+                      the model will generate the video based on the aspect ratio of the first frame 
+                      and crop the last frame accordingly.
+                    </p>
+                  </div>
+                  <!-- 小箭头 -->
+                  <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full border-2 border-dashed border-gray-700 rounded-lg p-3 hover:border-[#7C3AED] transition-colors cursor-pointer relative bg-blue-pale">
+              <input 
+                type="file" 
+                accept="image/jpeg,image/png" 
+                class="hidden" 
+                ref="lastFrameInput"
+                @change="handleLastFrameUpload"
+              />
+              <div 
+                v-if="!lastFramePreview" 
+                class="flex flex-col items-center justify-center gap-1.5"
+                @click="handleLastFrameUploadClick"
+              >
+                <ArrowUpOnSquareIcon class="h-6 w-6 text-gray-400" />
+                <div class="text-center">
+                  <p class="text-sm text-gray-300">Click or drag last frame image here</p>
+                  <p class="text-xs text-gray-500 mt-0.5">Optional, supports JPG/JPEG/PNG/WebP format, up to 10MB</p>
+                </div>
+              </div>
+              <div v-else class="relative w-full h-[120px]">
+                <img 
+                  :src="lastFramePreview" 
+                  class="w-full h-full object-contain rounded-lg"
+                  alt="Last Frame Preview"
+                />
+                <button 
+                  @click="removeLastFrameImage"
+                  class="absolute -top-1.5 -right-1.5 p-0.5 bg-red-600 rounded-full hover:bg-red-700 transition-colors"
+                >
+                  <XMarkIcon class="h-5 w-5 text-white" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </Transition>
+
+        
+
         <!-- 提示词 -->
         <div :class="{'space-y-2': activeTab === 'text'}">
           <div class="flex items-center" :class="{'mb-1.5': activeTab === 'text', 'mb-1': activeTab === 'image'}">
@@ -145,6 +227,36 @@
             </div>
           </div>
         </div>
+        
+        <!-- 安全模式开关（仅在图生视频模式下显示） -->
+        <Transition
+          enter-active-class="animate-smooth-in"
+          leave-active-class="animate-smooth-out"
+        >
+          <div  class="w-full mb-3">
+            <div class="flex items-center justify-between p-3 bg-blue-pale/50 rounded-lg border border-gray-700/50">
+                             <div class="flex items-center gap-2">
+                 <span class="text-sm font-medium text-gray-300">Content Filter:Enable to filter out adult and sensitive content.</span>
+               </div>
+              <div class="flex items-center">
+                <button
+                  @click="toggleSafeMode"
+                  :class="[
+                    'relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:ring-offset-2 focus:ring-offset-gray-800',
+                    safeMode ? 'bg-[#7C3AED]' : 'bg-gray-600'
+                  ]"
+                >
+                  <span
+                    :class="[
+                      'inline-block h-4 w-4 transform rounded-full bg-white transition-transform',
+                      safeMode ? 'translate-x-6' : 'translate-x-1'
+                    ]"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </Transition>
         <!-- 分享到作品展示选项 -->
         <div class="flex items-center gap-1.5 mt-3">
           <div class="flex items-center gap-1.5">
@@ -327,7 +439,7 @@ import { correctImageOrientation } from '~/utils/imageOrientation'
 import VideoShowcase from '~/pages/components/VideoShowcase.vue'
 
 // 接口
-import { createTaskImgVideo, createTaskTextVideo,checkTask,getScore,upload } from '~/api'
+import { createTaskImgVideo, createTaskTextVideo, checkTask, getScore, upload, createTaskImgVideoHailuoSafeButton, checkTaskHailuoSafeButton } from '~/api'
 import { useRouter } from 'vue-router';
 const { $toast } = useNuxtApp() as any
 
@@ -338,6 +450,10 @@ const isGenerating = ref(false)//是否正在生成
 const selectedImage = ref<File | null>(null)//选择的图片
 const imagePreview = ref<string>('')//图片预览
 const fileInput = ref<HTMLInputElement | null>(null)
+const safeMode = ref(false) // 安全模式开关
+const lastFrameImage = ref<File | null>(null) // 尾帧图片
+const lastFramePreview = ref<string>('') // 尾帧图片预览
+const lastFrameInput = ref<HTMLInputElement | null>(null)
 const isShow = ref(false) // 是否分享到作品展示
 const progress = ref(0) // 进度条进度
 const videoLoading = ref(false) // 视频加载状态
@@ -492,7 +608,10 @@ const formState = ref({
   selectedImage: null as File | string | null,
   resolution: '768p',
   duration: '6',
-  isShow: false
+  isShow: false,
+  safeMode: false,
+  lastFrameImage: null as File | string | null,
+  lastFramePreview: ''
 })
 
 // 保存表单状态（用于页面切换）
@@ -504,7 +623,10 @@ const saveFormState = () => {
     selectedImage: selectedImage.value,
     resolution: resolution.value,
     duration: duration.value,
-    isShow: isShow.value
+    isShow: isShow.value,
+    safeMode: safeMode.value,
+    lastFrameImage: lastFrameImage.value,
+    lastFramePreview: lastFramePreview.value
   }
   localStorage.setItem('seedanceFormState', JSON.stringify(formState.value))
 }
@@ -521,6 +643,9 @@ const restoreFormState = () => {
     duration.value = state.duration
     isShow.value = state.isShow
     resolution.value = state.resolution
+    safeMode.value = state.safeMode || false
+    lastFrameImage.value = state.lastFrameImage
+    lastFramePreview.value = state.lastFramePreview || ''
   }
 }
 
@@ -547,6 +672,14 @@ onUnmounted(() => {
   // 清理预览视频资源
   if (previewVideoUrl) {
     URL.revokeObjectURL(previewVideoUrl)
+  }
+  // 清理图片预览资源
+  if (imagePreview.value) {
+    URL.revokeObjectURL(imagePreview.value)
+  }
+  // 清理尾帧图片预览资源
+  if (lastFramePreview.value) {
+    URL.revokeObjectURL(lastFramePreview.value)
   }
   // 暂停所有视频
   const videos = document.querySelectorAll('video')
@@ -688,6 +821,66 @@ const removeSelectedImage = () => {
   imagePreview.value = ''
 }
 
+// 切换安全模式
+const toggleSafeMode = () => {
+  safeMode.value = !safeMode.value
+  // 如果关闭安全模式，清除尾帧图片
+  if (!safeMode.value) {
+    removeLastFrameImage()
+  }
+}
+
+// 处理尾帧图片上传区域点击
+const handleLastFrameUploadClick = async () => {
+  if (!await checkLoginStatus()) return
+  lastFrameInput.value?.click()
+}
+
+// 处理尾帧图片上传
+const handleLastFrameUpload = async (event: Event) => {
+  const input = event.target as HTMLInputElement
+  if (!input.files?.length) return
+  
+  const file = input.files[0]
+  if (file.size > 10 * 1024 * 1024) { // 10MB
+    $toast.error('Image size cannot exceed 10MB')
+    input.value = ''
+    return
+  }
+  
+  if (!['image/jpeg', 'image/png', 'image/webp', 'image/jpg'].includes(file.type)) {
+    $toast.error('Only JPG, JPEG, PNG and WebP formats are supported')
+    input.value = ''
+    return
+  }
+
+  // 检查图片尺寸和长宽比
+  try {
+    const checkResult = await checkImageDimensions(file)
+    if (!checkResult.valid) {
+      $toast.error(checkResult.message)
+      input.value = ''
+      return
+    }
+    
+    lastFrameImage.value = file
+    // 创建预览URL
+    lastFramePreview.value = URL.createObjectURL(file)
+  } catch (error) {
+    console.error('尾帧图片验证失败:', error)
+    $toast.error('Image validation failed, please try again')
+  }
+}
+
+// 移除尾帧图片
+const removeLastFrameImage = () => {
+  if (lastFramePreview.value) {
+    URL.revokeObjectURL(lastFramePreview.value)
+  }
+  lastFrameImage.value = null
+  lastFramePreview.value = ''
+}
+
 // 统一的登录检查方法
 const withLoginCheck = async (callback: () => void | Promise<void>) => {
   if (!await checkLoginStatus()) return
@@ -754,7 +947,9 @@ const stopCheckTask = () => {
 // 检查任务状态
 const checkTaskStatus = async (taskId: string) => {
   try {
-    const response = await checkTask(taskId) as any
+    // 根据是否开启安全模式选择不同的API
+    const response = await checkTaskHailuoSafeButton(taskId) as any
+  
     if (response.code === 200) {
       // 任务完成，获取视频URL
       if(response.data.status == '1' && response.data.video_url){
@@ -808,7 +1003,7 @@ const checkTaskStatus = async (taskId: string) => {
 
 // 视频生成请求
 const handleVideoRequest = async () => {
-  if (activeTab.value === 'image' && !selectedImage.value) {
+  if (activeTab.value === 'image' && (!selectedImage.value || !lastFrameImage.value)) {
     $toast.warning('Please upload an image')
     return
   }
@@ -838,6 +1033,22 @@ const handleVideoRequest = async () => {
       return
     }
   }
+  
+  // 如果是安全模式且开启了安全模式，需要上传尾帧图片
+  if(activeTab.value === 'image' && lastFrameImage.value instanceof File){
+    const uploadResponse = await upload({
+      file: lastFrameImage.value
+    })
+    if (uploadResponse.code === 200) {
+      lastFrameImage.value = uploadResponse.data as any
+    } else {
+      $toast.error(uploadResponse.msg || 'Failed to upload last frame image')
+      isGenerating.value = false
+      stopProgressAnimation()
+      return
+    }
+  }
+  
   //开始进度条动画
   startProgressAnimation()
   try {
@@ -852,14 +1063,28 @@ const handleVideoRequest = async () => {
         is_show: isShow.value
       }
     }else{
-      request = createTaskImgVideo
-      requestData = {
-          image_url: selectedImage.value||imagePreview.value,
+      // 根据是否开启安全模式选择不同的API
+      // if(safeMode.value) {
+        request = createTaskImgVideoHailuoSafeButton
+        requestData = {
+          secure: true,
+          first_img_url: selectedImage.value || imagePreview.value,
+          last_img_url: lastFrameImage.value || '', // 尾帧图片，可选
           prompt: prompt.value,
           resolution: resolution.value,
           duration: duration.value,
           is_show: isShow.value
-      }
+        }
+      // } else {
+      //   request = createTaskImgVideo
+      //   requestData = {
+      //     image_url: selectedImage.value || imagePreview.value,
+      //     prompt: prompt.value,
+      //     resolution: resolution.value,
+      //     duration: duration.value,
+      //     is_show: isShow.value
+      //   }
+      // }
     }
     const response = await request(requestData) as any;
     
@@ -1072,7 +1297,10 @@ const cacheFormData = () => {
     selectedImage: selectedImage.value,
     resolution: resolution.value,
     duration: duration.value,
-    isShow: isShow.value
+    isShow: isShow.value,
+    safeMode: safeMode.value,
+    lastFrameImage: lastFrameImage.value,
+    lastFramePreview: lastFramePreview.value
   }))
 }
 
@@ -1088,6 +1316,9 @@ const restoreFormData = () => {
     duration.value = data.duration
     isShow.value = data.isShow
     resolution.value = data.resolution
+    safeMode.value = data.safeMode || false
+    lastFrameImage.value = data.lastFrameImage
+    lastFramePreview.value = data.lastFramePreview || ''
     // 清除缓存
     localStorage.removeItem('seedanceFormCache')
   }
@@ -1096,14 +1327,27 @@ const restoreFormData = () => {
 // 动态计算容器高度
 const containerHeight = computed(() => {
   // 图片模式时增加高度
-  return activeTab.value === 'image' ? {
-    base: 'min-h-[520px]',
-    sm: 'sm:min-h-[560px]',
-    lg: 'lg:min-h-[600px]'
-  } : {
-    base: 'min-h-[400px]',
-    sm: 'sm:min-h-[440px]',
-    lg: 'lg:min-h-[480px]'
+  if (activeTab.value === 'image') {
+    // 如果开启了安全模式，需要更多高度
+    if (safeMode.value) {
+      return {
+        base: 'min-h-[680px]',
+        sm: 'sm:min-h-[720px]',
+        lg: 'lg:min-h-[760px]'
+      }
+    } else {
+      return {
+        base: 'min-h-[520px]',
+        sm: 'sm:min-h-[560px]',
+        lg: 'lg:min-h-[600px]'
+      }
+    }
+  } else {
+    return {
+      base: 'min-h-[400px]',
+      sm: 'sm:min-h-[440px]',
+      lg: 'lg:min-h-[480px]'
+    }
   }
 })
 
